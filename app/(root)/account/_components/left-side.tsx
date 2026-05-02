@@ -13,9 +13,12 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 const formSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z
+    .email("Email is required and must be a valid email address")
+    .optional(),
   password: z
     .string()
     .min(6, "Password must be at least 6 characters long")
@@ -38,42 +41,54 @@ const LeftSide = () => {
   }
 
   return (
-    <div className="mx-auto max-w-1/2 text-center">
-      <h2>Glow Buddy for professionals</h2>
-      <p>Create an account or log in to manager your business</p>
-      <form onSubmit={form.handleSubmit(onSubmit)}></form>
+    <div className="w-full py-4">
+      <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-semibold">
+            Glow Buddy for professionals
+          </h2>
+          <small className="text-muted-foreground">
+            Create an account or log in to manager your business.
+          </small>
+        </div>
+        <form id="partner-login-form" onSubmit={form.handleSubmit(onSubmit)}>
+          <FieldGroup>
+            <Controller
+              name="email"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <Input
+                    {...field}
+                    id="partner-login-form-email"
+                    aria-invalid={fieldState.invalid}
+                    placeholder="Enter your email address"
+                    autoComplete="off"
+                    type="email"
+                    className="py-5"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+        </form>
+        <Field orientation="responsive">
+          <Button type="submit" form="partner-login-form">
+            Continue
+          </Button>
+        </Field>
 
-      <form id="partner-login-form" onSubmit={form.handleSubmit(onSubmit)}>
-        <FieldGroup>
-          <Controller
-            name="email"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor="partner-login-form-email">
-                  Email
-                </FieldLabel>
-                <Input
-                  {...field}
-                  id="partner-login-form-email"
-                  aria-invalid={fieldState.invalid}
-                  placeholder="Enter your email address"
-                  autoComplete="off"
-                  type="email"
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        </FieldGroup>
-      </form>
-      <Field orientation="responsive">
-        <Button type="submit" form="form-rhf-demo">
-          Continue
-        </Button>
-      </Field>
+        <div>
+          <p>Are you a customer looking to book an appointment?</p>
+          <Link href="#">Go to GlowBuddy for customers</Link>
+        </div>
+      </div>
+      <div className="absolute bottom-8 flex w-full justify-center gap-2 text-xs text-muted-foreground md:max-w-1/2">
+        <Link href="#">Support</Link>•<Link href="#">Privacy Policy</Link>
+      </div>
     </div>
   )
 }
