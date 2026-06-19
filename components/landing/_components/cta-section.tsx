@@ -16,7 +16,7 @@ export function CtaSection() {
         <span className="font-bold">Capterra</span>
       </div>
       <Button size="lg" className="mt-6" asChild>
-        <Link href="/account">Find out more</Link>
+        <Link href="/business">Find out more</Link>
       </Button>
     </section>
   )

@@ -1,0 +1,423 @@
+"use client"
+
+import Link from "next/link"
+import { Check, Star, Building2, TrendingUp, CreditCard, Calendar, Users, MessageCircle, BookOpen } from "lucide-react"
+import { BusinessHeader } from "@/components/landing/_components/business/business-header"
+import { BusinessHero } from "@/components/landing/_components/business/business-hero"
+import { BusinessTypes } from "@/components/landing/_components/business/business-types"
+import { BusinessTestimonials } from "@/components/landing/_components/business/business-testimonials"
+import { BusinessFaq } from "@/components/landing/_components/business/business-faq"
+import { Footer } from "@/components/landing/_components/footer"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
+
+const metrics = [
+  { value: "5,000+", label: "Partner businesses" },
+  { value: "12,000+", label: "Professionals" },
+  { value: "500,000+", label: "Appointments booked" },
+  { value: "50+", label: "Towns" },
+]
+
+const features = [
+  {
+    icon: Building2,
+    title: "Manage",
+    description: "Manage bookings, sales, clients, locations, team members. Analyse your business with advanced reporting and analytics.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Grow",
+    description: "Win new clients on the world's largest beauty and wellness marketplace. Keep them coming back with marketing features.",
+  },
+  {
+    icon: CreditCard,
+    title: "Get paid",
+    description: "Get paid fast with seamless payment processing. Reduce no-shows with upfront payments and simplify checkout.",
+  },
+]
+
+const allInOnePoints = [
+  "Most loved and the top-rated booking software for salons, spas, and other beauty and wellness businesses",
+  "Powerful calendar with unlimited bookings, clients, locations, and much more",
+  "Advanced insights providing a 360 degree view of each client, including booking behaviors, client preferences, preferred payment methods, preferred marketing channels, lifetime value and more",
+  "Crafted to deliver a smooth experience that enhances your business and elevates your brand",
+]
+
+const marketplacePoints = [
+  "Increase your online visibility by listing your business on Glowbuddy marketplace",
+  "Reach millions of clients looking to book their next appointment today",
+  "Free up time and get your clients self-booking online 24/7",
+]
+
+const businessStats = [
+  { value: "26%", label: "More clients", description: "Win new clients and keep them coming back on the world's largest beauty and wellness marketplace." },
+  { value: "89%", label: "Fewer no-shows", description: "Reduce no-shows and cancellations by taking a deposit or a full payment upfront." },
+  { value: "20%", label: "More sales", description: "Generate more sales by upselling services when clients book online." },
+  { value: "290%", label: "More tips", description: "Collect more tips when clients book online via the marketplace, your website, Google, or social media." },
+  { value: "12%", label: "Higher retention", description: "Partners using Glowbuddy experience a higher retention of clients." },
+  { value: "392%", label: "Return on investment", description: "Most partners grow with Glowbuddy." },
+  { value: "41%", label: "Booked outside hours", description: "Our marketplace helps you capture clients looking to book outside business hours." },
+]
+
+const successServices = [
+  { title: "Customer success manager", description: "Get dedicated help to maximize your potential on Glowbuddy" },
+  { title: "Access our network", description: "Use an Enterprise-certified account manager to bring your business to life" },
+  { title: "24/7 priority support", description: "Talk with our customer care team anytime. We're here to help." },
+  { title: "Migration support", description: "Our team can help bring your data from other platforms" },
+  { title: "Tailored solutions", description: "Have something in mind? Just ask us. We will figure it out together." },
+  { title: "Expert consultation", description: "Get direct access to product experts for guidance on all things Glowbuddy" },
+]
+
+const platformCategories = [
+  { name: "Hair Salon", imageLabel: "Hair stylist cutting a client's hair with scissors in a salon" },
+  { name: "Nail Salon", imageLabel: "Close-up of a manicurist applying nail polish to a client's nails" },
+  { name: "Barbers", imageLabel: "Barber trimming a client's beard with clippers in a barber chair" },
+  { name: "Waxing Salon", imageLabel: "Beauty professional applying wax to a client's leg for hair removal" },
+  { name: "Medspa", imageLabel: "Woman receiving a facial treatment from a professional in a medspa setting" },
+  { name: "Eyebrow Bar", imageLabel: "Beauty technician shaping a client's eyebrows using tweezers" },
+  { name: "Massage Salon", imageLabel: "Massage therapist giving a back massage to a client lying on a treatment table" },
+  { name: "Spa", imageLabel: "Woman relaxing with her eyes closed while wearing a white robe and head towel in a spa setting" },
+  { name: "Fitness", imageLabel: "Three people performing sit-ups together on mats in a fitness studio" },
+  { name: "Personal Trainer", imageLabel: "Personal trainer guiding a client through a fitness workout at a gym" },
+  { name: "Salon", imageLabel: "Hair stylist cutting a client's hair with scissors in a salon" },
+  { name: "Therapy Center", imageLabel: "Therapist assisting a patient with leg exercises during a rehab session" },
+  { name: "Tattooing & Piercing", imageLabel: "Tattoo artist inking a client's arm inside a modern studio" },
+  { name: "Tanning Studios", imageLabel: "Modern tanning studio with sunbeds and ambient lighting, representing sunless tanning services" },
+]
+
+export default function BusinessPage() {
+  return (
+    <div className="min-h-screen">
+      <BusinessHeader />
+
+      <BusinessHero />
+
+      {/* Metrics Bar */}
+      <section className="border-t py-12 text-center">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {metrics.map((m) => (
+              <div key={m.label}>
+                <p className="text-3xl font-bold">{m.value}</p>
+                <p className="text-sm text-muted-foreground">{m.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <BusinessTypes />
+
+      {/* Pricing */}
+      <section id="pricing" className="border-t py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl font-bold text-center md:text-3xl">Simple, transparent pricing</h2>
+          <p className="mt-2 text-center text-muted-foreground max-w-xl mx-auto">
+            Start for free, only pay when you get paid. No monthly fees, no hidden costs, no long-term contracts.
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+            <Card>
+              <CardContent className="p-6 text-center">
+                <h3 className="text-lg font-semibold">Free</h3>
+                <p className="mt-1 text-3xl font-bold">
+                  KES 0
+                </p>
+                <p className="text-xs text-muted-foreground">per month</p>
+                <ul className="mt-6 space-y-2 text-left text-sm">
+                  {["Unlimited bookings", "Online booking widget", "Client management", "Automated reminders", "Basic reports"].map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <Check className="size-4 text-primary shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button size="lg" className="mt-6 w-full" asChild>
+                  <Link href="/account">Get started free</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary shadow-lg">
+              <CardContent className="p-6 text-center">
+                <div className="mb-2">
+                  <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-medium text-primary">Most popular</span>
+                </div>
+                <h3 className="text-lg font-semibold">Pay as you grow</h3>
+                <p className="mt-1 text-3xl font-bold">
+                  2.5%
+                </p>
+                <p className="text-xs text-muted-foreground">per transaction</p>
+                <ul className="mt-6 space-y-2 text-left text-sm">
+                  {["Everything in Free", "Marketplace listing", "Marketing automation", "Advanced analytics", "Priority support"].map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <Check className="size-4 text-primary shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button size="lg" className="mt-6 w-full" asChild>
+                  <Link href="/account">Get started</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 text-center">
+                <h3 className="text-lg font-semibold">Enterprise</h3>
+                <p className="mt-1 text-3xl font-bold">
+                  Custom
+                </p>
+                <p className="text-xs text-muted-foreground">tailored pricing</p>
+                <ul className="mt-6 space-y-2 text-left text-sm">
+                  {["Everything in Pay as you grow", "Dedicated account manager", "Custom integrations", "Multi-location support", "Priority 24/7 support"].map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <Check className="size-4 text-primary shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button variant="outline" size="lg" className="mt-6 w-full" asChild>
+                  <Link href="#">Contact sales</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="border-t py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl font-bold text-center md:text-3xl">Everything you need to run your business</h2>
+          <p className="mt-2 text-center text-muted-foreground max-w-2xl mx-auto">
+            Glowbuddy offers innovative features that bring convenience, efficiency, and an improved experience
+            for both your team members and clients.
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {features.map((f) => {
+              const Icon = f.icon
+              return (
+                <Card key={f.title}>
+                  <CardContent className="p-6">
+                    <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                      <Icon className="size-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold">{f.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.description}</p>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* All-in-one */}
+      <section className="border-t bg-muted/20 py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-bold md:text-3xl">All-in-one software to run your business</h2>
+              <ul className="mt-6 space-y-4">
+                {allInOnePoints.map((point, i) => (
+                  <li key={i} className="flex gap-3">
+                    <Check className="mt-0.5 size-5 shrink-0 text-primary" />
+                    <span className="text-sm text-muted-foreground">{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button size="lg" className="mt-8" asChild>
+                <Link href="/account">Get started now</Link>
+              </Button>
+            </div>
+
+            <div className="rounded-xl border bg-card p-4 shadow-lg">
+              <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-2 text-center px-4">
+                  <Calendar className="size-8 text-primary/40" />
+                  <p className="text-xs text-muted-foreground">The calendar displaying bookings on the Glowbuddy for business app</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Marketplace */}
+      <section id="marketplace" className="border-t py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div className="order-2 md:order-1 rounded-xl border bg-card p-4 shadow-lg">
+              <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-2 text-center px-4">
+                  <Users className="size-8 text-primary/40" />
+                  <p className="text-xs text-muted-foreground">A portfolio of a stylist on the Glowbuddy for business app</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="order-1 md:order-2">
+              <h2 className="text-2xl font-bold md:text-3xl">The most popular marketplace to grow your business</h2>
+              <p className="mt-3 text-muted-foreground">
+                Promote your business and reach new clients on the world&apos;s largest beauty and wellness marketplace
+              </p>
+              <ul className="mt-6 space-y-4">
+                {marketplacePoints.map((point, i) => (
+                  <li key={i} className="flex gap-3">
+                    <Check className="mt-0.5 size-5 shrink-0 text-primary" />
+                    <span className="text-sm text-muted-foreground">{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button size="lg" className="mt-8" asChild>
+                <Link href="/account">Get started now</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <BusinessTestimonials />
+
+      {/* Business Stats / Metrics */}
+      <section className="border-t py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold md:text-3xl">Boss your business</h2>
+            <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
+              At Glowbuddy, we want to help you grow your business, attract new clients and boost sales.
+              See how businesses are doing on Glowbuddy
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {businessStats.slice(0, 4).map((stat) => (
+              <Card key={stat.label}>
+                <CardContent className="p-5">
+                  <p className="text-3xl font-bold text-primary">{stat.value}</p>
+                  <p className="mt-1 text-sm font-medium">{stat.label}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{stat.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {businessStats.slice(4).map((stat) => (
+              <Card key={stat.label}>
+                <CardContent className="p-5">
+                  <p className="text-3xl font-bold text-primary">{stat.value}</p>
+                  <p className="mt-1 text-sm font-medium">{stat.label}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{stat.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Success Services */}
+      <section className="border-t bg-muted/20 py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl font-bold text-center md:text-3xl">Committed to your success</h2>
+          <p className="mt-2 text-center text-muted-foreground max-w-2xl mx-auto">
+            Every business has its own needs, and we have got you covered with a range of professional services
+          </p>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {successServices.map((s) => (
+              <Card key={s.title}>
+                <CardContent className="p-5">
+                  <div className="mb-3 flex size-9 items-center justify-center rounded-lg bg-primary/10">
+                    <Star className="size-4 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-semibold">{s.title}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{s.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Support */}
+      <section className="border-t py-16">
+        <div className="mx-auto max-w-7xl px-4 text-center">
+          <h2 className="text-2xl font-bold md:text-3xl">You are never alone, award winning customer support 24/7</h2>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Card className="w-72">
+              <CardContent className="p-6 text-center">
+                  <BookOpen className="mx-auto size-8 text-primary" />
+                <h3 className="mt-3 text-sm font-semibold">Help Center</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Explore and learn with our help center knowledge base.</p>
+                <Button variant="outline" size="sm" className="mt-4" asChild>
+                  <Link href="#">Go to help center</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="w-72">
+              <CardContent className="p-6 text-center">
+                <MessageCircle className="mx-auto size-8 text-primary" />
+                <h3 className="mt-3 text-sm font-semibold">Contact us</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Contact us via email and phone and one of our team will be there to help.</p>
+                <Button variant="outline" size="sm" className="mt-4" asChild>
+                  <Link href="#">Contact us</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <BusinessFaq />
+
+      {/* Platform suitable for all */}
+      <section className="border-t bg-muted/20 py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-2xl font-bold text-center md:text-3xl">A platform suitable for all</h2>
+
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
+            {platformCategories.map((cat, i) => (
+              <div
+                key={cat.name}
+                className="rounded-xl border bg-card overflow-hidden group cursor-pointer"
+              >
+                <div className={cn(
+                  "flex h-20 items-center justify-center bg-gradient-to-br",
+                  ["from-blue-400/20 to-blue-600/10", "from-pink-400/20 to-pink-600/10", "from-purple-400/20 to-purple-600/10", "from-green-400/20 to-green-600/10", "from-amber-400/20 to-amber-600/10", "from-rose-400/20 to-rose-600/10", "from-cyan-400/20 to-cyan-600/10", "from-indigo-400/20 to-indigo-600/10", "from-teal-400/20 to-teal-600/10", "from-orange-400/20 to-orange-600/10", "from-violet-400/20 to-violet-600/10", "from-fuchsia-400/20 to-fuchsia-600/10", "from-blue-400/20 to-blue-600/10", "from-pink-400/20 to-pink-600/10"][i % 14]
+                )}>
+                  <span className="px-2 text-center text-[10px] font-medium text-muted-foreground line-clamp-2">
+                    {cat.imageLabel}
+                  </span>
+                </div>
+                <div className="p-2 text-center">
+                  <p className="text-xs font-medium truncate">{cat.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="border-t py-16">
+        <div className="mx-auto max-w-7xl px-4 text-center">
+          <h2 className="text-2xl font-bold md:text-3xl">What are you waiting for?</h2>
+          <p className="mt-2 text-muted-foreground">
+            Partner with Glowbuddy and start growing your business today
+          </p>
+          <Button size="lg" className="mt-6" asChild>
+            <Link href="/account">Get started now</Link>
+          </Button>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  )
+}

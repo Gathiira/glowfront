@@ -20,7 +20,7 @@ export function Header() {
             <Link href="/account">Log in</Link>
           </Button>
           <Button variant="outline" size="sm" asChild>
-            <Link href="/account">List your business</Link>
+            <Link href="/business">List your business</Link>
           </Button>
           <Button variant="ghost" size="icon">
             <Menu className="size-5" />
@@ -37,7 +37,7 @@ export function Header() {
               <Link href="/account">Log in</Link>
             </Button>
             <Button variant="outline" size="sm" asChild className="justify-start">
-              <Link href="/account">List your business</Link>
+              <Link href="/business">List your business</Link>
             </Button>
           </div>
         </div>

@@ -173,6 +173,55 @@ export const browseBusinesses: ListingBusiness[] = [
   { id: "br2", name: "Gentleman's Choice Barber", category: "Barbers", location: "Nakuru Town", rating: 4.7, reviewCount: 201, imageLabel: "Modern barber lounge at Gentleman's Choice" },
 ]
 
+export const businessTypes = [
+  { id: "salon", name: "Salon", description: "Hair stylist working on a client's hair in a chic salon", imageLabel: "Salon services available on Glowbuddy" },
+  { id: "barber", name: "Barber", description: "Barber styling a client's hair in a contemporary barbershop", imageLabel: "Barbering services on Glowbuddy" },
+  { id: "nails", name: "Nails", description: "Manicurist applying nail polish to a client's nails", imageLabel: "Nail care services on Glowbuddy" },
+  { id: "spa-sauna", name: "Spa & sauna", description: "Woman relaxing in a spa with a towel wrap and facial mask", imageLabel: "Spa and wellness services on Glowbuddy" },
+  { id: "medspa", name: "Medspa", description: "Aesthetician performing a facial treatment in a modern med spa", imageLabel: "Medical spa services on Glowbuddy" },
+  { id: "massage", name: "Massage", description: "Client receiving a relaxing back massage in a spa environment", imageLabel: "Massage therapy services on Glowbuddy" },
+  { id: "fitness", name: "Fitness & recovery", description: "Fitness trainer guiding a client through a workout in a gym", imageLabel: "Fitness services available on Glowbuddy" },
+  { id: "physical-therapy", name: "Physical therapy", description: "Physical therapist assisting a patient with exercises", imageLabel: "Physical therapy services on Glowbuddy" },
+  { id: "health", name: "Health practice", description: "Healthcare professional consulting with a patient in a clinic", imageLabel: "Health practice services on Glowbuddy" },
+  { id: "tattoo", name: "Tattoo & piercing", description: "Tattoo artist creating a detailed design on a client's arm", imageLabel: "Tattoo and piercing services on Glowbuddy" },
+  { id: "pet-grooming", name: "Pet grooming", description: "Professional pet groomer styling a dog in a clean salon", imageLabel: "Pet grooming services on Glowbuddy" },
+  { id: "tanning", name: "Tanning studio", description: "Modern tanning studio with sunbeds and ambient lighting", imageLabel: "Sunless tanning services on Glowbuddy" },
+]
+
+export const businessTestimonials = [
+  { name: "Chris Ward", title: "Founder of HUCKLE", location: "Nairobi", text: "Glowbuddy is so easy to manage my team", fullText: "I work with booth renters at my top-rated salon in Nairobi. I love Glowbuddy because it offers my clients a professional appointment booking experience with seamless online booking features, automated reminder emails and texts, advanced POS capabilities and the best payment processing rates I could get for my salon business.", rating: 5 },
+  { name: "Pamela B", title: "Salon owner, Nairobi", location: "Nairobi", text: "My clients love it", fullText: "Glowbuddy is the top-rated salon software with all the advanced features you need to operate as a salon business. The marketplace has been incredible for our salon business too, we have hundreds of client reviews and we've increased sales by 31%.", rating: 5 },
+  { name: "Alex E", title: "Hair stylist and owner", location: "Mombasa", text: "Powerful Scheduling", fullText: "This appointment scheduling software is very user friendly! I have 3 business locations and Glowbuddy meets all my business needs and more. It's a truly fantastic product, and hands down the best salon scheduling system I've seen.", rating: 5 },
+  { name: "Gayle S", title: "Business owner", location: "Kisumu", text: "Smart Salon Software", fullText: "Glowbuddy is the most advanced salon software in beauty and wellness. It comes packed with smart features for appointment scheduling, point-of-sales (POS), marketing features and financial reports all built for salons and beauty businesses.", rating: 5 },
+  { name: "Bianca", title: "Business owner", location: "Nakuru", text: "Booking Made Easy", fullText: "I am a freelance makeup artist who has been searching for a salon scheduling app that can make appointment bookings easy. My experience with Glowbuddy has been great thus far, and I don't see myself moving away from it anytime soon.", rating: 5 },
+  { name: "Emily P", title: "Salon Owner", location: "Eldoret", text: "Simplify Salon Scheduling", fullText: "Coming from a much more complicated system like MINDBODY or Booksy, Glowbuddy was so wonderfully easy to figure out and implement. Customer service has always been so kind and responsive.", rating: 5 },
+  { name: "Warren D", title: "Psychotherapist", location: "Thika", text: "Easy Payments, Bookings", fullText: "Client payments and booking appointments is now a breeze. The 'pay as you go' model is ideal for small companies starting out, but powerful for those already going full steam.", rating: 5 },
+  { name: "Kat M", title: "Salon Owner", location: "Malindi", text: "Effortless Salon Management", fullText: "Glowbuddy makes running my salon business so much easier. The booking calendar is the best, it comes with appointment reminders, advanced POS features and leading payment rates. Moving from Treatwell was a great decision.", rating: 5 },
+  { name: "Sean-Jordan Baruch", title: "Business owner", location: "Nyeri", text: "Best salon software", fullText: "Glowbuddy is the top salon software. The salon booking system is designed with simplicity for the end-user. It's a genius concept that offers a great service with well priced business software.", rating: 5 },
+  { name: "Osama Kaddah", title: "Business owner", location: "Machakos", text: "Boost sales", fullText: "The smart marketing system has shown us an increase of sales and salon client retention, and using the analytics system, we were able to control study analytics in a great way.", rating: 5 },
+  { name: "Sally Coles-Robertson", title: "Business owner", location: "Kitale", text: "Smart Analytics", fullText: "The analytics and client payment features on Glowbuddy are ahead of the game. There's so many advantages and I'm a great advocate of Glowbuddy whenever possible.", rating: 5 },
+  { name: "Tina A", title: "Owner/Manager", location: "Meru", text: "Ultimate Salon Solution", fullText: "It's the best Salon Booking system with client management & reporting functionality for improved productivity. My team is always satisfied with its functionality and ease of access.", rating: 5 },
+  { name: "Jilly", title: "Business owner", location: "Nanyuki", text: "Amazing software", fullText: "Glowbuddy has literally changed my life! I have so much more time to myself and have stopped paying hefty monthly fees when the salon is closed.", rating: 5 },
+  { name: "Mary M", title: "Business owner", location: "Naivasha", text: "Recommend to all", fullText: "Amazing scheduling system for salons and spas. One of the most efficient booking systems I have ever used! I definitely recommend this to any business owner.", rating: 5 },
+  { name: "Grace Y", title: "Salon Owner", location: "Embu", text: "Online Salon Software", fullText: "I've used salon iris, phorest and other paid salon software and they are nowhere near as good as Glowbuddy. I love their customer service and support.", rating: 5 },
+  { name: "Suzanne B", title: "Business owner", location: "Kilifi", text: "Simplify Salon Management", fullText: "The easiest salon software I have ever used! My business runs so smoothly now and I can manage everything on the go. It has all the features a salon needs.", rating: 5 },
+  { name: "Carley W", title: "Owner, aesthetician", location: "Lamu", text: "Beauty Industry's Best", fullText: "Glowbuddy is the best software for salons, spas and massage therapists! Having the POS system already integrated to the salon software makes payment easy.", rating: 5 },
+]
+
+export type BusinessType = typeof businessTypes[number]
+export type BusinessTestimonial = typeof businessTestimonials[number]
+
+export const businessFaqs = [
+  { question: "What makes Glowbuddy the leading platform for businesses in beauty and wellness?", answer: "Glowbuddy is the world's leading booking platform for beauty and wellness businesses. We offer a complete suite of tools including online booking, POS, marketing automation, and client management — all with no upfront costs and transparent pricing. Our marketplace connects you with millions of clients looking to book their next appointment." },
+  { question: "How does Glowbuddy help my business grow?", answer: "Glowbuddy helps you grow by listing your business on the world's largest beauty and wellness marketplace, reaching millions of potential clients. Our marketing tools help you retain clients with automated reminders, promotions, and loyalty programs. Partners using Glowbuddy see an average of 26% more clients and 20% more sales." },
+  { question: "Are there any hidden costs?", answer: "No. Glowbuddy is transparent with its pricing. You only pay when you get paid — with our pay-as-you-go model. There are no monthly subscription fees, no setup costs, and no hidden charges. You get access to all core features for free." },
+  { question: "Is there a minimum commitment or contract?", answer: "No minimum commitment or long-term contract required. You can use Glowbuddy on a month-to-month basis with complete flexibility. Start, pause, or stop anytime — it's entirely up to you." },
+  { question: "Does Glowbuddy support businesses of all sizes?", answer: "Absolutely. Glowbuddy is designed for businesses of all sizes — from independent freelancers and single-location salons to multi-location enterprises with hundreds of staff. Our platform scales with your business." },
+  { question: "What types of businesses can use Glowbuddy?", answer: "Glowbuddy supports a wide range of beauty and wellness businesses including hair salons, barbershops, nail salons, spas, medspas, massage therapists, fitness studios, tattoo & piercing studios, pet groomers, tanning studios, and more." },
+  { question: "How can Glowbuddy help reduce no-shows?", answer: "Glowbuddy reduces no-shows with automated SMS and email reminders, and the option to take deposits or full upfront payments at the time of booking. Partners using these features see up to 89% fewer no-shows." },
+  { question: "Can I migrate my data from my previous system to Glowbuddy?", answer: "Yes. Our migration support team can help bring your data from other platforms including MINDBODY, Booksy, Timely, Treatwell, and more. We make the switch as smooth and seamless as possible." },
+]
+
 export const gradients = [
   "from-blue-400/20 to-blue-600/10",
   "from-pink-400/20 to-pink-600/10",
