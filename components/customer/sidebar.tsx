@@ -60,7 +60,7 @@ export function PlatformSidebar() {
 
   return (
     <>
-      <aside className="hidden md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
+      <aside className="hidden md:fixed md:left-0 md:top-0 md:z-30 md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
         <Link
           href="/platform/home"
           className="mb-6 flex items-center gap-2 px-2 text-lg font-bold"
