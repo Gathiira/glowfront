@@ -14,6 +14,7 @@ import {
   Users,
   Package,
   UsersRound,
+  Settings,
   Menu,
   X,
 } from "lucide-react"
@@ -60,6 +61,15 @@ const navItems: NavItem[] = [
     children: [
       { label: "Members", href: "/dashboard/team/members" },
       { label: "Add Member", href: "/dashboard/team/add" },
+    ],
+  },
+  {
+    label: "Profile",
+    icon: Settings,
+    children: [
+      { label: "Details", href: "/dashboard/profile/details" },
+      { label: "Security", href: "/dashboard/profile/security" },
+      { label: "Portfolio", href: "/dashboard/profile/portfolio" },
     ],
   },
 ]
