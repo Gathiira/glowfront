@@ -29,14 +29,26 @@ export default function LandingPage() {
 
       <div className="mx-auto max-w-7xl px-4">
         <ScrollSection title="Recommended" items={recommended} href="/browse" />
-        <ScrollSection title="Featured" items={dealsBusinesses} href="/browse" />
-        <ScrollSection title="New to Glowbuddy" items={newBusinesses} href="/browse" />
+        <ScrollSection
+          title="Featured"
+          items={dealsBusinesses}
+          href="/browse"
+        />
+        <StatsBar />
+        <ScrollSection
+          title="New to Glowbuddy"
+          items={newBusinesses}
+          href="/browse"
+        />
         <ScrollSection title="Trending" items={trending} href="/browse" />
         <ScrollSection title="Deals" items={newWithTag} href="/browse" />
         <Reviews reviews={reviews} />
-        <StatsBar />
         <CtaSection />
-        <CityBrowser countries={countries} cityLinks={cityLinks} allCategories={allCategories} />
+        <CityBrowser
+          countries={countries}
+          cityLinks={cityLinks}
+          allCategories={allCategories}
+        />
       </div>
 
       <Footer />
