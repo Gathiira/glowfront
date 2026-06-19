@@ -34,7 +34,7 @@ export function BusinessHeader() {
             </Link>
           ))}
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/account">Sign up</Link>
+            <Link href="/auth/partner">Sign up</Link>
           </Button>
           <Button variant="ghost" size="icon">
             <Menu className="size-5" />
@@ -43,7 +43,7 @@ export function BusinessHeader() {
 
         <div className="flex items-center gap-2 md:hidden">
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/account">Sign up</Link>
+            <Link href="/auth/partner">Sign up</Link>
           </Button>
           <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}

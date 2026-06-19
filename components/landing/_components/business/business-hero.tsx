@@ -16,7 +16,7 @@ export function BusinessHero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" asChild>
-                <Link href="/account">Get started now</Link>
+                <Link href="/auth/partner">Get started now</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#">

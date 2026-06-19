@@ -5,7 +5,7 @@ const RightSide = () => {
   return (
     <div className="relative w-full max-md:hidden">
       <Image
-        src="/assets/login-image.jpg"
+        src="/assets/glowbuddy-auth.webp"
         alt="Glow Buddy for professionals"
         fill
         className="object-cover object-right"

@@ -2,7 +2,9 @@
 
 import { useState, useMemo, useCallback, useRef } from "react"
 import { MapPin, Star, Search, X } from "lucide-react"
-import dynamic from "next/dynamic"
+import NextDynamic from "next/dynamic"
+
+export const dynamic = "force-dynamic"
 import { Header } from "@/components/landing/_components/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,36 +19,41 @@ import {
 } from "@/components/landing/data"
 import type { ListingBusiness } from "@/components/landing/data"
 import { cn } from "@/lib/utils"
-import L from "leaflet"
-import "leaflet/dist/leaflet.css"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let L: any = null
 
-const defaultIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-})
+if (typeof window !== "undefined") {
+  L = require("leaflet")
+  require("leaflet/dist/leaflet.css")
 
-L.Marker.prototype.options.icon = defaultIcon
+  const defaultIcon = L.icon({
+    iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+    iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  })
 
-const MapContainer = dynamic(
+  L.Marker.prototype.options.icon = defaultIcon
+}
+
+const MapContainer = NextDynamic(
   () => import("react-leaflet").then((m) => m.MapContainer),
   { ssr: false }
 )
-const TileLayer = dynamic(
+const TileLayer = NextDynamic(
   () => import("react-leaflet").then((m) => m.TileLayer),
   { ssr: false }
 )
-const Marker = dynamic(() => import("react-leaflet").then((m) => m.Marker), {
+const Marker = NextDynamic(() => import("react-leaflet").then((m) => m.Marker), {
   ssr: false,
 })
-const Popup = dynamic(() => import("react-leaflet").then((m) => m.Popup), {
+const Popup = NextDynamic(() => import("react-leaflet").then((m) => m.Popup), {
   ssr: false,
 })
-const FlyTo = dynamic(
+const FlyTo = NextDynamic(
   () => import("./_components/fly-to").then((m) => m.FlyTo),
   { ssr: false }
 )
@@ -150,7 +157,8 @@ const uniqueBusinesses = dedupe(allBusinesses)
 
 const cities = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"]
 
-const kenyaBounds = L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0))
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const kenyaBounds: any = L ? L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0)) : null
 
 export default function SearchPage() {
   const [query, setQuery] = useState("")
@@ -158,7 +166,8 @@ export default function SearchPage() {
   const [selectedCity, setSelectedCity] = useState<string | null>(null)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const mapRef = useRef<L.Map | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mapRef = useRef<any>(null)
 
   const filtered = useMemo(() => {
     return uniqueBusinesses.filter((b) => {

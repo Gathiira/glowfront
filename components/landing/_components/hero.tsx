@@ -1,5 +1,6 @@
 import { Search, MapPin, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function Hero() {
   return (
@@ -32,10 +33,12 @@ export function Hero() {
             <Clock className="size-4 text-muted-foreground" />
             <span className="text-sm text-muted-foreground">Any time</span>
           </div>
-          <Button size="lg" className="w-full md:w-auto">
-            <Search className="mr-1.5 size-4" />
-            Search
-          </Button>
+          <Link href="/search">
+            <Button size="lg" className="w-full md:w-auto">
+              <Search className="mr-1.5 size-4" />
+              Search
+            </Button>
+          </Link>
         </div>
 
         <div className="mt-8 flex items-center justify-center gap-2 text-sm text-primary">

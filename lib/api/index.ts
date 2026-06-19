@@ -1,2 +1,2 @@
 export { ApiError, extractError } from "./client"
-export { useCategories, fetchCategories, registerPartner } from "./partner"
+export { useCategories, fetchCategories, registerCustomer, registerPartner } from "./partner"

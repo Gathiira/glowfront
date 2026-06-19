@@ -134,7 +134,7 @@ export default function BusinessPage() {
                   ))}
                 </ul>
                 <Button size="lg" className="mt-6 w-full" asChild>
-                  <Link href="/account">Get started free</Link>
+                  <Link href="/auth/partner">Get started free</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -158,7 +158,7 @@ export default function BusinessPage() {
                   ))}
                 </ul>
                 <Button size="lg" className="mt-6 w-full" asChild>
-                  <Link href="/account">Get started</Link>
+                  <Link href="/auth/partner">Get started</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -230,7 +230,7 @@ export default function BusinessPage() {
                 ))}
               </ul>
               <Button size="lg" className="mt-8" asChild>
-                <Link href="/account">Get started now</Link>
+                <Link href="/auth/partner">Get started now</Link>
               </Button>
             </div>
 
@@ -273,7 +273,7 @@ export default function BusinessPage() {
                 ))}
               </ul>
               <Button size="lg" className="mt-8" asChild>
-                <Link href="/account">Get started now</Link>
+                <Link href="/auth/partner">Get started now</Link>
               </Button>
             </div>
           </div>
@@ -412,7 +412,7 @@ export default function BusinessPage() {
             Partner with Glowbuddy and start growing your business today
           </p>
           <Button size="lg" className="mt-6" asChild>
-            <Link href="/account">Get started now</Link>
+            <Link href="/auth/partner">Get started now</Link>
           </Button>
         </div>
       </section>

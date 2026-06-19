@@ -5,6 +5,14 @@ export type BusinessCategory = {
 
 export type ServiceType = "physical" | "mobile"
 
+export type CustomerAccountData = {
+  email: string
+  firstName: string
+  lastName: string
+  password: string
+  agreeToTerms: boolean
+}
+
 export type PartnerAccountData = {
   email: string
   firstName: string
