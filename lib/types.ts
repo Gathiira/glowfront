@@ -28,6 +28,66 @@ export type PartnerBusinessData = {
   }
 }
 
+export type CustomerProfile = {
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+}
+
+export type BusinessService = {
+  id: string
+  name: string
+  price: number
+  duration: number
+  description?: string
+}
+
+export type BusinessTeamMember = {
+  id: string
+  name: string
+  role: string
+}
+
+export type BusinessReview = {
+  id: string
+  clientName: string
+  rating: number
+  text: string
+  date: string
+}
+
+export type Business = {
+  id: string
+  name: string
+  category: string
+  address: string
+  town: string
+  phone: string
+  description: string
+  rating: number
+  reviewCount: number
+  services: BusinessService[]
+  team: BusinessTeamMember[]
+  reviews: BusinessReview[]
+}
+
+export type CustomerAppointment = {
+  id: string
+  businessId: string
+  businessName: string
+  serviceName: string
+  servicePrice: number
+  teamMemberName?: string
+  date: string
+  startTime: string
+  endTime: string
+  status: "confirmed" | "completed" | "cancelled"
+  notes?: string
+  reviewed: boolean
+}
+
 export const BUSINESS_CATEGORIES: BusinessCategory[] = [
   { id: "hair-salon", name: "Hair Salon" },
   { id: "nails", name: "Nails" },
