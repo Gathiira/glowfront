@@ -5,6 +5,7 @@ import { MapPin, Star, Search, X } from "lucide-react"
 import NextDynamic from "next/dynamic"
 
 export const dynamic = "force-dynamic"
+import "leaflet/dist/leaflet.css"
 import { Header } from "@/components/landing/_components/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -24,7 +25,6 @@ let L: any = null
 
 if (typeof window !== "undefined") {
   L = require("leaflet")
-  require("leaflet/dist/leaflet.css")
 
   const defaultIcon = L.icon({
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
