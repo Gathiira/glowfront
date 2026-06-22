@@ -11,7 +11,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/glowfront
+  IMAGE_NAME: ghcr.io/${{ lower(github.repository_owner) }}/glowfront
 
 jobs:
   build-and-deploy:
@@ -31,11 +31,12 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          tags: ${{ env.IMAGE_NAME }}:sha-${GITHUB_SHA::7}
 
       - name: Update deployment.yaml with new image
         run: |
-          IMAGE="${{ env.IMAGE_NAME }}:sha-${{ github.sha }}"
+          SHORT_SHA="${GITHUB_SHA::7}"
+          IMAGE="${{ env.IMAGE_NAME }}:sha-${SHORT_SHA}"
           sed -i "s|image: .*|image: ${IMAGE}|" k8s/deployment.yaml
 
       - name: Commit and push manifest update
@@ -46,6 +47,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update image tag to ${{ github.sha }}"
+            SHORT_SHA="${GITHUB_SHA::7}"
+            git commit -m "chore: update image tag to sha-${SHORT_SHA}"
             git push
           fi
