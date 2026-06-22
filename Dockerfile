@@ -3,8 +3,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-ENV PNPM_ONLY_BUILT_DEPENDENCIES=sharp,msw,unrs-resolver
+COPY package.json ./
 RUN pnpm install --no-frozen-lockfile
 
 FROM base AS builder
