@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useMemo, useCallback, useRef } from "react"
-import { MapPin, Star, Search, X } from "lucide-react"
+import Link from "next/link"
+import { MapPin, Star, Search, X, ArrowRight } from "lucide-react"
 import NextDynamic from "next/dynamic"
 
 export const dynamic = "force-dynamic"
@@ -347,6 +348,16 @@ export default function SearchPage() {
                       </span>
                     </div>
                   </div>
+                  <Link
+                    href={`/business/${biz.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="shrink-0 self-center"
+                  >
+                    <Button variant="outline" size="sm" className="gap-1 text-xs">
+                      View
+                      <ArrowRight className="size-3" />
+                    </Button>
+                  </Link>
                 </div>
               ))
             ) : (
