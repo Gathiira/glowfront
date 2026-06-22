@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: manshade-config
-  namespace: manshade
+  name: glowfront-config
+  namespace: glowfront
 data:
   NEXT_PUBLIC_API_URL: "https://156.67.83.55:31080/api"
   SESSION_COOKIE_NAME: "session"

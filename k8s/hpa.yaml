@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: manshade
-  namespace: manshade
+  name: glowfront
+  namespace: glowfront
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: manshade
+    name: glowfront
   minReplicas: 2
   maxReplicas: 10
   metrics:

@@ -1,30 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: manshade
-  namespace: manshade
+  name: glowfront
+  namespace: glowfront
   labels:
-    app: manshade
+    app: glowfront
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: manshade
+      app: glowfront
   template:
     metadata:
       labels:
-        app: manshade
+        app: glowfront
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: app
-          image: manshade:latest
+          image: glowfront:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
               name: http
           envFrom:
             - configMapRef:
-                name: manshade-config
+                name: glowfront-config
           resources:
             requests:
               cpu: "250m"
