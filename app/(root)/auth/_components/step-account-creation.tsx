@@ -4,11 +4,7 @@ import React from "react"
 import { Controller, type UseFormReturn } from "react-hook-form"
 import { z } from "zod"
 
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-} from "@/components/ui/field"
+import { Field, FieldError, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/ui/password-input"
 import { Button } from "@/components/ui/button"
@@ -21,20 +17,28 @@ import {
 } from "@/components/ui/select"
 import { COUNTRIES } from "@/lib/types"
 
-export const accountFormSchema = z.object({
-  email: z.string().email("Valid email is required"),
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-  phoneNumber: z
-    .string()
-    .min(6, "Valid phone number is required")
-    .max(20, "Phone number too long"),
-  country: z.string().min(1, "Country is required"),
-  agreeToTerms: z
-    .boolean()
-    .refine((val) => val === true, "You must agree to the terms"),
-})
+export const accountFormSchema = z
+  .object({
+    email: z.email("Valid email is required"),
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().min(1, "Last name is required"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters"),
+    phoneNumber: z
+      .string()
+      .min(6, "Valid phone number is required")
+      .max(20, "Phone number too long"),
+    country: z.string().min(1, "Country is required"),
+    agreeToTerms: z
+      .boolean()
+      .refine((val) => val === true, "You must agree to the terms"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  })
 
 export type AccountFormData = z.infer<typeof accountFormSchema>
 
@@ -44,11 +48,7 @@ type Props = {
   onBack: () => void
 }
 
-export default function StepAccountCreation({
-  form,
-  onSubmit,
-  onBack,
-}: Props) {
+export default function StepAccountCreation({ form, onSubmit, onBack }: Props) {
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <div className="space-y-2 text-center">
@@ -71,9 +71,7 @@ export default function StepAccountCreation({
                 autoComplete="email"
                 className="py-5"
               />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
@@ -128,9 +126,7 @@ export default function StepAccountCreation({
                 autoComplete="tel"
                 className="py-5"
               />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
@@ -140,10 +136,7 @@ export default function StepAccountCreation({
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <Select
-                value={field.value}
-                onValueChange={field.onChange}
-              >
+              <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger
                   className="w-full py-5"
                   aria-invalid={fieldState.invalid}
@@ -158,9 +151,7 @@ export default function StepAccountCreation({
                   ))}
                 </SelectContent>
               </Select>
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
@@ -176,9 +167,23 @@ export default function StepAccountCreation({
                 autoComplete="new-password"
                 className="py-5"
               />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        <Controller
+          name="confirmPassword"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <PasswordInput
+                {...field}
+                placeholder="Confirm password"
+                autoComplete="new-password"
+                className="py-5"
+              />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
@@ -197,20 +202,27 @@ export default function StepAccountCreation({
                   onBlur={field.onBlur}
                   className="mt-1 size-4 rounded border-input accent-primary"
                 />
-                <label htmlFor="agree-to-terms" className="text-sm text-muted-foreground">
+                <label
+                  htmlFor="agree-to-terms"
+                  className="text-sm text-muted-foreground"
+                >
                   I agree to the{" "}
-                  <a href="#" className="underline underline-offset-4 hover:text-primary">
+                  <a
+                    href="#"
+                    className="underline underline-offset-4 hover:text-primary"
+                  >
                     Terms and Conditions
                   </a>{" "}
                   and{" "}
-                  <a href="#" className="underline underline-offset-4 hover:text-primary">
+                  <a
+                    href="#"
+                    className="underline underline-offset-4 hover:text-primary"
+                  >
                     Privacy Policy
                   </a>
                 </label>
               </div>
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />

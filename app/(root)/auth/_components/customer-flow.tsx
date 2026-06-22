@@ -16,15 +16,23 @@ const loginSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 })
 
-const registerSchema = z.object({
-  email: z.string().email("Valid email is required"),
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-  agreeToTerms: z
-    .boolean()
-    .refine((val) => val === true, "You must agree to the terms"),
-})
+const registerSchema = z
+  .object({
+    email: z.string().email("Valid email is required"),
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().min(1, "Last name is required"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters"),
+    agreeToTerms: z
+      .boolean()
+      .refine((val) => val === true, "You must agree to the terms"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  })
 
 type LoginFormData = z.infer<typeof loginSchema>
 type RegisterFormData = z.infer<typeof registerSchema>
@@ -96,9 +104,7 @@ const CustomerFlow = () => {
             </p>
           </div>
 
-          <form
-            onSubmit={registerForm.handleSubmit(handleRegister)}
-          >
+          <form onSubmit={registerForm.handleSubmit(handleRegister)}>
             <FieldGroup>
               <Controller
                 name="email"
@@ -165,6 +171,24 @@ const CustomerFlow = () => {
                     <PasswordInput
                       {...field}
                       placeholder="Password"
+                      autoComplete="new-password"
+                      className="py-5"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+
+              <Controller
+                name="confirmPassword"
+                control={registerForm.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <PasswordInput
+                      {...field}
+                      placeholder="Confirm password"
                       autoComplete="new-password"
                       className="py-5"
                     />
