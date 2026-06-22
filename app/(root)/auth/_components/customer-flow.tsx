@@ -7,6 +7,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Field, FieldError, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { PasswordInput } from "@/components/ui/password-input"
 import Link from "next/link"
 import { Sparkles } from "lucide-react"
 
@@ -161,10 +162,9 @@ const CustomerFlow = () => {
                 control={registerForm.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <Input
+                    <PasswordInput
                       {...field}
                       placeholder="Password"
-                      type="password"
                       autoComplete="new-password"
                       className="py-5"
                     />
@@ -272,10 +272,9 @@ const CustomerFlow = () => {
               control={loginForm.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <Input
+                  <PasswordInput
                     {...field}
                     placeholder="Enter your password"
-                    type="password"
                     autoComplete="current-password"
                     className="py-5"
                   />

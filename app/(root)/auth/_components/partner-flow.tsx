@@ -7,6 +7,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Field, FieldError, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { PasswordInput } from "@/components/ui/password-input"
 import Link from "next/link"
 import PartnerRegistrationFlow from "./partner-registration-flow"
 
@@ -114,13 +115,12 @@ const PartnerFlow = () => {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <Input
+                  <PasswordInput
                     {...field}
                     id="partner-login-form-password"
                     aria-invalid={fieldState.invalid}
                     placeholder="Enter your password"
                     autoComplete="off"
-                    type="password"
                     className="py-5"
                   />
                   {fieldState.invalid && (
