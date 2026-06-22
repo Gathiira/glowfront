@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import NextDynamic from "next/dynamic"
 import {
@@ -19,7 +19,13 @@ import { Footer } from "@/components/landing/_components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
@@ -32,7 +38,8 @@ if (typeof window !== "undefined") {
 
   const defaultIcon = L.icon({
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-    iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+    iconRetinaUrl:
+      "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
     shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
@@ -53,9 +60,12 @@ const TileLayer = NextDynamic(
   () => import("react-leaflet").then((m) => m.TileLayer),
   { ssr: false }
 )
-const Marker = NextDynamic(() => import("react-leaflet").then((m) => m.Marker), {
-  ssr: false,
-})
+const Marker = NextDynamic(
+  () => import("react-leaflet").then((m) => m.Marker),
+  {
+    ssr: false,
+  }
+)
 const Popup = NextDynamic(() => import("react-leaflet").then((m) => m.Popup), {
   ssr: false,
 })
@@ -88,87 +98,393 @@ type MockReview = {
 
 const categoryServices: Record<string, MockService[]> = {
   Barber: [
-    { id: "s1", name: "Classic Haircut", price: 35, duration: 30, description: "Scissor & clipper cut" },
-    { id: "s2", name: "Beard Trim", price: 20, duration: 20, description: "Shape & line-up" },
-    { id: "s3", name: "Hot Towel Shave", price: 45, duration: 45, description: "Traditional straight razor shave" },
-    { id: "s4", name: "Haircut + Beard", price: 50, duration: 45, description: "Complete grooming combo" },
+    {
+      id: "s1",
+      name: "Classic Haircut",
+      price: 35,
+      duration: 30,
+      description: "Scissor & clipper cut",
+    },
+    {
+      id: "s2",
+      name: "Beard Trim",
+      price: 20,
+      duration: 20,
+      description: "Shape & line-up",
+    },
+    {
+      id: "s3",
+      name: "Hot Towel Shave",
+      price: 45,
+      duration: 45,
+      description: "Traditional straight razor shave",
+    },
+    {
+      id: "s4",
+      name: "Haircut + Beard",
+      price: 50,
+      duration: 45,
+      description: "Complete grooming combo",
+    },
   ],
   Barbers: [
-    { id: "s1", name: "Classic Haircut", price: 30, duration: 30, description: "Scissor & clipper cut" },
-    { id: "s2", name: "Beard Trim", price: 18, duration: 20, description: "Shape & line-up" },
-    { id: "s3", name: "Kids Haircut", price: 22, duration: 25, description: "Haircut for children under 12" },
+    {
+      id: "s1",
+      name: "Classic Haircut",
+      price: 30,
+      duration: 30,
+      description: "Scissor & clipper cut",
+    },
+    {
+      id: "s2",
+      name: "Beard Trim",
+      price: 18,
+      duration: 20,
+      description: "Shape & line-up",
+    },
+    {
+      id: "s3",
+      name: "Kids Haircut",
+      price: 22,
+      duration: 25,
+      description: "Haircut for children under 12",
+    },
   ],
   "Hair Salon": [
-    { id: "s1", name: "Women's Haircut", price: 65, duration: 45, description: "Wash, cut & blow-dry" },
-    { id: "s2", name: "Men's Haircut", price: 40, duration: 30, description: "Cut & style" },
-    { id: "s3", name: "Full Color", price: 120, duration: 90, description: "Permanent color application" },
-    { id: "s4", name: "Balayage", price: 180, duration: 120, description: "Hand-painted highlights" },
+    {
+      id: "s1",
+      name: "Women's Haircut",
+      price: 65,
+      duration: 45,
+      description: "Wash, cut & blow-dry",
+    },
+    {
+      id: "s2",
+      name: "Men's Haircut",
+      price: 40,
+      duration: 30,
+      description: "Cut & style",
+    },
+    {
+      id: "s3",
+      name: "Full Color",
+      price: 120,
+      duration: 90,
+      description: "Permanent color application",
+    },
+    {
+      id: "s4",
+      name: "Balayage",
+      price: 180,
+      duration: 120,
+      description: "Hand-painted highlights",
+    },
   ],
   "Hair Salons": [
-    { id: "s1", name: "Women's Haircut", price: 55, duration: 45, description: "Wash, cut & blow-dry" },
-    { id: "s2", name: "Blowout", price: 45, duration: 30, description: "Professional blow-dry styling" },
-    { id: "s3", name: "Partial Highlights", price: 95, duration: 75, description: "Partial foil highlights" },
+    {
+      id: "s1",
+      name: "Women's Haircut",
+      price: 55,
+      duration: 45,
+      description: "Wash, cut & blow-dry",
+    },
+    {
+      id: "s2",
+      name: "Blowout",
+      price: 45,
+      duration: 30,
+      description: "Professional blow-dry styling",
+    },
+    {
+      id: "s3",
+      name: "Partial Highlights",
+      price: 95,
+      duration: 75,
+      description: "Partial foil highlights",
+    },
   ],
   Nails: [
-    { id: "s1", name: "Classic Manicure", price: 35, duration: 30, description: "Nail shaping, cuticle care & polish" },
-    { id: "s2", name: "Gel Manicure", price: 50, duration: 45, description: "Long-lasting gel polish" },
-    { id: "s3", name: "Spa Pedicure", price: 65, duration: 60, description: "Foot soak, scrub, massage & polish" },
-    { id: "s4", name: "Nail Art", price: 25, duration: 30, description: "Custom design per hand" },
+    {
+      id: "s1",
+      name: "Classic Manicure",
+      price: 35,
+      duration: 30,
+      description: "Nail shaping, cuticle care & polish",
+    },
+    {
+      id: "s2",
+      name: "Gel Manicure",
+      price: 50,
+      duration: 45,
+      description: "Long-lasting gel polish",
+    },
+    {
+      id: "s3",
+      name: "Spa Pedicure",
+      price: 65,
+      duration: 60,
+      description: "Foot soak, scrub, massage & polish",
+    },
+    {
+      id: "s4",
+      name: "Nail Art",
+      price: 25,
+      duration: 30,
+      description: "Custom design per hand",
+    },
   ],
   "Nail Salons": [
-    { id: "s1", name: "Classic Manicure", price: 30, duration: 30, description: "Nail shaping, cuticle care & polish" },
-    { id: "s2", name: "Gel Manicure", price: 45, duration: 45, description: "Long-lasting gel polish" },
-    { id: "s3", name: "Spa Pedicure", price: 55, duration: 60, description: "Foot soak, scrub, massage & polish" },
+    {
+      id: "s1",
+      name: "Classic Manicure",
+      price: 30,
+      duration: 30,
+      description: "Nail shaping, cuticle care & polish",
+    },
+    {
+      id: "s2",
+      name: "Gel Manicure",
+      price: 45,
+      duration: 45,
+      description: "Long-lasting gel polish",
+    },
+    {
+      id: "s3",
+      name: "Spa Pedicure",
+      price: 55,
+      duration: 60,
+      description: "Foot soak, scrub, massage & polish",
+    },
   ],
   Massage: [
-    { id: "s1", name: "Swedish Massage", price: 80, duration: 60, description: "Full-body relaxation" },
-    { id: "s2", name: "Deep Tissue Massage", price: 100, duration: 60, description: "Targeted muscle relief" },
-    { id: "s3", name: "Hot Stone Massage", price: 120, duration: 75, description: "Heated stones + massage" },
+    {
+      id: "s1",
+      name: "Swedish Massage",
+      price: 80,
+      duration: 60,
+      description: "Full-body relaxation",
+    },
+    {
+      id: "s2",
+      name: "Deep Tissue Massage",
+      price: 100,
+      duration: 60,
+      description: "Targeted muscle relief",
+    },
+    {
+      id: "s3",
+      name: "Hot Stone Massage",
+      price: 120,
+      duration: 75,
+      description: "Heated stones + massage",
+    },
   ],
   Massages: [
-    { id: "s1", name: "Swedish Massage", price: 75, duration: 60, description: "Full-body relaxation" },
-    { id: "s2", name: "Deep Tissue Massage", price: 95, duration: 60, description: "Targeted muscle relief" },
-    { id: "s3", name: "Aromatherapy Massage", price: 90, duration: 60, description: "Essential oils + massage" },
+    {
+      id: "s1",
+      name: "Swedish Massage",
+      price: 75,
+      duration: 60,
+      description: "Full-body relaxation",
+    },
+    {
+      id: "s2",
+      name: "Deep Tissue Massage",
+      price: 95,
+      duration: 60,
+      description: "Targeted muscle relief",
+    },
+    {
+      id: "s3",
+      name: "Aromatherapy Massage",
+      price: 90,
+      duration: 60,
+      description: "Essential oils + massage",
+    },
   ],
   "Beauty Salon": [
-    { id: "s1", name: "European Facial", price: 95, duration: 60, description: "Deep cleanse, exfoliation & mask" },
-    { id: "s2", name: "Brow Wax & Tint", price: 40, duration: 20, description: "Shape & color" },
-    { id: "s3", name: "Full Face Makeup", price: 75, duration: 45, description: "Professional makeup application" },
+    {
+      id: "s1",
+      name: "European Facial",
+      price: 95,
+      duration: 60,
+      description: "Deep cleanse, exfoliation & mask",
+    },
+    {
+      id: "s2",
+      name: "Brow Wax & Tint",
+      price: 40,
+      duration: 20,
+      description: "Shape & color",
+    },
+    {
+      id: "s3",
+      name: "Full Face Makeup",
+      price: 75,
+      duration: 45,
+      description: "Professional makeup application",
+    },
   ],
   "Beauty Salons": [
-    { id: "s1", name: "Signature Facial", price: 85, duration: 60, description: "Customized facial treatment" },
-    { id: "s2", name: "Waxing - Full Leg", price: 55, duration: 30, description: "Full leg waxing" },
-    { id: "s3", name: "Makeup Application", price: 65, duration: 45, description: "Professional makeup" },
+    {
+      id: "s1",
+      name: "Signature Facial",
+      price: 85,
+      duration: 60,
+      description: "Customized facial treatment",
+    },
+    {
+      id: "s2",
+      name: "Waxing - Full Leg",
+      price: 55,
+      duration: 30,
+      description: "Full leg waxing",
+    },
+    {
+      id: "s3",
+      name: "Makeup Application",
+      price: 65,
+      duration: 45,
+      description: "Professional makeup",
+    },
   ],
   "Spa & sauna": [
-    { id: "s1", name: "Spa Day Package", price: 150, duration: 180, description: "Full day of pampering" },
-    { id: "s2", name: "Sauna Session", price: 40, duration: 45, description: "Traditional sauna session" },
-    { id: "s3", name: "Body Scrub", price: 70, duration: 45, description: "Full body exfoliation" },
+    {
+      id: "s1",
+      name: "Spa Day Package",
+      price: 150,
+      duration: 180,
+      description: "Full day of pampering",
+    },
+    {
+      id: "s2",
+      name: "Sauna Session",
+      price: 40,
+      duration: 45,
+      description: "Traditional sauna session",
+    },
+    {
+      id: "s3",
+      name: "Body Scrub",
+      price: 70,
+      duration: 45,
+      description: "Full body exfoliation",
+    },
   ],
   "Spas & Saunas": [
-    { id: "s1", name: "Spa Day Package", price: 140, duration: 180, description: "Full day of pampering" },
-    { id: "s2", name: "Body Wrap", price: 75, duration: 60, description: "Detoxifying body wrap" },
-    { id: "s3", name: "Sauna + Cold Plunge", price: 50, duration: 60, description: "Hot/cold therapy" },
+    {
+      id: "s1",
+      name: "Spa Day Package",
+      price: 140,
+      duration: 180,
+      description: "Full day of pampering",
+    },
+    {
+      id: "s2",
+      name: "Body Wrap",
+      price: 75,
+      duration: 60,
+      description: "Detoxifying body wrap",
+    },
+    {
+      id: "s3",
+      name: "Sauna + Cold Plunge",
+      price: 50,
+      duration: 60,
+      description: "Hot/cold therapy",
+    },
   ],
   Medspas: [
-    { id: "s1", name: "Botox Consultation", price: 50, duration: 30, description: "Initial consultation" },
-    { id: "s2", name: "Laser Hair Removal", price: 150, duration: 45, description: "Per session" },
-    { id: "s3", name: "Chemical Peel", price: 120, duration: 60, description: "Medical-grade peel" },
+    {
+      id: "s1",
+      name: "Botox Consultation",
+      price: 50,
+      duration: 30,
+      description: "Initial consultation",
+    },
+    {
+      id: "s2",
+      name: "Laser Hair Removal",
+      price: 150,
+      duration: 45,
+      description: "Per session",
+    },
+    {
+      id: "s3",
+      name: "Chemical Peel",
+      price: 120,
+      duration: 60,
+      description: "Medical-grade peel",
+    },
   ],
   "Waxing Salons": [
-    { id: "s1", name: "Full Leg Wax", price: 50, duration: 30, description: "Full leg waxing" },
-    { id: "s2", name: "Bikini Wax", price: 35, duration: 20, description: "Standard bikini wax" },
-    { id: "s3", name: "Underarm Wax", price: 20, duration: 15, description: "Underarm waxing" },
+    {
+      id: "s1",
+      name: "Full Leg Wax",
+      price: 50,
+      duration: 30,
+      description: "Full leg waxing",
+    },
+    {
+      id: "s2",
+      name: "Bikini Wax",
+      price: 35,
+      duration: 20,
+      description: "Standard bikini wax",
+    },
+    {
+      id: "s3",
+      name: "Underarm Wax",
+      price: 20,
+      duration: 15,
+      description: "Underarm waxing",
+    },
   ],
   "Eyebrows & Lashes": [
-    { id: "s1", name: "Brow Shaping", price: 25, duration: 15, description: "Professional brow shaping" },
-    { id: "s2", name: "Lash Extensions - Full Set", price: 120, duration: 120, description: "Full set of individual lashes" },
-    { id: "s3", name: "Brow Lamination", price: 55, duration: 30, description: "Brow lamination & set" },
+    {
+      id: "s1",
+      name: "Brow Shaping",
+      price: 25,
+      duration: 15,
+      description: "Professional brow shaping",
+    },
+    {
+      id: "s2",
+      name: "Lash Extensions - Full Set",
+      price: 120,
+      duration: 120,
+      description: "Full set of individual lashes",
+    },
+    {
+      id: "s3",
+      name: "Brow Lamination",
+      price: 55,
+      duration: 30,
+      description: "Brow lamination & set",
+    },
   ],
   "Tattooing & Piercing": [
-    { id: "s1", name: "Small Tattoo", price: 100, duration: 60, description: "Up to 2 inches" },
-    { id: "s2", name: "Medium Tattoo", price: 200, duration: 120, description: "Up to 6 inches" },
-    { id: "s3", name: "Piercing", price: 50, duration: 15, description: "Ear, nose, or lip" },
+    {
+      id: "s1",
+      name: "Small Tattoo",
+      price: 100,
+      duration: 60,
+      description: "Up to 2 inches",
+    },
+    {
+      id: "s2",
+      name: "Medium Tattoo",
+      price: 200,
+      duration: 120,
+      description: "Up to 6 inches",
+    },
+    {
+      id: "s3",
+      name: "Piercing",
+      price: 50,
+      duration: 15,
+      description: "Ear, nose, or lip",
+    },
   ],
 }
 
@@ -231,7 +547,10 @@ const categoryTeam: Record<string, MockTeamMember[]> = {
   ],
 }
 
-function getServicesForCategory(category: string, bizId: string): MockService[] {
+function getServicesForCategory(
+  category: string,
+  bizId: string
+): MockService[] {
   const services = categoryServices[category] || categoryServices["Barber"]
   return services.map((s, i) => ({ ...s, id: `svc-${bizId}-${i}` }))
 }
@@ -267,7 +586,9 @@ function generateReviews(
   rating: number,
   _count: number
 ): MockReview[] {
-  const base = Math.abs(bizId.split("").reduce((a, c) => a + c.charCodeAt(0), 0))
+  const base = Math.abs(
+    bizId.split("").reduce((a, c) => a + c.charCodeAt(0), 0)
+  )
   const count = Math.min(_count, 8)
   return Array.from({ length: count }, (_, i) => ({
     id: `rev-${bizId}-${i}`,
@@ -311,10 +632,7 @@ function getTownFromLocation(location: string): string {
   return parts[parts.length - 1]?.trim() || location
 }
 
-function getBusinessCoords(
-  location: string,
-  seed: number
-): [number, number] {
+function getBusinessCoords(location: string, seed: number): [number, number] {
   const town = getTownFromLocation(location).toLowerCase()
   for (const [t, coords] of Object.entries(townCoords)) {
     if (town.includes(t.toLowerCase())) {
@@ -346,6 +664,7 @@ export default function PublicBusinessDetail() {
   const params = useParams()
   const id = params.id as string
   const listing = findBusiness(id)
+  const router = useRouter()
 
   const [selectedService, setSelectedService] = useState<string | null>(null)
   const [bookingName, setBookingName] = useState("")
@@ -375,9 +694,7 @@ export default function PublicBusinessDetail() {
   )
   const reviews = useMemo(
     () =>
-      listing
-        ? generateReviews(id, listing.rating, listing.reviewCount)
-        : [],
+      listing ? generateReviews(id, listing.rating, listing.reviewCount) : [],
     [listing, id]
   )
   const town = useMemo(
@@ -420,11 +737,17 @@ export default function PublicBusinessDetail() {
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-8">
-        <Button variant="ghost" size="sm" asChild className="mb-6">
-          <Link href="/search">
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+          className="mb-6"
+          onClick={router.back}
+        >
+          <div className="flex-start flex gap-1">
             <ArrowLeft className="mr-1 size-4" />
-            Back to Search
-          </Link>
+            Back
+          </div>
         </Button>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_400px]">
@@ -455,12 +778,12 @@ export default function PublicBusinessDetail() {
                   <MapPin className="size-4" />
                   {listing.location}
                 </div>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  {listing.name} is a premier{" "}
-                  {listing.category.toLowerCase()} located in {town}. We pride
-                  ourselves on delivering exceptional service in a welcoming
-                  environment. Our team of experienced professionals is
-                  dedicated to providing you with the best experience possible.
+                <p className="mt-4 leading-relaxed text-muted-foreground">
+                  {listing.name} is a premier {listing.category.toLowerCase()}{" "}
+                  located in {town}. We pride ourselves on delivering
+                  exceptional service in a welcoming environment. Our team of
+                  experienced professionals is dedicated to providing you with
+                  the best experience possible.
                 </p>
               </CardContent>
             </Card>

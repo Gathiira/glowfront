@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Star } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
@@ -6,7 +7,8 @@ import { gradients } from "./data"
 
 export function BusinessCard({ business, index }: { business: ListingBusiness; index: number }) {
   return (
-    <Card className="w-72 shrink-0 snap-start">
+    <Link href={`/business/${business.id}`} className="block">
+      <Card className="w-72 shrink-0 snap-start">
       <CardContent className="p-0">
         <div className={cn(
           "flex h-36 items-center justify-center rounded-t-xl bg-gradient-to-br",
@@ -36,5 +38,6 @@ export function BusinessCard({ business, index }: { business: ListingBusiness; i
         </div>
       </CardContent>
     </Card>
+    </Link>
   )
 }
