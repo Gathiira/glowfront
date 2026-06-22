@@ -36,6 +36,9 @@
     "wretch": "^3.0.8",
     "zod": "^4.4.2"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["sharp", "msw", "unrs-resolver"]
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.2.1",
