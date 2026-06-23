@@ -6,7 +6,7 @@ export type BusinessCategory = {
 export type ServiceType = "physical" | "mobile"
 
 export type CustomerLoginData = {
-  email: string
+  identifier: string
   password: string
 }
 

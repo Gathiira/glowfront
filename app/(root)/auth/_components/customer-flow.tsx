@@ -60,8 +60,10 @@ const CustomerFlow = () => {
   })
 
   const handleLogin = async (data: LoginFormData) => {
-    console.log("Customer login:", data)
-    await customerLogin(data)
+    await customerLogin({
+      identifier: data.email,
+      password: data.password,
+    })
       .then((resp) => {
         console.log(resp)
       })

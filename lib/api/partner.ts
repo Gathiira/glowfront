@@ -34,7 +34,10 @@ export async function customerLogin(
   data: CustomerLoginData
 ): Promise<{ success: boolean; userId: string }> {
   try {
-    return await api.url("/customer/login").post({ account: data }).json()
+    return await api
+      .url("/customer/login")
+      .post({ ...data })
+      .json()
   } catch (error) {
     throw await extractError(error)
   }
