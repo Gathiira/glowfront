@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { clearCustomerProfile } from "@/lib/customer-context"
 import {
   ChevronDown,
   LayoutDashboard,
@@ -17,7 +18,21 @@ import {
   Settings,
   Menu,
   X,
+  LogOut,
+  AlertTriangle,
 } from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog"
 
 type SubMenuItem = {
   label: string
@@ -83,6 +98,7 @@ const bottomNavItems = [
 
 export function Sidebar() {
   const pathname = usePathname()
+  const router = useRouter()
   const [openMenus, setOpenMenus] = useState<string[]>(() => {
     const active = navItems.find((item) =>
       item.children?.some((c) => pathname.startsWith(c.href))
@@ -109,6 +125,12 @@ export function Sidebar() {
   }
 
   const closeDrawer = () => setMobileDrawerOpen(false)
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" })
+    clearCustomerProfile()
+    router.push("/auth")
+  }
 
   const isActive = (href: string) => pathname === href
   const isChildActive = (item: NavItem) =>
@@ -195,6 +217,32 @@ export function Sidebar() {
         <nav className="flex flex-1 flex-col gap-1">
           {renderNavItems()}
         </nav>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <button className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+              <LogOut className="size-4 shrink-0" />
+              Logout
+            </button>
+          </AlertDialogTrigger>
+          <AlertDialogContent size="sm">
+            <AlertDialogHeader>
+              <AlertDialogMedia>
+                <AlertTriangle className="size-6 text-destructive" />
+              </AlertDialogMedia>
+              <AlertDialogTitle>Confirm logout</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to log out? You&apos;ll need to sign in
+                again to access your account.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleLogout}>
+                Logout
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </aside>
 
       {/* Mobile bottom nav */}
@@ -256,6 +304,38 @@ export function Sidebar() {
         </div>
         <nav className="flex flex-col gap-1 overflow-y-auto px-3 py-4">
           {renderNavItems(closeDrawer)}
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+                <LogOut className="size-4 shrink-0" />
+                Logout
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent size="sm">
+              <AlertDialogHeader>
+                <AlertDialogMedia>
+                  <AlertTriangle className="size-6 text-destructive" />
+                </AlertDialogMedia>
+                <AlertDialogTitle>Confirm logout</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to log out? You&apos;ll need to sign
+                  in again to access your account.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel
+                  onClick={closeDrawer}
+                >
+                  Cancel
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => { closeDrawer(); handleLogout() }}
+                >
+                  Logout
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </nav>
       </div>
     </>

@@ -5,37 +5,29 @@ import type { Role } from "@/lib/roles"
 
 const SESSION_COOKIE = process.env.SESSION_COOKIE_NAME ?? "session"
 
-function base64urlDecode(str: string): string {
-  const base64 = str.replace(/-/g, "+").replace(/_/g, "/")
-  const padding = "=".repeat((4 - (base64.length % 4)) % 4)
-  return atob(base64 + padding)
-}
-
-function decodeJwtPayload(token: string): Record<string, unknown> | null {
+function extractRole(value: string): Role | null {
   try {
-    const parts = token.split(".")
-    if (parts.length !== 3) return null
-    const decoded = JSON.parse(base64urlDecode(parts[1]))
-    if (typeof decoded !== "object" || decoded === null) return null
-    return decoded as Record<string, unknown>
+    const parsed = JSON.parse(value)
+    if (
+      parsed &&
+      typeof parsed === "object" &&
+      typeof parsed.role === "string"
+    ) {
+      if (parsed.role === ROLE_CUSTOMER || parsed.role === ROLE_PARTNER) {
+        return parsed.role
+      }
+    }
   } catch {
     return null
   }
-}
-
-function extractRole(token: string): Role | null {
-  const payload = decodeJwtPayload(token)
-  if (!payload) return null
-  const role = payload.role
-  if (role === ROLE_CUSTOMER || role === ROLE_PARTNER) return role
   return null
 }
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  const token = request.cookies.get(SESSION_COOKIE)?.value
-  const role = token ? extractRole(token) : null
+  const raw = request.cookies.get(SESSION_COOKIE)?.value
+  const role = raw ? extractRole(raw) : null
 
   if (!role) {
     const loginUrl = new URL("/auth", request.url)

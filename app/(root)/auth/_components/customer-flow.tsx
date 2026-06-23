@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/ui/password-input"
 import Link from "next/link"
 import { Sparkles } from "lucide-react"
-import { customerLogin } from "@/lib/api"
+import { useRouter } from "next/navigation"
 import { useLoading } from "@/components/loading-provider"
 import { showError, showSuccess } from "@/lib/toast"
 
@@ -43,6 +43,7 @@ type RegisterFormData = z.infer<typeof registerSchema>
 type Mode = "login" | "register" | "success"
 
 const CustomerFlow = () => {
+  const router = useRouter()
   const btnRef = useRef<HTMLButtonElement>(null)
   const [mode, setMode] = useState<Mode>("login")
   const { startLoading, stopLoading, isLoading } = useLoading()
@@ -65,21 +66,31 @@ const CustomerFlow = () => {
 
   const handleLogin = async (data: LoginFormData) => {
     startLoading(btnRef)
-    await customerLogin({
-      identifier: data.email,
-      password: data.password,
-    })
-      .then((resp) => {
-        console.log(resp)
-        showSuccess("Success")
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: data.email, password: data.password }),
       })
-      .catch((err) => {
-        console.log({ err })
-        showError(err)
-      })
-      .finally(() => {
-        stopLoading()
-      })
+
+      const json = await res.json()
+
+      if (json.code !== 200) {
+        showError(json.msg || "Login failed")
+        return
+      }
+
+      if (json.data?.profile) {
+        localStorage.setItem("customer_profile", JSON.stringify(json.data.profile))
+      }
+
+      showSuccess("Success")
+      router.push("/platform/home")
+    } catch (err) {
+      showError(err)
+    } finally {
+      stopLoading()
+    }
   }
 
   const handleRegister = (data: RegisterFormData) => {
