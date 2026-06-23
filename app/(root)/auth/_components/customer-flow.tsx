@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { Controller, Form, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -11,6 +11,8 @@ import { PasswordInput } from "@/components/ui/password-input"
 import Link from "next/link"
 import { Sparkles } from "lucide-react"
 import { customerLogin } from "@/lib/api"
+import { useLoading } from "@/components/loading-provider"
+import { showError } from "@/lib/toast"
 
 const loginSchema = z.object({
   email: z.email("Valid email is required"),
@@ -41,7 +43,9 @@ type RegisterFormData = z.infer<typeof registerSchema>
 type Mode = "login" | "register" | "success"
 
 const CustomerFlow = () => {
+  const btnRef = useRef<HTMLButtonElement>(null)
   const [mode, setMode] = useState<Mode>("login")
+  const { startLoading, stopLoading, isLoading } = useLoading()
 
   const loginForm = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -60,6 +64,7 @@ const CustomerFlow = () => {
   })
 
   const handleLogin = async (data: LoginFormData) => {
+    startLoading(btnRef)
     await customerLogin({
       identifier: data.email,
       password: data.password,
@@ -69,6 +74,10 @@ const CustomerFlow = () => {
       })
       .catch((err) => {
         console.log({ err })
+        showError(err)
+      })
+      .finally(() => {
+        stopLoading()
       })
   }
 
@@ -252,7 +261,12 @@ const CustomerFlow = () => {
             </FieldGroup>
 
             <div className="mt-6 flex flex-col gap-3">
-              <Button type="submit" size="lg" className="w-full py-5">
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full py-5"
+                disabled={isLoading}
+              >
                 Create account
               </Button>
               <Button
@@ -261,6 +275,7 @@ const CustomerFlow = () => {
                 size="lg"
                 className="w-full py-5"
                 onClick={() => setMode("login")}
+                disabled={isLoading}
               >
                 Already have an account? Log in
               </Button>
@@ -323,7 +338,13 @@ const CustomerFlow = () => {
             />
           </FieldGroup>
           <div className="flex flex-col gap-3">
-            <Button type="submit" size="lg" className="w-full py-5">
+            <Button
+              ref={btnRef}
+              type="submit"
+              size="lg"
+              className="w-full py-5"
+              disabled={isLoading}
+            >
               Continue
             </Button>
             <Button
@@ -332,6 +353,7 @@ const CustomerFlow = () => {
               size="lg"
               className="w-full py-5"
               onClick={() => setMode("register")}
+              disabled={isLoading}
             >
               Create an account
             </Button>
