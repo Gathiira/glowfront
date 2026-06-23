@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from "react"
-import { Controller, Form, useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
@@ -12,7 +12,7 @@ import Link from "next/link"
 import { Sparkles } from "lucide-react"
 import { customerLogin } from "@/lib/api"
 import { useLoading } from "@/components/loading-provider"
-import { showError } from "@/lib/toast"
+import { showError, showSuccess } from "@/lib/toast"
 
 const loginSchema = z.object({
   email: z.email("Valid email is required"),
@@ -71,6 +71,7 @@ const CustomerFlow = () => {
     })
       .then((resp) => {
         console.log(resp)
+        showSuccess("Success")
       })
       .catch((err) => {
         console.log({ err })
