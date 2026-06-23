@@ -4,5 +4,5 @@ metadata:
   name: glowfront-config
   namespace: glowfront
 data:
-  NEXT_PUBLIC_API_URL: "http://156.67.83.55:31080/api"
+  NEXT_PUBLIC_API_URL: "http://156.67.83.55:31080"
   SESSION_COOKIE_NAME: "session"

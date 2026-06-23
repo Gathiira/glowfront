@@ -5,6 +5,5 @@ node_modules
 .pnpm-store
 README.md
 *.md
-.env
 .env.local
 .env*.local
