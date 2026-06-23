@@ -8,8 +8,8 @@ const Auth = () => {
     <div className="flex min-h-screen flex-col">
       <Header />
       <div className="flex flex-1 flex-col md:flex-row">
-        <div className="flex flex-1 items-center justify-center p-6">
-          <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
+        <div className="flex flex-1 p-6">
+          <div className="mx-auto flex w-full max-w-sm flex-col gap-6 pt-10">
             <Link
               href="/auth/customer"
               className="group flex flex-col items-center justify-center gap-4 rounded-xl border p-12 text-center transition-all hover:border-primary hover:bg-muted/50"
@@ -70,7 +70,7 @@ const Auth = () => {
           </div>
         </div>
 
-        <div className="relative w-full max-md:hidden md:w-[45%] lg:w-[55%]">
+        <div className="relative w-full flex-1 max-md:hidden">
           <Image
             src="/assets/glowbuddy-auth.webp"
             alt="GlowBuddy"

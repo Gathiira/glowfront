@@ -56,7 +56,7 @@ const PartnerFlow = () => {
 
   if (mode === "success") {
     return (
-      <div className="flex h-full w-full items-center justify-center py-4">
+      <div className="flex h-full w-full py-4">
         <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Account created!</h2>
@@ -78,7 +78,7 @@ const PartnerFlow = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center py-4">
+    <div className="flex w-full py-4">
       <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
         <div className="space-y-1">
           <h2 className="text-2xl font-semibold">

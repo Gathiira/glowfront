@@ -10,10 +10,10 @@ const CustomerSignup = () => {
     <div className="flex min-h-screen flex-col">
       <Header />
       <div className="flex flex-1 flex-col md:flex-row">
-        <div className="flex flex-1 items-center justify-center">
+        <div className="flex flex-1">
           <CustomerFlow />
         </div>
-        <div className="relative w-full max-md:hidden md:w-[45%] lg:w-[55%]">
+        <div className="relative w-full flex-1 max-md:hidden">
           <Image
             src="/assets/glowbuddy-auth.webp"
             alt="GlowBuddy for customers"

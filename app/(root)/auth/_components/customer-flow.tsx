@@ -69,7 +69,7 @@ const CustomerFlow = () => {
 
   if (mode === "success") {
     return (
-      <div className="flex h-full w-full items-center justify-center py-4">
+      <div className="flex h-full w-full py-4">
         <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
           <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary/10">
             <Sparkles className="size-8 text-primary" />
@@ -95,7 +95,7 @@ const CustomerFlow = () => {
 
   if (mode === "register") {
     return (
-      <div className="flex h-full w-full items-center justify-center py-4">
+      <div className="flex h-full w-full py-4">
         <div className="mx-auto max-w-md space-y-6 p-3 pt-10">
           <div className="space-y-2 text-center">
             <h2 className="text-2xl font-semibold">Create your account</h2>
@@ -262,7 +262,7 @@ const CustomerFlow = () => {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center py-4">
+    <div className="flex w-full py-4">
       <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
         <div className="space-y-1">
           <h2 className="text-2xl font-semibold">GlowBuddy for customers</h2>
