@@ -1,2 +1,3 @@
 export { ApiError, extractError } from "./client"
-export { useCategories, fetchCategories, registerCustomer, registerPartner } from "./partner"
+export { registerCustomer, registerPartner, customerLogin } from "./partner"
+export { useCategories, fetchCategories } from "./swr"

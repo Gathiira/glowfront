@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, Form, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/ui/password-input"
 import Link from "next/link"
 import { Sparkles } from "lucide-react"
+import { customerLogin } from "@/lib/api"
 
 const loginSchema = z.object({
   email: z.email("Valid email is required"),
@@ -58,8 +59,15 @@ const CustomerFlow = () => {
     },
   })
 
-  const handleLogin = (data: LoginFormData) => {
+  const handleLogin = async (data: LoginFormData) => {
     console.log("Customer login:", data)
+    await customerLogin(data)
+      .then((resp) => {
+        console.log(resp)
+      })
+      .catch((err) => {
+        console.log({ err })
+      })
   }
 
   const handleRegister = (data: RegisterFormData) => {
@@ -271,7 +279,10 @@ const CustomerFlow = () => {
           </small>
         </div>
 
-        <form onSubmit={loginForm.handleSubmit(handleLogin)}>
+        <form
+          onSubmit={loginForm.handleSubmit(handleLogin)}
+          className="space-y-6"
+        >
           <FieldGroup>
             <Controller
               name="email"
@@ -309,23 +320,21 @@ const CustomerFlow = () => {
               )}
             />
           </FieldGroup>
+          <div className="flex flex-col gap-3">
+            <Button type="submit" size="lg" className="w-full py-5">
+              Continue
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="w-full py-5"
+              onClick={() => setMode("register")}
+            >
+              Create an account
+            </Button>
+          </div>
         </form>
-
-        <div className="flex flex-col gap-3">
-          <Button type="submit" size="lg" className="w-full py-5">
-            Continue
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            className="w-full py-5"
-            onClick={() => setMode("register")}
-          >
-            Create an account
-          </Button>
-        </div>
-
         <div>
           <p className="text-sm text-muted-foreground">
             Are you a professional looking to list your business?

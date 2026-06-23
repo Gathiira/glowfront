@@ -8,7 +8,7 @@ const Auth = () => {
     <div className="flex min-h-screen flex-col">
       <Header />
       <div className="flex flex-1 flex-col md:flex-row">
-        <div className="flex flex-1 p-6">
+        <div className="flex flex-1">
           <div className="mx-auto flex w-full max-w-sm flex-col gap-6 pt-10">
             <Link
               href="/auth/customer"
@@ -73,20 +73,14 @@ const Auth = () => {
         <div className="relative w-full flex-1 max-md:hidden">
           <Image
             src="/assets/glowbuddy-auth.webp"
-            alt="GlowBuddy"
+            alt="GlowBuddy for customers"
             fill
             className="object-cover object-bottom-right"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
           />
         </div>
       </div>
-
-      <footer className="flex items-center justify-center gap-4 border-t px-6 py-4 text-sm text-muted-foreground">
-        <span>English (US)</span>
-        <span className="text-border">|</span>
-        <a href="#" className="hover:text-foreground">
-          Help and support
-        </a>
-      </footer>
     </div>
   )
 }
