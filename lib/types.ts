@@ -145,6 +145,7 @@ export type BusinessCategoryDto = {
   id: number
   name: string
   displayName: string
+  imageUrl: string | null
 }
 
 export type BusinessSearchDto = {

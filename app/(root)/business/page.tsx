@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import {
   Check,
@@ -19,12 +20,15 @@ import { BusinessFaq } from "@/components/landing/_components/business/business-
 import { Footer } from "@/components/landing/_components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
+import { fetchBusinessCategories } from "@/lib/api/customer"
+import type { BusinessCategoryDto } from "@/lib/types"
 
 const metrics = [
-  { value: "5,000+", label: "Partner businesses" },
-  { value: "12,000+", label: "Professionals" },
-  { value: "500,000+", label: "Appointments booked" },
-  { value: "50+", label: "Towns" },
+  { value: "1,000+", label: "Partner businesses" },
+  { value: "2,000+", label: "Professionals" },
+  { value: "5,000+", label: "Appointments booked" },
+  { value: "20+", label: "Towns" },
 ]
 
 const features = [
@@ -136,80 +140,13 @@ const successServices = [
   },
 ]
 
-const platformCategories = [
-  {
-    name: "Hair Salon",
-    imageUrl:
-      "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Nail Salon",
-    imageUrl:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Barbers",
-    imageUrl:
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Waxing Salon",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Medspa",
-    imageUrl:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Eyebrow Bar",
-    imageUrl:
-      "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Massage Salon",
-    imageUrl:
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Spa",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Fitness",
-    imageUrl:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Personal Trainer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Salon",
-    imageUrl:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Therapy Center",
-    imageUrl:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Tattooing & Piercing",
-    imageUrl:
-      "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=400&h=300&fit=crop",
-  },
-  {
-    name: "Tanning Studios",
-    imageUrl:
-      "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=400&h=300&fit=crop",
-  },
-]
-
 export default function BusinessPage() {
+  const [categories, setCategories] = useState<BusinessCategoryDto[]>([])
+
+  useEffect(() => {
+    fetchBusinessCategories().then(setCategories).catch(() => {})
+  }, [])
+
   return (
     <div className="min-h-screen">
       <BusinessHeader />
@@ -230,7 +167,7 @@ export default function BusinessPage() {
         </div>
       </section>
 
-      <BusinessTypes />
+      <BusinessTypes categories={categories} />
 
       {/* Pricing */}
       <section id="pricing" className="border-t py-16">
@@ -571,25 +508,35 @@ export default function BusinessPage() {
           </h2>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
-            {platformCategories.map((cat) => (
-              <div
-                key={cat.name}
-                className="group cursor-pointer overflow-hidden rounded-xl border bg-card"
-              >
-                <div className="relative h-20 w-full">
-                  <Image
-                    src={cat.imageUrl}
-                    alt={cat.name}
-                    fill
-                    unoptimized
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-2 text-center">
-                  <p className="truncate text-xs font-medium">{cat.name}</p>
-                </div>
-              </div>
-            ))}
+            {categories.length === 0
+              ? Array.from({ length: 7 }).map((_, i) => (
+                  <div key={i} className="overflow-hidden rounded-xl border bg-card">
+                    <Skeleton className="h-20 w-full rounded-none" />
+                    <div className="p-2 flex justify-center">
+                      <Skeleton className="h-3 w-16" />
+                    </div>
+                  </div>
+                ))
+              : categories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="group cursor-pointer overflow-hidden rounded-xl border bg-card"
+                  >
+                    <div className="relative h-20 w-full">
+                      <Image
+                        src={cat.imageUrl || ""}
+                        alt={cat.displayName}
+                        width={400}
+                        height={300}
+                        unoptimized
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-2 text-center">
+                      <p className="truncate text-xs font-medium">{cat.displayName}</p>
+                    </div>
+                  </div>
+                ))}
           </div>
         </div>
       </section>
