@@ -11,11 +11,17 @@ export type CustomerLoginData = {
 }
 
 export type CustomerAccountData = {
-  email: string
   firstName: string
   lastName: string
+  email: string
+  phone: string
   password: string
-  agreeToTerms: boolean
+  confirmPassword: string
+  address?: string
+  city?: string
+  state?: string
+  zipCode?: string
+  country?: string
 }
 
 export type PartnerAccountData = {

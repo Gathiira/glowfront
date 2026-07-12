@@ -24,6 +24,9 @@ const registerSchema = z
     email: z.email("Valid email is required"),
     firstName: z.string().min(1, "First name is required"),
     lastName: z.string().min(1, "Last name is required"),
+    phone: z
+      .string()
+      .regex(/^[+]?[0-9]{10,15}$/, "Invalid phone number format"),
     password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z
       .string()
@@ -57,6 +60,7 @@ const CustomerFlow = () => {
       email: "",
       firstName: "",
       lastName: "",
+      phone: "",
       password: "",
       confirmPassword: "",
       agreeToTerms: false,
@@ -98,9 +102,43 @@ const CustomerFlow = () => {
     }
   }
 
-  const handleRegister = (data: RegisterFormData) => {
-    console.log("Customer register:", data)
-    setMode("success")
+  const handleRegister = async (data: RegisterFormData) => {
+    startLoading()
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+        }),
+      })
+
+      const json = await res.json()
+
+      if (json.code !== 200) {
+        showError(json.msg || "Registration failed")
+        return
+      }
+
+      if (json.data?.profile) {
+        localStorage.setItem(
+          "customer_profile",
+          JSON.stringify(json.data.profile)
+        )
+      }
+
+      showSuccess("Account created successfully")
+      setMode("success")
+    } catch (err) {
+      showError(err)
+    } finally {
+      stopLoading()
+    }
   }
 
   if (mode === "success") {
@@ -148,6 +186,7 @@ const CustomerFlow = () => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <Input
+                      {...field}
                       placeholder="Email address"
                       type="email"
                       autoComplete="email"
@@ -201,6 +240,25 @@ const CustomerFlow = () => {
                   )}
                 />
               </div>
+
+              <Controller
+                name="phone"
+                control={registerForm.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <Input
+                      {...field}
+                      placeholder="Phone number"
+                      type="tel"
+                      autoComplete="tel"
+                      className="py-5"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
 
               <Controller
                 name="password"

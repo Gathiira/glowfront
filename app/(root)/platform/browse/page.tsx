@@ -15,8 +15,9 @@ import type {
   BusinessCategoryDto,
   PaginatedResponse,
 } from "@/lib/types"
+import Image from "next/image"
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 12
 
 export default function Browse() {
   const [search, setSearch] = useState("")
@@ -45,7 +46,8 @@ export default function Browse() {
         sortDirection: "desc",
       }
       if (search.trim()) filters.keyword = search.trim()
-      if (activeCategory !== "ALL") filters.category = activeCategory as BusinessSearchDto["category"]
+      if (activeCategory !== "ALL")
+        filters.category = activeCategory as BusinessSearchDto["category"]
 
       const data = await searchBusinesses(filters)
       setResults(data)
@@ -137,12 +139,13 @@ export default function Browse() {
               <Link key={b.id} href={`/platform/browse/${b.id}`}>
                 <Card className="h-full transition-shadow hover:shadow-md">
                   <CardContent className="p-0">
-                    <div className="flex h-32 items-center justify-center rounded-t-xl bg-gradient-to-br from-primary/10 to-primary/5">
+                    <div className="relative flex h-32 items-center justify-center rounded-t-xl bg-linear-to-br from-primary/10 to-primary/5">
                       {b.coverImageUrl || b.coverUrl || b.logoUrl ? (
-                        <img
+                        <Image
                           src={b.coverImageUrl || b.coverUrl || b.logoUrl!}
                           alt={b.name}
                           className="h-32 w-full rounded-t-xl object-cover"
+                          fill
                         />
                       ) : (
                         <span className="text-3xl font-bold text-primary/30">

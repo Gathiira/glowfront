@@ -8,9 +8,9 @@ import type {
 
 export async function registerCustomer(
   data: CustomerAccountData
-): Promise<{ success: boolean; userId: string }> {
+): Promise<{ code: number; msg: string; data: { token: string; profile: Record<string, unknown> } }> {
   try {
-    return await api.url("/customer/register").post({ account: data }).json()
+    return await api.url("/customer/register").post(data).json()
   } catch (error) {
     throw await extractError(error)
   }
