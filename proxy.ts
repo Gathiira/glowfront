@@ -23,7 +23,7 @@ function extractRole(value: string): Role | null {
   return null
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   const raw = request.cookies.get(SESSION_COOKIE)?.value
