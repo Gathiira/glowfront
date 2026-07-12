@@ -28,9 +28,7 @@ const registerSchema = z
     confirmPassword: z
       .string()
       .min(8, "Password must be at least 8 characters"),
-    agreeToTerms: z
-      .boolean()
-      .refine((val) => val === true, "You must agree to the terms"),
+    agreeToTerms: z.boolean().refine(Boolean, "You must agree to the terms"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -60,6 +58,7 @@ const CustomerFlow = () => {
       firstName: "",
       lastName: "",
       password: "",
+      confirmPassword: "",
       agreeToTerms: false,
     },
   })
@@ -70,7 +69,10 @@ const CustomerFlow = () => {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: data.email, password: data.password }),
+        body: JSON.stringify({
+          identifier: data.email,
+          password: data.password,
+        }),
       })
 
       const json = await res.json()
@@ -81,7 +83,10 @@ const CustomerFlow = () => {
       }
 
       if (json.data?.profile) {
-        localStorage.setItem("customer_profile", JSON.stringify(json.data.profile))
+        localStorage.setItem(
+          "customer_profile",
+          JSON.stringify(json.data.profile)
+        )
       }
 
       showSuccess("Success")
@@ -143,11 +148,14 @@ const CustomerFlow = () => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <Input
-                      {...field}
                       placeholder="Email address"
                       type="email"
                       autoComplete="email"
                       className="py-5"
+                      value={field.value}
+                      onChange={(e) => {
+                        registerForm.setValue("email", e.target.value)
+                      }}
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />

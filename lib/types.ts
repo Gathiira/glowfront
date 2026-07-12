@@ -133,6 +133,52 @@ export type CustomerDashboardDto = {
   }
 }
 
+export type ServiceCategory = "HAIR" | "BARBER" | "NAILS" | "SPA" | "MASSAGE" | "FACIAL"
+
+export type BusinessCategoryDto = {
+  id: number
+  name: string
+  displayName: string
+}
+
+export type BusinessSearchDto = {
+  keyword?: string
+  category?: ServiceCategory
+  city?: string
+  minRating?: number
+  priceMin?: number
+  priceMax?: number
+  openNow?: boolean
+  page?: number
+  size?: number
+  sortBy?: string
+  sortDirection?: "asc" | "desc"
+}
+
+export type PaginatedResponse<T> = {
+  current: number
+  size: number
+  totalElements: number
+  totalPages: number
+  list: T[]
+}
+
+export type BusinessCardDto = {
+  id: number
+  name: string
+  slug: string
+  description: string
+  logoUrl: string | null
+  coverUrl: string | null
+  overallRating: number
+  totalReviews: number
+  address: string
+  priceRangeMin: number
+  categories: string[]
+  coverImageUrl: string | null
+  primaryCategory: string
+}
+
 export const BUSINESS_CATEGORIES: BusinessCategory[] = [
   { id: "hair-salon", name: "Hair Salon" },
   { id: "nails", name: "Nails" },
