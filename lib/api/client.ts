@@ -20,11 +20,34 @@ function getMsg(body: unknown, status: number): string {
   return `API ${status}`
 }
 
+function getSessionToken(): string | null {
+  if (typeof document === "undefined") return null
+  const match = document.cookie.match(/(?:^|;\s*)token=([^;]*)/)
+  return match ? decodeURIComponent(match[1]) : null
+}
+
+const PUBLIC_PATHS = [
+  "/customer/login",
+  "/customer/register",
+  "/partner/register",
+]
+
+function isPublicPath(url: string): boolean {
+  return PUBLIC_PATHS.some((p) => url.includes(p))
+}
+
 export const api = wretch(baseUrl + "/api/v1", {
   credentials: "same-origin",
 }).middlewares([
   (next) => async (url, opts) => {
-    const response = await next(url, opts)
+    const headers = new Headers(opts.headers)
+    if (!isPublicPath(url)) {
+      const token = getSessionToken()
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`)
+      }
+    }
+    const response = await next(url, { ...opts, headers })
     const clone = response.clone()
     const body = await clone.json().catch(() => null)
     if (

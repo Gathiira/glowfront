@@ -46,6 +46,12 @@ export async function POST(request: Request) {
         maxAge: 60 * 60 * 24 * 7,
       }
     )
+    response.cookies.set("token", accessToken, {
+      httpOnly: false,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    })
 
     return response
   } catch {

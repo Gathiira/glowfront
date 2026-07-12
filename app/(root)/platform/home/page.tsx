@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useCustomer } from "@/lib/customer-context"
 import { PageHeader } from "@/components/dashboard/page-header"
@@ -8,30 +9,46 @@ import { StatCard } from "@/components/dashboard/stat-card"
 import { StatusBadge } from "@/components/dashboard/status-badge"
 import { Button } from "@/components/ui/button"
 import { CalendarCheck, Building2, DollarSign, Star, ArrowRight } from "lucide-react"
+import Image from "next/image"
+import { fetchCustomerDashboard } from "@/lib/api"
+import type { CustomerDashboardDto } from "@/lib/types"
 
 export default function PlatformHome() {
-  const { appointments, businesses, profile } = useCustomer()
+  const { profile } = useCustomer()
+  const [dashboard, setDashboard] = useState<CustomerDashboardDto | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const todayStr = new Date().toISOString().split("T")[0]
+  useEffect(() => {
+    async function loadDashboard() {
+      try {
+        const data = await fetchCustomerDashboard()
+        setDashboard(data)
+      } catch (err) {
+        console.error("Failed to load dashboard:", err)
+        setError("Failed to load dashboard data")
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadDashboard()
+  }, [])
 
-  const totalAppointments = appointments.length
-  const completedAppointments = appointments.filter((a) => a.status === "completed")
-  const businessesVisited = new Set(completedAppointments.map((a) => a.businessId)).size
-  const cancelledAppointments = appointments.filter((a) => a.status === "cancelled").length
-  const totalSpent = completedAppointments.reduce((s, a) => s + a.servicePrice, 0)
-  const reviewedAppointments = appointments.filter((a) => a.reviewed).length
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <p className="text-muted-foreground">Loading dashboard...</p>
+      </div>
+    )
+  }
 
-  const upcoming = appointments
-    .filter((a) => a.status === "confirmed" && a.date >= todayStr)
-    .sort((a, b) => a.date.localeCompare(b.date) || a.startTime.localeCompare(b.startTime))
-    .slice(0, 5)
-
-  const topBusiness = businesses
-    .map((b) => ({
-      ...b,
-      visitCount: completedAppointments.filter((a) => a.businessId === b.id).length,
-    }))
-    .sort((a, b) => b.visitCount - a.visitCount)[0]
+  if (error || !dashboard) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <p className="text-destructive">{error || "Failed to load dashboard"}</p>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -43,26 +60,26 @@ export default function PlatformHome() {
       <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Total Appointments"
-          value={totalAppointments}
+          value={dashboard.totalAppointments}
           description="All time bookings"
           icon={<CalendarCheck className="size-5" />}
         />
         <StatCard
           title="Businesses Visited"
-          value={businessesVisited}
-          description={`Out of ${businesses.length} available`}
+          value={dashboard.businessesVisited}
+          description={`Out of ${dashboard.totalBusinessesAvailable} available`}
           icon={<Building2 className="size-5" />}
         />
         <StatCard
           title="Total Spent"
-          value={`$${totalSpent}`}
+          value={`$${dashboard.totalSpent}`}
           description="Across all completed bookings"
           icon={<DollarSign className="size-5" />}
         />
         <StatCard
           title="Reviews Written"
-          value={`${reviewedAppointments} / ${completedAppointments.length}`}
-          description={`${completedAppointments.length - reviewedAppointments} pending`}
+          value={`${dashboard.reviewsWritten.written} / ${dashboard.reviewsWritten.total}`}
+          description={`${dashboard.reviewsWritten.pending} pending`}
           icon={<Star className="size-5" />}
         />
       </div>
@@ -80,7 +97,7 @@ export default function PlatformHome() {
             </div>
           </CardHeader>
           <CardContent>
-            {upcoming.length === 0 ? (
+            {dashboard.upcomingAppointments.length === 0 ? (
               <div className="flex flex-col items-center gap-3 py-8 text-center">
                 <p className="text-sm text-muted-foreground">No upcoming appointments</p>
                 <Button size="sm" asChild>
@@ -89,24 +106,24 @@ export default function PlatformHome() {
               </div>
             ) : (
               <div className="space-y-3">
-                {upcoming.map((a) => (
+                {dashboard.upcomingAppointments.map((appt) => (
                   <div
-                    key={a.id}
+                    key={`${appt.businessId}-${appt.bookingDate}-${appt.bookingTime}`}
                     className="flex items-center justify-between rounded-lg border p-3"
                   >
                     <div>
-                      <p className="text-sm font-medium">{a.businessName}</p>
-                      <p className="text-xs text-muted-foreground">{a.serviceName}</p>
+                      <p className="text-sm font-medium">{appt.businessName}</p>
+                      <p className="text-xs text-muted-foreground">{appt.serviceName}</p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
-                        {new Date(a.date + "T12:00:00").toLocaleDateString("en-US", {
+                        {new Date(appt.bookingDate + "T12:00:00").toLocaleDateString("en-US", {
                           weekday: "short",
                           month: "short",
                           day: "numeric",
                         })}{" "}
-                        &middot; {a.startTime}
+                        &middot; {appt.bookingTime}
                       </p>
                     </div>
-                    <StatusBadge status={a.status} />
+                    <StatusBadge status={appt.status as "confirmed" | "completed" | "cancelled"} />
                   </div>
                 ))}
               </div>
@@ -122,49 +139,57 @@ export default function PlatformHome() {
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Completed</span>
-                <span className="font-semibold">{completedAppointments.length}</span>
+                <span className="font-semibold">{dashboard.quickStats.completed}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Cancelled</span>
-                <span className="font-semibold">{cancelledAppointments}</span>
+                <span className="font-semibold">{dashboard.quickStats.cancelled}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Avg. Spend per Visit</span>
                 <span className="font-semibold">
-                  $
-                  {completedAppointments.length > 0
-                    ? (totalSpent / completedAppointments.length).toFixed(0)
-                    : "0"}
+                  ${dashboard.quickStats.avgSpendPerVisit.toFixed(0)}
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Loyalty Rate</span>
                 <span className="font-semibold">
-                  {totalAppointments > 0
-                    ? `${Math.round((completedAppointments.length / totalAppointments) * 100)}%`
-                    : "0%"}
+                  {Math.round(dashboard.quickStats.loyaltyRate * 100)}%
                 </span>
               </div>
             </CardContent>
           </Card>
 
-          {topBusiness && topBusiness.visitCount > 0 && (
+          {dashboard.quickStats.favoriteBusiness && (
             <Card>
               <CardHeader>
                 <CardTitle>Favorite Business</CardTitle>
               </CardHeader>
               <CardContent>
                 <Link
-                  href={`/platform/browse/${topBusiness.id}`}
+                  href={`/platform/browse/${dashboard.quickStats.favoriteBusiness.businessId}`}
                   className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
                 >
-                  <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-                    {topBusiness.name.charAt(0)}
-                  </div>
+                  {dashboard.quickStats.favoriteBusiness.logoUrl ? (
+                    <Image
+                      src={dashboard.quickStats.favoriteBusiness.logoUrl}
+                      alt={dashboard.quickStats.favoriteBusiness.businessName}
+                      width={40}
+                      height={40}
+                      className="size-10 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                      {dashboard.quickStats.favoriteBusiness.businessName.charAt(0)}
+                    </div>
+                  )}
                   <div>
-                    <p className="text-sm font-medium">{topBusiness.name}</p>
+                    <p className="text-sm font-medium">
+                      {dashboard.quickStats.favoriteBusiness.businessName}
+                    </p>
                     <p className="text-xs text-muted-foreground">
-                      {topBusiness.visitCount} visit{topBusiness.visitCount !== 1 ? "s" : ""}
+                      {dashboard.quickStats.favoriteBusiness.visitCount} visit
+                      {dashboard.quickStats.favoriteBusiness.visitCount !== 1 ? "s" : ""}
                     </p>
                   </div>
                   <ArrowRight className="ml-auto size-4 text-muted-foreground" />

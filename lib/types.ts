@@ -101,6 +101,38 @@ export type CustomerAppointment = {
   reviewed: boolean
 }
 
+export type CustomerDashboardDto = {
+  totalAppointments: number
+  businessesVisited: number
+  totalBusinessesAvailable: number
+  totalSpent: number
+  reviewsWritten: {
+    written: number
+    total: number
+    pending: number
+  }
+  upcomingAppointments: {
+    businessId: number
+    businessName: string
+    serviceName: string
+    bookingDate: string
+    bookingTime: string
+    status: string
+  }[]
+  quickStats: {
+    completed: number
+    cancelled: number
+    avgSpendPerVisit: number
+    loyaltyRate: number
+    favoriteBusiness: {
+      businessId: number
+      businessName: string
+      logoUrl: string
+      visitCount: number
+    } | null
+  }
+}
+
 export const BUSINESS_CATEGORIES: BusinessCategory[] = [
   { id: "hair-salon", name: "Hair Salon" },
   { id: "nails", name: "Nails" },
