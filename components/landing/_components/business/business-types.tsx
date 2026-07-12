@@ -1,6 +1,5 @@
+import Image from "next/image"
 import { businessTypes } from "@/components/landing/data"
-import { cn } from "@/lib/utils"
-import { gradients } from "@/components/landing/data"
 
 export function BusinessTypes() {
   return (
@@ -15,18 +14,20 @@ export function BusinessTypes() {
         </div>
 
         <div className="mt-8 flex gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {businessTypes.map((type, i) => (
+          {businessTypes.map((type) => (
             <div
               key={type.id}
-              className="w-52 shrink-0 snap-start rounded-xl border bg-card"
+              className="w-52 shrink-0 snap-start rounded-xl border bg-card overflow-hidden"
             >
-              <div className={cn(
-                "flex h-28 items-center justify-center rounded-t-xl bg-gradient-to-br",
-                gradients[i % gradients.length]
-              )}>
-                <span className="px-3 text-center text-xs font-medium text-muted-foreground">
-                  {type.description}
-                </span>
+              <div className="relative h-28 w-full">
+                <Image
+                  src={type.imageUrl}
+                  alt={type.description}
+                  width={400}
+                  height={300}
+                  unoptimized
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="p-3">
                 <h3 className="text-sm font-semibold">{type.name}</h3>

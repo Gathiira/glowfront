@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -29,14 +30,14 @@ export function BusinessHero() {
 
           <div className="relative">
             <div className="rounded-2xl border bg-muted/30 p-4 shadow-lg">
-              <div className="aspect-video rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                <div className="text-center px-4">
-                  <p className="text-sm font-medium text-muted-foreground">Hero background</p>
-                  <p className="mt-2 text-xs text-muted-foreground/70">
-                    The top-rated and best Glowbuddy booking software running on a desktop computer.
-                    Glowbuddy is the world&apos;s leading salon software loved by all beauty professionals
-                  </p>
-                </div>
+              <div className="relative aspect-video overflow-hidden rounded-lg">
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop"
+                  alt="Glowbuddy booking software dashboard on a desktop computer"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>

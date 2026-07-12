@@ -174,18 +174,18 @@ export const browseBusinesses: ListingBusiness[] = [
 ]
 
 export const businessTypes = [
-  { id: "salon", name: "Salon", description: "Hair stylist working on a client's hair in a chic salon", imageLabel: "Salon services available on Glowbuddy" },
-  { id: "barber", name: "Barber", description: "Barber styling a client's hair in a contemporary barbershop", imageLabel: "Barbering services on Glowbuddy" },
-  { id: "nails", name: "Nails", description: "Manicurist applying nail polish to a client's nails", imageLabel: "Nail care services on Glowbuddy" },
-  { id: "spa-sauna", name: "Spa & sauna", description: "Woman relaxing in a spa with a towel wrap and facial mask", imageLabel: "Spa and wellness services on Glowbuddy" },
-  { id: "medspa", name: "Medspa", description: "Aesthetician performing a facial treatment in a modern med spa", imageLabel: "Medical spa services on Glowbuddy" },
-  { id: "massage", name: "Massage", description: "Client receiving a relaxing back massage in a spa environment", imageLabel: "Massage therapy services on Glowbuddy" },
-  { id: "fitness", name: "Fitness & recovery", description: "Fitness trainer guiding a client through a workout in a gym", imageLabel: "Fitness services available on Glowbuddy" },
-  { id: "physical-therapy", name: "Physical therapy", description: "Physical therapist assisting a patient with exercises", imageLabel: "Physical therapy services on Glowbuddy" },
-  { id: "health", name: "Health practice", description: "Healthcare professional consulting with a patient in a clinic", imageLabel: "Health practice services on Glowbuddy" },
-  { id: "tattoo", name: "Tattoo & piercing", description: "Tattoo artist creating a detailed design on a client's arm", imageLabel: "Tattoo and piercing services on Glowbuddy" },
-  { id: "pet-grooming", name: "Pet grooming", description: "Professional pet groomer styling a dog in a clean salon", imageLabel: "Pet grooming services on Glowbuddy" },
-  { id: "tanning", name: "Tanning studio", description: "Modern tanning studio with sunbeds and ambient lighting", imageLabel: "Sunless tanning services on Glowbuddy" },
+  { id: "salon", name: "Salon", description: "Hair stylist working on a client's hair in a chic salon", imageUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop" },
+  { id: "barber", name: "Barber", description: "Barber styling a client's hair in a contemporary barbershop", imageUrl: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop" },
+  { id: "nails", name: "Nails", description: "Manicurist applying nail polish to a client's nails", imageUrl: "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=400&h=300&fit=crop" },
+  { id: "spa-sauna", name: "Spa & sauna", description: "Woman relaxing in a spa with a towel wrap and facial mask", imageUrl: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=300&fit=crop" },
+  { id: "medspa", name: "Medspa", description: "Aesthetician performing a facial treatment in a modern med spa", imageUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop" },
+  { id: "massage", name: "Massage", description: "Client receiving a relaxing back massage in a spa environment", imageUrl: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop" },
+  { id: "fitness", name: "Fitness & recovery", description: "Fitness trainer guiding a client through a workout in a gym", imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop" },
+  { id: "physical-therapy", name: "Physical therapy", description: "Physical therapist assisting a patient with exercises", imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" },
+  { id: "health", name: "Health practice", description: "Healthcare professional consulting with a patient in a clinic", imageUrl: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop" },
+  { id: "tattoo", name: "Tattoo & piercing", description: "Tattoo artist creating a detailed design on a client's arm", imageUrl: "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=400&h=300&fit=crop" },
+  { id: "pet-grooming", name: "Pet grooming", description: "Professional pet groomer styling a dog in a clean salon", imageUrl: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop" },
+  { id: "tanning", name: "Tanning studio", description: "Modern tanning studio with sunbeds and ambient lighting", imageUrl: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=400&h=300&fit=crop" },
 ]
 
 export const businessTestimonials = [
