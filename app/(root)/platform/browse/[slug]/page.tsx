@@ -5,7 +5,6 @@ import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
 import NextDynamic from "next/dynamic"
 import { useCustomer } from "@/lib/customer-context"
-import { Header } from "@/components/landing/_components/header"
 import { Footer } from "@/components/landing/_components/footer"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
@@ -369,7 +368,6 @@ export default function BusinessDetail() {
   if (error || !business) {
     return (
       <div className="min-h-screen">
-        <Header />
         <div className="flex flex-col items-center justify-center gap-4 px-4 py-24">
           <p className="text-muted-foreground">
             {error || "Business not found"}
@@ -462,8 +460,6 @@ export default function BusinessDetail() {
 
   return (
     <div className="min-h-screen">
-      <Header />
-
       <main className="mx-auto max-w-7xl px-4 py-8">
         <Button
           variant="ghost"
