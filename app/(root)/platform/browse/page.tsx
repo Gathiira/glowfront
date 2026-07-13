@@ -22,7 +22,7 @@ const PAGE_SIZE = 12
 export default function Browse() {
   const [search, setSearch] = useState("")
   const [activeCategory, setActiveCategory] = useState<string>("ALL")
-  const [page, setPage] = useState(0)
+  const [current, setCurrent] = useState(0)
   const [results, setResults] =
     useState<PaginatedResponse<BusinessCardDto> | null>(null)
   const [categories, setCategories] = useState<BusinessCategoryDto[]>([])
@@ -40,8 +40,8 @@ export default function Browse() {
     setError(null)
     try {
       const filters: BusinessSearchDto = {
-        page,
-        size: PAGE_SIZE,
+        current,
+        pageSize: PAGE_SIZE,
         sortBy: "rating",
         sortDirection: "desc",
       }
@@ -57,7 +57,7 @@ export default function Browse() {
     } finally {
       setLoading(false)
     }
-  }, [search, activeCategory, page])
+  }, [search, activeCategory, current])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -68,12 +68,12 @@ export default function Browse() {
 
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat)
-    setPage(0)
+    setCurrent(0)
   }
 
   const handleSearchChange = (value: string) => {
     setSearch(value)
-    setPage(0)
+    setCurrent(0)
   }
 
   return (
@@ -184,10 +184,10 @@ export default function Browse() {
           </div>
 
           <Pagination
-            page={page}
+            currentPage={current}
             totalPages={results.totalPages}
             totalElements={results.totalElements}
-            onPageChange={setPage}
+            onPageChange={setCurrent}
           />
         </>
       )}

@@ -6,6 +6,8 @@ import { SummaryCard } from "@/components/dashboard/summary-card"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, UserPlus, Repeat, TrendingUp, Wifi, Store } from "lucide-react"
 
+import { CURRENCY } from "@/lib/types"
+
 export default function ClientAnalytics() {
   return (
     <div>
@@ -33,7 +35,7 @@ export default function ClientAnalytics() {
         />
         <StatCard
           title="Highest Spenders"
-          value="$2,450"
+          value={`${CURRENCY} 2,450`}
           description="Top client avg"
           icon={<TrendingUp className="size-5" />}
         />

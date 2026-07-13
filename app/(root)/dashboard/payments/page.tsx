@@ -9,6 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+import { CURRENCY } from "@/lib/types"
+
 const payments = [
   { id: 1, client: "Sarah Johnson", amount: 120, method: "Credit Card", date: "2026-06-18", status: "completed" as const },
   { id: 2, client: "Mike Chen", amount: 45, method: "Cash", date: "2026-06-18", status: "completed" as const },
@@ -24,7 +26,7 @@ export default function Payments() {
 
   return (
     <div>
-      <PageHeader title="Payments" description={`Total: $${total}`} />
+      <PageHeader title="Payments" description={`Total: ${CURRENCY} ${total}`} />
 
       <Card>
         <CardHeader>
@@ -42,7 +44,7 @@ export default function Payments() {
                   <p className="text-sm text-muted-foreground">{p.method}</p>
                 </div>
                 <div className="ml-2 shrink-0 text-right">
-                  <p className="text-sm font-medium">${p.amount}</p>
+                  <p className="text-sm font-medium">{CURRENCY} {p.amount}</p>
                   <p className="text-xs text-muted-foreground">{p.date}</p>
                 </div>
                 <div className="ml-2 shrink-0">

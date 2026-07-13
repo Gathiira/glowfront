@@ -10,6 +10,7 @@ import { StatusBadge } from "@/components/dashboard/status-badge"
 import { Button } from "@/components/ui/button"
 import { CalendarCheck, Building2, DollarSign, Star, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { CURRENCY } from "@/lib/types"
 import { fetchCustomerDashboard } from "@/lib/api"
 import type { CustomerDashboardDto } from "@/lib/types"
 
@@ -72,7 +73,7 @@ export default function PlatformHome() {
         />
         <StatCard
           title="Total Spent"
-          value={`$${dashboard.totalSpent}`}
+          value={`${CURRENCY} ${dashboard.totalSpent}`}
           description="Across all completed bookings"
           icon={<DollarSign className="size-5" />}
         />
@@ -148,7 +149,7 @@ export default function PlatformHome() {
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Avg. Spend per Visit</span>
                 <span className="font-semibold">
-                  ${dashboard.quickStats.avgSpendPerVisit.toFixed(0)}
+                  {CURRENCY} {dashboard.quickStats.avgSpendPerVisit.toFixed(0)}
                 </span>
               </div>
               <div className="flex items-center justify-between">

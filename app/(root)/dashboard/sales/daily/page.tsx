@@ -2,6 +2,7 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { SummaryCard } from "@/components/dashboard/summary-card"
+import { CURRENCY } from "@/lib/types"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Table,
@@ -28,9 +29,9 @@ export default function DailySales() {
       <PageHeader title="Daily Sales Summary" description="Today&apos;s revenue overview" />
 
       <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <SummaryCard title="Total Sales" value={`$${total}`} subtitle="Today" />
+        <SummaryCard title="Total Sales" value={`${CURRENCY} ${total}`} subtitle="Today" />
         <SummaryCard title="Transactions" value={`${transactions.length}`} subtitle="Today" />
-        <SummaryCard title="Average Ticket" value={`$${(total / transactions.length).toFixed(0)}`} subtitle="Today" />
+        <SummaryCard title="Average Ticket" value={`${CURRENCY} ${(total / transactions.length).toFixed(0)}`} subtitle="Today" />
       </div>
 
       <Card>
@@ -56,7 +57,7 @@ export default function DailySales() {
                   <TableCell>{t.client}</TableCell>
                   <TableCell>{t.service}</TableCell>
                   <TableCell>{t.time}</TableCell>
-                  <TableCell className="text-right">${t.amount}</TableCell>
+                  <TableCell className="text-right">{CURRENCY} {t.amount}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

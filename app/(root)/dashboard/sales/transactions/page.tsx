@@ -51,7 +51,7 @@ export default function Transactions() {
                   <TableCell>{t.service}</TableCell>
                   <TableCell>{t.date}</TableCell>
                   <TableCell><StatusBadge status={t.status} /></TableCell>
-                  <TableCell className="text-right">${t.amount}</TableCell>
+                  <TableCell className="text-right">{CURRENCY} {t.amount}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -11,6 +11,7 @@ import {
   Star,
   User,
 } from "lucide-react"
+import { CURRENCY } from "@/lib/types"
 
 const todayAppointment = {
   client: "Sarah Johnson",
@@ -36,7 +37,7 @@ export default function Home() {
       <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Recent Sales"
-          value="$2,450"
+          value={`${CURRENCY} 2,450`}
           description="Last 7 days"
           trend={{ direction: "up", value: "+12% vs last week" }}
           icon={<DollarSign className="size-5" />}
@@ -108,7 +109,7 @@ export default function Home() {
               <div>
                 <p className="font-medium">Emily Rodriguez</p>
                 <p className="text-sm text-muted-foreground">
-                  32 appointments this week · $4,200 in sales
+                  32 appointments this week · {CURRENCY} 4,200 in sales
                 </p>
               </div>
             </div>

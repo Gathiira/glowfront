@@ -8,12 +8,12 @@ import { businessTestimonials } from "@/components/landing/data"
 const ITEMS_PER_PAGE = 6
 
 export function BusinessTestimonials() {
-  const [page, setPage] = useState(0)
+  const [current, setCurrent] = useState(0)
   const totalPages = Math.ceil(businessTestimonials.length / ITEMS_PER_PAGE)
 
   const featured = businessTestimonials.slice(0, 1)
   const rest = businessTestimonials.slice(1)
-  const visible = rest.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE)
+  const visible = rest.slice(current * ITEMS_PER_PAGE, (current + 1) * ITEMS_PER_PAGE)
 
   return (
     <section className="border-t bg-muted/20 py-16">
@@ -111,19 +111,19 @@ export function BusinessTestimonials() {
           <Button
             variant="outline"
             size="icon"
-            disabled={page === 0}
-            onClick={() => setPage(p => Math.max(0, p - 1))}
+            disabled={current === 0}
+            onClick={() => setCurrent(p => Math.max(0, p - 1))}
           >
             <ChevronLeft className="size-4" />
           </Button>
           <span className="text-xs text-muted-foreground">
-            {page + 1} / {totalPages}
+            {current + 1} / {totalPages}
           </span>
           <Button
             variant="outline"
             size="icon"
-            disabled={page >= totalPages - 1}
-            onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+            disabled={current >= totalPages - 1}
+            onClick={() => setCurrent(p => Math.min(totalPages - 1, p + 1))}
           >
             <ChevronRight className="size-4" />
           </Button>

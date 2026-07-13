@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Star, MapPin, Phone, ArrowLeft, Clock, DollarSign, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { CURRENCY } from "@/lib/types"
 import { toast } from "sonner"
 
 const HOURS = Array.from({ length: 10 }, (_, i) => `${(i + 9).toString().padStart(2, "0")}:00`)
@@ -286,7 +287,7 @@ export default function BusinessDetail() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">
-                    ${selectedServiceData.price} &middot; {selectedServiceData.duration} min
+                    {CURRENCY} {selectedServiceData.price} &middot; {selectedServiceData.duration} min
                   </p>
 
                   <div>

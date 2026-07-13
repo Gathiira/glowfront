@@ -26,7 +26,7 @@ const cities = ["All", "Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thi
 function BusinessCard({ business }: { business: BusinessCardDto }) {
   const image = business.coverImageUrl || business.coverUrl || business.logoUrl
   return (
-    <Link href={`/business/${business.id}`} className="block">
+    <Link href={`/business/${business.slug}`} className="block">
       <Card className="h-full transition-shadow hover:shadow-md">
         <CardContent className="p-0">
           <div className="relative h-36 w-full overflow-hidden rounded-t-xl bg-gradient-to-br from-primary/10 to-primary/5">
@@ -97,7 +97,7 @@ export default function BrowsePage() {
   const [selectedCat, setSelectedCat] = useState<string>("ALL")
   const [selectedCity, setSelectedCity] = useState("All")
   const [search, setSearch] = useState("")
-  const [page, setPage] = useState(0)
+  const [current, setCurrent] = useState(0)
   const [results, setResults] = useState<PaginatedResponse<BusinessCardDto> | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -109,8 +109,8 @@ export default function BrowsePage() {
     setLoading(true)
     try {
       const filters: BusinessSearchDto = {
-        page,
-        size: PAGE_SIZE,
+        current,
+        pageSize: PAGE_SIZE,
         sortBy: "rating",
         sortDirection: "desc",
       }
@@ -128,7 +128,7 @@ export default function BrowsePage() {
     } finally {
       setLoading(false)
     }
-  }, [search, selectedCat, selectedCity, page, categories])
+  }, [search, selectedCat, selectedCity, current, categories])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -139,7 +139,7 @@ export default function BrowsePage() {
 
   const handleCategoryChange = (cat: string) => {
     setSelectedCat(cat)
-    setPage(0)
+    setCurrent(0)
   }
 
   const allCategoryNames = ["ALL", ...categories.map((c) => c.displayName)]
@@ -179,7 +179,7 @@ export default function BrowsePage() {
             value={search}
             onChange={(e) => {
               setSearch(e.target.value)
-              setPage(0)
+              setCurrent(0)
             }}
           />
         </div>
@@ -208,7 +208,7 @@ export default function BrowsePage() {
               key={city}
               onClick={() => {
                 setSelectedCity(city)
-                setPage(0)
+                setCurrent(0)
               }}
               className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                 selectedCity === city
@@ -268,10 +268,10 @@ export default function BrowsePage() {
               ))}
             </div>
             <Pagination
-              page={page}
+              currentPage={current}
               totalPages={results.totalPages}
               totalElements={results.totalElements}
-              onPageChange={setPage}
+              onPageChange={setCurrent}
             />
           </>
         ) : (
@@ -288,7 +288,7 @@ export default function BrowsePage() {
                   setSelectedCity("All")
                   setSearch("")
                   setSelectedCat("ALL")
-                  setPage(0)
+                  setCurrent(0)
                 }}
               >
                 Clear filters

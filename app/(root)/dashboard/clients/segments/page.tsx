@@ -2,6 +2,7 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CURRENCY } from "@/lib/types"
 
 const segments = [
   { name: "VIP", count: 12, avgSpend: 320, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" },
@@ -30,7 +31,7 @@ export default function ClientSegments() {
               </div>
               <div className="flex items-baseline justify-between">
                 <span className="text-sm text-muted-foreground">Avg. Spend</span>
-                <span className="font-medium">${seg.avgSpend}</span>
+                <span className="font-medium">{CURRENCY} {seg.avgSpend}</span>
               </div>
             </CardContent>
           </Card>

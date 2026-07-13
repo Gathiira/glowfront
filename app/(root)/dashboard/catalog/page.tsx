@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { CURRENCY } from "@/lib/types"
 import {
   Select,
   SelectContent,
@@ -134,7 +135,7 @@ export default function Catalog() {
                       <p className="font-medium">{s.name}</p>
                       <p className="text-xs text-muted-foreground">{s.duration} min</p>
                     </div>
-                    <span className="font-semibold">${s.price}</span>
+                    <span className="font-semibold">{CURRENCY} {s.price}</span>
                   </div>
                 ))}
               </div>

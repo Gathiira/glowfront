@@ -1,3 +1,5 @@
+export const CURRENCY = "KSH"
+
 export type BusinessCategory = {
   id: string
   name: string
@@ -156,15 +158,15 @@ export type BusinessSearchDto = {
   priceMin?: number
   priceMax?: number
   openNow?: boolean
-  page?: number
-  size?: number
+  current?: number
+  pageSize?: number
   sortBy?: string
   sortDirection?: "asc" | "desc"
 }
 
 export type PaginatedResponse<T> = {
   current: number
-  size: number
+  pageSize: number
   totalElements: number
   totalPages: number
   list: T[]
@@ -198,6 +200,126 @@ export const BUSINESS_CATEGORIES: BusinessCategory[] = [
   { id: "waxing", name: "Waxing Salon" },
   { id: "tattooing-piercing", name: "Tattooing and Piercing" },
 ]
+
+export type BusinessStatus = "PENDING_VERIFICATION" | "ACTIVE" | "SUSPENDED" | "DEACTIVATED"
+
+export type BusinessLocationDto = {
+  id: number
+  streetAddress: string
+  city: string
+  countyState: string
+  country: string
+  postalCode: string | null
+  latitude: number
+  longitude: number
+  mapsUrl: string | null
+}
+
+export type BusinessGalleryDto = {
+  id: number
+  imageUrl: string
+  caption?: string
+}
+
+export type BusinessAmenityDto = {
+  id: number
+  name: string
+}
+
+export type BusinessOpeningHoursDto = {
+  id: number
+  dayOfWeek: string
+  openTime: string
+  closeTime: string
+  closed: boolean
+}
+
+export type BusinessSocialMediaDto = {
+  id: number
+  platform: string
+  url: string
+}
+
+export type BusinessDto = {
+  id: number
+  name: string
+  description: string
+  slug: string
+  logoUrl: string | null
+  coverUrl: string | null
+  phone: string
+  email: string
+  website: string | null
+  categoryId: number
+  categoryName: string
+  partnerId: number
+  status: BusinessStatus
+  verified: boolean
+  overallRating: number
+  totalReviews: number
+  priceRangeMin: number | null
+  priceRangeMax: number | null
+  location: BusinessLocationDto | null
+  gallery: BusinessGalleryDto[]
+  amenities: BusinessAmenityDto[]
+  openingHours: BusinessOpeningHoursDto[]
+  socialMedia: BusinessSocialMediaDto[]
+}
+
+export type ReviewImageDto = {
+  id: number
+  imageUrl: string
+}
+
+export type ReviewDto = {
+  id: number
+  businessId: number
+  customerName: string
+  customerEmail: string
+  rating: number
+  comment: string
+  images: ReviewImageDto[]
+  createdAt: string
+}
+
+export type StaffDto = {
+  id: number
+  businessId: number
+  name: string
+  profilePhotoUrl: string | null
+  bio: string | null
+  jobTitle: string | null
+  yearsExperience: number
+  averageRating: number
+  reviewCount: number
+  active: boolean
+  serviceIds: number[]
+}
+
+export type ServiceCategoryEnum =
+  | "HAIR"
+  | "BARBER"
+  | "NAILS"
+  | "SPA"
+  | "MASSAGE"
+  | "FACIAL"
+  | "MAKEUP"
+  | "TATTOO"
+  | "OTHER"
+
+export type ServiceDto = {
+  id: number
+  businessId: number
+  name: string
+  description: string | null
+  category: ServiceCategoryEnum
+  durationMinutes: number
+  price: number
+  currency: string
+  imageUrl: string | null
+  displayOrder: number
+  active: boolean
+}
 
 export const COUNTRIES = [
   { code: "US", name: "United States" },

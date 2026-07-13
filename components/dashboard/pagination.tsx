@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react"
 
 type PaginationProps = {
-  page: number
+  currentPage: number
   totalPages: number
   totalElements: number
   onPageChange: (page: number) => void
 }
 
 export function Pagination({
-  page,
+  currentPage,
   totalPages,
   totalElements,
   onPageChange,
@@ -27,7 +27,7 @@ export function Pagination({
         <Button
           variant="outline"
           size="icon-sm"
-          disabled={page === 0}
+          disabled={currentPage === 0}
           onClick={() => onPageChange(0)}
         >
           <ChevronsLeft className="size-4" />
@@ -35,26 +35,26 @@ export function Pagination({
         <Button
           variant="outline"
           size="icon-sm"
-          disabled={page === 0}
-          onClick={() => onPageChange(page - 1)}
+          disabled={currentPage === 0}
+          onClick={() => onPageChange(currentPage - 1)}
         >
           <ChevronLeft className="size-4" />
         </Button>
         <span className="px-3 text-sm text-muted-foreground">
-          {page + 1} / {totalPages}
+          {currentPage + 1} / {totalPages}
         </span>
         <Button
           variant="outline"
           size="icon-sm"
-          disabled={page >= totalPages - 1}
-          onClick={() => onPageChange(page + 1)}
+          disabled={currentPage >= totalPages - 1}
+          onClick={() => onPageChange(currentPage + 1)}
         >
           <ChevronRight className="size-4" />
         </Button>
         <Button
           variant="outline"
           size="icon-sm"
-          disabled={page >= totalPages - 1}
+          disabled={currentPage >= totalPages - 1}
           onClick={() => onPageChange(totalPages - 1)}
         >
           <ChevronsRight className="size-4" />

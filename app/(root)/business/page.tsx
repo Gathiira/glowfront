@@ -184,7 +184,7 @@ export default function BusinessPage() {
             <Card>
               <CardContent className="p-6 text-center">
                 <h3 className="text-lg font-semibold">Free</h3>
-                <p className="mt-1 text-3xl font-bold">KES 0</p>
+                <p className="mt-1 text-3xl font-bold">KSH 0</p>
                 <p className="text-xs text-muted-foreground">per month</p>
                 <ul className="mt-6 space-y-2 text-left text-sm">
                   {[

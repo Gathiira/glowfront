@@ -2,6 +2,7 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CURRENCY } from "@/lib/types"
 import {
   Table,
   TableBody,
@@ -30,15 +31,15 @@ export default function CashMovement() {
       <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <Card>
           <CardHeader><CardTitle>Total In</CardTitle></CardHeader>
-          <CardContent><p className="text-2xl font-bold text-green-600">+${totalIn}</p></CardContent>
+          <CardContent><p className="text-2xl font-bold text-green-600">+{CURRENCY} {totalIn}</p></CardContent>
         </Card>
         <Card>
           <CardHeader><CardTitle>Total Out</CardTitle></CardHeader>
-          <CardContent><p className="text-2xl font-bold text-red-600">-${totalOut}</p></CardContent>
+          <CardContent><p className="text-2xl font-bold text-red-600">-{CURRENCY} {totalOut}</p></CardContent>
         </Card>
         <Card>
           <CardHeader><CardTitle>Net Cash Flow</CardTitle></CardHeader>
-          <CardContent><p className="text-2xl font-bold">${totalIn - totalOut}</p></CardContent>
+          <CardContent><p className="text-2xl font-bold">{CURRENCY} {totalIn - totalOut}</p></CardContent>
         </Card>
       </div>
 
@@ -70,7 +71,7 @@ export default function CashMovement() {
                   <TableCell>{m.method}</TableCell>
                   <TableCell>{m.date}</TableCell>
                   <TableCell className={`text-right font-medium ${m.amount > 0 ? "text-green-600" : "text-red-600"}`}>
-                    {m.amount > 0 ? "+" : ""}${Math.abs(m.amount)}
+                    {m.amount > 0 ? "+" : ""}{CURRENCY} {Math.abs(m.amount)}
                   </TableCell>
                 </TableRow>
               ))}
