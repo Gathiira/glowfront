@@ -81,6 +81,7 @@ export type BusinessReview = {
 
 export type Business = {
   id: string
+  slug: string
   name: string
   category: string
   address: string

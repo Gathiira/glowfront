@@ -136,7 +136,7 @@ export default function Browse() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {results.list.map((b) => (
-              <Link key={b.id} href={`/platform/browse/${b.id}`}>
+              <Link key={b.id} href={`/platform/browse/${b.slug}`}>
                 <Card className="h-full transition-shadow hover:shadow-md">
                   <CardContent className="p-0">
                     <div className="relative flex h-32 items-center justify-center rounded-t-xl bg-linear-to-br from-primary/10 to-primary/5">

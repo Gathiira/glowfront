@@ -47,6 +47,7 @@ export function clearCustomerProfile() {
 const mockBusinesses: Business[] = [
   {
     id: "b1",
+    slug: "glamour-cuts",
     name: "Glamour Cuts",
     category: "Hair Salon",
     address: "123 Main St",
@@ -116,6 +117,7 @@ const mockBusinesses: Business[] = [
   },
   {
     id: "b2",
+    slug: "polished-nail-bar",
     name: "Polished Nail Bar",
     category: "Nails",
     address: "456 Oak Ave",
@@ -178,6 +180,7 @@ const mockBusinesses: Business[] = [
   },
   {
     id: "b3",
+    slug: "urban-barber-co",
     name: "Urban Barber Co.",
     category: "Barber",
     address: "789 Pine St",
@@ -240,6 +243,7 @@ const mockBusinesses: Business[] = [
   },
   {
     id: "b4",
+    slug: "serenity-massage-studio",
     name: "Serenity Massage Studio",
     category: "Massage",
     address: "321 Elm St",
@@ -302,6 +306,7 @@ const mockBusinesses: Business[] = [
   },
   {
     id: "b5",
+    slug: "luxe-beauty-lounge",
     name: "Luxe Beauty Lounge",
     category: "Beauty Salon",
     address: "555 Park Ave",
@@ -364,6 +369,7 @@ const mockBusinesses: Business[] = [
   },
   {
     id: "b6",
+    slug: "ink-steel-tattoo",
     name: "Ink & Steel Tattoo",
     category: "Tattooing and Piercing",
     address: "888 Broadway",
@@ -496,6 +502,7 @@ type CustomerContextType = {
   businesses: Business[]
   appointments: CustomerAppointment[]
   getBusiness: (id: string) => Business | undefined
+  getBusinessBySlug: (slug: string) => Business | undefined
   createAppointment: (
     appt: Omit<CustomerAppointment, "id" | "reviewed">
   ) => void
@@ -526,6 +533,11 @@ export function CustomerProvider({ children }: { children: ReactNode }) {
 
   const getBusiness = useCallback(
     (id: string) => businesses.find((b) => b.id === id),
+    [businesses]
+  )
+
+  const getBusinessBySlug = useCallback(
+    (slug: string) => businesses.find((b) => b.slug === slug),
     [businesses]
   )
 
@@ -600,6 +612,7 @@ export function CustomerProvider({ children }: { children: ReactNode }) {
         businesses,
         appointments,
         getBusiness,
+        getBusinessBySlug,
         createAppointment,
         cancelAppointment,
         addReview,
