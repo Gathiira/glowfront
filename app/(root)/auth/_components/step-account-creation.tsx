@@ -46,9 +46,11 @@ type Props = {
   form: UseFormReturn<AccountFormData>
   onSubmit: (data: AccountFormData) => void
   onBack: () => void
+  btnRef?: React.RefObject<HTMLButtonElement | null>
+  isSubmitting?: boolean
 }
 
-export default function StepAccountCreation({ form, onSubmit, onBack }: Props) {
+export default function StepAccountCreation({ form, onSubmit, onBack, btnRef, isSubmitting }: Props) {
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <div className="space-y-2 text-center">
@@ -229,7 +231,13 @@ export default function StepAccountCreation({ form, onSubmit, onBack }: Props) {
       </FieldGroup>
 
       <div className="mt-6 flex flex-col gap-3">
-        <Button type="submit" size="lg" className="w-full py-5">
+        <Button
+          ref={btnRef}
+          type="submit"
+          size="lg"
+          className="w-full py-5"
+          disabled={isSubmitting}
+        >
           Continue
         </Button>
         <Button
@@ -238,6 +246,7 @@ export default function StepAccountCreation({ form, onSubmit, onBack }: Props) {
           size="lg"
           className="w-full py-5"
           onClick={onBack}
+          disabled={isSubmitting}
         >
           Back to login
         </Button>

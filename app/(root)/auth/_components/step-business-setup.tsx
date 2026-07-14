@@ -71,10 +71,12 @@ export default function StepBusinessSetup({
   isSubmitting,
 }: Props) {
   const {
-    data: categories,
+    data: response,
     error: categoriesError,
     isLoading: categoriesLoading,
   } = useCategories()
+
+  const categories = response?.data
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -148,8 +150,8 @@ export default function StepBusinessSetup({
                 </SelectTrigger>
                 <SelectContent>
                   {categories?.map((cat) => (
-                    <SelectItem key={cat.id} value={cat.id}>
-                      {cat.name}
+                <SelectItem key={cat.id} value={String(cat.id)}>
+                          {cat.displayName}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -233,7 +235,7 @@ export default function StepBusinessSetup({
           className="w-full py-5"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Creating account..." : "Create account"}
+          {isSubmitting ? "Setting up business..." : "Setup business"}
         </Button>
         <Button
           type="button"

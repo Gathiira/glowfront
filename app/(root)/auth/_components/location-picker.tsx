@@ -106,7 +106,7 @@ async function searchQuery(
   }
 }
 
-const defaultCenter: [number, number] = [40.7128, -74.006]
+const defaultCenter: [number, number] = [-1.2921, 36.8219]
 
 export default function LocationPicker({ value, onChange }: Props) {
   const [search, setSearch] = useState("")
@@ -204,7 +204,7 @@ export default function LocationPicker({ value, onChange }: Props) {
       <div className="relative z-0 h-64 w-full overflow-hidden rounded-lg border">
         <MapContainer
           center={hasPosition ? [value.lat, value.lng] : defaultCenter}
-          zoom={hasPosition ? 15 : 3}
+          zoom={hasPosition ? 15 : 12}
           className="h-full w-full"
           zoomControl={true}
           key={flyKey}

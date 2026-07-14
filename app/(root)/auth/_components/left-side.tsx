@@ -13,7 +13,6 @@ import PartnerRegistrationFlow from "./partner-registration-flow"
 
 const formSchema = z.object({
   email: z
-    .string()
     .email("Email is required and must be a valid email address")
     .optional(),
   password: z
@@ -56,7 +55,7 @@ const LeftSide = () => {
 
   if (mode === "success") {
     return (
-      <div className="w-full py-4">
+      <div className="flex min-h-full flex-col py-4">
         <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Account created!</h2>
@@ -150,7 +149,7 @@ const LeftSide = () => {
           <Link href="#">Go to GlowBuddy for customers</Link>
         </div>
       </div>
-      <div className="absolute bottom-8 flex w-full justify-center gap-2 text-xs text-muted-foreground md:max-w-1/2">
+      <div className="mt-auto flex w-full justify-center gap-2 pt-8 text-xs text-muted-foreground">
         <Link href="#">Support</Link>•<Link href="#">Privacy Policy</Link>
       </div>
     </div>

@@ -1,11 +1,10 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import type { PartnerAccountData } from "@/lib/types"
-import { registerPartner } from "@/lib/api/partner"
 import {
   accountFormSchema,
   type AccountFormData,
@@ -16,6 +15,8 @@ import {
 } from "./step-business-setup"
 import StepAccountCreation from "./step-account-creation"
 import StepBusinessSetup from "./step-business-setup"
+import { useLoading } from "@/components/loading-provider"
+import { showError, showSuccess } from "@/lib/toast"
 
 type Step = "account" | "business"
 
@@ -25,11 +26,9 @@ type Props = {
 }
 
 export default function PartnerRegistrationFlow({ onSuccess, onBack }: Props) {
+  const btnRef = useRef<HTMLButtonElement>(null)
   const [step, setStep] = useState<Step>("account")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [accountData, setAccountData] = useState<PartnerAccountData | null>(
-    null
-  )
+  const { startLoading, stopLoading, isLoading } = useLoading()
 
   const accountForm = useForm<AccountFormData>({
     resolver: zodResolver(accountFormSchema),
@@ -55,24 +54,91 @@ export default function PartnerRegistrationFlow({ onSuccess, onBack }: Props) {
     },
   })
 
-  const handleAccountSubmit = (data: AccountFormData) => {
-    setAccountData(data)
-    setStep("business")
+  const handleAccountSubmit = async (data: AccountFormData) => {
+    startLoading(btnRef)
+    try {
+      const res = await fetch("/api/auth/partner-register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phoneNumber,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+          country: data.country,
+          agreeToTerms: data.agreeToTerms,
+        }),
+      })
+
+      const json = await res.json()
+
+      if (json.code !== 200) {
+        showError(json.msg || "Registration failed")
+        return
+      }
+
+      if (json.data?.profile) {
+        localStorage.setItem(
+          "customer_profile",
+          JSON.stringify(json.data.profile)
+        )
+      }
+
+      if (json.data?.partnerProfile) {
+        localStorage.setItem(
+          "partner_profile",
+          JSON.stringify(json.data.partnerProfile)
+        )
+      }
+
+      showSuccess("Account created successfully")
+      setStep("business")
+    } catch (err) {
+      showError(err)
+    } finally {
+      stopLoading()
+    }
   }
 
   const handleBusinessSubmit = async (data: BusinessFormData) => {
-    if (!accountData) return
-    setIsSubmitting(true)
-
     try {
-      const result = await registerPartner(accountData, data)
-      if (result.success) {
-        onSuccess()
+      const res = await fetch("/api/auth/partner-setup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          businessName: data.businessName,
+          website: data.website || null,
+          categoryId: Number(data.categoryId),
+          serviceLocationType: data.serviceType === "physical" ? "PHYSICAL_LOCATION" : "MOBILE_OPERATOR",
+          location: {
+            streetAddress: data.location.address,
+            city: data.location.town,
+            latitude: data.location.lat,
+            longitude: data.location.lng,
+          },
+        }),
+      })
+
+      const json = await res.json()
+
+      if (json.code !== 200) {
+        showError(json.msg || "Failed to save business")
+        return
       }
-    } catch (error) {
-      console.error("Registration failed:", error)
-    } finally {
-      setIsSubmitting(false)
+
+      if (json.data?.partnerProfile) {
+        localStorage.setItem(
+          "partner_profile",
+          JSON.stringify(json.data.partnerProfile)
+        )
+      }
+
+      showSuccess("Business setup complete")
+      onSuccess()
+    } catch (err) {
+      showError(err)
     }
   }
 
@@ -127,6 +193,8 @@ export default function PartnerRegistrationFlow({ onSuccess, onBack }: Props) {
             form={accountForm}
             onSubmit={handleAccountSubmit}
             onBack={onBack}
+            btnRef={btnRef}
+            isSubmitting={isLoading}
           />
         )}
 
@@ -134,15 +202,10 @@ export default function PartnerRegistrationFlow({ onSuccess, onBack }: Props) {
           <StepBusinessSetup
             form={businessForm}
             onSubmit={handleBusinessSubmit}
-            onBack={() => {
-              setStep("account")
-            }}
-            isSubmitting={isSubmitting}
+            onBack={() => setStep("account")}
+            isSubmitting={false}
           />
         )}
-      </div>
-      <div className="absolute bottom-8 flex w-full justify-center gap-2 text-xs text-muted-foreground md:max-w-1/2">
-        <a href="#">Support</a>•<a href="#">Privacy Policy</a>
       </div>
     </div>
   )
