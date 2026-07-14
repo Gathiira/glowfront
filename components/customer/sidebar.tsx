@@ -5,7 +5,18 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { clearCustomerProfile } from "@/lib/customer-context"
-import { Compass, Calendar, CalendarCheck, User, Menu, X, LayoutDashboard, House, LogOut, AlertTriangle } from "lucide-react"
+import {
+  Compass,
+  Calendar,
+  CalendarCheck,
+  User,
+  Menu,
+  X,
+  LayoutDashboard,
+  House,
+  LogOut,
+  AlertTriangle,
+} from "lucide-react"
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -23,7 +34,11 @@ const navItems = [
   { label: "Home", href: "/platform/home", icon: House },
   { label: "Browse", href: "/platform/browse", icon: Compass },
   { label: "Calendar", href: "/platform/calendar", icon: Calendar },
-  { label: "Appointments", href: "/platform/appointments", icon: CalendarCheck },
+  {
+    label: "Appointments",
+    href: "/platform/appointments",
+    icon: CalendarCheck,
+  },
   { label: "Profile", href: "/platform/profile", icon: User },
 ]
 
@@ -54,7 +69,8 @@ export function PlatformSidebar() {
   const closeDrawer = () => setMobileDrawerOpen(false)
 
   const isActive = (href: string) => {
-    if (href === "/platform/browse") return pathname.startsWith("/platform/browse")
+    if (href === "/platform/browse")
+      return pathname.startsWith("/platform/browse")
     return pathname === href
   }
 
@@ -69,7 +85,7 @@ export function PlatformSidebar() {
           onClick={onNav}
           className={cn(
             "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted",
-            active && "bg-muted",
+            active && "bg-muted"
           )}
         >
           <Icon className="size-4 shrink-0" />
@@ -80,7 +96,7 @@ export function PlatformSidebar() {
 
   return (
     <>
-      <aside className="hidden md:fixed md:left-0 md:top-0 md:z-30 md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
+      <aside className="hidden md:fixed md:top-0 md:left-0 md:z-30 md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
         <Link
           href="/platform/home"
           className="mb-6 flex items-center gap-2 px-2 text-lg font-bold"
@@ -103,8 +119,7 @@ export function PlatformSidebar() {
               </AlertDialogMedia>
               <AlertDialogTitle>Confirm logout</AlertDialogTitle>
               <AlertDialogDescription>
-                Are you sure you want to log out? You&apos;ll need to sign in
-                again to access your account.
+                Are you sure you want to log out?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -117,7 +132,7 @@ export function PlatformSidebar() {
         </AlertDialog>
       </aside>
 
-      <nav className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t bg-background/80 px-2 pb-safe backdrop-blur-lg md:hidden">
+      <nav className="pb-safe fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t bg-background/80 px-2 backdrop-blur-lg md:hidden">
         {bottomNavItems.map((item) => {
           const Icon = item.icon
           const active = isActive(item.href)
@@ -129,7 +144,7 @@ export function PlatformSidebar() {
                 "flex flex-col items-center gap-0.5 px-3 py-2 text-[10px] font-medium transition-colors",
                 active
                   ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground",
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               <Icon className={cn("size-5", active ? "text-primary" : "")} />
@@ -148,12 +163,15 @@ export function PlatformSidebar() {
       </nav>
 
       {mobileDrawerOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 md:hidden" onClick={closeDrawer} />
+        <div
+          className="fixed inset-0 z-50 bg-black/50 md:hidden"
+          onClick={closeDrawer}
+        />
       )}
       <div
         className={cn(
           "fixed inset-y-0 right-0 z-50 w-72 max-w-[85vw] bg-card shadow-xl transition-transform duration-300 md:hidden",
-          mobileDrawerOpen ? "translate-x-0" : "translate-x-full",
+          mobileDrawerOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
         <div className="flex items-center justify-between border-b px-4 py-4">
@@ -183,18 +201,19 @@ export function PlatformSidebar() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Confirm logout</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to log out? You&apos;ll need to sign
-                  in again to access your account.
+                  Are you sure you want to log out? You&apos;ll need to sign in
+                  again to access your account.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel
-                  onClick={closeDrawer}
-                >
+                <AlertDialogCancel onClick={closeDrawer}>
                   Cancel
                 </AlertDialogCancel>
                 <AlertDialogAction
-                  onClick={() => { closeDrawer(); handleLogout() }}
+                  onClick={() => {
+                    closeDrawer()
+                    handleLogout()
+                  }}
                 >
                   Logout
                 </AlertDialogAction>

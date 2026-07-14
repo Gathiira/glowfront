@@ -5,6 +5,14 @@ import { Controller, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Field, FieldError, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/ui/password-input"
@@ -139,32 +147,6 @@ const CustomerFlow = () => {
     } finally {
       stopLoading()
     }
-  }
-
-  if (mode === "success") {
-    return (
-      <div className="flex h-full w-full py-4">
-        <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
-          <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary/10">
-            <Sparkles className="size-8 text-primary" />
-          </div>
-          <div className="space-y-2">
-            <h2 className="text-2xl font-semibold">Welcome to GlowBuddy!</h2>
-            <p className="text-sm text-muted-foreground">
-              Your account has been created. Start exploring and booking
-              appointments with top beauty and wellness professionals.
-            </p>
-          </div>
-          <Button
-            size="lg"
-            className="w-full py-5"
-            onClick={() => setMode("login")}
-          >
-            Go to login
-          </Button>
-        </div>
-      </div>
-    )
   }
 
   if (mode === "register") {
@@ -365,91 +347,119 @@ const CustomerFlow = () => {
   }
 
   return (
-    <div className="flex w-full py-4">
-      <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
-        <div className="space-y-1">
-          <h2 className="text-2xl font-semibold">GlowBuddy for customers</h2>
-          <small className="text-muted-foreground">
-            Log in to book appointments and discover beauty services
-          </small>
-        </div>
-
-        <form
-          onSubmit={loginForm.handleSubmit(handleLogin)}
-          className="space-y-6"
-        >
-          <FieldGroup>
-            <Controller
-              name="email"
-              control={loginForm.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <Input
-                    {...field}
-                    placeholder="Enter your email address"
-                    type="email"
-                    autoComplete="email"
-                    className="py-5"
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="password"
-              control={loginForm.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <PasswordInput
-                    {...field}
-                    placeholder="Enter your password"
-                    autoComplete="current-password"
-                    className="py-5"
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-          </FieldGroup>
-          <div className="flex flex-col gap-3">
-            <Button
-              ref={btnRef}
-              type="submit"
-              size="lg"
-              className="w-full py-5"
-              disabled={isLoading}
-            >
-              Continue
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              className="w-full py-5"
-              onClick={() => setMode("register")}
-              disabled={isLoading}
-            >
-              Create an account
-            </Button>
+    <>
+      <div className="flex w-full py-4">
+        <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
+          <div className="space-y-1">
+            <h2 className="text-2xl font-semibold">GlowBuddy for customers</h2>
+            <small className="text-muted-foreground">
+              Log in to book appointments and discover beauty services
+            </small>
           </div>
-        </form>
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Are you a professional looking to list your business?
-          </p>
-          <Link
-            href="/auth/partner"
-            className="text-sm font-medium underline underline-offset-4 hover:text-primary"
+
+          <form
+            onSubmit={loginForm.handleSubmit(handleLogin)}
+            className="space-y-6"
           >
-            Go to GlowBuddy for professionals
-          </Link>
+            <FieldGroup>
+              <Controller
+                name="email"
+                control={loginForm.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <Input
+                      {...field}
+                      placeholder="Enter your email address"
+                      type="email"
+                      autoComplete="email"
+                      className="py-5"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+              <Controller
+                name="password"
+                control={loginForm.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <PasswordInput
+                      {...field}
+                      placeholder="Enter your password"
+                      autoComplete="current-password"
+                      className="py-5"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            </FieldGroup>
+            <div className="flex flex-col gap-3">
+              <Button
+                ref={btnRef}
+                type="submit"
+                size="lg"
+                className="w-full py-5"
+                disabled={isLoading}
+              >
+                Continue
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="lg"
+                className="w-full py-5"
+                onClick={() => setMode("register")}
+                disabled={isLoading}
+              >
+                Create an account
+              </Button>
+            </div>
+          </form>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Are you a professional looking to list your business?
+            </p>
+            <Link
+              href="/auth/partner"
+              className="text-sm font-medium underline underline-offset-4 hover:text-primary"
+            >
+              Go to GlowBuddy for professionals
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+
+      <Dialog open={mode === "success"}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary/10">
+              <Sparkles className="size-8 text-primary" />
+            </div>
+            <DialogTitle className="text-center text-2xl">
+              Welcome to GlowBuddy!
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              Your account has been created. Start exploring and booking
+              appointments with top beauty and wellness professionals.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              size="lg"
+              className="w-full py-5"
+              onClick={() => setMode("login")}
+            >
+              Go to login
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }
 
