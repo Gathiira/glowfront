@@ -19,7 +19,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: app
-          image: ghcr.io/gathiira/glowfront:sha-e75b17f
+          image: ghcr.io/gathiira/glowfront:sha-362f44a
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
