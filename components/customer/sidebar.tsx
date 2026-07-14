@@ -201,8 +201,7 @@ export function PlatformSidebar() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Confirm logout</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to log out? You&apos;ll need to sign in
-                  again to access your account.
+                  Are you sure you want to log out?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
