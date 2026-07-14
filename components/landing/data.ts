@@ -1,76 +1,3 @@
-export type ListingBusiness = {
-  id: string
-  name: string
-  category: string
-  location: string
-  rating: number
-  reviewCount: number
-  imageLabel: string
-  tag?: string
-}
-
-export const recommended: ListingBusiness[] = [
-  { id: "r1", name: "The Address Barber - Ishbiliyah", category: "Barber", location: "Kilimani, Nairobi", rating: 4.9, reviewCount: 3909, imageLabel: "Elegant interior of The Address Barber" },
-  { id: "r2", name: "SENSASIA Stories", category: "Spa & sauna", location: "Westlands, Nairobi", rating: 4.9, reviewCount: 1029, imageLabel: "Luxurious spa room at SENSASIA Stories" },
-  { id: "r3", name: "PLAN B | St. Paul's", category: "Barber", location: "Nyali, Mombasa", rating: 5.0, reviewCount: 179, imageLabel: "Modern barbershop interior at PLAN B" },
-  { id: "r4", name: "Yin Salon and Spa", category: "Hair Salon", location: "Lavington, Nairobi", rating: 4.9, reviewCount: 498, imageLabel: "Elegant interior of Yin Salon and Spa" },
-  { id: "r5", name: "Barberhood Gents Salon", category: "Barber", location: "Milimani, Kisumu", rating: 5.0, reviewCount: 498, imageLabel: "Barberhood Gents Salon" },
-  { id: "r6", name: "Backyard Barbers", category: "Barber", location: "Mombasa Road, Nairobi", rating: 5.0, reviewCount: 937, imageLabel: "Modern barber lounge at Backyard Barbers" },
-  { id: "r7", name: "YARD Barber and Shop", category: "Barber", location: "Karen, Nairobi", rating: 5.0, reviewCount: 607, imageLabel: "Modern barber chairs at YARD Barber" },
-  { id: "r8", name: "Dessange", category: "Hair Salon", location: "Gigiri, Nairobi", rating: 5.0, reviewCount: 217, imageLabel: "Modern salon interior at Dessange" },
-  { id: "r9", name: "Beautify Me Ladies Salon & Spa", category: "Hair Salon", location: "Parklands, Nairobi", rating: 4.8, reviewCount: 516, imageLabel: "Elegant interior of Beautify Me" },
-  { id: "r10", name: "Smart Cuts Barbershop", category: "Barber", location: "Nakuru Town", rating: 4.6, reviewCount: 26, imageLabel: "Modern interior of Smart Cuts Barbershop" },
-  { id: "r11", name: "BOA Beauty Bar Durbanville", category: "Nails", location: "Eldoret Town", rating: 4.6, reviewCount: 8355, imageLabel: "Luxurious pink interior of BOA Beauty Bar" },
-  { id: "r12", name: "Senor Gents Salon", category: "Barber", location: "Thika Road, Nairobi", rating: 5.0, reviewCount: 1635, imageLabel: "Stylish barber chairs in Senor Gents Salon" },
-  { id: "r13", name: "Maison De Coiffure Beauty Lounge", category: "Beauty Salon", location: "Runda, Nairobi", rating: 4.9, reviewCount: 1425, imageLabel: "Luxurious pedicure stations at Maison De Coiffure" },
-  { id: "r14", name: "Kallos House of Beauty", category: "Beauty Salon", location: "Nyeri Town", rating: 5.0, reviewCount: 715, imageLabel: "Luxurious interior of Kallos House of Beauty" },
-  { id: "r15", name: "Quality Fix Gents Salon | Jaddaf", category: "Barber", location: "Machakos Town", rating: 4.9, reviewCount: 325, imageLabel: "Luxurious interior of Quality Fix Gents Salon" },
-  { id: "r16", name: "The Nest Salon, Sobha Hartland", category: "Hair Salon", location: "Malindi Town", rating: 4.8, reviewCount: 145, imageLabel: "Chic interior of The Nest Salon" },
-]
-
-export const newBusinesses: ListingBusiness[] = [
-  { id: "n1", name: "Strands On Fleek Hair & Nail Bar", category: "Hair Salon", location: "Kilimani, Nairobi", rating: 4.9, reviewCount: 94, imageLabel: "Modern salon interior at Strands On Fleek" },
-  { id: "n2", name: "Maridadi Skincare Solutions", category: "Nails", location: "Nairobi Central, Nairobi", rating: 4.8, reviewCount: 69, imageLabel: "Relaxing treatment room at Maridadi" },
-  { id: "n3", name: "Infinity Spa & Wellness Centre", category: "Beauty Salon", location: "Kileleshwa, Nairobi", rating: 5.0, reviewCount: 33, imageLabel: "Relaxing chaises at Infinity Spa" },
-  { id: "n4", name: "Artistic Grooming Parlour", category: "Hair Salon", location: "Kilimani, Nairobi", rating: 4.9, reviewCount: 71, imageLabel: "Modern interior of Artistic Grooming" },
-  { id: "n5", name: "Kiki's Nail Club", category: "Nails", location: "Kisumu Town", rating: 4.8, reviewCount: 23, imageLabel: "Modern manicure stations at Kiki's" },
-  { id: "n6", name: "Magdy Luxe Salon & Spa", category: "Hair Salon", location: "Kisumu Town", rating: 5.0, reviewCount: 57, imageLabel: "Stylish hair styling stations at Magdy" },
-  { id: "n7", name: "The Pod", category: "Beauty Salon", location: "Nakuru Town", rating: 4.9, reviewCount: 106, imageLabel: "Relaxing treatment room at The Pod" },
-  { id: "n8", name: "ESPER SALON & SPA", category: "Hair Salon", location: "Nyali, Mombasa", rating: 5.0, reviewCount: 185, imageLabel: "Elegant massage tables at ESPER" },
-]
-
-export const newWithTag: ListingBusiness[] = [
-  { id: "nt1", name: "Bella Boo Salon & Spa", category: "Nails", location: "Lang'ata, Nairobi", rating: 5.0, reviewCount: 4, imageLabel: "Luxurious pedicure chairs at Bella Boo", tag: "New" },
-  { id: "nt2", name: "Tarfah Spa", category: "Beauty Salon", location: "Kisumu Town", rating: 4.4, reviewCount: 14, imageLabel: "Relaxing lounge at Tarfah Spa", tag: "New" },
-  { id: "nt3", name: "Jadeel Beauty Spa", category: "Beauty Salon", location: "Kitale Town", rating: 4.5, reviewCount: 31, imageLabel: "Luxurious pedicure room at Jadeel Beauty Spa", tag: "Featured" },
-  { id: "nt4", name: "DEssential Beauty Spa", category: "Spa & sauna", location: "Naivasha Town", rating: 4.9, reviewCount: 21, imageLabel: "Relaxing treatment room at DEssential", tag: "Featured" },
-  { id: "nt5", name: "Lashes by Agr", category: "Eyebrows & Lashes", location: "Meru Town", rating: 5.0, reviewCount: 21, imageLabel: "Luxurious room at Lashes by Agr", tag: "New" },
-  { id: "nt6", name: "Brazil Studio Salon - Sahafa", category: "Hair Salon", location: "Embu Town", rating: 4.3, reviewCount: 6, imageLabel: "Luxurious interior of Brazil Studio Salon", tag: "New" },
-  { id: "nt7", name: "Withar Barbershop", category: "Barber", location: "Nanyuki Town", rating: 5.0, reviewCount: 132, imageLabel: "Withar Barbershop", tag: "New" },
-]
-
-export const trending: ListingBusiness[] = [
-  { id: "t1", name: "Spa By Xenaxia At Movenpick", category: "Spa & sauna", location: "Spring Valley, Nairobi", rating: 4.9, reviewCount: 27, imageLabel: "Tranquil treatment room at Spa By Xenaxia" },
-  { id: "t2", name: "Spa by Xenaxia at Fairmont the Norfolk", category: "Massage", location: "Nairobi Central, Nairobi", rating: 4.8, reviewCount: 41, imageLabel: "Relaxation lounge at Spa by Xenaxia" },
-  { id: "t3", name: "De Bella Curls Spa, Salon & Barber", category: "Hair Salon", location: "Kilimani, Nairobi", rating: 4.7, reviewCount: 11, imageLabel: "Barber chair at De Bella Curls" },
-  { id: "t4", name: "Naurei Atarah", category: "Hair Salon", location: "Kilimani, Nairobi", rating: 4.8, reviewCount: 39, imageLabel: "Chic interior of Naurei Atarah" },
-  { id: "t5", name: "Kristals Hair And Beauty Studio", category: "Beauty Salon", location: "Kilimani, Nairobi", rating: 5.0, reviewCount: 24, imageLabel: "Elegant salon interior at Kristals", tag: "Deals" },
-  { id: "t6", name: "Pitstop Barbers", category: "Barber", location: "Mombasa Town", rating: 5.0, reviewCount: 7859, imageLabel: "Modern interior of Pitstop Barbers", tag: "Deals" },
-]
-
-export const dealsBusinesses: ListingBusiness[] = [
-  { id: "d1", name: "The Address Barber - Al Qirawan", category: "Barber", location: "Kilimani, Nairobi", rating: 5.0, reviewCount: 4008, imageLabel: "Inside The Address Barber", tag: "Featured" },
-  { id: "d2", name: "The Address Barber - Al Aarid", category: "Barber", location: "Westlands, Nairobi", rating: 4.9, reviewCount: 5646, imageLabel: "Luxury barber chairs at The Address Barber", tag: "Featured" },
-  { id: "d3", name: "The Address Barber - Ar Rimal", category: "Barber", location: "Nyali, Mombasa", rating: 5.0, reviewCount: 2641, imageLabel: "Chic interior of The Address Barber", tag: "Featured" },
-  { id: "d4", name: "The Address Barber - Al Nuzhah", category: "Barber", location: "Karen, Nairobi", rating: 5.0, reviewCount: 3162, imageLabel: "Modern interior of The Address Barber", tag: "Deals" },
-  { id: "d5", name: "The Address Barber - Al Malqa", category: "Hair Salon", location: "Lavington, Nairobi", rating: 5.0, reviewCount: 3917, imageLabel: "Modern barbershop at The Address Barber", tag: "Featured" },
-  { id: "d6", name: "The Address Barber - Al Rawdah", category: "Barber", location: "Milimani, Kisumu", rating: 4.9, reviewCount: 2479, imageLabel: "Modern barber station at The Address Barber", tag: "Featured" },
-  { id: "d7", name: "Let's Fade - Nairobi Barbers", category: "Barber", location: "Mombasa Road, Nairobi", rating: 5.0, reviewCount: 8114, imageLabel: "Modern barber shop at Let's Fade", tag: "Featured" },
-  { id: "d8", name: "L8 Elite Barbershop", category: "Barber", location: "Gigiri, Nairobi", rating: 5.0, reviewCount: 2384, imageLabel: "Modern interior of L8 Elite Barbershop", tag: "Featured" },
-  { id: "d9", name: "The Address Barber - Al Ghadir", category: "Barber", location: "Nakuru Town", rating: 5.0, reviewCount: 2103, imageLabel: "Modern interior of The Address Barber", tag: "Deals" },
-  { id: "d10", name: "The Address Barber - Qurtubah", category: "Barber", location: "Eldoret Town", rating: 4.9, reviewCount: 2421, imageLabel: "Stylish barber chairs at The Address Barber", tag: "Featured" },
-]
-
 export type Review = {
   name: string
   location: string
@@ -128,66 +55,6 @@ export const allCategories = [
   "Tattooing & Piercing",
 ]
 
-export const browseBusinesses: ListingBusiness[] = [
-  // Waxing Salons
-  { id: "w1", name: "Smooth Finish Wax Studio", category: "Waxing Salons", location: "Kilimani, Nairobi", rating: 4.7, reviewCount: 234, imageLabel: "Modern waxing suite at Smooth Finish" },
-  { id: "w2", name: "Bare Wax Lounge", category: "Waxing Salons", location: "Nyali, Mombasa", rating: 4.8, reviewCount: 312, imageLabel: "Cozy waxing room at Bare Wax Lounge" },
-  { id: "w3", name: "Sugared & Silky", category: "Waxing Salons", location: "Westlands, Nairobi", rating: 4.6, reviewCount: 145, imageLabel: "Relaxing waxing suite interior" },
-  { id: "w4", name: "Brazilian Beauty Wax Bar", category: "Waxing Salons", location: "Milimani, Kisumu", rating: 4.5, reviewCount: 89, imageLabel: "Chic waxing station at Brazilian Beauty" },
-  { id: "w5", name: "Wax & Glow Studio", category: "Waxing Salons", location: "Nakuru Town", rating: 4.4, reviewCount: 67, imageLabel: "Bright waxing studio interior" },
-  // Medspas
-  { id: "m1", name: "DermaCare Medspa", category: "Medspas", location: "Gigiri, Nairobi", rating: 4.9, reviewCount: 456, imageLabel: "Luxurious medspa treatment room" },
-  { id: "m2", name: "Rejuvenate Medical Aesthetics", category: "Medspas", location: "Nyali, Mombasa", rating: 4.7, reviewCount: 213, imageLabel: "Modern aesthetics treatment room" },
-  { id: "m3", name: "Ageless Medspa & Laser", category: "Medspas", location: "Karen, Nairobi", rating: 4.8, reviewCount: 301, imageLabel: "State-of-the-art laser suite at Ageless" },
-  { id: "m4", name: "Elixir Medspa", category: "Medspas", location: "Kisumu Town", rating: 4.6, reviewCount: 78, imageLabel: "Serene medspa interior at Elixir" },
-  // Tattooing & Piercing
-  { id: "t1", name: "Ink & Needle Tattoo Studio", category: "Tattooing & Piercing", location: "Kilimani, Nairobi", rating: 4.8, reviewCount: 567, imageLabel: "Vibrant tattoo studio at Ink & Needle" },
-  { id: "t2", name: "Golden Needle Piercing", category: "Tattooing & Piercing", location: "Mombasa Town", rating: 4.6, reviewCount: 189, imageLabel: "Sterile piercing suite at Golden Needle" },
-  { id: "t3", name: "ArtSkin Tattoos", category: "Tattooing & Piercing", location: "Lang'ata, Nairobi", rating: 4.7, reviewCount: 423, imageLabel: "Art-filled tattoo parlor at ArtSkin" },
-  { id: "t4", name: "Piercing Paradise", category: "Tattooing & Piercing", location: "Eldoret Town", rating: 4.5, reviewCount: 112, imageLabel: "Modern piercing studio interior" },
-  // Eyebrows & Lashes
-  { id: "e1", name: "Lash Lounge by Grace", category: "Eyebrows & Lashes", location: "Westlands, Nairobi", rating: 4.9, reviewCount: 345, imageLabel: "Elegant lash studio at Lash Lounge" },
-  { id: "e2", name: "Brow & Lash Bar", category: "Eyebrows & Lashes", location: "Nyali, Mombasa", rating: 4.7, reviewCount: 201, imageLabel: "Chic brow bar interior at Brow & Lash" },
-  { id: "e3", name: "Fabulous Lashes Studio", category: "Eyebrows & Lashes", location: "Nakuru Town", rating: 4.8, reviewCount: 156, imageLabel: "Luxurious lash extension room" },
-  // Massages
-  { id: "ma1", name: "Serenity Massage Therapy", category: "Massages", location: "Lavington, Nairobi", rating: 4.9, reviewCount: 278, imageLabel: "Tranquil massage room at Serenity" },
-  { id: "ma2", name: "Hands of Healing Massage", category: "Massages", location: "Eldoret Town", rating: 4.6, reviewCount: 134, imageLabel: "Relaxing massage suite at Hands of Healing" },
-  { id: "ma3", name: "Aroma Touch Massage", category: "Massages", location: "Thika Town", rating: 4.7, reviewCount: 198, imageLabel: "Aromatic massage room at Aroma Touch" },
-  // Additional Hair Salons
-  { id: "h1", name: "Crown & Glory Hair Studio", category: "Hair Salons", location: "Thika Town", rating: 4.5, reviewCount: 87, imageLabel: "Modern hair studio at Crown & Glory" },
-  { id: "h2", name: "Tresses & Trends Salon", category: "Hair Salons", location: "Nakuru Town", rating: 4.6, reviewCount: 145, imageLabel: "Stylish salon chairs at Tresses & Trends" },
-  { id: "h3", name: "Mane Attraction Hair Lounge", category: "Hair Salons", location: "Eldoret Town", rating: 4.7, reviewCount: 234, imageLabel: "Elegant hair lounge interior" },
-  // Additional Beauty Salons
-  { id: "b1", name: "Glow Beauty Lounge", category: "Beauty Salons", location: "Mombasa Town", rating: 4.6, reviewCount: 312, imageLabel: "Luxurious beauty lounge at Glow" },
-  { id: "b2", name: "Radiance Beauty Bar", category: "Beauty Salons", location: "Thika Town", rating: 4.5, reviewCount: 178, imageLabel: "Modern beauty bar interior" },
-  { id: "b3", name: "Pure Beauty Studio", category: "Beauty Salons", location: "Eldoret Town", rating: 4.8, reviewCount: 267, imageLabel: "Serene beauty treatment room" },
-  // Additional Nail Salons
-  { id: "n1", name: "Polished Nail Lounge", category: "Nail Salons", location: "Thika Town", rating: 4.5, reviewCount: 98, imageLabel: "Modern nail lounge at Polished" },
-  { id: "n2", name: "Tips & Toes Nail Bar", category: "Nail Salons", location: "Nakuru Town", rating: 4.7, reviewCount: 167, imageLabel: "Chic nail bar at Tips & Toes" },
-  { id: "n3", name: "Crystal Nail Studio", category: "Nail Salons", location: "Eldoret Town", rating: 4.6, reviewCount: 134, imageLabel: "Elegant manicure stations at Crystal" },
-  // Additional Spas & Saunas
-  { id: "s1", name: "Heavenly Spa & Wellness", category: "Spas & Saunas", location: "Thika Town", rating: 4.8, reviewCount: 212, imageLabel: "Luxurious spa suite at Heavenly" },
-  { id: "s2", name: "Nordic Sauna House", category: "Spas & Saunas", location: "Eldoret Town", rating: 4.6, reviewCount: 89, imageLabel: "Modern sauna room at Nordic" },
-  // Additional Barbers
-  { id: "br1", name: "Classic Cuts Barbershop", category: "Barbers", location: "Thika Town", rating: 4.5, reviewCount: 312, imageLabel: "Traditional barber chairs at Classic Cuts" },
-  { id: "br2", name: "Gentleman's Choice Barber", category: "Barbers", location: "Nakuru Town", rating: 4.7, reviewCount: 201, imageLabel: "Modern barber lounge at Gentleman's Choice" },
-]
-
-export const businessTypes = [
-  { id: "salon", name: "Salon", description: "Hair stylist working on a client's hair in a chic salon", imageUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop" },
-  { id: "barber", name: "Barber", description: "Barber styling a client's hair in a contemporary barbershop", imageUrl: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop" },
-  { id: "nails", name: "Nails", description: "Manicurist applying nail polish to a client's nails", imageUrl: "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=400&h=300&fit=crop" },
-  { id: "spa-sauna", name: "Spa & sauna", description: "Woman relaxing in a spa with a towel wrap and facial mask", imageUrl: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=300&fit=crop" },
-  { id: "medspa", name: "Medspa", description: "Aesthetician performing a facial treatment in a modern med spa", imageUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop" },
-  { id: "massage", name: "Massage", description: "Client receiving a relaxing back massage in a spa environment", imageUrl: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop" },
-  { id: "fitness", name: "Fitness & recovery", description: "Fitness trainer guiding a client through a workout in a gym", imageUrl: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop" },
-  { id: "physical-therapy", name: "Physical therapy", description: "Physical therapist assisting a patient with exercises", imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" },
-  { id: "health", name: "Health practice", description: "Healthcare professional consulting with a patient in a clinic", imageUrl: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop" },
-  { id: "tattoo", name: "Tattoo & piercing", description: "Tattoo artist creating a detailed design on a client's arm", imageUrl: "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=400&h=300&fit=crop" },
-  { id: "pet-grooming", name: "Pet grooming", description: "Professional pet groomer styling a dog in a clean salon", imageUrl: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop" },
-  { id: "tanning", name: "Tanning studio", description: "Modern tanning studio with sunbeds and ambient lighting", imageUrl: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=400&h=300&fit=crop" },
-]
-
 export const businessTestimonials = [
   { name: "Chris Ward", title: "Founder of HUCKLE", location: "Nairobi", text: "Glowbuddy is so easy to manage my team", fullText: "I work with booth renters at my top-rated salon in Nairobi. I love Glowbuddy because it offers my clients a professional appointment booking experience with seamless online booking features, automated reminder emails and texts, advanced POS capabilities and the best payment processing rates I could get for my salon business.", rating: 5 },
   { name: "Pamela B", title: "Salon owner, Nairobi", location: "Nairobi", text: "My clients love it", fullText: "Glowbuddy is the top-rated salon software with all the advanced features you need to operate as a salon business. The marketplace has been incredible for our salon business too, we have hundreds of client reviews and we've increased sales by 31%.", rating: 5 },
@@ -207,9 +74,6 @@ export const businessTestimonials = [
   { name: "Suzanne B", title: "Business owner", location: "Kilifi", text: "Simplify Salon Management", fullText: "The easiest salon software I have ever used! My business runs so smoothly now and I can manage everything on the go. It has all the features a salon needs.", rating: 5 },
   { name: "Carley W", title: "Owner, aesthetician", location: "Lamu", text: "Beauty Industry's Best", fullText: "Glowbuddy is the best software for salons, spas and massage therapists! Having the POS system already integrated to the salon software makes payment easy.", rating: 5 },
 ]
-
-export type BusinessType = typeof businessTypes[number]
-export type BusinessTestimonial = typeof businessTestimonials[number]
 
 export const businessFaqs = [
   { question: "What makes Glowbuddy the leading platform for businesses in beauty and wellness?", answer: "Glowbuddy is the world's leading booking platform for beauty and wellness businesses. We offer a complete suite of tools including online booking, POS, marketing automation, and client management — all with no upfront costs and transparent pricing. Our marketplace connects you with millions of clients looking to book their next appointment." },

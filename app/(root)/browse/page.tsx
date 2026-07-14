@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, Suspense } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useSearchParams } from "next/navigation"
 import { MapPin, ChevronDown, SlidersHorizontal, Search } from "lucide-react"
 import { Header } from "@/components/landing/_components/header"
 import { Footer } from "@/components/landing/_components/footer"
@@ -21,7 +22,15 @@ import type {
 } from "@/lib/types"
 
 const PAGE_SIZE = 12
-const cities = ["All", "Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"]
+const cities = [
+  "All",
+  "Nairobi",
+  "Mombasa",
+  "Kisumu",
+  "Nakuru",
+  "Eldoret",
+  "Thika",
+]
 
 function BusinessCard({ business }: { business: BusinessCardDto }) {
   const image = business.coverImageUrl || business.coverUrl || business.logoUrl
@@ -29,7 +38,7 @@ function BusinessCard({ business }: { business: BusinessCardDto }) {
     <Link href={`/business/${business.slug}`} className="block">
       <Card className="h-full transition-shadow hover:shadow-md">
         <CardContent className="p-0">
-          <div className="relative h-36 w-full overflow-hidden rounded-t-xl bg-gradient-to-br from-primary/10 to-primary/5">
+          <div className="relative h-36 w-full overflow-hidden rounded-t-xl bg-linear-to-br from-primary/10 to-primary/5">
             {image ? (
               <Image
                 src={image}
@@ -47,7 +56,7 @@ function BusinessCard({ business }: { business: BusinessCardDto }) {
             )}
           </div>
           <div className="space-y-2 p-3">
-            <h3 className="line-clamp-2 text-sm font-semibold leading-tight">
+            <h3 className="line-clamp-2 text-sm leading-tight font-semibold">
               {business.name}
             </h3>
             <div className="flex items-center gap-1">
@@ -92,17 +101,23 @@ function CardSkeleton() {
   )
 }
 
-export default function BrowsePage() {
+function BrowseContent() {
+  const searchParams = useSearchParams()
+  const urlCategory = searchParams.get("category")
+
   const [categories, setCategories] = useState<BusinessCategoryDto[]>([])
-  const [selectedCat, setSelectedCat] = useState<string>("ALL")
+  const [selectedCat, setSelectedCat] = useState<string>(urlCategory || "ALL")
   const [selectedCity, setSelectedCity] = useState("All")
   const [search, setSearch] = useState("")
   const [current, setCurrent] = useState(0)
-  const [results, setResults] = useState<PaginatedResponse<BusinessCardDto> | null>(null)
+  const [results, setResults] =
+    useState<PaginatedResponse<BusinessCardDto> | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchBusinessCategories().then(setCategories).catch(() => {})
+    fetchBusinessCategories()
+      .then(setCategories)
+      .catch(() => {})
   }, [])
 
   const fetchBusinesses = useCallback(async () => {
@@ -116,7 +131,11 @@ export default function BrowsePage() {
       }
       if (search.trim()) filters.keyword = search.trim()
       if (selectedCat !== "ALL") {
-        const cat = categories.find((c) => c.displayName === selectedCat)
+        const cat = categories.find(
+          (c) =>
+            c.displayName === selectedCat ||
+            c.name.toLowerCase() === selectedCat.toLowerCase()
+        )
         if (cat) filters.category = cat.name as BusinessSearchDto["category"]
       }
       if (selectedCity && selectedCity !== "All") filters.city = selectedCity
@@ -143,14 +162,22 @@ export default function BrowsePage() {
   }
 
   const allCategoryNames = ["ALL", ...categories.map((c) => c.displayName)]
+
+  const selectedCatObj = categories.find(
+    (c) =>
+      c.displayName === selectedCat ||
+      c.name.toLowerCase() === selectedCat.toLowerCase()
+  )
+  const catDisplayName = selectedCatObj?.displayName || selectedCat
+
   const cityLabel =
-    selectedCat === "Massages"
+    catDisplayName === "Massages"
       ? "Massage"
-      : selectedCat === "Spas & Saunas"
+      : catDisplayName === "Spas & Saunas"
         ? "Spa & Sauna"
-        : selectedCat === "ALL"
+        : catDisplayName === "ALL"
           ? "Businesses"
-          : selectedCat
+          : catDisplayName
 
   return (
     <div className="min-h-screen">
@@ -163,7 +190,9 @@ export default function BrowsePage() {
             Home
           </Link>
           <span className="mx-1.5">›</span>
-          <span className="text-foreground">{selectedCat === "ALL" ? "Browse" : selectedCat}</span>
+          <span className="text-foreground">
+            {selectedCat === "ALL" ? "Browse" : catDisplayName}
+          </span>
           <span className="mx-1.5">›</span>
           <span className="text-foreground">Kenya</span>
           <span className="mx-1.5">›</span>
@@ -171,7 +200,7 @@ export default function BrowsePage() {
         </nav>
 
         {/* Search */}
-        <div className="mb-6 relative">
+        <div className="relative mb-6">
           <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search businesses..."
@@ -229,8 +258,8 @@ export default function BrowsePage() {
         <p className="mt-1 text-sm text-muted-foreground">
           {results ? (
             <>
-              Choose from {results.totalElements} {selectedCat.toLowerCase()} near you in{" "}
-              {selectedCity}
+              Choose from {results.totalElements} {catDisplayName.toLowerCase()}{" "}
+              near you in {selectedCity}
             </>
           ) : (
             "Loading businesses..."
@@ -278,7 +307,7 @@ export default function BrowsePage() {
           <Card className="mt-8">
             <CardContent className="flex flex-col items-center gap-2 py-12 text-center">
               <p className="text-sm text-muted-foreground">
-                No {selectedCat.toLowerCase()} found in {selectedCity}
+                No {catDisplayName.toLowerCase()} found in {selectedCity}
                 {search ? ` matching "${search}"` : ""}.
               </p>
               <Button
@@ -300,5 +329,13 @@ export default function BrowsePage() {
 
       <Footer />
     </div>
+  )
+}
+
+export default function BrowsePage() {
+  return (
+    <Suspense>
+      <BrowseContent />
+    </Suspense>
   )
 }

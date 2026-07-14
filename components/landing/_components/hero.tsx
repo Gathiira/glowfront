@@ -4,14 +4,13 @@ import Link from "next/link"
 
 export function Hero() {
   return (
-    <section className="bg-linear-to-b from-primary/5 to-white px-4 py-16 md:py-32">
+    <section className="bg-linear-to-b from-primary/15 via-primary/5 to-background px-4 py-16 md:py-32">
       <div className="mx-auto max-w-5xl text-center">
-        <h1 className="text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-          Book local selfcare services
+        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          Book. Glow. Repeat.
         </h1>
-        <p className="mt-3 text-sm md:text-base">
-          Discover top-rated salons, barbers, medspas, wellness studios and
-          beauty experts trusted by millions worldwide
+        <p className="mt-3 text-sm text-muted-foreground md:text-base">
+          The easiest way to find, book and pay for beauty and wellness services around you
         </p>
 
         <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-3 rounded-xl border bg-white p-3 shadow-sm md:flex-row md:items-center">
@@ -41,9 +40,8 @@ export function Hero() {
           </Link>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-2 text-sm text-primary">
-          <span className="font-semibold text-foreground">333</span>
-          <span>appointments booked today</span>
+        <div className="mt-8 text-sm text-primary">
+          <span>Glow-ups happening right now</span>
         </div>
       </div>
     </section>

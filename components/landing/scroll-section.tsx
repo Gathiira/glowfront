@@ -1,19 +1,41 @@
+"use client"
+
 import { useRef } from "react"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 import { BusinessCard } from "./business-card"
-import type { ListingBusiness } from "./data"
+import type { BusinessCardDto } from "@/lib/types"
+
+function CardSkeleton() {
+  return (
+    <Card className="w-72 shrink-0 snap-start">
+      <CardContent className="p-0">
+        <Skeleton className="h-36 w-full rounded-none rounded-t-xl" />
+        <div className="space-y-2 p-3">
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-3 w-16" />
+          <Skeleton className="h-3 w-1/2" />
+          <Skeleton className="h-3 w-2/3" />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
 
 export function ScrollSection({
   title,
   subtitle,
   items,
+  loading,
   href,
 }: {
   title: string
   subtitle?: string
-  items: ListingBusiness[]
+  items: BusinessCardDto[]
+  loading?: boolean
   href?: string
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -54,9 +76,11 @@ export function ScrollSection({
         ref={scrollRef}
         className="flex gap-4 overflow-x-auto pb-2 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {items.map((item, i) => (
-          <BusinessCard key={item.id} business={item} index={i} />
-        ))}
+        {loading
+          ? Array.from({ length: 6 }).map((_, i) => <CardSkeleton key={i} />)
+          : items.map((item, i) => (
+              <BusinessCard key={item.id} business={item} index={i} />
+            ))}
       </div>
     </section>
   )

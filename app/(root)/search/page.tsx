@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import Link from "next/link"
 import { MapPin, Star, Search, X, ArrowRight } from "lucide-react"
 import NextDynamic from "next/dynamic"
@@ -10,16 +10,13 @@ import "leaflet/dist/leaflet.css"
 import { Header } from "@/components/landing/_components/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import {
-  recommended,
-  newBusinesses,
-  newWithTag,
-  trending,
-  dealsBusinesses,
-  browseBusinesses,
-  allCategories,
-} from "@/components/landing/data"
-import type { ListingBusiness } from "@/components/landing/data"
+import { Skeleton } from "@/components/ui/skeleton"
+import { searchBusinesses, fetchBusinessCategories } from "@/lib/api"
+import type {
+  BusinessCardDto,
+  BusinessCategoryDto,
+  BusinessSearchDto,
+} from "@/lib/types"
 import { cn } from "@/lib/utils"
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let L: any = null
@@ -29,7 +26,8 @@ if (typeof window !== "undefined") {
 
   const defaultIcon = L.icon({
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-    iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+    iconRetinaUrl:
+      "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
     shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
@@ -48,9 +46,12 @@ const TileLayer = NextDynamic(
   () => import("react-leaflet").then((m) => m.TileLayer),
   { ssr: false }
 )
-const Marker = NextDynamic(() => import("react-leaflet").then((m) => m.Marker), {
-  ssr: false,
-})
+const Marker = NextDynamic(
+  () => import("react-leaflet").then((m) => m.Marker),
+  {
+    ssr: false,
+  }
+)
 const Popup = NextDynamic(() => import("react-leaflet").then((m) => m.Popup), {
   ssr: false,
 })
@@ -83,9 +84,9 @@ const neighborhoodCoords: Record<string, [number, number]> = {
   Nakuru: [-0.3031, 36.08],
 }
 
-function getBusinessCoords(location: string, index: number): [number, number] {
+function getBusinessCoords(address: string, index: number): [number, number] {
   for (const [hood, coords] of Object.entries(neighborhoodCoords)) {
-    if (location.toLowerCase().includes(hood.toLowerCase())) {
+    if (address.toLowerCase().includes(hood.toLowerCase())) {
       const latOff = (seededRandom(index * 7 + 13) - 0.5) * 0.02
       const lngOff = (seededRandom(index * 11 + 3) - 0.5) * 0.02
       return [coords[0] + latOff, coords[1] + lngOff]
@@ -117,7 +118,7 @@ function getBusinessCoords(location: string, index: number): [number, number] {
     kericho: [-0.3689, 35.2863],
     garissa: [-0.4539, 39.6476],
   }
-  const lower = location.toLowerCase()
+  const lower = address.toLowerCase()
   for (const [town, coords] of Object.entries(townMap)) {
     if (lower.includes(town)) {
       const latOff = (seededRandom(index * 7 + 13) - 0.5) * 0.02
@@ -131,82 +132,80 @@ function getBusinessCoords(location: string, index: number): [number, number] {
   ]
 }
 
-function getTownFromLocation(location: string): string {
-  const parts = location.split(",")
-  return parts[parts.length - 1]?.trim() || location
-}
-
-const allBusinesses: (ListingBusiness & { coords: [number, number] })[] = [
-  ...recommended,
-  ...newBusinesses,
-  ...newWithTag,
-  ...trending,
-  ...dealsBusinesses,
-  ...browseBusinesses,
-].map((b, i) => ({ ...b, coords: getBusinessCoords(b.location, i) }))
-
-function dedupe<T extends { id: string }>(arr: T[]): T[] {
-  const seen = new Set<string>()
-  return arr.filter((item) => {
-    if (seen.has(item.id)) return false
-    seen.add(item.id)
-    return true
-  })
-}
-
-const uniqueBusinesses = dedupe(allBusinesses)
-
 const cities = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const kenyaBounds: any = L ? L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0)) : null
+const kenyaBounds: any = L
+  ? L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0))
+  : null
+
+type BusinessWithCoords = BusinessCardDto & { coords: [number, number] }
 
 export default function SearchPage() {
   const [query, setQuery] = useState("")
   const [selectedCat, setSelectedCat] = useState<string | null>(null)
   const [selectedCity, setSelectedCity] = useState<string | null>(null)
-  const [hoveredId, setHoveredId] = useState<string | null>(null)
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [hoveredId, setHoveredId] = useState<number | null>(null)
+  const [selectedId, setSelectedId] = useState<number | null>(null)
+  const [businesses, setBusinesses] = useState<BusinessWithCoords[]>([])
+  const [loading, setLoading] = useState(true)
+  const [categories, setCategories] = useState<BusinessCategoryDto[]>([])
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapRef = useRef<any>(null)
 
-  const filtered = useMemo(() => {
-    return uniqueBusinesses.filter((b) => {
-      if (query) {
-        const q = query.toLowerCase()
-        if (
-          !b.name.toLowerCase().includes(q) &&
-          !b.category.toLowerCase().includes(q) &&
-          !b.location.toLowerCase().includes(q)
-        )
-          return false
+  useEffect(() => {
+    fetchBusinessCategories()
+      .then(setCategories)
+      .catch(() => {})
+  }, [])
+
+  const fetchBusinesses = useCallback(async () => {
+    setLoading(true)
+    try {
+      const filters: BusinessSearchDto = {
+        current: 0,
+        pageSize: 100,
+        sortBy: "rating",
+        sortDirection: "desc",
       }
-      if (selectedCat && b.category !== selectedCat) return false
-      if (
-        selectedCity &&
-        !b.location.toLowerCase().includes(selectedCity.toLowerCase())
-      )
-        return false
-      return true
-    })
-  }, [query, selectedCat, selectedCity])
+      if (query.trim()) filters.keyword = query.trim()
+      if (selectedCat) {
+        const cat = categories.find((c) => c.displayName === selectedCat)
+        if (cat) filters.category = cat.name as BusinessSearchDto["category"]
+      }
+      if (selectedCity) filters.city = selectedCity
 
-  const visibleBusinesses = filtered.slice(0, 50)
+      const data = await searchBusinesses(filters)
+      const withCoords = data.list.map((biz, i) => ({
+        ...biz,
+        coords: getBusinessCoords(biz.address, i),
+      }))
+      setBusinesses(withCoords)
+    } catch {
+      setBusinesses([])
+    } finally {
+      setLoading(false)
+    }
+  }, [query, selectedCat, selectedCity, categories])
 
-  const selectedBiz = useMemo(
-    () => visibleBusinesses.find((b) => b.id === selectedId) ?? null,
-    [visibleBusinesses, selectedId]
-  )
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchBusinesses()
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [fetchBusinesses])
+
+  const selectedBiz = businesses.find((b) => b.id === selectedId) ?? null
 
   const handleSelect = useCallback(
-    (id: string) => {
-      const biz = visibleBusinesses.find((b) => b.id === id)
+    (id: number) => {
+      const biz = businesses.find((b) => b.id === id)
       if (biz) {
         setSelectedId(id)
         mapRef.current?.flyTo(biz.coords, 14, { duration: 0.6 })
       }
     },
-    [visibleBusinesses]
+    [businesses]
   )
 
   return (
@@ -249,20 +248,22 @@ export default function SearchPage() {
               >
                 All
               </button>
-              {allCategories.map((cat) => (
+              {categories.map((cat) => (
                 <button
-                  key={cat}
+                  key={cat.id}
                   onClick={() =>
-                    setSelectedCat(selectedCat === cat ? null : cat)
+                    setSelectedCat(
+                      selectedCat === cat.displayName ? null : cat.displayName
+                    )
                   }
                   className={cn(
                     "shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors",
-                    selectedCat === cat
+                    selectedCat === cat.displayName
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border bg-background hover:border-primary/50"
                   )}
                 >
-                  {cat}
+                  {cat.displayName}
                 </button>
               ))}
             </div>
@@ -303,13 +304,31 @@ export default function SearchPage() {
 
           {/* Results count */}
           <div className="shrink-0 border-b px-4 py-2 text-xs text-muted-foreground">
-            {filtered.length} {filtered.length === 1 ? "result" : "results"}
+            {loading ? (
+              <Skeleton className="h-3 w-20" />
+            ) : (
+              <>
+                {businesses.length}{" "}
+                {businesses.length === 1 ? "result" : "results"}
+              </>
+            )}
           </div>
 
           {/* Scrollable business list */}
           <div className="flex-1 divide-y overflow-y-auto overscroll-contain">
-            {visibleBusinesses.length > 0 ? (
-              visibleBusinesses.map((biz) => (
+            {loading ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="flex gap-3 px-4 py-3">
+                  <Skeleton className="size-10 shrink-0 rounded-lg" />
+                  <div className="flex-1 space-y-2">
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-3 w-1/2" />
+                    <Skeleton className="h-3 w-1/3" />
+                  </div>
+                </div>
+              ))
+            ) : businesses.length > 0 ? (
+              businesses.map((biz) => (
                 <div
                   key={biz.id}
                   className={cn(
@@ -326,7 +345,7 @@ export default function SearchPage() {
                       "flex size-10 shrink-0 items-center justify-center rounded-lg text-xs font-bold",
                       selectedId === biz.id
                         ? "bg-primary text-primary-foreground"
-                        : "bg-gradient-to-br from-primary/10 to-primary/5 text-primary"
+                        : "bg-linear-to-br from-primary/10 to-primary/5 text-primary"
                     )}
                   >
                     {biz.name.charAt(0)}
@@ -334,26 +353,30 @@ export default function SearchPage() {
                   <div className="min-w-0 flex-1">
                     <h3 className="truncate text-sm font-medium">{biz.name}</h3>
                     <p className="text-xs text-muted-foreground">
-                      {biz.category}
+                      {biz.primaryCategory || biz.categories[0] || ""}
                     </p>
                     <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
                       <span className="flex items-center gap-0.5">
                         <Star className="size-3 fill-amber-400 text-amber-400" />
-                        {biz.rating.toFixed(1)}
+                        {biz.overallRating.toFixed(1)}
                       </span>
                       <span>&middot;</span>
                       <span className="flex items-center gap-0.5">
                         <MapPin className="size-3" />
-                        {getTownFromLocation(biz.location)}
+                        {biz.address}
                       </span>
                     </div>
                   </div>
                   <Link
-                    href={`/business/${biz.id}`}
+                    href={`/business/${biz.slug}`}
                     onClick={(e) => e.stopPropagation()}
                     className="shrink-0 self-center"
                   >
-                    <Button variant="outline" size="sm" className="gap-1 text-xs">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="gap-1 text-xs"
+                    >
                       View
                       <ArrowRight className="size-3" />
                     </Button>
@@ -397,20 +420,20 @@ export default function SearchPage() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              {visibleBusinesses.map((biz) => (
+              {businesses.map((biz) => (
                 <Marker key={biz.id} position={biz.coords}>
                   <Popup>
                     <div className="text-sm">
                       <p className="font-semibold">{biz.name}</p>
                       <p className="text-xs text-muted-foreground">
-                        {biz.category}
+                        {biz.primaryCategory || biz.categories[0] || ""}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        {biz.location}
+                        {biz.address}
                       </p>
                       <p className="mt-1 text-xs">
-                        {"★".repeat(Math.round(biz.rating))}{" "}
-                        {biz.rating.toFixed(1)}
+                        {"★".repeat(Math.round(biz.overallRating))}{" "}
+                        {biz.overallRating.toFixed(1)}
                       </p>
                     </div>
                   </Popup>

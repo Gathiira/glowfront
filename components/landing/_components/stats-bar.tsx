@@ -1,6 +1,6 @@
 export function StatsBar() {
   return (
-    <section className="border-t py-12 text-center">
+    <section className="rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-background py-12 text-center">
       <h2 className="text-xl font-semibold">
         The top-rated destination for selfcare
       </h2>
