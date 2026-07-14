@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     }
 
     const accessToken = data.data?.accessToken
-    const role = data.data?.profile?.roles?.[0] ?? "partner"
+    const roles = data.data?.profile?.roles ?? []
     if (!accessToken) {
       return NextResponse.json(
         { code: 500, msg: "Missing token in response", data: null },
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
 
     response.cookies.set(
       SESSION_COOKIE,
-      JSON.stringify({ accessToken, role }),
+      JSON.stringify({ accessToken, roles }),
       {
         httpOnly: true,
         sameSite: "lax",

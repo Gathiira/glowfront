@@ -7,8 +7,16 @@ const SESSION_COOKIE = process.env.SESSION_COOKIE_NAME ?? "session"
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { firstName, lastName, email, phone, password, confirmPassword, country, agreeToTerms } =
-      body
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      confirmPassword,
+      country,
+      agreeToTerms,
+    } = body
 
     const res = await fetch(API_URL + "/api/v1/partner/register", {
       method: "POST",
@@ -37,7 +45,7 @@ export async function POST(request: Request) {
     }
 
     const accessToken = data.data?.accessToken
-    const role = data.data?.profile?.roles?.[0] ?? "partner"
+    const roles = data.data?.profile?.roles ?? []
     if (!accessToken) {
       return NextResponse.json(
         { code: 500, msg: "Missing token in response", data: null },
@@ -49,7 +57,7 @@ export async function POST(request: Request) {
 
     response.cookies.set(
       SESSION_COOKIE,
-      JSON.stringify({ accessToken, role }),
+      JSON.stringify({ accessToken, roles }),
       {
         httpOnly: true,
         sameSite: "lax",

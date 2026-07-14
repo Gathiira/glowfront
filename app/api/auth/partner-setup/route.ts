@@ -11,7 +11,8 @@ export async function POST(request: Request) {
     const token = tokenMatch ? decodeURIComponent(tokenMatch[1]) : ""
 
     const body = await request.json()
-    const { businessName, website, categoryId, serviceLocationType, location } = body
+    const { businessName, website, categoryId, serviceLocationType, location } =
+      body
 
     const res = await fetch(API_URL + "/api/v1/partner/setup", {
       method: "POST",
@@ -40,13 +41,13 @@ export async function POST(request: Request) {
     }
 
     const accessToken = data.data?.accessToken
-    const role = data.data?.profile?.roles?.[0] ?? "partner"
+    const roles = data.data?.profile?.roles ?? []
     if (accessToken) {
       const response = NextResponse.json(data, { status: 200 })
 
       response.cookies.set(
         SESSION_COOKIE,
-        JSON.stringify({ accessToken, role }),
+        JSON.stringify({ accessToken, roles }),
         {
           httpOnly: true,
           sameSite: "lax",

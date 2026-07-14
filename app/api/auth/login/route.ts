@@ -26,10 +26,10 @@ export async function POST(request: Request) {
     }
 
     const accessToken = data.data?.accessToken
-    const role = data.data?.profile?.roles?.[0]
-    if (!accessToken || !role) {
+    const roles = data.data?.profile?.roles
+    if (!accessToken || !roles?.length) {
       return NextResponse.json(
-        { code: 500, msg: "Missing token or role in response", data: null },
+        { code: 500, msg: "Missing token or roles in response", data: null },
         { status: 500 }
       )
     }
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 
     response.cookies.set(
       SESSION_COOKIE,
-      JSON.stringify({ accessToken, role }),
+      JSON.stringify({ accessToken, roles }),
       {
         httpOnly: true,
         sameSite: "lax",
