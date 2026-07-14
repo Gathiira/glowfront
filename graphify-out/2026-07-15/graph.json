@@ -38,81 +38,15 @@
   },
   "nodes": [
     {
-      "label": "sidebar.tsx",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "sidebar.tsx"
-    },
-    {
-      "label": "SubMenuItem",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_submenuitem",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "submenuitem"
-    },
-    {
-      "label": "NavItem",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_navitem",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "navitem"
-    },
-    {
-      "label": "navItems",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_navitems",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "navitems"
-    },
-    {
-      "label": "bottomNavItems",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L96",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_bottomnavitems",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "bottomnavitems"
-    },
-    {
-      "label": "Sidebar()",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L107",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_sidebar",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "sidebar()"
-    },
-    {
       "label": "route.ts",
       "file_type": "code",
       "source_file": "app/api/auth/login/route.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "app_api_auth_login_route",
       "community": 23,
       "community_name": "Business Categories",
-      "norm_label": "route.ts",
-      "id": "app_api_auth_login_route"
+      "norm_label": "route.ts"
     },
     {
       "label": "POST()",
@@ -120,10 +54,10 @@
       "source_file": "app/api/auth/login/route.ts",
       "source_location": "L7",
       "_origin": "ast",
+      "id": "app_api_auth_login_route_post",
       "community": 23,
       "community_name": "Business Categories",
-      "norm_label": "post()",
-      "id": "app_api_auth_login_route_post"
+      "norm_label": "post()"
     },
     {
       "label": "route.ts",
@@ -131,10 +65,10 @@
       "source_file": "app/api/auth/partner-login/route.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "app_api_auth_partner_login_route",
       "community": 46,
       "community_name": "route.ts",
-      "norm_label": "route.ts",
-      "id": "app_api_auth_partner_login_route"
+      "norm_label": "route.ts"
     },
     {
       "label": "POST()",
@@ -142,10 +76,10 @@
       "source_file": "app/api/auth/partner-login/route.ts",
       "source_location": "L7",
       "_origin": "ast",
+      "id": "app_api_auth_partner_login_route_post",
       "community": 46,
       "community_name": "route.ts",
-      "norm_label": "post()",
-      "id": "app_api_auth_partner_login_route_post"
+      "norm_label": "post()"
     },
     {
       "label": "route.ts",
@@ -153,10 +87,10 @@
       "source_file": "app/api/auth/partner-register/route.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "app_api_auth_partner_register_route",
       "community": 47,
       "community_name": "route.ts",
-      "norm_label": "route.ts",
-      "id": "app_api_auth_partner_register_route"
+      "norm_label": "route.ts"
     },
     {
       "label": "POST()",
@@ -164,10 +98,10 @@
       "source_file": "app/api/auth/partner-register/route.ts",
       "source_location": "L7",
       "_origin": "ast",
+      "id": "app_api_auth_partner_register_route_post",
       "community": 47,
       "community_name": "route.ts",
-      "norm_label": "post()",
-      "id": "app_api_auth_partner_register_route_post"
+      "norm_label": "post()"
     },
     {
       "label": "route.ts",
@@ -175,10 +109,10 @@
       "source_file": "app/api/auth/partner-setup/route.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "app_api_auth_partner_setup_route",
       "community": 48,
       "community_name": "route.ts",
-      "norm_label": "route.ts",
-      "id": "app_api_auth_partner_setup_route"
+      "norm_label": "route.ts"
     },
     {
       "label": "POST()",
@@ -186,10 +120,10 @@
       "source_file": "app/api/auth/partner-setup/route.ts",
       "source_location": "L7",
       "_origin": "ast",
+      "id": "app_api_auth_partner_setup_route_post",
       "community": 48,
       "community_name": "route.ts",
-      "norm_label": "post()",
-      "id": "app_api_auth_partner_setup_route_post"
+      "norm_label": "post()"
     },
     {
       "label": "route.ts",
@@ -197,10 +131,10 @@
       "source_file": "app/api/auth/register/route.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "app_api_auth_register_route",
       "community": 28,
       "community_name": "Hover Card",
-      "norm_label": "route.ts",
-      "id": "app_api_auth_register_route"
+      "norm_label": "route.ts"
     },
     {
       "label": "POST()",
@@ -208,10 +142,10 @@
       "source_file": "app/api/auth/register/route.ts",
       "source_location": "L7",
       "_origin": "ast",
+      "id": "app_api_auth_register_route_post",
       "community": 28,
       "community_name": "Hover Card",
-      "norm_label": "post()",
-      "id": "app_api_auth_register_route_post"
+      "norm_label": "post()"
     },
     {
       "label": "proxy.ts",
@@ -219,10 +153,10 @@
       "source_file": "proxy.ts",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "proxy",
       "community": 14,
       "community_name": "Field Components",
-      "norm_label": "proxy.ts",
-      "id": "proxy"
+      "norm_label": "proxy.ts"
     },
     {
       "label": "normalizeRole()",
@@ -230,10 +164,10 @@
       "source_file": "proxy.ts",
       "source_location": "L8",
       "_origin": "ast",
+      "id": "proxy_normalizerole",
       "community": 14,
       "community_name": "Field Components",
-      "norm_label": "normalizerole()",
-      "id": "proxy_normalizerole"
+      "norm_label": "normalizerole()"
     },
     {
       "label": "extractRoles()",
@@ -241,10 +175,10 @@
       "source_file": "proxy.ts",
       "source_location": "L14",
       "_origin": "ast",
+      "id": "proxy_extractroles",
       "community": 14,
       "community_name": "Field Components",
-      "norm_label": "extractroles()",
-      "id": "proxy_extractroles"
+      "norm_label": "extractroles()"
     },
     {
       "label": "proxy()",
@@ -252,10 +186,10 @@
       "source_file": "proxy.ts",
       "source_location": "L31",
       "_origin": "ast",
+      "id": "proxy_proxy",
       "community": 14,
       "community_name": "Field Components",
-      "norm_label": "proxy()",
-      "id": "proxy_proxy"
+      "norm_label": "proxy()"
     },
     {
       "label": "config",
@@ -263,10 +197,10 @@
       "source_file": "proxy.ts",
       "source_location": "L54",
       "_origin": "ast",
+      "id": "proxy_config",
       "community": 14,
       "community_name": "Field Components",
-      "norm_label": "config",
-      "id": "proxy_config"
+      "norm_label": "config"
     },
     {
       "label": "left-side.tsx",
@@ -1286,9 +1220,9 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L209",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "businessdetailpage()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "app_root_business_slug_page_businessdetailpage"
     },
     {
@@ -1407,9 +1341,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "page.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page"
     },
     {
@@ -1418,9 +1352,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "appointment",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_appointment"
     },
     {
@@ -1429,9 +1363,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "colors",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_colors"
     },
     {
@@ -1440,9 +1374,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "statuscolors",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_statuscolors"
     },
     {
@@ -1451,9 +1385,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "formatdate()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_formatdate"
     },
     {
@@ -1462,9 +1396,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "getdaysinmonth()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_getdaysinmonth"
     },
     {
@@ -1473,9 +1407,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "getfirstdayofmonth()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_getfirstdayofmonth"
     },
     {
@@ -1484,9 +1418,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "hours",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_hours"
     },
     {
@@ -1495,9 +1429,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "ispastdate()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_ispastdate"
     },
     {
@@ -1506,9 +1440,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "ispasthour()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_ispasthour"
     },
     {
@@ -1517,9 +1451,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L60",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "calendar()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_calendar"
     },
     {
@@ -2540,9 +2474,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "page.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page"
     },
     {
@@ -2551,9 +2485,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L41",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "mapcontainer",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_mapcontainer"
     },
     {
@@ -2562,9 +2496,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "tilelayer",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_tilelayer"
     },
     {
@@ -2573,9 +2507,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "marker",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_marker"
     },
     {
@@ -2584,9 +2518,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "popup",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_popup"
     },
     {
@@ -2595,9 +2529,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L58",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "flyto",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_flyto"
     },
     {
@@ -2606,9 +2540,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "seededrandom()",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_seededrandom"
     },
     {
@@ -2617,9 +2551,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L68",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "neighborhoodcoords",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_neighborhoodcoords"
     },
     {
@@ -2628,9 +2562,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L87",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "getbusinesscoords()",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_getbusinesscoords"
     },
     {
@@ -2639,9 +2573,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L135",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "cities",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_cities"
     },
     {
@@ -2650,9 +2584,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L142",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "businesswithcoords",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_businesswithcoords"
     },
     {
@@ -2661,9 +2595,9 @@
       "source_file": "app/(root)/search/page.tsx",
       "source_location": "L144",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "searchpage()",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "app_root_search_page_searchpage"
     },
     {
@@ -3013,9 +2947,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "sidebar.tsx",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_customer_sidebar"
     },
     {
@@ -3024,9 +2958,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L33",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "navitems",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_customer_sidebar_navitems"
     },
     {
@@ -3035,9 +2969,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "platformsidebar()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_customer_sidebar_platformsidebar"
     },
     {
@@ -3105,6 +3039,72 @@
       "norm_label": "pagination()",
       "community_name": "page.tsx",
       "id": "components_dashboard_pagination_pagination"
+    },
+    {
+      "label": "sidebar.tsx",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "sidebar.tsx",
+      "community_name": "Dashboard Layout & Sidebar",
+      "id": "components_dashboard_sidebar"
+    },
+    {
+      "label": "SubMenuItem",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L37",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "submenuitem",
+      "community_name": "Dashboard Layout & Sidebar",
+      "id": "components_dashboard_sidebar_submenuitem"
+    },
+    {
+      "label": "NavItem",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L42",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "navitem",
+      "community_name": "Dashboard Layout & Sidebar",
+      "id": "components_dashboard_sidebar_navitem"
+    },
+    {
+      "label": "navItems",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "navitems",
+      "community_name": "Dashboard Layout & Sidebar",
+      "id": "components_dashboard_sidebar_navitems"
+    },
+    {
+      "label": "bottomNavItems",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L92",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "bottomnavitems",
+      "community_name": "Dashboard Layout & Sidebar",
+      "id": "components_dashboard_sidebar_bottomnavitems"
+    },
+    {
+      "label": "Sidebar()",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L99",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "sidebar()",
+      "community_name": "Dashboard Layout & Sidebar",
+      "id": "components_dashboard_sidebar_sidebar"
     },
     {
       "label": "stat-card.tsx",
@@ -3332,9 +3332,9 @@
       "source_file": "components/landing/_components/business/business-types.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "business-types.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_types"
     },
     {
@@ -3343,9 +3343,9 @@
       "source_file": "components/landing/_components/business/business-types.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "businesstypes()",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_types_businesstypes"
     },
     {
@@ -3354,9 +3354,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "category-browser.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser"
     },
     {
@@ -3365,9 +3365,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "iconmap",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_iconmap"
     },
     {
@@ -3376,9 +3376,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "fallbackicons",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_fallbackicons"
     },
     {
@@ -3387,9 +3387,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L50",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "geticon()",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_geticon"
     },
     {
@@ -3398,9 +3398,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "categorybrowser()",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_categorybrowser"
     },
     {
@@ -3849,9 +3849,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alert-dialog.tsx",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog"
     },
     {
@@ -3860,9 +3860,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialog()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialog"
     },
     {
@@ -3871,9 +3871,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogtrigger()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogtrigger"
     },
     {
@@ -3882,9 +3882,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L23",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogportal()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogportal"
     },
     {
@@ -3893,9 +3893,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 13,
+      "community": 20,
       "norm_label": "alertdialogoverlay()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Item Components",
       "id": "components_ui_alert_dialog_alertdialogoverlay"
     },
     {
@@ -3904,9 +3904,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogcontent()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogcontent"
     },
     {
@@ -3915,9 +3915,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L70",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogheader()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogheader"
     },
     {
@@ -3926,9 +3926,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L86",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogfooter()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogfooter"
     },
     {
@@ -3937,9 +3937,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L102",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogmedia()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogmedia"
     },
     {
@@ -3948,9 +3948,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L118",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogtitle()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogtitle"
     },
     {
@@ -3959,9 +3959,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L134",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogdescription()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogdescription"
     },
     {
@@ -3970,9 +3970,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L150",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogaction()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogaction"
     },
     {
@@ -3981,9 +3981,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L168",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "alertdialogcancel()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "components_ui_alert_dialog_alertdialogcancel"
     },
     {
@@ -4839,9 +4839,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "input.tsx",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_input"
     },
     {
@@ -4850,9 +4850,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "input()",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_input_input"
     },
     {
@@ -5026,9 +5026,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "password-input.tsx",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_password_input"
     },
     {
@@ -5037,9 +5037,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "passwordinputprops",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_password_input_passwordinputprops"
     },
     {
@@ -5202,9 +5202,9 @@
       "source_file": "components/ui/skeleton.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "skeleton.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_skeleton"
     },
     {
@@ -5213,9 +5213,9 @@
       "source_file": "components/ui/skeleton.tsx",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 18,
+      "community": 1,
       "norm_label": "skeleton()",
-      "community_name": "API Client Layer",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_skeleton_skeleton"
     },
     {
@@ -5268,9 +5268,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 20,
+      "community": 7,
       "norm_label": "switch.tsx",
-      "community_name": "Item Components",
+      "community_name": "Business Browse",
       "id": "components_ui_switch"
     },
     {
@@ -5279,9 +5279,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 20,
+      "community": 7,
       "norm_label": "switch()",
-      "community_name": "Item Components",
+      "community_name": "Business Browse",
       "id": "components_ui_switch_switch"
     },
     {
@@ -5532,9 +5532,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L75",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "extracterror()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_client_extracterror"
     },
     {
@@ -5543,9 +5543,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
+      "community": 10,
       "norm_label": "customer.ts",
-      "community_name": "Business Detail Page",
+      "community_name": "Business Types & DTOs",
       "id": "lib_api_customer"
     },
     {
@@ -5554,9 +5554,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "fetchcustomerdashboard()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_customer_fetchcustomerdashboard"
     },
     {
@@ -5587,9 +5587,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "fetchbusinessbyslug()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_customer_fetchbusinessbyslug"
     },
     {
@@ -5598,9 +5598,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L56",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "fetchbusinessreviews()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_customer_fetchbusinessreviews"
     },
     {
@@ -5609,9 +5609,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L71",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "fetchbusinessstaff()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_customer_fetchbusinessstaff"
     },
     {
@@ -5620,9 +5620,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L86",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "fetchbusinessservices()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_customer_fetchbusinessservices"
     },
     {
@@ -5631,9 +5631,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "index.ts",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_index"
     },
     {
@@ -5642,9 +5642,9 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "partner.ts",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_api_partner"
     },
     {
@@ -5653,9 +5653,9 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "registercustomer()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_partner_registercustomer"
     },
     {
@@ -5664,9 +5664,9 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "registerpartner()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_partner_registerpartner"
     },
     {
@@ -5675,9 +5675,9 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L33",
       "_origin": "ast",
-      "community": 16,
+      "community": 18,
       "norm_label": "customerlogin()",
-      "community_name": "Business Detail Page",
+      "community_name": "API Client Layer",
       "id": "lib_api_partner_customerlogin"
     },
     {
@@ -5719,9 +5719,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 13,
+      "community": 8,
       "norm_label": "clearcustomerprofile()",
-      "community_name": "Platform Layout & Context",
+      "community_name": "Dashboard Layout & Sidebar",
       "id": "lib_customer_context_clearcustomerprofile"
     },
     {
@@ -5939,9 +5939,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "customerlogindata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_customerlogindata"
     },
     {
@@ -5950,9 +5950,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "customeraccountdata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_customeraccountdata"
     },
     {
@@ -5961,9 +5961,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "partneraccountdata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_partneraccountdata"
     },
     {
@@ -5972,9 +5972,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "partnerbusinessdata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_partnerbusinessdata"
     },
     {
@@ -6049,9 +6049,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L113",
       "_origin": "ast",
-      "community": 16,
+      "community": 10,
       "norm_label": "customerdashboarddto",
-      "community_name": "Business Detail Page",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_customerdashboarddto"
     },
     {
@@ -6071,9 +6071,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L147",
       "_origin": "ast",
-      "community": 18,
+      "community": 41,
       "norm_label": "businesscategorydto",
-      "community_name": "API Client Layer",
+      "community_name": "page.tsx",
       "id": "lib_types_businesscategorydto"
     },
     {
@@ -6192,9 +6192,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L244",
       "_origin": "ast",
-      "community": 16,
+      "community": 10,
       "norm_label": "businessdto",
-      "community_name": "Business Detail Page",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_businessdto"
     },
     {
@@ -6214,9 +6214,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L275",
       "_origin": "ast",
-      "community": 16,
+      "community": 10,
       "norm_label": "reviewdto",
-      "community_name": "Business Detail Page",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_reviewdto"
     },
     {
@@ -6225,9 +6225,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L286",
       "_origin": "ast",
-      "community": 16,
+      "community": 10,
       "norm_label": "staffdto",
-      "community_name": "Business Detail Page",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_staffdto"
     },
     {
@@ -6247,9 +6247,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L311",
       "_origin": "ast",
-      "community": 16,
+      "community": 10,
       "norm_label": "servicedto",
-      "community_name": "Business Detail Page",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_servicedto"
     },
     {
@@ -6269,9 +6269,9 @@
       "source_file": "lib/utils.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 7,
       "norm_label": "utils.ts",
-      "community_name": "Input Group Components",
+      "community_name": "Business Browse",
       "id": "lib_utils"
     },
     {
@@ -7832,86 +7832,14 @@
   ],
   "links": [
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_layout",
-      "target": "components_dashboard_sidebar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L96",
-      "weight": 1.0,
-      "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_bottomnavitems",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_navitem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_navitems",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L107",
-      "weight": 1.0,
-      "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_sidebar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_submenuitem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_layout",
-      "target": "components_dashboard_sidebar_sidebar"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/api/auth/login/route.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_auth_login_route",
-      "target": "app_api_auth_login_route_post"
+      "target": "app_api_auth_login_route_post",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7919,9 +7847,9 @@
       "source_file": "app/api/auth/partner-login/route.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_auth_partner_login_route",
-      "target": "app_api_auth_partner_login_route_post"
+      "target": "app_api_auth_partner_login_route_post",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7929,9 +7857,9 @@
       "source_file": "app/api/auth/partner-register/route.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_auth_partner_register_route",
-      "target": "app_api_auth_partner_register_route_post"
+      "target": "app_api_auth_partner_register_route_post",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7939,9 +7867,9 @@
       "source_file": "app/api/auth/partner-setup/route.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_auth_partner_setup_route",
-      "target": "app_api_auth_partner_setup_route_post"
+      "target": "app_api_auth_partner_setup_route_post",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7949,9 +7877,9 @@
       "source_file": "app/api/auth/register/route.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_auth_register_route",
-      "target": "app_api_auth_register_route_post"
+      "target": "app_api_auth_register_route_post",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7959,9 +7887,9 @@
       "source_file": "proxy.ts",
       "source_location": "L54",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "proxy",
-      "target": "proxy_config"
+      "target": "proxy_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7969,9 +7897,9 @@
       "source_file": "proxy.ts",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "proxy",
-      "target": "proxy_extractroles"
+      "target": "proxy_extractroles",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7979,9 +7907,9 @@
       "source_file": "proxy.ts",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "proxy",
-      "target": "proxy_normalizerole"
+      "target": "proxy_normalizerole",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7989,9 +7917,9 @@
       "source_file": "proxy.ts",
       "source_location": "L31",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "proxy",
-      "target": "proxy_proxy"
+      "target": "proxy_proxy",
+      "confidence_score": 1.0
     },
     {
       "relation": "indirect_call",
@@ -8000,9 +7928,9 @@
       "source_file": "proxy.ts",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 0.5,
       "source": "proxy_extractroles",
-      "target": "proxy_normalizerole"
+      "target": "proxy_normalizerole",
+      "confidence_score": 0.5
     },
     {
       "relation": "calls",
@@ -8011,9 +7939,9 @@
       "source_file": "proxy.ts",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "proxy_proxy",
-      "target": "proxy_extractroles"
+      "target": "proxy_extractroles",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11524,6 +11452,28 @@
       "confidence_score": 1.0,
       "source": "app_root_dashboard_layout",
       "target": "app_root_dashboard_layout_props"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_layout",
+      "target": "components_dashboard_sidebar"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_layout",
+      "target": "components_dashboard_sidebar_sidebar"
     },
     {
       "relation": "contains",
@@ -16359,6 +16309,243 @@
       "confidence_score": 1.0,
       "source": "components_dashboard_pagination",
       "target": "components_ui_button_button"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_dashboard_sidebar_bottomnavitems"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_dashboard_sidebar_navitem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_dashboard_sidebar_navitems"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_dashboard_sidebar_sidebar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_dashboard_sidebar_submenuitem"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialog"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogaction"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogcancel"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogcontent"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogdescription"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogfooter"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogheader"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogmedia"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogtitle"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "components_ui_alert_dialog_alertdialogtrigger"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "lib_customer_context"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "lib_customer_context_clearcustomerprofile"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "lib_utils"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_dashboard_sidebar",
+      "target": "lib_utils_cn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "components_dashboard_sidebar_sidebar",
+      "target": "lib_customer_context_clearcustomerprofile"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "components_dashboard_sidebar_sidebar",
+      "target": "lib_utils_cn"
     },
     {
       "relation": "contains",
@@ -23527,5 +23714,5 @@
       "source_file": ".github/workflows/deploy.yml"
     }
   ],
-  "built_at_commit": "d9e9c13eadc27e1e79415971ba398feecef574fe"
+  "built_at_commit": "fdd064fb327716f6f827143d41d4c491d3343211"
 }

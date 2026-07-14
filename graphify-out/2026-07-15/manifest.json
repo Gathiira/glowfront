@@ -270,9 +270,9 @@
     "semantic_hash": "7bac84c8e21a4b04482034f0798d65eb"
   },
   "components/dashboard/sidebar.tsx": {
-    "mtime": 1784062609.6712673,
-    "ast_hash": "328df457ba5e23907fa273cf731695c0",
-    "semantic_hash": ""
+    "mtime": 1782214916.0003805,
+    "ast_hash": "bf04cd9e2b1719a98b577bfd89783f5f",
+    "semantic_hash": "bf04cd9e2b1719a98b577bfd89783f5f"
   },
   "components/dashboard/stat-card.tsx": {
     "mtime": 1781810678.4310994,
@@ -615,8 +615,8 @@
     "semantic_hash": "33f1dbd99ec1b17cc544ee0b7733cd9b"
   },
   "k8s/deployment.yaml": {
-    "mtime": 1784062550.163638,
-    "ast_hash": "93be6e4bedeef2c9852cc6e92cc4f970",
+    "mtime": 1784054777.210532,
+    "ast_hash": "331a762535c03c6e64f599c042131572",
     "semantic_hash": ""
   },
   "k8s/hpa.yaml": {
