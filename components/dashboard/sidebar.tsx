@@ -58,7 +58,11 @@ const navItems: NavItem[] = [
       { label: "Cash Movement", href: "/dashboard/sales/cash-movement" },
     ],
   },
-  { label: "Appointments", href: "/dashboard/appointments", icon: CalendarCheck },
+  {
+    label: "Appointments",
+    href: "/dashboard/appointments",
+    icon: CalendarCheck,
+  },
   { label: "Payments", href: "/dashboard/payments", icon: CreditCard },
   {
     label: "Clients",
@@ -93,7 +97,11 @@ const bottomNavItems = [
   { label: "Home", href: "/dashboard/home", icon: LayoutDashboard },
   { label: "Calendar", href: "/dashboard/calendar", icon: Calendar },
   { label: "Sales", href: "/dashboard/sales/daily", icon: DollarSign },
-  { label: "Appointments", href: "/dashboard/appointments", icon: CalendarCheck },
+  {
+    label: "Appointments",
+    href: "/dashboard/appointments",
+    icon: CalendarCheck,
+  },
 ]
 
 export function Sidebar() {
@@ -113,14 +121,14 @@ export function Sidebar() {
     } else {
       document.body.style.overflow = ""
     }
-    return () => { document.body.style.overflow = "" }
+    return () => {
+      document.body.style.overflow = ""
+    }
   }, [mobileDrawerOpen])
 
   const toggle = (label: string) => {
     setOpenMenus((prev) =>
-      prev.includes(label)
-        ? prev.filter((l) => l !== label)
-        : [...prev, label]
+      prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label]
     )
   }
 
@@ -164,7 +172,7 @@ export function Sidebar() {
               />
             </button>
             {isOpen && (
-              <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l pl-3">
+              <div className="mt-1 ml-4 flex flex-col gap-0.5 border-l pl-3">
                 {item.children.map((child) => (
                   <Link
                     key={child.href}
@@ -205,7 +213,7 @@ export function Sidebar() {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:fixed md:left-0 md:top-0 md:z-30 md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
+      <aside className="hidden md:fixed md:top-0 md:left-0 md:z-30 md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
         <Link
           href="/dashboard/home"
           className="mb-6 flex items-center gap-2 px-2 text-lg font-bold"
@@ -214,9 +222,7 @@ export function Sidebar() {
           Glow Buddy
         </Link>
 
-        <nav className="flex flex-1 flex-col gap-1">
-          {renderNavItems()}
-        </nav>
+        <nav className="flex flex-1 flex-col gap-1">{renderNavItems()}</nav>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <button className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
@@ -231,8 +237,7 @@ export function Sidebar() {
               </AlertDialogMedia>
               <AlertDialogTitle>Confirm logout</AlertDialogTitle>
               <AlertDialogDescription>
-                Are you sure you want to log out? You&apos;ll need to sign in
-                again to access your account.
+                Are you sure you want to log out?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -246,7 +251,7 @@ export function Sidebar() {
       </aside>
 
       {/* Mobile bottom nav */}
-      <nav className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t bg-background/80 px-2 pb-safe backdrop-blur-lg md:hidden">
+      <nav className="pb-safe fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t bg-background/80 px-2 backdrop-blur-lg md:hidden">
         {bottomNavItems.map((item) => {
           const Icon = item.icon
           const active = pathname.startsWith(item.href!)
@@ -318,18 +323,18 @@ export function Sidebar() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Confirm logout</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to log out? You&apos;ll need to sign
-                  in again to access your account.
+                  Are you sure you want to log out?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel
-                  onClick={closeDrawer}
-                >
+                <AlertDialogCancel onClick={closeDrawer}>
                   Cancel
                 </AlertDialogCancel>
                 <AlertDialogAction
-                  onClick={() => { closeDrawer(); handleLogout() }}
+                  onClick={() => {
+                    closeDrawer()
+                    handleLogout()
+                  }}
                 >
                   Logout
                 </AlertDialogAction>
