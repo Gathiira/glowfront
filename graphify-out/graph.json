@@ -38,422 +38,26 @@
   },
   "nodes": [
     {
-      "label": "left-side.tsx",
+      "label": "route.ts",
       "file_type": "code",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_file": "app/api/auth/login/route.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_auth_components_left_side",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "left-side.tsx"
+      "id": "app_api_auth_login_route",
+      "community": 23,
+      "community_name": "Business Categories",
+      "norm_label": "route.ts"
     },
     {
-      "label": "formSchema",
+      "label": "POST()",
       "file_type": "code",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L14",
+      "source_file": "app/api/auth/login/route.ts",
+      "source_location": "L7",
       "_origin": "ast",
-      "id": "app_root_auth_components_left_side_formschema",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "formschema"
-    },
-    {
-      "label": "FormDataType",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "app_root_auth_components_left_side_formdatatype",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "formdatatype"
-    },
-    {
-      "label": "Mode",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "app_root_auth_components_left_side_mode",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "mode"
-    },
-    {
-      "label": "LeftSide()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "app_root_auth_components_left_side_leftside",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "leftside()"
-    },
-    {
-      "label": "location-picker.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "location-picker.tsx"
-    },
-    {
-      "label": "defaultIcon",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_defaulticon",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "defaulticon"
-    },
-    {
-      "label": "Location",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_location",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "location"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_props",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "props"
-    },
-    {
-      "label": "SearchResult",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L41",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_searchresult",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "searchresult"
-    },
-    {
-      "label": "MapEvents()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_mapevents",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "mapevents()"
-    },
-    {
-      "label": "FlyTo()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L60",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_flyto",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "flyto()"
-    },
-    {
-      "label": "reverseGeocode()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L68",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_reversegeocode",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "reversegeocode()"
-    },
-    {
-      "label": "searchQuery()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L95",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_searchquery",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "searchquery()"
-    },
-    {
-      "label": "defaultCenter",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L109",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_defaultcenter",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "defaultcenter"
-    },
-    {
-      "label": "LocationPicker()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L111",
-      "_origin": "ast",
-      "id": "app_root_auth_components_location_picker_locationpicker",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "locationpicker()"
-    },
-    {
-      "label": "partner-flow.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "partner-flow.tsx"
-    },
-    {
-      "label": "formSchema",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_formschema",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "formschema"
-    },
-    {
-      "label": "FormDataType",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_formdatatype",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "formdatatype"
-    },
-    {
-      "label": "Mode",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_mode",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "mode"
-    },
-    {
-      "label": "PartnerFlow()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L31",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_partnerflow",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "partnerflow()"
-    },
-    {
-      "label": "partner-registration-flow.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_registration_flow",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "partner-registration-flow.tsx"
-    },
-    {
-      "label": "Step",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_registration_flow_step",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "step"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_registration_flow_props",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "props"
-    },
-    {
-      "label": "PartnerRegistrationFlow()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_registration_flow_partnerregistrationflow",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "partnerregistrationflow()"
-    },
-    {
-      "label": "step-account-creation.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_account_creation",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "step-account-creation.tsx"
-    },
-    {
-      "label": "accountFormSchema",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_account_creation_accountformschema",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "accountformschema"
-    },
-    {
-      "label": "AccountFormData",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_account_creation_accountformdata",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "accountformdata"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L45",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_account_creation_props",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "props"
-    },
-    {
-      "label": "StepAccountCreation()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_account_creation_stepaccountcreation",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "stepaccountcreation()"
-    },
-    {
-      "label": "step-business-setup.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_business_setup",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "step-business-setup.tsx"
-    },
-    {
-      "label": "businessFormSchema",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_business_setup_businessformschema",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "businessformschema"
-    },
-    {
-      "label": "BusinessFormData",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_business_setup_businessformdata",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "businessformdata"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_business_setup_props",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "props"
-    },
-    {
-      "label": "serviceTypeOptions",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L56",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_business_setup_servicetypeoptions",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "servicetypeoptions"
-    },
-    {
-      "label": "StepBusinessSetup()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L67",
-      "_origin": "ast",
-      "id": "app_root_auth_components_step_business_setup_stepbusinesssetup",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "stepbusinesssetup()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/partner/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_partner_page",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "PartnerSignup()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/partner/page.tsx",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "app_root_auth_partner_page_partnersignup",
-      "community": 2,
-      "community_name": "Auth Form Components",
-      "norm_label": "partnersignup()"
+      "id": "app_api_auth_login_route_post",
+      "community": 23,
+      "community_name": "Business Categories",
+      "norm_label": "post()"
     },
     {
       "label": "route.ts",
@@ -522,15 +126,510 @@
       "norm_label": "post()"
     },
     {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/auth/register/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_api_auth_register_route",
+      "community": 28,
+      "community_name": "Hover Card",
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/auth/register/route.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "app_api_auth_register_route_post",
+      "community": 28,
+      "community_name": "Hover Card",
+      "norm_label": "post()"
+    },
+    {
+      "label": "proxy.ts",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "proxy",
+      "community": 14,
+      "community_name": "Field Components",
+      "norm_label": "proxy.ts"
+    },
+    {
+      "label": "normalizeRole()",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "proxy_normalizerole",
+      "community": 14,
+      "community_name": "Field Components",
+      "norm_label": "normalizerole()"
+    },
+    {
+      "label": "extractRoles()",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "proxy_extractroles",
+      "community": 14,
+      "community_name": "Field Components",
+      "norm_label": "extractroles()"
+    },
+    {
+      "label": "proxy()",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "proxy_proxy",
+      "community": 14,
+      "community_name": "Field Components",
+      "norm_label": "proxy()"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "proxy_config",
+      "community": 14,
+      "community_name": "Field Components",
+      "norm_label": "config"
+    },
+    {
+      "label": "left-side.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "left-side.tsx",
+      "id": "app_root_auth_components_left_side"
+    },
+    {
+      "label": "formSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "formschema",
+      "id": "app_root_auth_components_left_side_formschema"
+    },
+    {
+      "label": "FormDataType",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "formdatatype",
+      "id": "app_root_auth_components_left_side_formdatatype"
+    },
+    {
+      "label": "Mode",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "mode",
+      "id": "app_root_auth_components_left_side_mode"
+    },
+    {
+      "label": "LeftSide()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L28",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "leftside()",
+      "id": "app_root_auth_components_left_side_leftside"
+    },
+    {
+      "label": "location-picker.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "location-picker.tsx",
+      "id": "app_root_auth_components_location_picker"
+    },
+    {
+      "label": "defaultIcon",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "defaulticon",
+      "id": "app_root_auth_components_location_picker_defaulticon"
+    },
+    {
+      "label": "Location",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "location",
+      "id": "app_root_auth_components_location_picker_location"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L36",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "props",
+      "id": "app_root_auth_components_location_picker_props"
+    },
+    {
+      "label": "SearchResult",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L41",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "searchresult",
+      "id": "app_root_auth_components_location_picker_searchresult"
+    },
+    {
+      "label": "MapEvents()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "mapevents()",
+      "id": "app_root_auth_components_location_picker_mapevents"
+    },
+    {
+      "label": "FlyTo()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L60",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "flyto()",
+      "id": "app_root_auth_components_location_picker_flyto"
+    },
+    {
+      "label": "reverseGeocode()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L68",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "reversegeocode()",
+      "id": "app_root_auth_components_location_picker_reversegeocode"
+    },
+    {
+      "label": "searchQuery()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L95",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "searchquery()",
+      "id": "app_root_auth_components_location_picker_searchquery"
+    },
+    {
+      "label": "defaultCenter",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L109",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "defaultcenter",
+      "id": "app_root_auth_components_location_picker_defaultcenter"
+    },
+    {
+      "label": "LocationPicker()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L111",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "locationpicker()",
+      "id": "app_root_auth_components_location_picker_locationpicker"
+    },
+    {
+      "label": "partner-flow.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "partner-flow.tsx",
+      "id": "app_root_auth_components_partner_flow"
+    },
+    {
+      "label": "formSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "formschema",
+      "id": "app_root_auth_components_partner_flow_formschema"
+    },
+    {
+      "label": "FormDataType",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "formdatatype",
+      "id": "app_root_auth_components_partner_flow_formdatatype"
+    },
+    {
+      "label": "Mode",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "mode",
+      "id": "app_root_auth_components_partner_flow_mode"
+    },
+    {
+      "label": "PartnerFlow()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "partnerflow()",
+      "id": "app_root_auth_components_partner_flow_partnerflow"
+    },
+    {
+      "label": "partner-registration-flow.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "partner-registration-flow.tsx",
+      "id": "app_root_auth_components_partner_registration_flow"
+    },
+    {
+      "label": "Step",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "step",
+      "id": "app_root_auth_components_partner_registration_flow_step"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L23",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "props",
+      "id": "app_root_auth_components_partner_registration_flow_props"
+    },
+    {
+      "label": "PartnerRegistrationFlow()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L28",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "partnerregistrationflow()",
+      "id": "app_root_auth_components_partner_registration_flow_partnerregistrationflow"
+    },
+    {
+      "label": "step-account-creation.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "step-account-creation.tsx",
+      "id": "app_root_auth_components_step_account_creation"
+    },
+    {
+      "label": "accountFormSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L20",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "accountformschema",
+      "id": "app_root_auth_components_step_account_creation_accountformschema"
+    },
+    {
+      "label": "AccountFormData",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L43",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "accountformdata",
+      "id": "app_root_auth_components_step_account_creation_accountformdata"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L45",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "props",
+      "id": "app_root_auth_components_step_account_creation_props"
+    },
+    {
+      "label": "StepAccountCreation()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L53",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "stepaccountcreation()",
+      "id": "app_root_auth_components_step_account_creation_stepaccountcreation"
+    },
+    {
+      "label": "step-business-setup.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "step-business-setup.tsx",
+      "id": "app_root_auth_components_step_business_setup"
+    },
+    {
+      "label": "businessFormSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "businessformschema",
+      "id": "app_root_auth_components_step_business_setup_businessformschema"
+    },
+    {
+      "label": "BusinessFormData",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "businessformdata",
+      "id": "app_root_auth_components_step_business_setup_businessformdata"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "props",
+      "id": "app_root_auth_components_step_business_setup_props"
+    },
+    {
+      "label": "serviceTypeOptions",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "servicetypeoptions",
+      "id": "app_root_auth_components_step_business_setup_servicetypeoptions"
+    },
+    {
+      "label": "StepBusinessSetup()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L67",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "stepbusinesssetup()",
+      "id": "app_root_auth_components_step_business_setup_stepbusinesssetup"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/partner/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "page.tsx",
+      "id": "app_root_auth_partner_page"
+    },
+    {
+      "label": "PartnerSignup()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/partner/page.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Auth Form Components",
+      "norm_label": "partnersignup()",
+      "id": "app_root_auth_partner_page_partnersignup"
+    },
+    {
       "label": "swr.ts",
       "file_type": "code",
       "source_file": "lib/api/swr.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "lib_api_swr",
       "community": 2,
       "community_name": "Auth Form Components",
-      "norm_label": "swr.ts"
+      "norm_label": "swr.ts",
+      "id": "lib_api_swr"
     },
     {
       "label": "fetcher()",
@@ -538,10 +637,10 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "lib_api_swr_fetcher",
       "community": 2,
       "community_name": "Auth Form Components",
-      "norm_label": "fetcher()"
+      "norm_label": "fetcher()",
+      "id": "lib_api_swr_fetcher"
     },
     {
       "label": "useCategories()",
@@ -549,10 +648,10 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "lib_api_swr_usecategories",
       "community": 2,
       "community_name": "Auth Form Components",
-      "norm_label": "usecategories()"
+      "norm_label": "usecategories()",
+      "id": "lib_api_swr_usecategories"
     },
     {
       "label": "fetchCategories()",
@@ -560,10 +659,10 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "lib_api_swr_fetchcategories",
       "community": 2,
       "community_name": "Auth Form Components",
-      "norm_label": "fetchcategories()"
+      "norm_label": "fetchcategories()",
+      "id": "lib_api_swr_fetchcategories"
     },
     {
       "label": "AGENTS.md",
@@ -879,9 +978,9 @@
       "source_file": "app/(root)/auth/customer/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "page.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_auth_customer_page"
     },
     {
@@ -890,9 +989,9 @@
       "source_file": "app/(root)/auth/customer/page.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "customersignup()",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_auth_customer_page_customersignup"
     },
     {
@@ -901,9 +1000,9 @@
       "source_file": "app/(root)/auth/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "page.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_auth_page"
     },
     {
@@ -912,9 +1011,9 @@
       "source_file": "app/(root)/auth/page.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "auth()",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_auth_page_auth"
     },
     {
@@ -923,9 +1022,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 41,
       "norm_label": "page.tsx",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page"
     },
     {
@@ -934,9 +1033,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 7,
+      "community": 41,
       "norm_label": "cities",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_cities"
     },
     {
@@ -945,9 +1044,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 7,
+      "community": 41,
       "norm_label": "businesscard()",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_businesscard"
     },
     {
@@ -956,9 +1055,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L88",
       "_origin": "ast",
-      "community": 7,
+      "community": 41,
       "norm_label": "cardskeleton()",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_cardskeleton"
     },
     {
@@ -978,9 +1077,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L335",
       "_origin": "ast",
-      "community": 7,
+      "community": 41,
       "norm_label": "browsepage()",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_browsepage"
     },
     {
@@ -1055,9 +1154,9 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L79",
       "_origin": "ast",
-      "community": 18,
+      "community": 16,
       "norm_label": "formatday()",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail Page",
       "id": "app_root_business_slug_page_formatday"
     },
     {
@@ -1066,9 +1165,9 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L83",
       "_origin": "ast",
-      "community": 18,
+      "community": 16,
       "norm_label": "formattime()",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail Page",
       "id": "app_root_business_slug_page_formattime"
     },
     {
@@ -1132,9 +1231,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "page.tsx",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page"
     },
     {
@@ -1143,9 +1242,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "metrics",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_metrics"
     },
     {
@@ -1154,9 +1253,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "features",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_features"
     },
     {
@@ -1165,9 +1264,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "allinonepoints",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_allinonepoints"
     },
     {
@@ -1176,9 +1275,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L62",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "marketplacepoints",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_marketplacepoints"
     },
     {
@@ -1187,9 +1286,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L68",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businessstats",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_businessstats"
     },
     {
@@ -1198,9 +1297,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L112",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "successservices",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_successservices"
     },
     {
@@ -1209,9 +1308,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L143",
       "_origin": "ast",
-      "community": 41,
+      "community": 1,
       "norm_label": "businesspage()",
-      "community_name": "page.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "app_root_business_page_businesspage"
     },
     {
@@ -1242,9 +1341,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "page.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page"
     },
     {
@@ -1253,9 +1352,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "appointment",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_appointment"
     },
     {
@@ -1264,9 +1363,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "colors",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_colors"
     },
     {
@@ -1275,9 +1374,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "statuscolors",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_statuscolors"
     },
     {
@@ -1286,9 +1385,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "formatdate()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_formatdate"
     },
     {
@@ -1297,9 +1396,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "getdaysinmonth()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_getdaysinmonth"
     },
     {
@@ -1308,9 +1407,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "getfirstdayofmonth()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_getfirstdayofmonth"
     },
     {
@@ -1319,9 +1418,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "hours",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_hours"
     },
     {
@@ -1330,9 +1429,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "ispastdate()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_ispastdate"
     },
     {
@@ -1341,9 +1440,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "ispasthour()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_ispasthour"
     },
     {
@@ -1352,9 +1451,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L60",
       "_origin": "ast",
-      "community": 42,
+      "community": 5,
       "norm_label": "calendar()",
-      "community_name": "page.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_calendar"
     },
     {
@@ -1671,9 +1770,9 @@
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 15,
+      "community": 20,
       "norm_label": "profiledetails()",
-      "community_name": "Dropdown Menu",
+      "community_name": "Item Components",
       "id": "app_root_dashboard_profile_details_page_profiledetails"
     },
     {
@@ -2144,9 +2243,9 @@
       "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
       "source_location": "L135",
       "_origin": "ast",
-      "community": 12,
+      "community": 20,
       "norm_label": "starrating()",
-      "community_name": "Business Detail",
+      "community_name": "Item Components",
       "id": "app_root_platform_browse_slug_page_starrating"
     },
     {
@@ -2199,9 +2298,9 @@
       "source_file": "app/(root)/platform/browse/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 41,
       "norm_label": "page.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_platform_browse_page"
     },
     {
@@ -2504,28 +2603,6 @@
     {
       "label": "route.ts",
       "file_type": "code",
-      "source_file": "app/api/auth/login/route.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 21,
-      "norm_label": "route.ts",
-      "community_name": "API Routes & Client",
-      "id": "app_api_auth_login_route"
-    },
-    {
-      "label": "POST()",
-      "file_type": "code",
-      "source_file": "app/api/auth/login/route.ts",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 21,
-      "norm_label": "post()",
-      "community_name": "API Routes & Client",
-      "id": "app_api_auth_login_route_post"
-    },
-    {
-      "label": "route.ts",
-      "file_type": "code",
       "source_file": "app/api/auth/logout/route.ts",
       "source_location": "L1",
       "_origin": "ast",
@@ -2546,36 +2623,14 @@
       "id": "app_api_auth_logout_route_post"
     },
     {
-      "label": "route.ts",
-      "file_type": "code",
-      "source_file": "app/api/auth/register/route.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 21,
-      "norm_label": "route.ts",
-      "community_name": "API Routes & Client",
-      "id": "app_api_auth_register_route"
-    },
-    {
-      "label": "POST()",
-      "file_type": "code",
-      "source_file": "app/api/auth/register/route.ts",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 21,
-      "norm_label": "post()",
-      "community_name": "API Routes & Client",
-      "id": "app_api_auth_register_route_post"
-    },
-    {
       "label": "layout.tsx",
       "file_type": "code",
       "source_file": "app/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "layout.tsx",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "app_layout"
     },
     {
@@ -2584,9 +2639,9 @@
       "source_file": "app/layout.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "inter",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "app_layout_inter"
     },
     {
@@ -2595,9 +2650,9 @@
       "source_file": "app/layout.tsx",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "fontmono",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "app_layout_fontmono"
     },
     {
@@ -2606,9 +2661,9 @@
       "source_file": "app/layout.tsx",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "rootlayout()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "app_layout_rootlayout"
     },
     {
@@ -2958,9 +3013,9 @@
       "source_file": "components/dashboard/pagination.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
+      "community": 41,
       "norm_label": "pagination.tsx",
-      "community_name": "Business Detail Page",
+      "community_name": "page.tsx",
       "id": "components_dashboard_pagination"
     },
     {
@@ -2969,9 +3024,9 @@
       "source_file": "components/dashboard/pagination.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 16,
+      "community": 41,
       "norm_label": "paginationprops",
-      "community_name": "Business Detail Page",
+      "community_name": "page.tsx",
       "id": "components_dashboard_pagination_paginationprops"
     },
     {
@@ -2980,9 +3035,9 @@
       "source_file": "components/dashboard/pagination.tsx",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 16,
+      "community": 41,
       "norm_label": "pagination()",
-      "community_name": "Business Detail Page",
+      "community_name": "page.tsx",
       "id": "components_dashboard_pagination_pagination"
     },
     {
@@ -3178,9 +3233,9 @@
       "source_file": "components/landing/_components/business/business-faq.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "business-faq.tsx",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_faq"
     },
     {
@@ -3189,9 +3244,9 @@
       "source_file": "components/landing/_components/business/business-faq.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businessfaq()",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_faq_businessfaq"
     },
     {
@@ -3200,9 +3255,9 @@
       "source_file": "components/landing/_components/business/business-header.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "business-header.tsx",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_header"
     },
     {
@@ -3211,9 +3266,9 @@
       "source_file": "components/landing/_components/business/business-header.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "navlinks",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_header_navlinks"
     },
     {
@@ -3222,9 +3277,9 @@
       "source_file": "components/landing/_components/business/business-header.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businessheader()",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_header_businessheader"
     },
     {
@@ -3233,9 +3288,9 @@
       "source_file": "components/landing/_components/business/business-hero.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "business-hero.tsx",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_hero"
     },
     {
@@ -3244,9 +3299,9 @@
       "source_file": "components/landing/_components/business/business-hero.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businesshero()",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_hero_businesshero"
     },
     {
@@ -3255,9 +3310,9 @@
       "source_file": "components/landing/_components/business/business-testimonials.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "business-testimonials.tsx",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_testimonials"
     },
     {
@@ -3266,9 +3321,9 @@
       "source_file": "components/landing/_components/business/business-testimonials.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businesstestimonials()",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_testimonials_businesstestimonials"
     },
     {
@@ -3277,9 +3332,9 @@
       "source_file": "components/landing/_components/business/business-types.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "business-types.tsx",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_types"
     },
     {
@@ -3288,9 +3343,9 @@
       "source_file": "components/landing/_components/business/business-types.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "businesstypes()",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_business_business_types_businesstypes"
     },
     {
@@ -3299,9 +3354,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "category-browser.tsx",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser"
     },
     {
@@ -3310,9 +3365,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "iconmap",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_iconmap"
     },
     {
@@ -3321,9 +3376,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "fallbackicons",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_fallbackicons"
     },
     {
@@ -3332,9 +3387,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L50",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "geticon()",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_geticon"
     },
     {
@@ -3343,9 +3398,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "categorybrowser()",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_category_browser_categorybrowser"
     },
     {
@@ -3354,9 +3409,9 @@
       "source_file": "components/landing/_components/city-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "city-browser.tsx",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_city_browser"
     },
     {
@@ -3365,9 +3420,9 @@
       "source_file": "components/landing/_components/city-browser.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "citybrowser()",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_city_browser_citybrowser"
     },
     {
@@ -3376,9 +3431,9 @@
       "source_file": "components/landing/_components/cta-section.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "cta-section.tsx",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_cta_section"
     },
     {
@@ -3398,9 +3453,9 @@
       "source_file": "components/landing/_components/footer.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "footer.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_footer"
     },
     {
@@ -3409,9 +3464,9 @@
       "source_file": "components/landing/_components/footer.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "footer()",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_footer_footer"
     },
     {
@@ -3420,9 +3475,9 @@
       "source_file": "components/landing/_components/header.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "header.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_header"
     },
     {
@@ -3431,9 +3486,9 @@
       "source_file": "components/landing/_components/header.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "header()",
-      "community_name": "Business Browse",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_header_header"
     },
     {
@@ -3442,9 +3497,9 @@
       "source_file": "components/landing/_components/hero.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "hero.tsx",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_components_hero"
     },
     {
@@ -3629,9 +3684,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L58",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businesstestimonials",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_data_businesstestimonials"
     },
     {
@@ -3640,9 +3695,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L78",
       "_origin": "ast",
-      "community": 28,
+      "community": 1,
       "norm_label": "businessfaqs",
-      "community_name": "Hover Card",
+      "community_name": "Landing & Auth Pages",
       "id": "components_landing_data_businessfaqs"
     },
     {
@@ -3695,9 +3750,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "loading-provider.tsx",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_loading_provider"
     },
     {
@@ -3706,9 +3761,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "anchor",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_loading_provider_anchor"
     },
     {
@@ -3717,9 +3772,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "loadingcontext",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_loading_provider_loadingcontext"
     },
     {
@@ -3728,9 +3783,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "loadingprovider()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_loading_provider_loadingprovider"
     },
     {
@@ -3739,9 +3794,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L76",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "useloading()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_loading_provider_useloading"
     },
     {
@@ -3750,9 +3805,9 @@
       "source_file": "components/theme-provider.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "theme-provider.tsx",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_theme_provider"
     },
     {
@@ -3761,9 +3816,9 @@
       "source_file": "components/theme-provider.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "themeprovider()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_theme_provider_themeprovider"
     },
     {
@@ -3772,9 +3827,9 @@
       "source_file": "components/theme-provider.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "istypingtarget()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_theme_provider_istypingtarget"
     },
     {
@@ -3783,9 +3838,9 @@
       "source_file": "components/theme-provider.tsx",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "themehotkey()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_theme_provider_themehotkey"
     },
     {
@@ -3838,9 +3893,9 @@
       "source_file": "components/ui/alert-dialog.tsx",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 8,
+      "community": 20,
       "norm_label": "alertdialogoverlay()",
-      "community_name": "Dashboard Layout & Sidebar",
+      "community_name": "Item Components",
       "id": "components_ui_alert_dialog_alertdialogoverlay"
     },
     {
@@ -4003,9 +4058,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "button.tsx",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_button"
     },
     {
@@ -4014,9 +4069,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "buttonvariants",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_button_buttonvariants"
     },
     {
@@ -4025,9 +4080,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "button()",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_button_button"
     },
     {
@@ -4036,9 +4091,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "calendar.tsx",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_calendar"
     },
     {
@@ -4047,9 +4102,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 43,
+      "community": 1,
       "norm_label": "calendar()",
-      "community_name": "header.tsx",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_calendar_calendar"
     },
     {
@@ -4124,9 +4179,9 @@
       "source_file": "components/ui/card.tsx",
       "source_location": "L59",
       "_origin": "ast",
-      "community": 15,
+      "community": 20,
       "norm_label": "cardaction()",
-      "community_name": "Dropdown Menu",
+      "community_name": "Item Components",
       "id": "components_ui_card_cardaction"
     },
     {
@@ -4146,9 +4201,9 @@
       "source_file": "components/ui/card.tsx",
       "source_location": "L82",
       "_origin": "ast",
-      "community": 15,
+      "community": 20,
       "norm_label": "cardfooter()",
-      "community_name": "Dropdown Menu",
+      "community_name": "Item Components",
       "id": "components_ui_card_cardfooter"
     },
     {
@@ -4454,9 +4509,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "field.tsx",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field"
     },
     {
@@ -4465,9 +4520,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldset()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldset"
     },
     {
@@ -4476,9 +4531,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L23",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldlegend()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldlegend"
     },
     {
@@ -4498,9 +4553,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldvariants",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldvariants"
     },
     {
@@ -4509,9 +4564,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L72",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "field()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_field"
     },
     {
@@ -4520,9 +4575,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L88",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldcontent()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldcontent"
     },
     {
@@ -4531,9 +4586,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L101",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldlabel()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldlabel"
     },
     {
@@ -4542,9 +4597,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L118",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldtitle()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldtitle"
     },
     {
@@ -4553,9 +4608,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L131",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fielddescription()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fielddescription"
     },
     {
@@ -4564,9 +4619,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L146",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fieldseparator()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fieldseparator"
     },
     {
@@ -4575,9 +4630,9 @@
       "source_file": "components/ui/field.tsx",
       "source_location": "L176",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "fielderror()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_field_fielderror"
     },
     {
@@ -4784,9 +4839,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 5,
       "norm_label": "input.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_input"
     },
     {
@@ -4795,9 +4850,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 0,
+      "community": 5,
       "norm_label": "input()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_input_input"
     },
     {
@@ -4949,9 +5004,9 @@
       "source_file": "components/ui/label.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "label.tsx",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_label"
     },
     {
@@ -4960,9 +5015,9 @@
       "source_file": "components/ui/label.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 14,
+      "community": 20,
       "norm_label": "label()",
-      "community_name": "Field Components",
+      "community_name": "Item Components",
       "id": "components_ui_label_label"
     },
     {
@@ -5147,9 +5202,9 @@
       "source_file": "components/ui/skeleton.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "skeleton.tsx",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_skeleton"
     },
     {
@@ -5158,9 +5213,9 @@
       "source_file": "components/ui/skeleton.tsx",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 23,
+      "community": 1,
       "norm_label": "skeleton()",
-      "community_name": "Business Categories",
+      "community_name": "Landing & Auth Pages",
       "id": "components_ui_skeleton_skeleton"
     },
     {
@@ -5169,9 +5224,9 @@
       "source_file": "components/ui/sonner.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "sonner.tsx",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_ui_sonner"
     },
     {
@@ -5180,9 +5235,9 @@
       "source_file": "components/ui/sonner.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "toaster()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_ui_sonner_toaster"
     },
     {
@@ -5191,9 +5246,9 @@
       "source_file": "components/ui/spinner.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "spinner.tsx",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_ui_spinner"
     },
     {
@@ -5202,9 +5257,9 @@
       "source_file": "components/ui/spinner.tsx",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "spinner()",
-      "community_name": "Root Layout & Auth",
+      "community_name": "Business Browse",
       "id": "components_ui_spinner_spinner"
     },
     {
@@ -5213,9 +5268,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 44,
+      "community": 7,
       "norm_label": "switch.tsx",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Business Browse",
       "id": "components_ui_switch"
     },
     {
@@ -5224,9 +5279,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 44,
+      "community": 7,
       "norm_label": "switch()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Business Browse",
       "id": "components_ui_switch_switch"
     },
     {
@@ -5279,9 +5334,9 @@
       "source_file": "components/ui/table.tsx",
       "source_location": "L42",
       "_origin": "ast",
-      "community": 0,
+      "community": 20,
       "norm_label": "tablefooter()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Item Components",
       "id": "components_ui_table_tablefooter"
     },
     {
@@ -5323,9 +5378,9 @@
       "source_file": "components/ui/table.tsx",
       "source_location": "L94",
       "_origin": "ast",
-      "community": 0,
+      "community": 20,
       "norm_label": "tablecaption()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Item Components",
       "id": "components_ui_table_tablecaption"
     },
     {
@@ -5334,9 +5389,9 @@
       "source_file": "components/ui/textarea.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
+      "community": 22,
       "norm_label": "textarea.tsx",
-      "community_name": "Business Detail Page",
+      "community_name": "Input Group Components",
       "id": "components_ui_textarea"
     },
     {
@@ -5345,9 +5400,9 @@
       "source_file": "components/ui/textarea.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 16,
+      "community": 22,
       "norm_label": "textarea()",
-      "community_name": "Business Detail Page",
+      "community_name": "Input Group Components",
       "id": "components_ui_textarea_textarea"
     },
     {
@@ -5488,9 +5543,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 45,
+      "community": 10,
       "norm_label": "customer.ts",
-      "community_name": "customer.ts",
+      "community_name": "Business Types & DTOs",
       "id": "lib_api_customer"
     },
     {
@@ -5587,9 +5642,9 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "partner.ts",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_api_partner"
     },
     {
@@ -5884,9 +5939,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "customerlogindata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_customerlogindata"
     },
     {
@@ -5895,9 +5950,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "customeraccountdata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_customeraccountdata"
     },
     {
@@ -5906,9 +5961,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "partneraccountdata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_partneraccountdata"
     },
     {
@@ -5917,9 +5972,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 10,
+      "community": 18,
       "norm_label": "partnerbusinessdata",
-      "community_name": "Business Types & DTOs",
+      "community_name": "API Client Layer",
       "id": "lib_types_partnerbusinessdata"
     },
     {
@@ -5994,9 +6049,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L113",
       "_origin": "ast",
-      "community": 45,
+      "community": 10,
       "norm_label": "customerdashboarddto",
-      "community_name": "customer.ts",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_customerdashboarddto"
     },
     {
@@ -6016,9 +6071,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L147",
       "_origin": "ast",
-      "community": 23,
+      "community": 41,
       "norm_label": "businesscategorydto",
-      "community_name": "Business Categories",
+      "community_name": "page.tsx",
       "id": "lib_types_businesscategorydto"
     },
     {
@@ -6038,9 +6093,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L168",
       "_origin": "ast",
-      "community": 7,
+      "community": 41,
       "norm_label": "paginatedresponse",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "lib_types_paginatedresponse"
     },
     {
@@ -6049,9 +6104,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L176",
       "_origin": "ast",
-      "community": 1,
+      "community": 41,
       "norm_label": "businesscarddto",
-      "community_name": "Landing & Auth Pages",
+      "community_name": "page.tsx",
       "id": "lib_types_businesscarddto"
     },
     {
@@ -6137,9 +6192,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L244",
       "_origin": "ast",
-      "community": 45,
+      "community": 10,
       "norm_label": "businessdto",
-      "community_name": "customer.ts",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_businessdto"
     },
     {
@@ -6159,9 +6214,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L275",
       "_origin": "ast",
-      "community": 45,
+      "community": 10,
       "norm_label": "reviewdto",
-      "community_name": "customer.ts",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_reviewdto"
     },
     {
@@ -6170,9 +6225,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L286",
       "_origin": "ast",
-      "community": 45,
+      "community": 10,
       "norm_label": "staffdto",
-      "community_name": "customer.ts",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_staffdto"
     },
     {
@@ -6192,9 +6247,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L311",
       "_origin": "ast",
-      "community": 45,
+      "community": 10,
       "norm_label": "servicedto",
-      "community_name": "customer.ts",
+      "community_name": "Business Types & DTOs",
       "id": "lib_types_servicedto"
     },
     {
@@ -6214,9 +6269,9 @@
       "source_file": "lib/utils.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 44,
+      "community": 7,
       "norm_label": "utils.ts",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Business Browse",
       "id": "lib_utils"
     },
     {
@@ -6225,9 +6280,9 @@
       "source_file": "lib/utils.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 15,
+      "community": 20,
       "norm_label": "cn()",
-      "community_name": "Dropdown Menu",
+      "community_name": "Item Components",
       "id": "lib_utils_cn"
     },
     {
@@ -7221,50 +7276,6 @@
       "id": "postcss_config_config"
     },
     {
-      "label": "proxy.ts",
-      "file_type": "code",
-      "source_file": "proxy.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 25,
-      "norm_label": "proxy.ts",
-      "community_name": "Roles & Proxy",
-      "id": "proxy"
-    },
-    {
-      "label": "extractRole()",
-      "file_type": "code",
-      "source_file": "proxy.ts",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 25,
-      "norm_label": "extractrole()",
-      "community_name": "Roles & Proxy",
-      "id": "proxy_extractrole"
-    },
-    {
-      "label": "proxy()",
-      "file_type": "code",
-      "source_file": "proxy.ts",
-      "source_location": "L26",
-      "_origin": "ast",
-      "community": 25,
-      "norm_label": "proxy()",
-      "community_name": "Roles & Proxy",
-      "id": "proxy_proxy"
-    },
-    {
-      "label": "config",
-      "file_type": "code",
-      "source_file": "proxy.ts",
-      "source_location": "L49",
-      "_origin": "ast",
-      "community": 25,
-      "norm_label": "config",
-      "community_name": "Roles & Proxy",
-      "id": "proxy_config"
-    },
-    {
       "label": "tsconfig.json",
       "file_type": "code",
       "source_file": "tsconfig.json",
@@ -7823,509 +7834,11 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L24",
+      "source_file": "app/api/auth/login/route.ts",
+      "source_location": "L7",
       "weight": 1.0,
-      "source": "app_root_auth_components_left_side",
-      "target": "app_root_auth_components_left_side_formdatatype",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "app_root_auth_components_left_side",
-      "target": "app_root_auth_components_left_side_formschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "app_root_auth_components_left_side",
-      "target": "app_root_auth_components_left_side_leftside",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "app_root_auth_components_left_side",
-      "target": "app_root_auth_components_left_side_mode",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/left-side.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "app_root_auth_components_left_side",
-      "target": "app_root_auth_components_partner_registration_flow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L109",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_defaultcenter",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_defaulticon",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L60",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_flyto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_location",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L111",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_locationpicker",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_mapevents",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_props",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L68",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_reversegeocode",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L95",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_searchquery",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L41",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker",
-      "target": "app_root_auth_components_location_picker_searchresult",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "app_root_auth_components_location_picker",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L122",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker_locationpicker",
-      "target": "app_root_auth_components_location_picker_reversegeocode",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/location-picker.tsx",
-      "source_location": "L136",
-      "weight": 1.0,
-      "source": "app_root_auth_components_location_picker_locationpicker",
-      "target": "app_root_auth_components_location_picker_searchquery",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_formdatatype",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_formschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_mode",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_partnerflow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_registration_flow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_step_business_setup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_step_business_setup_businessformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_step_business_setup_businessformschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/partner/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "app_root_auth_partner_page",
-      "target": "app_root_auth_components_partner_flow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_partner_registration_flow_partnerregistrationflow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_partner_registration_flow_props",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_partner_registration_flow_step",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_step_account_creation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_step_account_creation_accountformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_step_account_creation_accountformschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_step_business_setup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_step_business_setup_businessformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_registration_flow",
-      "target": "app_root_auth_components_step_business_setup_businessformschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L43",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_account_creation",
-      "target": "app_root_auth_components_step_account_creation_accountformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_account_creation",
-      "target": "app_root_auth_components_step_account_creation_accountformschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L45",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_account_creation",
-      "target": "app_root_auth_components_step_account_creation_props",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_account_creation",
-      "target": "app_root_auth_components_step_account_creation_stepaccountcreation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "app_root_auth_components_step_business_setup_businessformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "app_root_auth_components_step_business_setup_businessformschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "app_root_auth_components_step_business_setup_props",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L56",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "app_root_auth_components_step_business_setup_servicetypeoptions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L67",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "app_root_auth_components_step_business_setup_stepbusinesssetup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "lib_api_swr",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup",
-      "target": "lib_api_swr_usecategories",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
-      "source_location": "L77",
-      "weight": 1.0,
-      "source": "app_root_auth_components_step_business_setup_stepbusinesssetup",
-      "target": "lib_api_swr_usecategories"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/partner/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "app_root_auth_partner_page",
-      "target": "app_root_auth_partner_page_partnersignup",
+      "source": "app_api_auth_login_route",
+      "target": "app_api_auth_login_route_post",
       "confidence_score": 1.0
     },
     {
@@ -8359,6 +7872,586 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/auth/register/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_api_auth_register_route",
+      "target": "app_api_auth_register_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "proxy",
+      "target": "proxy_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "proxy",
+      "target": "proxy_extractroles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "proxy",
+      "target": "proxy_normalizerole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "proxy",
+      "target": "proxy_proxy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "source_file": "proxy.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "proxy_extractroles",
+      "target": "proxy_normalizerole",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "proxy_proxy",
+      "target": "proxy_extractroles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_left_side",
+      "target": "app_root_auth_components_left_side_formdatatype"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_left_side",
+      "target": "app_root_auth_components_left_side_formschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_left_side",
+      "target": "app_root_auth_components_left_side_leftside"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_left_side",
+      "target": "app_root_auth_components_left_side_mode"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/left-side.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_left_side",
+      "target": "app_root_auth_components_partner_registration_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_defaultcenter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_defaulticon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_flyto"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_location"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_locationpicker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_mapevents"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_props"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_reversegeocode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_searchquery"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker",
+      "target": "app_root_auth_components_location_picker_searchresult"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "app_root_auth_components_location_picker"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L122",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker_locationpicker",
+      "target": "app_root_auth_components_location_picker_reversegeocode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/location-picker.tsx",
+      "source_location": "L136",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_location_picker_locationpicker",
+      "target": "app_root_auth_components_location_picker_searchquery"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_formdatatype"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_formschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_mode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_partnerflow"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_registration_flow"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_step_business_setup"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_step_business_setup_businessformdata"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_step_business_setup_businessformschema"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/partner/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_partner_page",
+      "target": "app_root_auth_components_partner_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_partner_registration_flow_partnerregistrationflow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_partner_registration_flow_props"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_partner_registration_flow_step"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_step_account_creation"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_step_account_creation_accountformdata"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_step_account_creation_accountformschema"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_step_business_setup"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_step_business_setup_businessformdata"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-registration-flow.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_registration_flow",
+      "target": "app_root_auth_components_step_business_setup_businessformschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_account_creation",
+      "target": "app_root_auth_components_step_account_creation_accountformdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_account_creation",
+      "target": "app_root_auth_components_step_account_creation_accountformschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_account_creation",
+      "target": "app_root_auth_components_step_account_creation_props"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-account-creation.tsx",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_account_creation",
+      "target": "app_root_auth_components_step_account_creation_stepaccountcreation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "app_root_auth_components_step_business_setup_businessformdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "app_root_auth_components_step_business_setup_businessformschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "app_root_auth_components_step_business_setup_props"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "app_root_auth_components_step_business_setup_servicetypeoptions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "app_root_auth_components_step_business_setup_stepbusinesssetup"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "lib_api_swr"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_step_business_setup",
+      "target": "lib_api_swr_usecategories"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/auth/_components/step-business-setup.tsx",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "app_root_auth_components_step_business_setup_stepbusinesssetup",
+      "target": "lib_api_swr_usecategories"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/partner/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_partner_page",
+      "target": "app_root_auth_partner_page_partnersignup"
+    },
+    {
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
@@ -8375,9 +8468,9 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_swr",
-      "target": "lib_api_swr_fetchcategories",
-      "confidence_score": 1.0
+      "target": "lib_api_swr_fetchcategories"
     },
     {
       "relation": "contains",
@@ -8385,9 +8478,9 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_swr",
-      "target": "lib_api_swr_fetcher",
-      "confidence_score": 1.0
+      "target": "lib_api_swr_fetcher"
     },
     {
       "relation": "contains",
@@ -8395,9 +8488,9 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_swr",
-      "target": "lib_api_swr_usecategories",
-      "confidence_score": 1.0
+      "target": "lib_api_swr_usecategories"
     },
     {
       "relation": "indirect_call",
@@ -8406,9 +8499,9 @@
       "source_file": "lib/api/swr.ts",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 0.5,
       "source": "lib_api_swr_usecategories",
-      "target": "lib_api_swr_fetcher",
-      "confidence_score": 0.5
+      "target": "lib_api_swr_fetcher"
     },
     {
       "relation": "re_exports",
@@ -15230,76 +15323,12 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "app/api/auth/login/route.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_api_auth_login_route",
-      "target": "app_api_auth_login_route_post"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/auth/login/route.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_api_auth_login_route",
-      "target": "lib_api_client"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/auth/login/route.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_api_auth_login_route",
-      "target": "lib_api_client_apiresponse"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "app/api/auth/logout/route.ts",
       "source_location": "L5",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "app_api_auth_logout_route",
       "target": "app_api_auth_logout_route_post"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/auth/register/route.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_api_auth_register_route",
-      "target": "app_api_auth_register_route_post"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/auth/register/route.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_api_auth_register_route",
-      "target": "lib_api_client"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/auth/register/route.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_api_auth_register_route",
-      "target": "lib_api_client_apiresponse"
     },
     {
       "relation": "contains",
@@ -21886,50 +21915,6 @@
       "target": "lib_roles_role_partner"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "lib_roles"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "lib_roles_role_customer"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "lib_roles_role_partner"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "lib_roles_role"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/toast.ts",
@@ -23188,47 +23173,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "proxy_config"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "proxy_extractrole"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy",
-      "target": "proxy_proxy"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "proxy.ts",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "proxy_proxy",
-      "target": "proxy_extractrole"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "tsconfig.json",
       "source_location": "L2",
       "weight": 1.0,
@@ -23770,5 +23714,5 @@
       "source_file": ".github/workflows/deploy.yml"
     }
   ],
-  "built_at_commit": "eabc1471e45e4247cda2afe0b2a10ebc11e1c1e4"
+  "built_at_commit": "fdd064fb327716f6f827143d41d4c491d3343211"
 }
