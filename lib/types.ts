@@ -322,6 +322,47 @@ export type ServiceDto = {
   active: boolean
 }
 
+export type BookingDto = {
+  id: number
+  businessId: number
+  serviceId: number
+  staffId: number
+  customerName: string
+  customerPhone: string
+  customerEmail: string | null
+  bookingDate: string
+  bookingTime: string
+  durationMinutes: number | null
+  totalPrice: number | null
+  currency: string
+  status: string
+  notes: string | null
+  confirmationCode: string | null
+  source: string
+  createdAt: string
+}
+
+export type DashboardSummaryDto = {
+  recentSales: number
+  upcomingAppointments: number
+  weeklyActivityCount: number
+  nextAppointment: BookingDto | null
+}
+
+export type TopServiceDto = {
+  serviceId: number
+  serviceName: string
+  thisMonthCount: number
+  lastMonthCount: number
+}
+
+export type TopTeamMemberDto = {
+  staffId: number
+  staffName: string
+  completedBookings: number
+  totalSales: number
+}
+
 export const COUNTRIES = [
   { code: "US", name: "United States" },
   { code: "CA", name: "Canada" },
