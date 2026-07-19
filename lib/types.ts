@@ -142,7 +142,13 @@ export type CustomerDashboardDto = {
   }
 }
 
-export type ServiceCategory = "HAIR" | "BARBER" | "NAILS" | "SPA" | "MASSAGE" | "FACIAL"
+export type ServiceCategory =
+  | "HAIR"
+  | "BARBER"
+  | "NAILS"
+  | "SPA"
+  | "MASSAGE"
+  | "FACIAL"
 
 export type BusinessCategoryDto = {
   id: number
@@ -202,7 +208,11 @@ export const BUSINESS_CATEGORIES: BusinessCategory[] = [
   { id: "tattooing-piercing", name: "Tattooing and Piercing" },
 ]
 
-export type BusinessStatus = "PENDING_VERIFICATION" | "ACTIVE" | "SUSPENDED" | "DEACTIVATED"
+export type BusinessStatus =
+  | "PENDING_VERIFICATION"
+  | "ACTIVE"
+  | "SUSPENDED"
+  | "DEACTIVATED"
 
 export type BusinessLocationDto = {
   id: number
@@ -328,6 +338,7 @@ export type BookingDto = {
   serviceId: number
   staffId: number
   customerName: string
+  serviceName: string
   customerPhone: string
   customerEmail: string | null
   bookingDate: string
