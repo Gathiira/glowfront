@@ -4,6 +4,413 @@
   "graph": {},
   "nodes": [
     {
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_types",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "types.ts"
+    },
+    {
+      "label": "BusinessCategory",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "lib_types_businesscategory",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businesscategory"
+    },
+    {
+      "label": "ServiceType",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "lib_types_servicetype",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "servicetype"
+    },
+    {
+      "label": "CustomerLoginData",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "lib_types_customerlogindata",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "customerlogindata"
+    },
+    {
+      "label": "CustomerAccountData",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "lib_types_customeraccountdata",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "customeraccountdata"
+    },
+    {
+      "label": "PartnerAccountData",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "lib_types_partneraccountdata",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "partneraccountdata"
+    },
+    {
+      "label": "PartnerBusinessData",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "lib_types_partnerbusinessdata",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "partnerbusinessdata"
+    },
+    {
+      "label": "CustomerProfile",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "lib_types_customerprofile",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "customerprofile"
+    },
+    {
+      "label": "BusinessService",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "lib_types_businessservice",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessservice"
+    },
+    {
+      "label": "BusinessTeamMember",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "lib_types_businessteammember",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessteammember"
+    },
+    {
+      "label": "BusinessReview",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "lib_types_businessreview",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessreview"
+    },
+    {
+      "label": "Business",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "lib_types_business",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "business"
+    },
+    {
+      "label": "CustomerAppointment",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L98",
+      "_origin": "ast",
+      "id": "lib_types_customerappointment",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "customerappointment"
+    },
+    {
+      "label": "CustomerDashboardDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "lib_types_customerdashboarddto",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "customerdashboarddto"
+    },
+    {
+      "label": "ServiceCategory",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L145",
+      "_origin": "ast",
+      "id": "lib_types_servicecategory",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "servicecategory"
+    },
+    {
+      "label": "BusinessCategoryDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L153",
+      "_origin": "ast",
+      "id": "lib_types_businesscategorydto",
+      "community": 42,
+      "community_name": "page.tsx",
+      "norm_label": "businesscategorydto"
+    },
+    {
+      "label": "BusinessSearchDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "lib_types_businesssearchdto",
+      "community": 41,
+      "community_name": "page.tsx",
+      "norm_label": "businesssearchdto"
+    },
+    {
+      "label": "PaginatedResponse",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L174",
+      "_origin": "ast",
+      "id": "lib_types_paginatedresponse",
+      "community": 41,
+      "community_name": "page.tsx",
+      "norm_label": "paginatedresponse"
+    },
+    {
+      "label": "BusinessCardDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L182",
+      "_origin": "ast",
+      "id": "lib_types_businesscarddto",
+      "community": 43,
+      "community_name": "scroll-section.tsx",
+      "norm_label": "businesscarddto"
+    },
+    {
+      "label": "BUSINESS_CATEGORIES",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L198",
+      "_origin": "ast",
+      "id": "lib_types_business_categories",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "business_categories"
+    },
+    {
+      "label": "BusinessStatus",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L211",
+      "_origin": "ast",
+      "id": "lib_types_businessstatus",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessstatus"
+    },
+    {
+      "label": "BusinessLocationDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L217",
+      "_origin": "ast",
+      "id": "lib_types_businesslocationdto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businesslocationdto"
+    },
+    {
+      "label": "BusinessGalleryDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L229",
+      "_origin": "ast",
+      "id": "lib_types_businessgallerydto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessgallerydto"
+    },
+    {
+      "label": "BusinessAmenityDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L235",
+      "_origin": "ast",
+      "id": "lib_types_businessamenitydto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessamenitydto"
+    },
+    {
+      "label": "BusinessOpeningHoursDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L240",
+      "_origin": "ast",
+      "id": "lib_types_businessopeninghoursdto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businessopeninghoursdto"
+    },
+    {
+      "label": "BusinessSocialMediaDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L248",
+      "_origin": "ast",
+      "id": "lib_types_businesssocialmediadto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "businesssocialmediadto"
+    },
+    {
+      "label": "BusinessDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L254",
+      "_origin": "ast",
+      "id": "lib_types_businessdto",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "businessdto"
+    },
+    {
+      "label": "ReviewImageDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L280",
+      "_origin": "ast",
+      "id": "lib_types_reviewimagedto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "reviewimagedto"
+    },
+    {
+      "label": "ReviewDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L285",
+      "_origin": "ast",
+      "id": "lib_types_reviewdto",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "reviewdto"
+    },
+    {
+      "label": "StaffDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L296",
+      "_origin": "ast",
+      "id": "lib_types_staffdto",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "staffdto"
+    },
+    {
+      "label": "ServiceCategoryEnum",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L310",
+      "_origin": "ast",
+      "id": "lib_types_servicecategoryenum",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "servicecategoryenum"
+    },
+    {
+      "label": "ServiceDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L321",
+      "_origin": "ast",
+      "id": "lib_types_servicedto",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "servicedto"
+    },
+    {
+      "label": "BookingDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L335",
+      "_origin": "ast",
+      "id": "lib_types_bookingdto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "bookingdto"
+    },
+    {
+      "label": "DashboardSummaryDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L356",
+      "_origin": "ast",
+      "id": "lib_types_dashboardsummarydto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "dashboardsummarydto"
+    },
+    {
+      "label": "TopServiceDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L363",
+      "_origin": "ast",
+      "id": "lib_types_topservicedto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "topservicedto"
+    },
+    {
+      "label": "TopTeamMemberDto",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L370",
+      "_origin": "ast",
+      "id": "lib_types_topteammemberdto",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "topteammemberdto"
+    },
+    {
+      "label": "COUNTRIES",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L377",
+      "_origin": "ast",
+      "id": "lib_types_countries",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
+      "norm_label": "countries"
+    },
+    {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "app/(root)/dashboard/home/page.tsx",
@@ -123,413 +530,6 @@
       "community_name": "Business Types & DTOs",
       "norm_label": "fetchtopteammember()",
       "id": "lib_api_partner_fetchtopteammember"
-    },
-    {
-      "label": "types.ts",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "types.ts",
-      "id": "lib_types"
-    },
-    {
-      "label": "BusinessCategory",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businesscategory",
-      "id": "lib_types_businesscategory"
-    },
-    {
-      "label": "ServiceType",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "servicetype",
-      "id": "lib_types_servicetype"
-    },
-    {
-      "label": "CustomerLoginData",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L10",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "customerlogindata",
-      "id": "lib_types_customerlogindata"
-    },
-    {
-      "label": "CustomerAccountData",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "customeraccountdata",
-      "id": "lib_types_customeraccountdata"
-    },
-    {
-      "label": "PartnerAccountData",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L29",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "partneraccountdata",
-      "id": "lib_types_partneraccountdata"
-    },
-    {
-      "label": "PartnerBusinessData",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L39",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "partnerbusinessdata",
-      "id": "lib_types_partnerbusinessdata"
-    },
-    {
-      "label": "CustomerProfile",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L52",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "customerprofile",
-      "id": "lib_types_customerprofile"
-    },
-    {
-      "label": "BusinessService",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L60",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessservice",
-      "id": "lib_types_businessservice"
-    },
-    {
-      "label": "BusinessTeamMember",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L68",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessteammember",
-      "id": "lib_types_businessteammember"
-    },
-    {
-      "label": "BusinessReview",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L74",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessreview",
-      "id": "lib_types_businessreview"
-    },
-    {
-      "label": "Business",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L82",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "business",
-      "id": "lib_types_business"
-    },
-    {
-      "label": "CustomerAppointment",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L98",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "customerappointment",
-      "id": "lib_types_customerappointment"
-    },
-    {
-      "label": "CustomerDashboardDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L113",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "customerdashboarddto",
-      "id": "lib_types_customerdashboarddto"
-    },
-    {
-      "label": "ServiceCategory",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L145",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "servicecategory",
-      "id": "lib_types_servicecategory"
-    },
-    {
-      "label": "BusinessCategoryDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L147",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "page.tsx",
-      "norm_label": "businesscategorydto",
-      "id": "lib_types_businesscategorydto"
-    },
-    {
-      "label": "BusinessSearchDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L154",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "page.tsx",
-      "norm_label": "businesssearchdto",
-      "id": "lib_types_businesssearchdto"
-    },
-    {
-      "label": "PaginatedResponse",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L168",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "page.tsx",
-      "norm_label": "paginatedresponse",
-      "id": "lib_types_paginatedresponse"
-    },
-    {
-      "label": "BusinessCardDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L176",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "scroll-section.tsx",
-      "norm_label": "businesscarddto",
-      "id": "lib_types_businesscarddto"
-    },
-    {
-      "label": "BUSINESS_CATEGORIES",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L192",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "business_categories",
-      "id": "lib_types_business_categories"
-    },
-    {
-      "label": "BusinessStatus",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L205",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessstatus",
-      "id": "lib_types_businessstatus"
-    },
-    {
-      "label": "BusinessLocationDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L207",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businesslocationdto",
-      "id": "lib_types_businesslocationdto"
-    },
-    {
-      "label": "BusinessGalleryDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L219",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessgallerydto",
-      "id": "lib_types_businessgallerydto"
-    },
-    {
-      "label": "BusinessAmenityDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L225",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessamenitydto",
-      "id": "lib_types_businessamenitydto"
-    },
-    {
-      "label": "BusinessOpeningHoursDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L230",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businessopeninghoursdto",
-      "id": "lib_types_businessopeninghoursdto"
-    },
-    {
-      "label": "BusinessSocialMediaDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L238",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "businesssocialmediadto",
-      "id": "lib_types_businesssocialmediadto"
-    },
-    {
-      "label": "BusinessDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L244",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "businessdto",
-      "id": "lib_types_businessdto"
-    },
-    {
-      "label": "ReviewImageDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L270",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "reviewimagedto",
-      "id": "lib_types_reviewimagedto"
-    },
-    {
-      "label": "ReviewDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L275",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "reviewdto",
-      "id": "lib_types_reviewdto"
-    },
-    {
-      "label": "StaffDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L286",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "staffdto",
-      "id": "lib_types_staffdto"
-    },
-    {
-      "label": "ServiceCategoryEnum",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L300",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "servicecategoryenum",
-      "id": "lib_types_servicecategoryenum"
-    },
-    {
-      "label": "ServiceDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L311",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "servicedto",
-      "id": "lib_types_servicedto"
-    },
-    {
-      "label": "BookingDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L325",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "bookingdto",
-      "id": "lib_types_bookingdto"
-    },
-    {
-      "label": "DashboardSummaryDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L345",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "dashboardsummarydto",
-      "id": "lib_types_dashboardsummarydto"
-    },
-    {
-      "label": "TopServiceDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L352",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "topservicedto",
-      "id": "lib_types_topservicedto"
-    },
-    {
-      "label": "TopTeamMemberDto",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L359",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "topteammemberdto",
-      "id": "lib_types_topteammemberdto"
-    },
-    {
-      "label": "COUNTRIES",
-      "file_type": "code",
-      "source_file": "lib/types.ts",
-      "source_location": "L366",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Business Types & DTOs",
-      "norm_label": "countries",
-      "id": "lib_types_countries"
     },
     {
       "label": "sidebar.tsx",
@@ -7847,338 +7847,6 @@
   ],
   "links": [
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "app_root_dashboard_home_page_formatcurrency"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "app_root_dashboard_home_page_formattimedisplay"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L40",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "app_root_dashboard_home_page_home"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_api_partner"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_api_partner_fetchdashboardsummary"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_api_partner_fetchtopservices"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_api_partner_fetchtopteammember"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_types_dashboardsummarydto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_types_topservicedto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_types_topteammemberdto"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L74",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page_home",
-      "target": "app_root_dashboard_home_page_formatcurrency"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L96",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page_home",
-      "target": "app_root_dashboard_home_page_formattimedisplay"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_api_partner_customerlogin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_api_partner_fetchdashboardsummary"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L58",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_api_partner_fetchtopservices"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L67",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_api_partner_fetchtopteammember"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_api_partner_registercustomer"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_api_partner_registerpartner"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_customeraccountdata"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_customerlogindata"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_dashboardsummarydto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_partneraccountdata"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_partnerbusinessdata"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_topservicedto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/partner.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_partner",
-      "target": "lib_types_topteammemberdto"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_registercustomer"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_registerpartner"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_customerlogin"
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8253,6 +7921,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "app_root_dashboard_clients_segments_page",
+      "target": "lib_types"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
       "target": "lib_types"
     },
     {
@@ -8402,6 +8081,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "lib/customer-context.tsx",
       "source_location": "L11",
       "weight": 1.0,
@@ -8413,11 +8103,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L325",
+      "source_location": "L335",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_bookingdto"
+      "target": "lib_types_bookingdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8425,39 +8115,39 @@
       "source_file": "lib/types.ts",
       "source_location": "L82",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_business"
+      "target": "lib_types_business",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L192",
+      "source_location": "L198",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_business_categories"
+      "target": "lib_types_business_categories",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L225",
+      "source_location": "L235",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessamenitydto"
+      "target": "lib_types_businessamenitydto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L176",
+      "source_location": "L182",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesscarddto"
+      "target": "lib_types_businesscarddto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8465,59 +8155,59 @@
       "source_file": "lib/types.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesscategory"
+      "target": "lib_types_businesscategory",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L147",
+      "source_location": "L153",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesscategorydto"
+      "target": "lib_types_businesscategorydto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L244",
+      "source_location": "L254",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessdto"
+      "target": "lib_types_businessdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L219",
+      "source_location": "L229",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessgallerydto"
+      "target": "lib_types_businessgallerydto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L207",
+      "source_location": "L217",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesslocationdto"
+      "target": "lib_types_businesslocationdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L230",
+      "source_location": "L240",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessopeninghoursdto"
+      "target": "lib_types_businessopeninghoursdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8525,19 +8215,19 @@
       "source_file": "lib/types.ts",
       "source_location": "L74",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessreview"
+      "target": "lib_types_businessreview",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L154",
+      "source_location": "L160",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesssearchdto"
+      "target": "lib_types_businesssearchdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8545,29 +8235,29 @@
       "source_file": "lib/types.ts",
       "source_location": "L60",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessservice"
+      "target": "lib_types_businessservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L238",
+      "source_location": "L248",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesssocialmediadto"
+      "target": "lib_types_businesssocialmediadto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L205",
+      "source_location": "L211",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessstatus"
+      "target": "lib_types_businessstatus",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8575,19 +8265,19 @@
       "source_file": "lib/types.ts",
       "source_location": "L68",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessteammember"
+      "target": "lib_types_businessteammember",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L366",
+      "source_location": "L377",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_countries"
+      "target": "lib_types_countries",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8595,9 +8285,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customeraccountdata"
+      "target": "lib_types_customeraccountdata",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8605,9 +8295,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L98",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerappointment"
+      "target": "lib_types_customerappointment",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8615,9 +8305,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L113",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerdashboarddto"
+      "target": "lib_types_customerdashboarddto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8625,9 +8315,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerlogindata"
+      "target": "lib_types_customerlogindata",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8635,29 +8325,29 @@
       "source_file": "lib/types.ts",
       "source_location": "L52",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerprofile"
+      "target": "lib_types_customerprofile",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L345",
+      "source_location": "L356",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_dashboardsummarydto"
+      "target": "lib_types_dashboardsummarydto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L168",
+      "source_location": "L174",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_paginatedresponse"
+      "target": "lib_types_paginatedresponse",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8665,9 +8355,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_partneraccountdata"
+      "target": "lib_types_partneraccountdata",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8675,29 +8365,29 @@
       "source_file": "lib/types.ts",
       "source_location": "L39",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_partnerbusinessdata"
+      "target": "lib_types_partnerbusinessdata",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L275",
+      "source_location": "L285",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_reviewdto"
+      "target": "lib_types_reviewdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L270",
+      "source_location": "L280",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_reviewimagedto"
+      "target": "lib_types_reviewimagedto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8705,29 +8395,29 @@
       "source_file": "lib/types.ts",
       "source_location": "L145",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicecategory"
+      "target": "lib_types_servicecategory",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L300",
+      "source_location": "L310",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicecategoryenum"
+      "target": "lib_types_servicecategoryenum",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L311",
+      "source_location": "L321",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicedto"
+      "target": "lib_types_servicedto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8735,39 +8425,83 @@
       "source_file": "lib/types.ts",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicetype"
+      "target": "lib_types_servicetype",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L286",
+      "source_location": "L296",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_staffdto"
+      "target": "lib_types_staffdto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L352",
+      "source_location": "L363",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_topservicedto"
+      "target": "lib_types_topservicedto",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/types.ts",
-      "source_location": "L359",
+      "source_location": "L370",
+      "weight": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_topteammemberdto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_topteammemberdto"
+      "source": "lib_api_partner",
+      "target": "lib_types_customerlogindata"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types_customeraccountdata"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types_partneraccountdata"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types_partnerbusinessdata"
     },
     {
       "relation": "imports",
@@ -9230,6 +8964,272 @@
       "confidence_score": 1.0,
       "source": "lib_api_customer",
       "target": "lib_types_servicedto"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_types_dashboardsummarydto"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types_dashboardsummarydto"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_types_topservicedto"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types_topservicedto"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_types_topteammemberdto"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_types_topteammemberdto"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "app_root_dashboard_home_page_formatcurrency"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "app_root_dashboard_home_page_formattimedisplay"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "app_root_dashboard_home_page_home"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_api_partner"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_api_partner_fetchdashboardsummary"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_api_partner_fetchtopservices"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_api_partner_fetchtopteammember"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page_home",
+      "target": "app_root_dashboard_home_page_formatcurrency"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_home_page_home",
+      "target": "app_root_dashboard_home_page_formattimedisplay"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_partner"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_api_partner_customerlogin"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_api_partner_fetchdashboardsummary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_api_partner_fetchtopservices"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_api_partner_fetchtopteammember"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_api_partner_registercustomer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/partner.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_partner",
+      "target": "lib_api_partner_registerpartner"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_partner_registercustomer"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_partner_registerpartner"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_partner_customerlogin"
     },
     {
       "relation": "imports_from",
@@ -23467,5 +23467,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f56058ec7fd81ad203cfb2dcf94200f77f7c5d8d"
+  "built_at_commit": "64166dceb1c4e16e325678184517876b47dbbd25"
 }
