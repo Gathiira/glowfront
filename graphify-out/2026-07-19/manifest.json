@@ -615,8 +615,8 @@
     "semantic_hash": "33f1dbd99ec1b17cc544ee0b7733cd9b"
   },
   "k8s/deployment.yaml": {
-    "mtime": 1784449386.420181,
-    "ast_hash": "1ab3115f4af3bc5b7e55583afb9c1e99",
+    "mtime": 1784062550.163638,
+    "ast_hash": "93be6e4bedeef2c9852cc6e92cc4f970",
     "semantic_hash": ""
   },
   "k8s/hpa.yaml": {
