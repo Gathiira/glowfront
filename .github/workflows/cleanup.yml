@@ -1,9 +1,10 @@
 name: Cleanup GHCR Images
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
 
 jobs:
   cleanup:
@@ -12,8 +13,10 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/delete-package-versions@v5
+      - name: Delete old container images
+        uses: actions/delete-package-versions@v5
         with:
           package-name: glowfront
           package-type: container
-          min-versions-to-keep: 3
+          min-versions-to-keep: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
