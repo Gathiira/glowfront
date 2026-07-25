@@ -28,14 +28,18 @@ export function Header() {
             <Menu className="size-5" />
           </Button>
         </nav>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          <Menu className="size-5" />
-        </Button>
+        <div className="flex items-center gap-2 md:hidden">
+          <Button size="sm" asChild>
+            <Link href="/auth">Login</Link>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <Menu className="size-5" />
+          </Button>
+        </div>
       </div>
       {mobileMenuOpen && (
         <div className="border-t px-4 py-3 md:hidden">

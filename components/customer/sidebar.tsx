@@ -52,7 +52,7 @@ export function PlatformSidebar() {
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" })
     clearCustomerProfile()
-    router.push("/auth")
+    router.push("/")
   }
 
   useEffect(() => {

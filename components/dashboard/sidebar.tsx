@@ -137,7 +137,7 @@ export function Sidebar() {
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" })
     clearCustomerProfile()
-    router.push("/auth")
+    router.push("/")
   }
 
   const isActive = (href: string) => pathname === href
