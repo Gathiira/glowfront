@@ -24,7 +24,12 @@ import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { fetchCustomerBookings, cancelBooking } from "@/lib/api"
 import type { BookingDto } from "@/lib/types"
-import { BookingDetailDialog } from "@/components/customer/booking-detail-dialog"
+import dynamic from "next/dynamic"
+
+const BookingDetailDialog = dynamic(
+  () => import("@/components/customer/booking-detail-dialog").then((m) => m.BookingDetailDialog),
+  { ssr: false }
+)
 
 type Tab = "upcoming" | "past" | "cancelled"
 

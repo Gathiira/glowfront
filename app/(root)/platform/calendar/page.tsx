@@ -10,7 +10,12 @@ import { ChevronLeft, ChevronRight, Eye } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { fetchCustomerBookings, cancelBooking } from "@/lib/api"
 import type { BookingDto } from "@/lib/types"
-import { BookingDetailDialog } from "@/components/customer/booking-detail-dialog"
+import dynamic from "next/dynamic"
+
+const BookingDetailDialog = dynamic(
+  () => import("@/components/customer/booking-detail-dialog").then((m) => m.BookingDetailDialog),
+  { ssr: false }
+)
 import { toast } from "sonner"
 
 function formatDate(year: number, month: number, day: number): string {
