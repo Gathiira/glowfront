@@ -4,158 +4,15 @@
   "graph": {},
   "nodes": [
     {
-      "label": "sidebar.tsx",
-      "file_type": "code",
-      "source_file": "components/customer/sidebar.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_customer_sidebar",
-      "community": 13,
-      "community_name": "Platform Layout & Context",
-      "norm_label": "sidebar.tsx"
-    },
-    {
-      "label": "navItems",
-      "file_type": "code",
-      "source_file": "components/customer/sidebar.tsx",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "components_customer_sidebar_navitems",
-      "community": 13,
-      "community_name": "Platform Layout & Context",
-      "norm_label": "navitems"
-    },
-    {
-      "label": "PlatformSidebar()",
-      "file_type": "code",
-      "source_file": "components/customer/sidebar.tsx",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "components_customer_sidebar_platformsidebar",
-      "community": 13,
-      "community_name": "Platform Layout & Context",
-      "norm_label": "platformsidebar()"
-    },
-    {
-      "label": "sidebar.tsx",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "sidebar.tsx"
-    },
-    {
-      "label": "SubMenuItem",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_submenuitem",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "submenuitem"
-    },
-    {
-      "label": "NavItem",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_navitem",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "navitem"
-    },
-    {
-      "label": "navItems",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_navitems",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "navitems"
-    },
-    {
-      "label": "bottomNavItems",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L96",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_bottomnavitems",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "bottomnavitems"
-    },
-    {
-      "label": "Sidebar()",
-      "file_type": "code",
-      "source_file": "components/dashboard/sidebar.tsx",
-      "source_location": "L107",
-      "_origin": "ast",
-      "id": "components_dashboard_sidebar_sidebar",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "sidebar()"
-    },
-    {
-      "label": "header.tsx",
-      "file_type": "code",
-      "source_file": "components/landing/_components/header.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_landing_components_header",
-      "community": 53,
-      "community_name": "header.tsx",
-      "norm_label": "header.tsx"
-    },
-    {
-      "label": "Header()",
-      "file_type": "code",
-      "source_file": "components/landing/_components/header.tsx",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "components_landing_components_header_header",
-      "community": 53,
-      "community_name": "header.tsx",
-      "norm_label": "header()"
-    },
-    {
-      "label": "sonner.tsx",
-      "file_type": "code",
-      "source_file": "components/ui/sonner.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_ui_sonner",
-      "community": 42,
-      "community_name": "page.tsx",
-      "norm_label": "sonner.tsx"
-    },
-    {
-      "label": "Toaster()",
-      "file_type": "code",
-      "source_file": "components/ui/sonner.tsx",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "components_ui_sonner_toaster",
-      "community": 42,
-      "community_name": "page.tsx",
-      "norm_label": "toaster()"
-    },
-    {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "page.tsx",
-      "id": "app_root_business_slug_page"
+      "id": "app_root_business_slug_page",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "page.tsx"
     },
     {
       "label": "MapContainer",
@@ -163,10 +20,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L59",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "mapcontainer",
-      "id": "app_root_business_slug_page_mapcontainer"
+      "id": "app_root_business_slug_page_mapcontainer",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "mapcontainer"
     },
     {
       "label": "TileLayer",
@@ -174,10 +31,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "tilelayer",
-      "id": "app_root_business_slug_page_tilelayer"
+      "id": "app_root_business_slug_page_tilelayer",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "tilelayer"
     },
     {
       "label": "Marker",
@@ -185,10 +42,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L67",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "marker",
-      "id": "app_root_business_slug_page_marker"
+      "id": "app_root_business_slug_page_marker",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "marker"
     },
     {
       "label": "Popup",
@@ -196,10 +53,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L71",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "popup",
-      "id": "app_root_business_slug_page_popup"
+      "id": "app_root_business_slug_page_popup",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "popup"
     },
     {
       "label": "DAY_ORDER",
@@ -207,10 +64,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L77",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "day_order",
-      "id": "app_root_business_slug_page_day_order"
+      "id": "app_root_business_slug_page_day_order",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "day_order"
     },
     {
       "label": "formatDay()",
@@ -218,10 +75,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L79",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "formatday()",
-      "id": "app_root_business_slug_page_formatday"
+      "id": "app_root_business_slug_page_formatday",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "formatday()"
     },
     {
       "label": "formatTime()",
@@ -229,10 +86,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L83",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "formattime()",
-      "id": "app_root_business_slug_page_formattime"
+      "id": "app_root_business_slug_page_formattime",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "formattime()"
     },
     {
       "label": "StarRating()",
@@ -240,10 +97,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L92",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "starrating()",
-      "id": "app_root_business_slug_page_starrating"
+      "id": "app_root_business_slug_page_starrating",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "starrating()"
     },
     {
       "label": "DetailSkeleton()",
@@ -251,10 +108,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L111",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "detailskeleton()",
-      "id": "app_root_business_slug_page_detailskeleton"
+      "id": "app_root_business_slug_page_detailskeleton",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "detailskeleton()"
     },
     {
       "label": "ReviewSkeleton()",
@@ -262,10 +119,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L150",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "reviewskeleton()",
-      "id": "app_root_business_slug_page_reviewskeleton"
+      "id": "app_root_business_slug_page_reviewskeleton",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "reviewskeleton()"
     },
     {
       "label": "ReviewCard()",
@@ -273,10 +130,10 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L167",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "reviewcard()",
-      "id": "app_root_business_slug_page_reviewcard"
+      "id": "app_root_business_slug_page_reviewcard",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "reviewcard()"
     },
     {
       "label": "BusinessDetailPage()",
@@ -284,10 +141,472 @@
       "source_file": "app/(root)/business/[slug]/page.tsx",
       "source_location": "L209",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "businessdetailpage()",
-      "id": "app_root_business_slug_page_businessdetailpage"
+      "id": "app_root_business_slug_page_businessdetailpage",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "businessdetailpage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "MapContainer",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_mapcontainer",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "mapcontainer"
+    },
+    {
+      "label": "TileLayer",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_tilelayer",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "tilelayer"
+    },
+    {
+      "label": "Marker",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_marker",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "marker"
+    },
+    {
+      "label": "Popup",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_popup",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "popup"
+    },
+    {
+      "label": "HOURS",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_hours",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "hours"
+    },
+    {
+      "label": "DAY_ORDER",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_day_order",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "day_order"
+    },
+    {
+      "label": "formatDay()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_formatday",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "formatday()"
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_formattime",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "formattime()"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_formatdate",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "getDaysInMonth()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_getdaysinmonth",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "getdaysinmonth()"
+    },
+    {
+      "label": "getFirstDayOfMonth()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_getfirstdayofmonth",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "getfirstdayofmonth()"
+    },
+    {
+      "label": "isPastDate()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L130",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_ispastdate",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "ispastdate()"
+    },
+    {
+      "label": "StarRating()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L136",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_starrating",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "starrating()"
+    },
+    {
+      "label": "DetailSkeleton()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L161",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_detailskeleton",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "detailskeleton()"
+    },
+    {
+      "label": "ReviewSkeleton()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L200",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_reviewskeleton",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "reviewskeleton()"
+    },
+    {
+      "label": "ReviewCard()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L217",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_reviewcard",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "reviewcard()"
+    },
+    {
+      "label": "BusinessDetail()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L260",
+      "_origin": "ast",
+      "id": "app_root_platform_browse_slug_page_businessdetail",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "businessdetail()"
+    },
+    {
+      "label": "customer.ts",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_api_customer",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "customer.ts"
+    },
+    {
+      "label": "fetchCustomerDashboard()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "lib_api_customer_fetchcustomerdashboard",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "fetchcustomerdashboard()"
+    },
+    {
+      "label": "searchBusinesses()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "lib_api_customer_searchbusinesses",
+      "community": 18,
+      "community_name": "API Client Layer",
+      "norm_label": "searchbusinesses()"
+    },
+    {
+      "label": "fetchBusinessCategories()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "lib_api_customer_fetchbusinesscategories",
+      "community": 18,
+      "community_name": "API Client Layer",
+      "norm_label": "fetchbusinesscategories()"
+    },
+    {
+      "label": "fetchBusinessBySlug()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "lib_api_customer_fetchbusinessbyslug",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "fetchbusinessbyslug()"
+    },
+    {
+      "label": "fetchBusinessReviews()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "lib_api_customer_fetchbusinessreviews",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "fetchbusinessreviews()"
+    },
+    {
+      "label": "fetchBusinessStaff()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "lib_api_customer_fetchbusinessstaff",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "fetchbusinessstaff()"
+    },
+    {
+      "label": "fetchBusinessServices()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "lib_api_customer_fetchbusinessservices",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "fetchbusinessservices()"
+    },
+    {
+      "label": "CustomerBookingPayload",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "lib_api_customer_customerbookingpayload",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "customerbookingpayload"
+    },
+    {
+      "label": "createBooking()",
+      "file_type": "code",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "lib_api_customer_createbooking",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "createbooking()"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_api_index",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "sidebar.tsx",
+      "file_type": "code",
+      "source_file": "components/customer/sidebar.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Platform Layout & Context",
+      "norm_label": "sidebar.tsx",
+      "id": "components_customer_sidebar"
+    },
+    {
+      "label": "navItems",
+      "file_type": "code",
+      "source_file": "components/customer/sidebar.tsx",
+      "source_location": "L33",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Platform Layout & Context",
+      "norm_label": "navitems",
+      "id": "components_customer_sidebar_navitems"
+    },
+    {
+      "label": "PlatformSidebar()",
+      "file_type": "code",
+      "source_file": "components/customer/sidebar.tsx",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Platform Layout & Context",
+      "norm_label": "platformsidebar()",
+      "id": "components_customer_sidebar_platformsidebar"
+    },
+    {
+      "label": "sidebar.tsx",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Dashboard Layout & Sidebar",
+      "norm_label": "sidebar.tsx",
+      "id": "components_dashboard_sidebar"
+    },
+    {
+      "label": "SubMenuItem",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L37",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Dashboard Layout & Sidebar",
+      "norm_label": "submenuitem",
+      "id": "components_dashboard_sidebar_submenuitem"
+    },
+    {
+      "label": "NavItem",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L42",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Dashboard Layout & Sidebar",
+      "norm_label": "navitem",
+      "id": "components_dashboard_sidebar_navitem"
+    },
+    {
+      "label": "navItems",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Dashboard Layout & Sidebar",
+      "norm_label": "navitems",
+      "id": "components_dashboard_sidebar_navitems"
+    },
+    {
+      "label": "bottomNavItems",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L96",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Dashboard Layout & Sidebar",
+      "norm_label": "bottomnavitems",
+      "id": "components_dashboard_sidebar_bottomnavitems"
+    },
+    {
+      "label": "Sidebar()",
+      "file_type": "code",
+      "source_file": "components/dashboard/sidebar.tsx",
+      "source_location": "L107",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Dashboard Layout & Sidebar",
+      "norm_label": "sidebar()",
+      "id": "components_dashboard_sidebar_sidebar"
+    },
+    {
+      "label": "header.tsx",
+      "file_type": "code",
+      "source_file": "components/landing/_components/header.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 53,
+      "community_name": "header.tsx",
+      "norm_label": "header.tsx",
+      "id": "components_landing_components_header"
+    },
+    {
+      "label": "Header()",
+      "file_type": "code",
+      "source_file": "components/landing/_components/header.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 53,
+      "community_name": "header.tsx",
+      "norm_label": "header()",
+      "id": "components_landing_components_header_header"
+    },
+    {
+      "label": "sonner.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/sonner.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "page.tsx",
+      "norm_label": "sonner.tsx",
+      "id": "components_ui_sonner"
+    },
+    {
+      "label": "Toaster()",
+      "file_type": "code",
+      "source_file": "components/ui/sonner.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "page.tsx",
+      "norm_label": "toaster()",
+      "id": "components_ui_sonner_toaster"
     },
     {
       "label": "page.tsx",
@@ -295,8 +614,8 @@
       "source_file": "app/(root)/dashboard/catalog/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "page.tsx",
       "id": "app_root_dashboard_catalog_page"
     },
@@ -306,8 +625,8 @@
       "source_file": "app/(root)/dashboard/catalog/page.tsx",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "catalog()",
       "id": "app_root_dashboard_catalog_page_catalog"
     },
@@ -317,8 +636,8 @@
       "source_file": "app/(root)/dashboard/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "layout.tsx",
       "id": "app_root_dashboard_layout"
     },
@@ -328,8 +647,8 @@
       "source_file": "app/(root)/dashboard/layout.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "props",
       "id": "app_root_dashboard_layout_props"
     },
@@ -339,8 +658,8 @@
       "source_file": "app/(root)/dashboard/layout.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "dashboardlayout()",
       "id": "app_root_dashboard_layout_dashboardlayout"
     },
@@ -350,8 +669,8 @@
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "page.tsx",
       "id": "app_root_dashboard_profile_details_page"
     },
@@ -361,8 +680,8 @@
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "profiledetails()",
       "id": "app_root_dashboard_profile_details_page_profiledetails"
     },
@@ -372,8 +691,8 @@
       "source_file": "app/(root)/dashboard/team/add/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "page.tsx",
       "id": "app_root_dashboard_team_add_page"
     },
@@ -383,8 +702,8 @@
       "source_file": "app/(root)/dashboard/team/add/page.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "addmember()",
       "id": "app_root_dashboard_team_add_page_addmember"
     },
@@ -394,8 +713,8 @@
       "source_file": "app/(root)/dashboard/team/members/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 54,
-      "community_name": "PaginatedResponse",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "page.tsx",
       "id": "app_root_dashboard_team_members_page"
     },
@@ -405,219 +724,10 @@
       "source_file": "app/(root)/dashboard/team/members/page.tsx",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 54,
-      "community_name": "PaginatedResponse",
-      "norm_label": "teammembers()",
-      "id": "app_root_dashboard_team_members_page_teammembers"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "page.tsx",
-      "id": "app_root_platform_browse_slug_page"
-    },
-    {
-      "label": "MapContainer",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L72",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "mapcontainer",
-      "id": "app_root_platform_browse_slug_page_mapcontainer"
-    },
-    {
-      "label": "TileLayer",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L76",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "tilelayer",
-      "id": "app_root_platform_browse_slug_page_tilelayer"
-    },
-    {
-      "label": "Marker",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L80",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "marker",
-      "id": "app_root_platform_browse_slug_page_marker"
-    },
-    {
-      "label": "Popup",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L84",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "popup",
-      "id": "app_root_platform_browse_slug_page_popup"
-    },
-    {
-      "label": "HOURS",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L88",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "hours",
-      "id": "app_root_platform_browse_slug_page_hours"
-    },
-    {
-      "label": "DAY_ORDER",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L94",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "day_order",
-      "id": "app_root_platform_browse_slug_page_day_order"
-    },
-    {
-      "label": "formatDay()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L104",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "formatday()",
-      "id": "app_root_platform_browse_slug_page_formatday"
-    },
-    {
-      "label": "formatTime()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L108",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "formattime()",
-      "id": "app_root_platform_browse_slug_page_formattime"
-    },
-    {
-      "label": "formatDate()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L117",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "formatdate()",
-      "id": "app_root_platform_browse_slug_page_formatdate"
-    },
-    {
-      "label": "getDaysInMonth()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L121",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "getdaysinmonth()",
-      "id": "app_root_platform_browse_slug_page_getdaysinmonth"
-    },
-    {
-      "label": "getFirstDayOfMonth()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L125",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "getfirstdayofmonth()",
-      "id": "app_root_platform_browse_slug_page_getfirstdayofmonth"
-    },
-    {
-      "label": "isPastDate()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L129",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "ispastdate()",
-      "id": "app_root_platform_browse_slug_page_ispastdate"
-    },
-    {
-      "label": "StarRating()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L135",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "starrating()",
-      "id": "app_root_platform_browse_slug_page_starrating"
-    },
-    {
-      "label": "DetailSkeleton()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L160",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "detailskeleton()",
-      "id": "app_root_platform_browse_slug_page_detailskeleton"
-    },
-    {
-      "label": "ReviewSkeleton()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L199",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "reviewskeleton()",
-      "id": "app_root_platform_browse_slug_page_reviewskeleton"
-    },
-    {
-      "label": "ReviewCard()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L216",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "reviewcard()",
-      "id": "app_root_platform_browse_slug_page_reviewcard"
-    },
-    {
-      "label": "BusinessDetail()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L259",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "businessdetail()",
-      "id": "app_root_platform_browse_slug_page_businessdetail"
-    },
-    {
-      "label": "index.ts",
-      "file_type": "code",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L1",
-      "_origin": "ast",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "index.ts",
-      "id": "lib_api_index"
+      "norm_label": "teammembers()",
+      "id": "app_root_dashboard_team_members_page_teammembers"
     },
     {
       "label": "partner.ts",
@@ -702,8 +812,8 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L81",
       "_origin": "ast",
-      "community": 54,
-      "community_name": "PaginatedResponse",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "fetchpartnerstaff()",
       "id": "lib_api_partner_fetchpartnerstaff"
     },
@@ -724,8 +834,8 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L104",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "createpartnerstaff()",
       "id": "lib_api_partner_createpartnerstaff"
     },
@@ -735,8 +845,8 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L117",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "fetchpartnerservices()",
       "id": "lib_api_partner_fetchpartnerservices"
     },
@@ -757,8 +867,8 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L141",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "createpartnerservice()",
       "id": "lib_api_partner_createpartnerservice"
     },
@@ -768,8 +878,8 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L154",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "fetchpartnerbusiness()",
       "id": "lib_api_partner_fetchpartnerbusiness"
     },
@@ -779,8 +889,8 @@
       "source_file": "lib/api/partner.ts",
       "source_location": "L165",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "fetchpartnercategories()",
       "id": "lib_api_partner_fetchpartnercategories"
     },
@@ -790,8 +900,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "types.ts",
       "id": "lib_types"
     },
@@ -801,8 +911,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businesscategory",
       "id": "lib_types_businesscategory"
     },
@@ -812,8 +922,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "servicetype",
       "id": "lib_types_servicetype"
     },
@@ -878,8 +988,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L60",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessservice",
       "id": "lib_types_businessservice"
     },
@@ -889,8 +999,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L68",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessteammember",
       "id": "lib_types_businessteammember"
     },
@@ -933,8 +1043,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L113",
       "_origin": "ast",
-      "community": 43,
-      "community_name": "scroll-section.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "customerdashboarddto",
       "id": "lib_types_customerdashboarddto"
     },
@@ -944,8 +1054,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L145",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "servicecategory",
       "id": "lib_types_servicecategory"
     },
@@ -955,8 +1065,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L153",
       "_origin": "ast",
-      "community": 18,
-      "community_name": "API Client Layer",
+      "community": 12,
+      "community_name": "Business Detail",
       "norm_label": "businesscategorydto",
       "id": "lib_types_businesscategorydto"
     },
@@ -977,8 +1087,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L174",
       "_origin": "ast",
-      "community": 54,
-      "community_name": "PaginatedResponse",
+      "community": 41,
+      "community_name": "page.tsx",
       "norm_label": "paginatedresponse",
       "id": "lib_types_paginatedresponse"
     },
@@ -988,8 +1098,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L182",
       "_origin": "ast",
-      "community": 52,
-      "community_name": "scroll-section.tsx",
+      "community": 41,
+      "community_name": "page.tsx",
       "norm_label": "businesscarddto",
       "id": "lib_types_businesscarddto"
     },
@@ -999,8 +1109,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L198",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "business_categories",
       "id": "lib_types_business_categories"
     },
@@ -1010,8 +1120,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L211",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessstatus",
       "id": "lib_types_businessstatus"
     },
@@ -1021,8 +1131,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L217",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businesslocationdto",
       "id": "lib_types_businesslocationdto"
     },
@@ -1032,8 +1142,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L229",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessgallerydto",
       "id": "lib_types_businessgallerydto"
     },
@@ -1043,8 +1153,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L235",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessamenitydto",
       "id": "lib_types_businessamenitydto"
     },
@@ -1054,8 +1164,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L240",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessopeninghoursdto",
       "id": "lib_types_businessopeninghoursdto"
     },
@@ -1065,8 +1175,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L248",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businesssocialmediadto",
       "id": "lib_types_businesssocialmediadto"
     },
@@ -1076,8 +1186,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L254",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "businessdto",
       "id": "lib_types_businessdto"
     },
@@ -1087,8 +1197,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L280",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "reviewimagedto",
       "id": "lib_types_reviewimagedto"
     },
@@ -1098,8 +1208,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L285",
       "_origin": "ast",
-      "community": 50,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "reviewdto",
       "id": "lib_types_reviewdto"
     },
@@ -1109,8 +1219,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L296",
       "_origin": "ast",
-      "community": 54,
-      "community_name": "PaginatedResponse",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "staffdto",
       "id": "lib_types_staffdto"
     },
@@ -1120,8 +1230,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L310",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "servicecategoryenum",
       "id": "lib_types_servicecategoryenum"
     },
@@ -1131,8 +1241,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L321",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "page.tsx",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "servicedto",
       "id": "lib_types_servicedto"
     },
@@ -1142,8 +1252,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L336",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "bookingdto",
       "id": "lib_types_bookingdto"
     },
@@ -1186,8 +1296,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L378",
       "_origin": "ast",
-      "community": 45,
-      "community_name": "types.ts",
+      "community": 10,
+      "community_name": "Business Types & DTOs",
       "norm_label": "countries",
       "id": "lib_types_countries"
     },
@@ -2396,9 +2506,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "page.tsx",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page"
     },
     {
@@ -2407,9 +2517,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "appointment",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_appointment"
     },
     {
@@ -2418,9 +2528,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "colors",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_colors"
     },
     {
@@ -2429,9 +2539,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "statuscolors",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_statuscolors"
     },
     {
@@ -2440,9 +2550,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "formatdate()",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_formatdate"
     },
     {
@@ -2451,9 +2561,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "getdaysinmonth()",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_getdaysinmonth"
     },
     {
@@ -2462,9 +2572,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "getfirstdayofmonth()",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_getfirstdayofmonth"
     },
     {
@@ -2473,9 +2583,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "hours",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_hours"
     },
     {
@@ -2484,9 +2594,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "ispastdate()",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_ispastdate"
     },
     {
@@ -2495,9 +2605,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "ispasthour()",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_ispasthour"
     },
     {
@@ -2506,9 +2616,9 @@
       "source_file": "app/(root)/dashboard/calendar/page.tsx",
       "source_location": "L60",
       "_origin": "ast",
-      "community": 12,
+      "community": 5,
       "norm_label": "calendar()",
-      "community_name": "Business Detail",
+      "community_name": "Root Layout & Auth",
       "id": "app_root_dashboard_calendar_page_calendar"
     },
     {
@@ -3870,9 +3980,9 @@
       "source_file": "components/landing/_components/business/business-types.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "business-types.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_business_business_types"
     },
     {
@@ -3881,9 +3991,9 @@
       "source_file": "components/landing/_components/business/business-types.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "businesstypes()",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_business_business_types_businesstypes"
     },
     {
@@ -3892,9 +4002,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "category-browser.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_category_browser"
     },
     {
@@ -3903,9 +4013,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "iconmap",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_category_browser_iconmap"
     },
     {
@@ -3914,9 +4024,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "fallbackicons",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_category_browser_fallbackicons"
     },
     {
@@ -3925,9 +4035,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L50",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "geticon()",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_category_browser_geticon"
     },
     {
@@ -3936,9 +4046,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "categorybrowser()",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_landing_components_category_browser_categorybrowser"
     },
     {
@@ -3947,9 +4057,9 @@
       "source_file": "components/landing/_components/city-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "city-browser.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_landing_components_city_browser"
     },
     {
@@ -3969,9 +4079,9 @@
       "source_file": "components/landing/_components/cta-section.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "cta-section.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_landing_components_cta_section"
     },
     {
@@ -3980,9 +4090,9 @@
       "source_file": "components/landing/_components/cta-section.tsx",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 7,
+      "community": 16,
       "norm_label": "ctasection()",
-      "community_name": "Business Browse",
+      "community_name": "Business Detail Page",
       "id": "components_landing_components_cta_section_ctasection"
     },
     {
@@ -4013,9 +4123,9 @@
       "source_file": "components/landing/_components/hero.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "hero.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_landing_components_hero"
     },
     {
@@ -4112,9 +4222,9 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 52,
+      "community": 0,
       "norm_label": "business-card.tsx",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_business_card"
     },
     {
@@ -4123,9 +4233,9 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 52,
+      "community": 0,
       "norm_label": "businesscard()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_business_card_businesscard"
     },
     {
@@ -4222,9 +4332,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L89",
       "_origin": "ast",
-      "community": 52,
+      "community": 7,
       "norm_label": "gradients",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Business Browse",
       "id": "components_landing_data_gradients"
     },
     {
@@ -4233,9 +4343,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 52,
+      "community": 0,
       "norm_label": "scroll-section.tsx",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_scroll_section"
     },
     {
@@ -4244,9 +4354,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 52,
+      "community": 0,
       "norm_label": "cardskeleton()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_scroll_section_cardskeleton"
     },
     {
@@ -4255,9 +4365,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 52,
+      "community": 7,
       "norm_label": "scrollsection()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Business Browse",
       "id": "components_landing_scroll_section_scrollsection"
     },
     {
@@ -4266,9 +4376,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 56,
+      "community": 44,
       "norm_label": "loading-provider.tsx",
-      "community_name": "loading-provider.tsx",
+      "community_name": "scroll-section.tsx",
       "id": "components_loading_provider"
     },
     {
@@ -4277,9 +4387,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 56,
+      "community": 44,
       "norm_label": "anchor",
-      "community_name": "loading-provider.tsx",
+      "community_name": "scroll-section.tsx",
       "id": "components_loading_provider_anchor"
     },
     {
@@ -4288,9 +4398,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 56,
+      "community": 5,
       "norm_label": "loadingcontext",
-      "community_name": "loading-provider.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "components_loading_provider_loadingcontext"
     },
     {
@@ -4299,9 +4409,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 42,
+      "community": 44,
       "norm_label": "loadingprovider()",
-      "community_name": "page.tsx",
+      "community_name": "scroll-section.tsx",
       "id": "components_loading_provider_loadingprovider"
     },
     {
@@ -4310,9 +4420,9 @@
       "source_file": "components/loading-provider.tsx",
       "source_location": "L76",
       "_origin": "ast",
-      "community": 56,
+      "community": 5,
       "norm_label": "useloading()",
-      "community_name": "loading-provider.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "components_loading_provider_useloading"
     },
     {
@@ -4574,9 +4684,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "button.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_ui_button"
     },
     {
@@ -4585,9 +4695,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "buttonvariants",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_ui_button_buttonvariants"
     },
     {
@@ -4596,9 +4706,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "button()",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_ui_button_button"
     },
     {
@@ -4607,9 +4717,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "calendar.tsx",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_ui_calendar"
     },
     {
@@ -4618,9 +4728,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 41,
+      "community": 16,
       "norm_label": "calendar()",
-      "community_name": "page.tsx",
+      "community_name": "Business Detail Page",
       "id": "components_ui_calendar_calendar"
     },
     {
@@ -4629,9 +4739,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L183",
       "_origin": "ast",
-      "community": 42,
+      "community": 51,
       "norm_label": "calendardaybutton()",
-      "community_name": "page.tsx",
+      "community_name": "input-otp.tsx",
       "id": "components_ui_calendar_calendardaybutton"
     },
     {
@@ -5333,9 +5443,9 @@
       "source_file": "components/ui/input-otp.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 42,
+      "community": 51,
       "norm_label": "inputotpslot()",
-      "community_name": "page.tsx",
+      "community_name": "input-otp.tsx",
       "id": "components_ui_input_otp_inputotpslot"
     },
     {
@@ -5355,9 +5465,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "input.tsx",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_input"
     },
     {
@@ -5366,9 +5476,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "input()",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_input_input"
     },
     {
@@ -5542,9 +5652,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "password-input.tsx",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_password_input"
     },
     {
@@ -5553,9 +5663,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "passwordinputprops",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_password_input_passwordinputprops"
     },
     {
@@ -5564,9 +5674,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 22,
+      "community": 5,
       "norm_label": "passwordinput()",
-      "community_name": "Input Group Components",
+      "community_name": "Root Layout & Auth",
       "id": "components_ui_password_input_passwordinput"
     },
     {
@@ -5718,9 +5828,9 @@
       "source_file": "components/ui/skeleton.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "skeleton.tsx",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_ui_skeleton"
     },
     {
@@ -5729,9 +5839,9 @@
       "source_file": "components/ui/skeleton.tsx",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 18,
+      "community": 12,
       "norm_label": "skeleton()",
-      "community_name": "API Client Layer",
+      "community_name": "Business Detail",
       "id": "components_ui_skeleton_skeleton"
     },
     {
@@ -5740,9 +5850,9 @@
       "source_file": "components/ui/spinner.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 56,
+      "community": 44,
       "norm_label": "spinner.tsx",
-      "community_name": "loading-provider.tsx",
+      "community_name": "scroll-section.tsx",
       "id": "components_ui_spinner"
     },
     {
@@ -5751,9 +5861,9 @@
       "source_file": "components/ui/spinner.tsx",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 56,
+      "community": 44,
       "norm_label": "spinner()",
-      "community_name": "loading-provider.tsx",
+      "community_name": "scroll-section.tsx",
       "id": "components_ui_spinner_spinner"
     },
     {
@@ -5762,9 +5872,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 17,
+      "community": 44,
       "norm_label": "switch.tsx",
-      "community_name": "Location Picker & Map",
+      "community_name": "scroll-section.tsx",
       "id": "components_ui_switch"
     },
     {
@@ -5773,9 +5883,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 17,
+      "community": 44,
       "norm_label": "switch()",
-      "community_name": "Location Picker & Map",
+      "community_name": "scroll-section.tsx",
       "id": "components_ui_switch_switch"
     },
     {
@@ -5927,9 +6037,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "client.ts",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client"
     },
     {
@@ -5938,9 +6048,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "apiresponse",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_apiresponse"
     },
     {
@@ -5949,9 +6059,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "getmsg()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_getmsg"
     },
     {
@@ -5960,9 +6070,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L23",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "getsessiontoken()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_getsessiontoken"
     },
     {
@@ -5971,9 +6081,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "public_paths",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_public_paths"
     },
     {
@@ -5982,9 +6092,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "ispublicpath()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_ispublicpath"
     },
     {
@@ -5993,9 +6103,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "api",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_api"
     },
     {
@@ -6004,9 +6114,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "apierror",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_apierror"
     },
     {
@@ -6015,9 +6125,9 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L66",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": ".constructor()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_apierror_constructor"
     },
     {
@@ -6026,98 +6136,10 @@
       "source_file": "lib/api/client.ts",
       "source_location": "L75",
       "_origin": "ast",
-      "community": 43,
+      "community": 5,
       "norm_label": "extracterror()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Root Layout & Auth",
       "id": "lib_api_client_extracterror"
-    },
-    {
-      "label": "customer.ts",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 43,
-      "norm_label": "customer.ts",
-      "community_name": "scroll-section.tsx",
-      "id": "lib_api_customer"
-    },
-    {
-      "label": "fetchCustomerDashboard()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 43,
-      "norm_label": "fetchcustomerdashboard()",
-      "community_name": "scroll-section.tsx",
-      "id": "lib_api_customer_fetchcustomerdashboard"
-    },
-    {
-      "label": "searchBusinesses()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L23",
-      "_origin": "ast",
-      "community": 18,
-      "norm_label": "searchbusinesses()",
-      "community_name": "API Client Layer",
-      "id": "lib_api_customer_searchbusinesses"
-    },
-    {
-      "label": "fetchBusinessCategories()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L36",
-      "_origin": "ast",
-      "community": 18,
-      "norm_label": "fetchbusinesscategories()",
-      "community_name": "API Client Layer",
-      "id": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "label": "fetchBusinessBySlug()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L45",
-      "_origin": "ast",
-      "community": 43,
-      "norm_label": "fetchbusinessbyslug()",
-      "community_name": "scroll-section.tsx",
-      "id": "lib_api_customer_fetchbusinessbyslug"
-    },
-    {
-      "label": "fetchBusinessReviews()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L56",
-      "_origin": "ast",
-      "community": 43,
-      "norm_label": "fetchbusinessreviews()",
-      "community_name": "scroll-section.tsx",
-      "id": "lib_api_customer_fetchbusinessreviews"
-    },
-    {
-      "label": "fetchBusinessStaff()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L71",
-      "_origin": "ast",
-      "community": 43,
-      "norm_label": "fetchbusinessstaff()",
-      "community_name": "scroll-section.tsx",
-      "id": "lib_api_customer_fetchbusinessstaff"
-    },
-    {
-      "label": "fetchBusinessServices()",
-      "file_type": "code",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L86",
-      "_origin": "ast",
-      "community": 43,
-      "norm_label": "fetchbusinessservices()",
-      "community_name": "scroll-section.tsx",
-      "id": "lib_api_customer_fetchbusinessservices"
     },
     {
       "label": "customer-context.tsx",
@@ -6345,9 +6367,9 @@
       "source_file": "lib/utils.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 44,
       "norm_label": "utils.ts",
-      "community_name": "Input Group Components",
+      "community_name": "scroll-section.tsx",
       "id": "lib_utils"
     },
     {
@@ -6774,9 +6796,9 @@
       "source_file": "package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 42,
+      "community": 51,
       "norm_label": "react",
-      "community_name": "page.tsx",
+      "community_name": "input-otp.tsx",
       "id": "package_dependencies_react"
     },
     {
@@ -6785,9 +6807,9 @@
       "source_file": "package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 42,
+      "community": 51,
       "norm_label": "react",
-      "community_name": "page.tsx",
+      "community_name": "input-otp.tsx",
       "id": "react"
     },
     {
@@ -7866,6 +7888,1112 @@
   ],
   "links": [
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L209",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_businessdetailpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_day_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_detailskeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_formatday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_mapcontainer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_marker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_popup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_reviewcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L150",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_reviewskeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_starrating",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "app_root_business_slug_page_tilelayer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "lib_api_customer_createbooking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "lib_api_customer_fetchbusinessbyslug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "lib_api_customer_fetchbusinessreviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "lib_api_customer_fetchbusinessservices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "lib_api_customer_fetchbusinessstaff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page",
+      "target": "lib_api_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L828",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "app_root_business_slug_page_formatday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L832",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "app_root_business_slug_page_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L264",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "lib_api_customer_createbooking"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L237",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "lib_api_customer_fetchbusinessbyslug"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L249",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "lib_api_customer_fetchbusinessreviews"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L308",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "lib_api_customer_fetchbusinessservices"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/business/[slug]/page.tsx",
+      "source_location": "L301",
+      "weight": 1.0,
+      "source": "app_root_business_slug_page_businessdetailpage",
+      "target": "lib_api_customer_fetchbusinessstaff"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L260",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_businessdetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_day_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L161",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_detailskeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_formatday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_getdaysinmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_getfirstdayofmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_hours",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_ispastdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_mapcontainer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_marker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_popup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L217",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_reviewcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_reviewskeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_starrating",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "app_root_platform_browse_slug_page_tilelayer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "lib_api_customer_createbooking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "lib_api_customer_fetchbusinessbyslug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "lib_api_customer_fetchbusinessreviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "lib_api_customer_fetchbusinessservices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "lib_api_customer_fetchbusinessstaff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page",
+      "target": "lib_api_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L1043",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "app_root_platform_browse_slug_page_formatday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L1048",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "app_root_platform_browse_slug_page_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L933",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "app_root_platform_browse_slug_page_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L417",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "app_root_platform_browse_slug_page_getdaysinmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L418",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "app_root_platform_browse_slug_page_getfirstdayofmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L936",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "app_root_platform_browse_slug_page_ispastdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L429",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "lib_api_customer_createbooking"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L296",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "lib_api_customer_fetchbusinessbyslug"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L309",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "lib_api_customer_fetchbusinessreviews"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L345",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "lib_api_customer_fetchbusinessservices"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
+      "source_location": "L338",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_slug_page_businessdetail",
+      "target": "lib_api_customer_fetchbusinessstaff"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/page.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_business_page",
+      "target": "lib_api_customer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_createbooking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_customerbookingpayload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_fetchbusinessbyslug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_fetchbusinesscategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_fetchbusinessreviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_fetchbusinessservices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_fetchbusinessstaff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_fetchcustomerdashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/customer.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "lib_api_customer",
+      "target": "lib_api_customer_searchbusinesses",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/home/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_home_page",
+      "target": "lib_api_customer_fetchcustomerdashboard"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_fetchcustomerdashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page_fetchsection",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/browse/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_browse_page",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/browse/page.tsx",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "app_root_browse_page_browsecontent",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_browse_page",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/page.tsx",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_page_browse",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "app_root_search_page_searchpage",
+      "target": "lib_api_customer_searchbusinesses"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_searchbusinesses",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/browse/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_browse_page",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/browse/page.tsx",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "app_root_browse_page_browsecontent",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/business/page.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_business_page",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/business/page.tsx",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "app_root_business_page_businesspage",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_browse_page",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/platform/browse/page.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "app_root_platform_browse_page_browse",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L157",
+      "weight": 1.0,
+      "source": "app_root_search_page_searchpage",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/landing/_components/category-browser.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_landing_components_category_browser",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/landing/_components/category-browser.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "components_landing_components_category_browser_categorybrowser",
+      "target": "lib_api_customer_fetchbusinesscategories"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_fetchbusinesscategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_fetchbusinessbyslug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_fetchbusinessreviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_fetchbusinessstaff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_fetchbusinessservices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/api/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_api_index",
+      "target": "lib_api_customer_createbooking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page",
+      "target": "lib_api_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/browse/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_browse_page",
+      "target": "lib_api_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_profile_details_page",
+      "target": "lib_api_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/browse/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_browse_page",
+      "target": "lib_api_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/home/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_home_page",
+      "target": "lib_api_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "lib_api_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/landing/_components/category-browser.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_landing_components_category_browser",
+      "target": "lib_api_index"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7882,9 +9010,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_sidebar",
-      "target": "components_customer_sidebar_navitems",
-      "confidence_score": 1.0
+      "target": "components_customer_sidebar_navitems"
     },
     {
       "relation": "contains",
@@ -7892,9 +9020,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_sidebar",
-      "target": "components_customer_sidebar_platformsidebar",
-      "confidence_score": 1.0
+      "target": "components_customer_sidebar_platformsidebar"
     },
     {
       "relation": "imports",
@@ -7913,9 +9041,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_bottomnavitems",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_bottomnavitems"
     },
     {
       "relation": "contains",
@@ -7923,9 +9051,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_navitem",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_navitem"
     },
     {
       "relation": "contains",
@@ -7933,9 +9061,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_navitems",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_navitems"
     },
     {
       "relation": "contains",
@@ -7943,9 +9071,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_sidebar",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_sidebar"
     },
     {
       "relation": "contains",
@@ -7953,9 +9081,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_submenuitem",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_submenuitem"
     },
     {
       "relation": "imports_from",
@@ -8018,9 +9146,9 @@
       "source_file": "components/landing/_components/header.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_landing_components_header",
-      "target": "components_landing_components_header_header",
-      "confidence_score": 1.0
+      "target": "components_landing_components_header_header"
     },
     {
       "relation": "imports",
@@ -8094,9 +9222,9 @@
       "source_file": "components/ui/sonner.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_sonner",
-      "target": "components_ui_sonner_toaster",
-      "confidence_score": 1.0
+      "target": "components_ui_sonner_toaster"
     },
     {
       "relation": "imports",
@@ -8108,225 +9236,6 @@
       "confidence_score": 1.0,
       "source": "app_layout",
       "target": "components_ui_sonner_toaster"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L209",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_businessdetailpage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L77",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_day_order"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L111",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_detailskeleton"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L79",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_formatday"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L83",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_formattime"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L59",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_mapcontainer"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L67",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_marker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L71",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_popup"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L167",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_reviewcard"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L150",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_reviewskeleton"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L92",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_starrating"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L63",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "app_root_business_slug_page_tilelayer"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_types_businessdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_types_paginatedresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_types_reviewdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_types_servicedto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page",
-      "target": "lib_types_staffdto"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L814",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page_businessdetailpage",
-      "target": "app_root_business_slug_page_formatday"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/[slug]/page.tsx",
-      "source_location": "L818",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_slug_page_businessdetailpage",
-      "target": "app_root_business_slug_page_formattime"
     },
     {
       "relation": "contains",
@@ -8510,17 +9419,6 @@
       "confidence_score": 1.0,
       "source": "app_root_dashboard_profile_details_page",
       "target": "app_root_dashboard_profile_details_page_profiledetails"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_api_index"
     },
     {
       "relation": "imports_from",
@@ -8761,517 +9659,6 @@
       "weight": 1.0,
       "source": "app_root_dashboard_team_members_page_teammembers",
       "target": "lib_api_partner_fetchpartnerstaff"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L259",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_businessdetail"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L94",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_day_order"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L160",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_detailskeleton"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L117",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_formatdate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L104",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_formatday"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L108",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_formattime"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L121",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_getdaysinmonth"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L125",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_getfirstdayofmonth"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L88",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_hours"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L129",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_ispastdate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L72",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_mapcontainer"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L80",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_marker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L84",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_popup"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L216",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_reviewcard"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L199",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_reviewskeleton"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L135",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_starrating"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L76",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "app_root_platform_browse_slug_page_tilelayer"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_types_businessdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_types_paginatedresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_types_reviewdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_types_servicedto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page",
-      "target": "lib_types_staffdto"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L1030",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page_businessdetail",
-      "target": "app_root_platform_browse_slug_page_formatday"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L1035",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page_businessdetail",
-      "target": "app_root_platform_browse_slug_page_formattime"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L920",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page_businessdetail",
-      "target": "app_root_platform_browse_slug_page_formatdate"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L416",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page_businessdetail",
-      "target": "app_root_platform_browse_slug_page_getdaysinmonth"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L417",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page_businessdetail",
-      "target": "app_root_platform_browse_slug_page_getfirstdayofmonth"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/[slug]/page.tsx",
-      "source_location": "L923",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_slug_page_businessdetail",
-      "target": "app_root_platform_browse_slug_page_ispastdate"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/browse/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_browse_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/page.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/home/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_home_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/landing/_components/category-browser.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_landing_components_category_browser",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_createpartnerservice"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_createpartnerstaff"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_customerlogin"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_fetchdashboardsummary"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_fetchpartnerbusiness"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_fetchpartnerservices"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_fetchpartnerstaff"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_fetchtopservices"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_fetchtopteammember"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_registercustomer"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_index",
-      "target": "lib_api_partner_registerpartner"
     },
     {
       "relation": "imports_from",
@@ -9791,17 +10178,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "lib/customer-context.tsx",
       "source_location": "L11",
       "weight": 1.0,
@@ -10228,17 +10604,6 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_customerdashboarddto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
@@ -10305,17 +10670,6 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_businesscategorydto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/page.tsx",
       "source_location": "L16",
       "weight": 1.0,
@@ -10360,17 +10714,6 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_businesssearchdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L17",
       "weight": 1.0,
@@ -10387,17 +10730,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "app_root_platform_browse_page",
-      "target": "lib_types_paginatedresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
       "target": "lib_types_paginatedresponse"
     },
     {
@@ -10465,61 +10797,6 @@
       "confidence_score": 1.0,
       "source": "components_landing_scroll_section",
       "target": "lib_types_businesscarddto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_businesscarddto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_businessdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_reviewdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_staffdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_types_servicedto"
     },
     {
       "relation": "imports",
@@ -12008,50 +12285,6 @@
       "target": "components_ui_skeleton_skeleton"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/browse/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_browse_page",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/browse/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_browse_page",
-      "target": "lib_api_customer_searchbusinesses"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/browse/page.tsx",
-      "source_location": "L118",
-      "weight": 1.0,
-      "source": "app_root_browse_page_browsecontent",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/browse/page.tsx",
-      "source_location": "L143",
-      "weight": 1.0,
-      "source": "app_root_browse_page_browsecontent",
-      "target": "lib_api_customer_searchbusinesses"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/business/page.tsx",
@@ -12329,39 +12562,6 @@
       "confidence_score": 1.0,
       "source": "app_root_business_page",
       "target": "components_ui_skeleton_skeleton"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/page.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_page",
-      "target": "lib_api_customer"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/business/page.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_business_page",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/business/page.tsx",
-      "source_location": "L147",
-      "weight": 1.0,
-      "source": "app_root_business_page_businesspage",
-      "target": "lib_api_customer_fetchbusinesscategories"
     },
     {
       "relation": "contains",
@@ -14551,50 +14751,6 @@
       "target": "components_ui_input_input"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/page.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_page",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/browse/page.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_browse_page",
-      "target": "lib_api_customer_searchbusinesses"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/platform/browse/page.tsx",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "app_root_platform_browse_page_browse",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/platform/browse/page.tsx",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "app_root_platform_browse_page_browse",
-      "target": "lib_api_customer_searchbusinesses"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/calendar/page.tsx",
@@ -14984,17 +15140,6 @@
       "confidence_score": 1.0,
       "source": "app_root_platform_home_page",
       "target": "components_ui_card_cardtitle"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/home/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_platform_home_page",
-      "target": "lib_api_customer_fetchcustomerdashboard"
     },
     {
       "relation": "imports_from",
@@ -15444,28 +15589,6 @@
       "target": "components_ui_skeleton_skeleton"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "lib_api_customer_searchbusinesses"
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -15508,28 +15631,6 @@
       "confidence_score": 1.0,
       "source": "app_root_search_page_searchpage",
       "target": "app_root_search_page_getbusinesscoords"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L157",
-      "weight": 1.0,
-      "source": "app_root_search_page_searchpage",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L178",
-      "weight": 1.0,
-      "source": "app_root_search_page_searchpage",
-      "target": "lib_api_customer_searchbusinesses"
     },
     {
       "relation": "calls",
@@ -15931,28 +16032,6 @@
       "confidence_score": 1.0,
       "source": "app_page",
       "target": "components_landing_scroll_section_scrollsection"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_page",
-      "target": "lib_api_customer_searchbusinesses"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_page_fetchsection",
-      "target": "lib_api_customer_searchbusinesses"
     },
     {
       "relation": "calls",
@@ -16759,17 +16838,6 @@
       "target": "components_ui_skeleton_skeleton"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/landing/_components/category-browser.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_landing_components_category_browser",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -16779,17 +16847,6 @@
       "confidence_score": 1.0,
       "source": "components_landing_components_category_browser_categorybrowser",
       "target": "components_landing_components_category_browser_geticon"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "components/landing/_components/category-browser.tsx",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "components_landing_components_category_browser_categorybrowser",
-      "target": "lib_api_customer_fetchbusinesscategories"
     },
     {
       "relation": "contains",
@@ -20569,34 +20626,12 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_client"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "lib/toast.ts",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lib_toast",
       "target": "lib_api_client"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_client_apiresponse"
     },
     {
       "relation": "calls",
@@ -20621,17 +20656,6 @@
       "target": "lib_api_client_public_paths"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_client_api"
-    },
-    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "lib/api/client.ts",
@@ -20651,164 +20675,6 @@
       "confidence_score": 1.0,
       "source": "lib_toast",
       "target": "lib_api_client_apierror"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "lib_api_customer_fetchbusinessbyslug",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L41",
-      "weight": 1.0,
-      "source": "lib_api_customer_fetchbusinesscategories",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L67",
-      "weight": 1.0,
-      "source": "lib_api_customer_fetchbusinessreviews",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L97",
-      "weight": 1.0,
-      "source": "lib_api_customer_fetchbusinessservices",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L82",
-      "weight": 1.0,
-      "source": "lib_api_customer_fetchbusinessstaff",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "lib_api_customer_fetchcustomerdashboard",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L32",
-      "weight": 1.0,
-      "source": "lib_api_customer_searchbusinesses",
-      "target": "lib_api_client_extracterror"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessbyslug"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinesscategories"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L56",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessreviews"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L86",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessservices"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L71",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessstaff"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchcustomerdashboard"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/api/customer.ts",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_api_customer",
-      "target": "lib_api_customer_searchbusinesses"
     },
     {
       "relation": "contains",
@@ -22340,5 +22206,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e0d4da3d1a77fbc9f5c92ad23e1692872f73365b"
+  "built_at_commit": "101a12e26c12efd49c6d514fce2942bb30d270a6"
 }
