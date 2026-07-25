@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-25)
 
 ## Corpus Check
-- 124 files · ~57,765 words
+- 124 files · ~57,751 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 726 nodes · 1352 edges · 49 communities (44 shown, 5 thin omitted)
+- 726 nodes · 1343 edges · 50 communities (45 shown, 5 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9202c94e`
+- Built from commit: `ecd34118`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -49,6 +49,7 @@
 - UI Assets
 - page.tsx
 - alert.tsx
+- page.tsx
 - scroll-section.tsx
 - input-otp.tsx
 - field.tsx
@@ -80,15 +81,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (49 total, 5 thin omitted)
+## Communities (50 total, 5 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
 Cohesion: 0.07
 Nodes (41): cities, appointments, clients, segments, payments, movements, transactions, allTransactions (+33 more)
 
 ### Community 1 - "Landing & Auth Pages"
-Cohesion: 0.07
-Nodes (40): BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), MapContainer, Marker, Popup, TileLayer (+32 more)
+Cohesion: 0.08
+Nodes (36): BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), MapContainer, Marker, Popup, TileLayer (+28 more)
 
 ### Community 2 - "Auth Form Components"
 Cohesion: 0.06
@@ -104,7 +105,7 @@ Nodes (38): eslint, eslint-config-next, @eslint/eslintrc, devDependencies, eslin
 
 ### Community 5 - "Root Layout & Auth"
 Cohesion: 0.07
-Nodes (31): CustomerFlow(), LoginFormData, loginSchema, Mode, RegisterFormData, registerSchema, MapContainer, Marker (+23 more)
+Nodes (32): CustomerFlow(), LoginFormData, loginSchema, Mode, RegisterFormData, registerSchema, MapContainer, Marker (+24 more)
 
 ### Community 6 - "TypeScript Config"
 Cohesion: 0.07
@@ -198,6 +199,10 @@ Nodes (6): fontMono, inter, RootLayout(), ThemeHotkey(), ThemeProvider(), Toaste
 Cohesion: 0.40
 Nodes (5): Alert(), AlertAction(), AlertDescription(), AlertTitle(), alertVariants
 
+### Community 43 - "page.tsx"
+Cohesion: 0.67
+Nodes (3): Appointments(), formatDate(), Tab
+
 ### Community 44 - "scroll-section.tsx"
 Cohesion: 0.20
 Nodes (5): Anchor, LoadingProvider(), HoverCardContent(), Spinner(), Switch()
@@ -219,16 +224,16 @@ Nodes (11): Field(), FieldContent(), FieldDescription(), FieldError(), FieldLabe
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Root Layout & Auth`, `page.tsx`, `alert.tsx`, `OTP & Select Components`, `scroll-section.tsx`, `Dropdown Menu`, `Business Detail Page`, `API Client Layer`, `input-otp.tsx`, `Item Components`, `Input Group Components`, `field.tsx`, `Alert Components`?**
-  _High betweenness centrality (0.299) - this node is a cross-community bridge._
+  _High betweenness centrality (0.297) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
-  _High betweenness centrality (0.159) - this node is a cross-community bridge._
+  _High betweenness centrality (0.157) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `page.tsx`, `NPM Dependencies`?**
-  _High betweenness centrality (0.153) - this node is a cross-community bridge._
+  _High betweenness centrality (0.152) - this node is a cross-community bridge._
 - **What connects `Tab`, `MapContainer`, `TileLayer` to the rest of the system?**
   _228 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.07405063291139241 - nodes in this community are weakly interconnected._
 - **Should `Landing & Auth Pages` be split into smaller, more focused modules?**
-  _Cohesion score 0.07077922077922078 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07529411764705882 - nodes in this community are weakly interconnected._
 - **Should `Auth Form Components` be split into smaller, more focused modules?**
   _Cohesion score 0.06155632984901278 - nodes in this community are weakly interconnected._
