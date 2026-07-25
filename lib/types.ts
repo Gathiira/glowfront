@@ -266,8 +266,8 @@ export type BusinessDto = {
   partnerId: number
   status: BusinessStatus
   verified: boolean
-  overallRating: number
-  totalReviews: number
+  overallRating: number | null
+  totalReviews: number | null
   priceRangeMin: number | null
   priceRangeMax: number | null
   location: BusinessLocationDto | null
@@ -304,7 +304,7 @@ export type StaffDto = {
   averageRating: number
   reviewCount: number
   active: boolean
-  serviceIds: number[]
+  services: ServiceDto[]
 }
 
 export type ServiceCategoryEnum =
@@ -323,7 +323,8 @@ export type ServiceDto = {
   businessId: number
   name: string
   description: string | null
-  category: ServiceCategoryEnum
+  categoryId: number
+  categoryName: string
   durationMinutes: number
   price: number
   currency: string

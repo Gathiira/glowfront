@@ -1,9 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+
 import {
   Card,
   CardContent,
@@ -14,20 +17,55 @@ import {
   Field,
   FieldGroup,
 } from "@/components/ui/field"
+import { createPartnerStaff, fetchPartnerServices } from "@/lib/api/partner"
+import { showSuccess, showError } from "@/lib/toast"
+import type { ServiceDto } from "@/lib/types"
 
 export default function AddMember() {
+  const router = useRouter()
+  const [services, setServices] = useState<ServiceDto[]>([])
+  const [submitting, setSubmitting] = useState(false)
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
+    name: "",
+    profilePhotoUrl: "",
+    bio: "",
     jobTitle: "",
-    commission: "",
+    yearsExperience: "",
+    serviceIds: [] as number[],
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetchPartnerServices().then((res) => setServices(res.list)).catch(() => {})
+  }, [])
+
+  const toggleService = (id: number) => {
+    setForm((prev) => ({
+      ...prev,
+      serviceIds: prev.serviceIds.includes(id)
+        ? prev.serviceIds.filter((s) => s !== id)
+        : [...prev.serviceIds, id],
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Add member:", form)
+    setSubmitting(true)
+    try {
+      await createPartnerStaff({
+        name: form.name,
+        profilePhotoUrl: form.profilePhotoUrl || undefined,
+        bio: form.bio || undefined,
+        jobTitle: form.jobTitle || undefined,
+        yearsExperience: form.yearsExperience ? Number(form.yearsExperience) : undefined,
+        serviceIds: form.serviceIds.length > 0 ? form.serviceIds : undefined,
+      })
+      showSuccess("Team member added successfully")
+      router.push("/dashboard/team/members")
+    } catch (err) {
+      showError(err)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -41,39 +79,33 @@ export default function AddMember() {
         <CardContent>
           <form onSubmit={handleSubmit}>
             <FieldGroup>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Field>
-                  <Input
-                    placeholder="First name"
-                    value={form.firstName}
-                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                  />
-                </Field>
-                <Field>
-                  <Input
-                    placeholder="Last name"
-                    value={form.lastName}
-                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                  />
-                </Field>
-              </div>
               <Field>
+                <label className="mb-1.5 block text-sm font-medium">Full name</label>
                 <Input
-                  placeholder="Email"
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  placeholder="Full name"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  required
                 />
               </Field>
               <Field>
+                <label className="mb-1.5 block text-sm font-medium">Profile photo URL</label>
                 <Input
-                  placeholder="Phone"
-                  type="tel"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  placeholder="Profile photo URL"
+                  value={form.profilePhotoUrl}
+                  onChange={(e) => setForm({ ...form, profilePhotoUrl: e.target.value })}
                 />
               </Field>
               <Field>
+                <label className="mb-1.5 block text-sm font-medium">Bio</label>
+                <Textarea
+                  placeholder="Bio"
+                  value={form.bio}
+                  onChange={(e) => setForm({ ...form, bio: e.target.value })}
+                />
+              </Field>
+              <Field>
+                <label className="mb-1.5 block text-sm font-medium">Job title</label>
                 <Input
                   placeholder="Job title"
                   value={form.jobTitle}
@@ -81,15 +113,45 @@ export default function AddMember() {
                 />
               </Field>
               <Field>
+                <label className="mb-1.5 block text-sm font-medium">Years of experience</label>
                 <Input
-                  placeholder="Commission (e.g. 40%)"
-                  value={form.commission}
-                  onChange={(e) => setForm({ ...form, commission: e.target.value })}
+                  placeholder="Years of experience"
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={form.yearsExperience}
+                  onChange={(e) => setForm({ ...form, yearsExperience: e.target.value })}
                 />
               </Field>
+              <Field>
+                <label className="mb-1.5 block text-sm font-medium">Services</label>
+                <div className="space-y-2 rounded-lg border p-3">
+                  {services.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">No services available</p>
+                  ) : (
+                    services.map((s) => (
+                      <label
+                        key={s.id}
+                        className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors hover:bg-muted"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={form.serviceIds.includes(s.id)}
+                          onChange={() => toggleService(s.id)}
+                          className="size-4 accent-primary"
+                        />
+                        <span>{s.name}</span>
+                        <span className="ml-auto text-xs text-muted-foreground">
+                          {s.durationMinutes} min &middot; {s.currency} {s.price}
+                        </span>
+                      </label>
+                    ))
+                  )}
+                </div>
+              </Field>
             </FieldGroup>
-            <Button type="submit" className="mt-6 w-full">
-              Add Member
+            <Button type="submit" className="mt-6 w-full" disabled={submitting}>
+              {submitting ? "Adding..." : "Add Member"}
             </Button>
           </form>
         </CardContent>

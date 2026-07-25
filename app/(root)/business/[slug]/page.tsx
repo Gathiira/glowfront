@@ -393,15 +393,17 @@ export default function BusinessDetailPage() {
                           {business.categoryName}
                         </span>
                       )}
-                      <div className="flex items-center gap-1 text-sm">
-                        <Star className="size-4 fill-amber-400 text-amber-400" />
-                        <span className="font-medium">
-                          {business.overallRating.toFixed(1)}
-                        </span>
-                        <span className="text-muted-foreground">
-                          ({business.totalReviews} reviews)
-                        </span>
-                      </div>
+                      {business.overallRating != null && (
+                        <div className="flex items-center gap-1 text-sm">
+                          <Star className="size-4 fill-amber-400 text-amber-400" />
+                          <span className="font-medium">
+                            {business.overallRating.toFixed(1)}
+                          </span>
+                          <span className="text-muted-foreground">
+                            ({business.totalReviews ?? 0} reviews)
+                          </span>
+                        </div>
+                      )}
                       {business.verified && (
                         <span className="flex items-center gap-1 rounded-full bg-green-500/10 px-2.5 py-0.5 text-xs font-medium text-green-600 dark:text-green-400">
                           <Shield className="size-3" />
@@ -663,15 +665,17 @@ export default function BusinessDetailPage() {
               <CardHeader>
                 <div className="flex items-center gap-4">
                   <CardTitle>Reviews</CardTitle>
-                  <div className="flex items-center gap-1 text-sm">
-                    <Star className="size-4 fill-amber-400 text-amber-400" />
-                    <span className="font-medium">
-                      {business.overallRating.toFixed(1)}
-                    </span>
-                    <span className="text-muted-foreground">
-                      ({business.totalReviews} reviews)
-                    </span>
-                  </div>
+                  {business.overallRating != null && (
+                    <div className="flex items-center gap-1 text-sm">
+                      <Star className="size-4 fill-amber-400 text-amber-400" />
+                      <span className="font-medium">
+                        {business.overallRating.toFixed(1)}
+                      </span>
+                      <span className="text-muted-foreground">
+                        ({business.totalReviews ?? 0} reviews)
+                      </span>
+                    </div>
+                  )}
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">

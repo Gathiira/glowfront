@@ -1,9 +1,21 @@
-import { ReactNode } from "react"
+"use client"
+
+import { useEffect, useState } from "react"
+import type { ReactNode } from "react"
 import { Sidebar } from "@/components/dashboard/sidebar"
+import { fetchPartnerBusiness } from "@/lib/api/partner"
 
 type Props = { children: ReactNode }
 
 export default function DashboardLayout({ children }: Props) {
+  const [businessName, setBusinessName] = useState("")
+
+  useEffect(() => {
+    fetchPartnerBusiness()
+      .then((b) => setBusinessName(b.name))
+      .catch(() => {})
+  }, [])
+
   return (
     <div className="flex min-h-screen">
       <Sidebar />
@@ -13,6 +25,9 @@ export default function DashboardLayout({ children }: Props) {
             <p className="text-sm font-medium text-muted-foreground">
               Partner Dashboard
             </p>
+            {businessName && (
+              <span className="text-sm font-semibold">{businessName}</span>
+            )}
           </div>
         </header>
         <main className="flex-1 px-4 py-4 pb-20 md:p-6 md:pb-6">{children}</main>
