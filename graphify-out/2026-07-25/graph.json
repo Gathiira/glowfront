@@ -10,8 +10,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_root_platform_appointments_page",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
+      "community": 43,
+      "community_name": "page.tsx",
       "norm_label": "page.tsx"
     },
     {
@@ -21,8 +21,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "app_root_platform_appointments_page_tab",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
+      "community": 43,
+      "community_name": "page.tsx",
       "norm_label": "tab"
     },
     {
@@ -32,8 +32,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "app_root_platform_appointments_page_formatdate",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
+      "community": 43,
+      "community_name": "page.tsx",
       "norm_label": "formatdate()"
     },
     {
@@ -43,8 +43,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "app_root_platform_appointments_page_appointments",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
+      "community": 43,
+      "community_name": "page.tsx",
       "norm_label": "appointments()"
     },
     {
@@ -53,10 +53,10 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_platform_calendar_page",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "page.tsx"
+      "norm_label": "page.tsx",
+      "id": "app_root_platform_calendar_page"
     },
     {
       "label": "formatDate()",
@@ -64,10 +64,10 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "app_root_platform_calendar_page_formatdate",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "formatdate()"
+      "norm_label": "formatdate()",
+      "id": "app_root_platform_calendar_page_formatdate"
     },
     {
       "label": "getDaysInMonth()",
@@ -75,10 +75,10 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "app_root_platform_calendar_page_getdaysinmonth",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "getdaysinmonth()"
+      "norm_label": "getdaysinmonth()",
+      "id": "app_root_platform_calendar_page_getdaysinmonth"
     },
     {
       "label": "getFirstDayOfMonth()",
@@ -86,10 +86,10 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "app_root_platform_calendar_page_getfirstdayofmonth",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "getfirstdayofmonth()"
+      "norm_label": "getfirstdayofmonth()",
+      "id": "app_root_platform_calendar_page_getfirstdayofmonth"
     },
     {
       "label": "CustomerCalendar()",
@@ -97,10 +97,10 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "app_root_platform_calendar_page_customercalendar",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "customercalendar()"
+      "norm_label": "customercalendar()",
+      "id": "app_root_platform_calendar_page_customercalendar"
     },
     {
       "label": "booking-detail-dialog.tsx",
@@ -108,10 +108,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "booking-detail-dialog.tsx"
+      "norm_label": "booking-detail-dialog.tsx",
+      "id": "components_customer_booking_detail_dialog"
     },
     {
       "label": "MapContainer",
@@ -119,10 +119,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L42",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_mapcontainer",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "mapcontainer"
+      "norm_label": "mapcontainer",
+      "id": "components_customer_booking_detail_dialog_mapcontainer"
     },
     {
       "label": "TileLayer",
@@ -130,10 +130,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L46",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_tilelayer",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "tilelayer"
+      "norm_label": "tilelayer",
+      "id": "components_customer_booking_detail_dialog_tilelayer"
     },
     {
       "label": "Marker",
@@ -141,10 +141,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L50",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_marker",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "marker"
+      "norm_label": "marker",
+      "id": "components_customer_booking_detail_dialog_marker"
     },
     {
       "label": "Popup",
@@ -152,10 +152,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_popup",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "popup"
+      "norm_label": "popup",
+      "id": "components_customer_booking_detail_dialog_popup"
     },
     {
       "label": "Props",
@@ -163,10 +163,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L59",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_props",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "components_customer_booking_detail_dialog_props"
     },
     {
       "label": "BookingDetailDialog()",
@@ -174,10 +174,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L65",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_bookingdetaildialog",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "bookingdetaildialog()"
+      "norm_label": "bookingdetaildialog()",
+      "id": "components_customer_booking_detail_dialog_bookingdetaildialog"
     },
     {
       "label": "dialog.tsx",
@@ -185,10 +185,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_ui_dialog",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialog.tsx"
+      "norm_label": "dialog.tsx",
+      "id": "components_ui_dialog"
     },
     {
       "label": "Dialog()",
@@ -196,10 +196,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialog",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialog()"
+      "norm_label": "dialog()",
+      "id": "components_ui_dialog_dialog"
     },
     {
       "label": "DialogTrigger()",
@@ -207,10 +207,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogtrigger",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogtrigger()"
+      "norm_label": "dialogtrigger()",
+      "id": "components_ui_dialog_dialogtrigger"
     },
     {
       "label": "DialogPortal()",
@@ -218,10 +218,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogportal",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogportal()"
+      "norm_label": "dialogportal()",
+      "id": "components_ui_dialog_dialogportal"
     },
     {
       "label": "DialogClose()",
@@ -229,10 +229,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L26",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogclose",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogclose()"
+      "norm_label": "dialogclose()",
+      "id": "components_ui_dialog_dialogclose"
     },
     {
       "label": "DialogOverlay()",
@@ -240,10 +240,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogoverlay",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogoverlay()"
+      "norm_label": "dialogoverlay()",
+      "id": "components_ui_dialog_dialogoverlay"
     },
     {
       "label": "DialogContent()",
@@ -251,10 +251,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L48",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogcontent",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogcontent()"
+      "norm_label": "dialogcontent()",
+      "id": "components_ui_dialog_dialogcontent"
     },
     {
       "label": "DialogHeader()",
@@ -262,10 +262,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L74",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogheader",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogheader()"
+      "norm_label": "dialogheader()",
+      "id": "components_ui_dialog_dialogheader"
     },
     {
       "label": "DialogFooter()",
@@ -273,10 +273,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L90",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogfooter",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogfooter()"
+      "norm_label": "dialogfooter()",
+      "id": "components_ui_dialog_dialogfooter"
     },
     {
       "label": "DialogTitle()",
@@ -284,10 +284,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L106",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogtitle",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogtitle()"
+      "norm_label": "dialogtitle()",
+      "id": "components_ui_dialog_dialogtitle"
     },
     {
       "label": "DialogDescription()",
@@ -295,10 +295,10 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L122",
       "_origin": "ast",
-      "id": "components_ui_dialog_dialogdescription",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "dialogdescription()"
+      "norm_label": "dialogdescription()",
+      "id": "components_ui_dialog_dialogdescription"
     },
     {
       "label": "customer.ts",
@@ -306,10 +306,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "lib_api_customer",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "customer.ts"
+      "norm_label": "customer.ts",
+      "id": "lib_api_customer"
     },
     {
       "label": "fetchCustomerDashboard()",
@@ -317,10 +317,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchcustomerdashboard",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchcustomerdashboard()"
+      "norm_label": "fetchcustomerdashboard()",
+      "id": "lib_api_customer_fetchcustomerdashboard"
     },
     {
       "label": "searchBusinesses()",
@@ -328,10 +328,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "lib_api_customer_searchbusinesses",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "searchbusinesses()"
+      "norm_label": "searchbusinesses()",
+      "id": "lib_api_customer_searchbusinesses"
     },
     {
       "label": "fetchBusinessCategories()",
@@ -339,10 +339,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L38",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchbusinesscategories",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "fetchbusinesscategories()"
+      "norm_label": "fetchbusinesscategories()",
+      "id": "lib_api_customer_fetchbusinesscategories"
     },
     {
       "label": "fetchBusinessBySlug()",
@@ -350,10 +350,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L47",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchbusinessbyslug",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchbusinessbyslug()"
+      "norm_label": "fetchbusinessbyslug()",
+      "id": "lib_api_customer_fetchbusinessbyslug"
     },
     {
       "label": "fetchCustomerBusinessDetail()",
@@ -361,10 +361,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L58",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchcustomerbusinessdetail",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchcustomerbusinessdetail()"
+      "norm_label": "fetchcustomerbusinessdetail()",
+      "id": "lib_api_customer_fetchcustomerbusinessdetail"
     },
     {
       "label": "fetchBusinessReviews()",
@@ -372,10 +372,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L69",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchbusinessreviews",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchbusinessreviews()"
+      "norm_label": "fetchbusinessreviews()",
+      "id": "lib_api_customer_fetchbusinessreviews"
     },
     {
       "label": "fetchBusinessStaff()",
@@ -383,10 +383,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L84",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchbusinessstaff",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchbusinessstaff()"
+      "norm_label": "fetchbusinessstaff()",
+      "id": "lib_api_customer_fetchbusinessstaff"
     },
     {
       "label": "fetchBusinessServices()",
@@ -394,10 +394,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L99",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchbusinessservices",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchbusinessservices()"
+      "norm_label": "fetchbusinessservices()",
+      "id": "lib_api_customer_fetchbusinessservices"
     },
     {
       "label": "CustomerBookingPayload",
@@ -405,10 +405,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L114",
       "_origin": "ast",
-      "id": "lib_api_customer_customerbookingpayload",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "customerbookingpayload"
+      "norm_label": "customerbookingpayload",
+      "id": "lib_api_customer_customerbookingpayload"
     },
     {
       "label": "createBooking()",
@@ -416,10 +416,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L126",
       "_origin": "ast",
-      "id": "lib_api_customer_createbooking",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "createbooking()"
+      "norm_label": "createbooking()",
+      "id": "lib_api_customer_createbooking"
     },
     {
       "label": "cancelBooking()",
@@ -427,10 +427,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L139",
       "_origin": "ast",
-      "id": "lib_api_customer_cancelbooking",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "cancelbooking()"
+      "norm_label": "cancelbooking()",
+      "id": "lib_api_customer_cancelbooking"
     },
     {
       "label": "fetchCustomerBookings()",
@@ -438,10 +438,10 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L150",
       "_origin": "ast",
-      "id": "lib_api_customer_fetchcustomerbookings",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "fetchcustomerbookings()"
+      "norm_label": "fetchcustomerbookings()",
+      "id": "lib_api_customer_fetchcustomerbookings"
     },
     {
       "label": "index.ts",
@@ -449,10 +449,10 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "lib_api_index",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "index.ts"
+      "norm_label": "index.ts",
+      "id": "lib_api_index"
     },
     {
       "label": "types.ts",
@@ -460,10 +460,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "lib_types",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "types.ts"
+      "norm_label": "types.ts",
+      "id": "lib_types"
     },
     {
       "label": "BusinessCategory",
@@ -471,10 +471,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "lib_types_businesscategory",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businesscategory"
+      "norm_label": "businesscategory",
+      "id": "lib_types_businesscategory"
     },
     {
       "label": "ServiceType",
@@ -482,10 +482,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "lib_types_servicetype",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "servicetype"
+      "norm_label": "servicetype",
+      "id": "lib_types_servicetype"
     },
     {
       "label": "CustomerLoginData",
@@ -493,10 +493,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "lib_types_customerlogindata",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "customerlogindata"
+      "norm_label": "customerlogindata",
+      "id": "lib_types_customerlogindata"
     },
     {
       "label": "CustomerAccountData",
@@ -504,10 +504,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "lib_types_customeraccountdata",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "customeraccountdata"
+      "norm_label": "customeraccountdata",
+      "id": "lib_types_customeraccountdata"
     },
     {
       "label": "PartnerAccountData",
@@ -515,10 +515,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "lib_types_partneraccountdata",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "partneraccountdata"
+      "norm_label": "partneraccountdata",
+      "id": "lib_types_partneraccountdata"
     },
     {
       "label": "PartnerBusinessData",
@@ -526,10 +526,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L39",
       "_origin": "ast",
-      "id": "lib_types_partnerbusinessdata",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "partnerbusinessdata"
+      "norm_label": "partnerbusinessdata",
+      "id": "lib_types_partnerbusinessdata"
     },
     {
       "label": "CustomerProfile",
@@ -537,10 +537,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "lib_types_customerprofile",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "customerprofile"
+      "norm_label": "customerprofile",
+      "id": "lib_types_customerprofile"
     },
     {
       "label": "BusinessService",
@@ -548,10 +548,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L60",
       "_origin": "ast",
-      "id": "lib_types_businessservice",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessservice"
+      "norm_label": "businessservice",
+      "id": "lib_types_businessservice"
     },
     {
       "label": "BusinessTeamMember",
@@ -559,10 +559,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L68",
       "_origin": "ast",
-      "id": "lib_types_businessteammember",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessteammember"
+      "norm_label": "businessteammember",
+      "id": "lib_types_businessteammember"
     },
     {
       "label": "BusinessReview",
@@ -570,10 +570,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L74",
       "_origin": "ast",
-      "id": "lib_types_businessreview",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "businessreview"
+      "norm_label": "businessreview",
+      "id": "lib_types_businessreview"
     },
     {
       "label": "Business",
@@ -581,10 +581,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L82",
       "_origin": "ast",
-      "id": "lib_types_business",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "business"
+      "norm_label": "business",
+      "id": "lib_types_business"
     },
     {
       "label": "CustomerAppointment",
@@ -592,10 +592,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L98",
       "_origin": "ast",
-      "id": "lib_types_customerappointment",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "customerappointment"
+      "norm_label": "customerappointment",
+      "id": "lib_types_customerappointment"
     },
     {
       "label": "CustomerDashboardDto",
@@ -603,10 +603,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L113",
       "_origin": "ast",
-      "id": "lib_types_customerdashboarddto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "customerdashboarddto"
+      "norm_label": "customerdashboarddto",
+      "id": "lib_types_customerdashboarddto"
     },
     {
       "label": "ServiceCategory",
@@ -614,10 +614,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L145",
       "_origin": "ast",
-      "id": "lib_types_servicecategory",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "servicecategory"
+      "norm_label": "servicecategory",
+      "id": "lib_types_servicecategory"
     },
     {
       "label": "BusinessCategoryDto",
@@ -625,10 +625,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L153",
       "_origin": "ast",
-      "id": "lib_types_businesscategorydto",
       "community": 11,
       "community_name": "OTP & Select Components",
-      "norm_label": "businesscategorydto"
+      "norm_label": "businesscategorydto",
+      "id": "lib_types_businesscategorydto"
     },
     {
       "label": "BusinessSearchDto",
@@ -636,10 +636,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L160",
       "_origin": "ast",
-      "id": "lib_types_businesssearchdto",
       "community": 0,
       "community_name": "Dashboard Pages",
-      "norm_label": "businesssearchdto"
+      "norm_label": "businesssearchdto",
+      "id": "lib_types_businesssearchdto"
     },
     {
       "label": "PaginatedResponse",
@@ -647,10 +647,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L174",
       "_origin": "ast",
-      "id": "lib_types_paginatedresponse",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "paginatedresponse"
+      "norm_label": "paginatedresponse",
+      "id": "lib_types_paginatedresponse"
     },
     {
       "label": "BusinessCardDto",
@@ -658,10 +658,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L182",
       "_origin": "ast",
-      "id": "lib_types_businesscarddto",
       "community": 0,
       "community_name": "Dashboard Pages",
-      "norm_label": "businesscarddto"
+      "norm_label": "businesscarddto",
+      "id": "lib_types_businesscarddto"
     },
     {
       "label": "BUSINESS_CATEGORIES",
@@ -669,10 +669,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L198",
       "_origin": "ast",
-      "id": "lib_types_business_categories",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "business_categories"
+      "norm_label": "business_categories",
+      "id": "lib_types_business_categories"
     },
     {
       "label": "BusinessStatus",
@@ -680,10 +680,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L211",
       "_origin": "ast",
-      "id": "lib_types_businessstatus",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessstatus"
+      "norm_label": "businessstatus",
+      "id": "lib_types_businessstatus"
     },
     {
       "label": "BusinessLocationDto",
@@ -691,10 +691,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L217",
       "_origin": "ast",
-      "id": "lib_types_businesslocationdto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businesslocationdto"
+      "norm_label": "businesslocationdto",
+      "id": "lib_types_businesslocationdto"
     },
     {
       "label": "BusinessGalleryDto",
@@ -702,10 +702,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L229",
       "_origin": "ast",
-      "id": "lib_types_businessgallerydto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessgallerydto"
+      "norm_label": "businessgallerydto",
+      "id": "lib_types_businessgallerydto"
     },
     {
       "label": "BusinessAmenityDto",
@@ -713,10 +713,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L235",
       "_origin": "ast",
-      "id": "lib_types_businessamenitydto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessamenitydto"
+      "norm_label": "businessamenitydto",
+      "id": "lib_types_businessamenitydto"
     },
     {
       "label": "BusinessOpeningHoursDto",
@@ -724,10 +724,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L240",
       "_origin": "ast",
-      "id": "lib_types_businessopeninghoursdto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessopeninghoursdto"
+      "norm_label": "businessopeninghoursdto",
+      "id": "lib_types_businessopeninghoursdto"
     },
     {
       "label": "BusinessSocialMediaDto",
@@ -735,10 +735,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L248",
       "_origin": "ast",
-      "id": "lib_types_businesssocialmediadto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businesssocialmediadto"
+      "norm_label": "businesssocialmediadto",
+      "id": "lib_types_businesssocialmediadto"
     },
     {
       "label": "BusinessDto",
@@ -746,10 +746,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L254",
       "_origin": "ast",
-      "id": "lib_types_businessdto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "businessdto"
+      "norm_label": "businessdto",
+      "id": "lib_types_businessdto"
     },
     {
       "label": "ReviewImageDto",
@@ -757,10 +757,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L280",
       "_origin": "ast",
-      "id": "lib_types_reviewimagedto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "reviewimagedto"
+      "norm_label": "reviewimagedto",
+      "id": "lib_types_reviewimagedto"
     },
     {
       "label": "ReviewDto",
@@ -768,10 +768,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L285",
       "_origin": "ast",
-      "id": "lib_types_reviewdto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "reviewdto"
+      "norm_label": "reviewdto",
+      "id": "lib_types_reviewdto"
     },
     {
       "label": "StaffDto",
@@ -779,10 +779,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L296",
       "_origin": "ast",
-      "id": "lib_types_staffdto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "staffdto"
+      "norm_label": "staffdto",
+      "id": "lib_types_staffdto"
     },
     {
       "label": "ServiceCategoryEnum",
@@ -790,10 +790,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L310",
       "_origin": "ast",
-      "id": "lib_types_servicecategoryenum",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "servicecategoryenum"
+      "norm_label": "servicecategoryenum",
+      "id": "lib_types_servicecategoryenum"
     },
     {
       "label": "ServiceDto",
@@ -801,10 +801,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L321",
       "_origin": "ast",
-      "id": "lib_types_servicedto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "servicedto"
+      "norm_label": "servicedto",
+      "id": "lib_types_servicedto"
     },
     {
       "label": "RatingBreakdownDto",
@@ -812,10 +812,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L336",
       "_origin": "ast",
-      "id": "lib_types_ratingbreakdowndto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "ratingbreakdowndto"
+      "norm_label": "ratingbreakdowndto",
+      "id": "lib_types_ratingbreakdowndto"
     },
     {
       "label": "BusinessDetailDto",
@@ -823,10 +823,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L344",
       "_origin": "ast",
-      "id": "lib_types_businessdetaildto",
       "community": 5,
       "community_name": "Root Layout & Auth",
-      "norm_label": "businessdetaildto"
+      "norm_label": "businessdetaildto",
+      "id": "lib_types_businessdetaildto"
     },
     {
       "label": "BookingDto",
@@ -834,10 +834,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L351",
       "_origin": "ast",
-      "id": "lib_types_bookingdto",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "bookingdto"
+      "community": 5,
+      "community_name": "Root Layout & Auth",
+      "norm_label": "bookingdto",
+      "id": "lib_types_bookingdto"
     },
     {
       "label": "DashboardSummaryDto",
@@ -845,10 +845,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L374",
       "_origin": "ast",
-      "id": "lib_types_dashboardsummarydto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "dashboardsummarydto"
+      "norm_label": "dashboardsummarydto",
+      "id": "lib_types_dashboardsummarydto"
     },
     {
       "label": "TopServiceDto",
@@ -856,10 +856,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L381",
       "_origin": "ast",
-      "id": "lib_types_topservicedto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "topservicedto"
+      "norm_label": "topservicedto",
+      "id": "lib_types_topservicedto"
     },
     {
       "label": "TopTeamMemberDto",
@@ -867,10 +867,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L388",
       "_origin": "ast",
-      "id": "lib_types_topteammemberdto",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "topteammemberdto"
+      "norm_label": "topteammemberdto",
+      "id": "lib_types_topteammemberdto"
     },
     {
       "label": "COUNTRIES",
@@ -878,10 +878,10 @@
       "source_file": "lib/types.ts",
       "source_location": "L395",
       "_origin": "ast",
-      "id": "lib_types_countries",
       "community": 10,
       "community_name": "Business Types & DTOs",
-      "norm_label": "countries"
+      "norm_label": "countries",
+      "id": "lib_types_countries"
     },
     {
       "label": "page.tsx",
@@ -8061,83 +8061,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "components_customer_booking_detail_dialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "components_customer_booking_detail_dialog_bookingdetaildialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "lib_api_customer_cancelbooking",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "lib_api_customer_fetchcustomerbookings",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "lib_api_index",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "lib_types",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "lib_types_bookingdto",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -8149,36 +8072,14 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L78",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page_appointments",
-      "target": "lib_api_customer_cancelbooking"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L54",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page_appointments",
-      "target": "lib_api_customer_fetchcustomerbookings"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "app_root_platform_calendar_page_customercalendar",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_customercalendar"
     },
     {
       "relation": "contains",
@@ -8186,9 +8087,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "app_root_platform_calendar_page_formatdate",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_formatdate"
     },
     {
       "relation": "contains",
@@ -8196,9 +8097,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "app_root_platform_calendar_page_getdaysinmonth",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_getdaysinmonth"
     },
     {
       "relation": "contains",
@@ -8206,9 +8107,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "app_root_platform_calendar_page_getfirstdayofmonth",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_getfirstdayofmonth"
     },
     {
       "relation": "imports_from",
@@ -8217,9 +8118,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "components_customer_booking_detail_dialog",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog"
     },
     {
       "relation": "imports",
@@ -8228,9 +8129,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "components_customer_booking_detail_dialog_bookingdetaildialog",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_bookingdetaildialog"
     },
     {
       "relation": "imports",
@@ -8239,9 +8140,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "lib_api_customer_cancelbooking",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_cancelbooking"
     },
     {
       "relation": "imports",
@@ -8250,9 +8151,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "lib_api_customer_fetchcustomerbookings",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerbookings"
     },
     {
       "relation": "imports_from",
@@ -8261,9 +8162,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "lib_api_index",
-      "confidence_score": 1.0
+      "target": "lib_api_index"
     },
     {
       "relation": "imports_from",
@@ -8272,9 +8173,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "lib_types",
-      "confidence_score": 1.0
+      "target": "lib_types"
     },
     {
       "relation": "imports",
@@ -8283,9 +8184,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
-      "target": "lib_types_bookingdto",
-      "confidence_score": 1.0
+      "target": "lib_types_bookingdto"
     },
     {
       "relation": "calls",
@@ -8294,9 +8195,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page_customercalendar",
-      "target": "app_root_platform_calendar_page_formatdate",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_formatdate"
     },
     {
       "relation": "calls",
@@ -8305,9 +8206,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page_customercalendar",
-      "target": "app_root_platform_calendar_page_getdaysinmonth",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_getdaysinmonth"
     },
     {
       "relation": "calls",
@@ -8316,9 +8217,9 @@
       "source_file": "app/(root)/platform/calendar/page.tsx",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page_customercalendar",
-      "target": "app_root_platform_calendar_page_getfirstdayofmonth",
-      "confidence_score": 1.0
+      "target": "app_root_platform_calendar_page_getfirstdayofmonth"
     },
     {
       "relation": "calls",
@@ -8348,9 +8249,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_bookingdetaildialog",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_bookingdetaildialog"
     },
     {
       "relation": "contains",
@@ -8358,9 +8259,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_mapcontainer",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_mapcontainer"
     },
     {
       "relation": "contains",
@@ -8368,9 +8269,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_marker",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_marker"
     },
     {
       "relation": "contains",
@@ -8378,9 +8279,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_popup",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_popup"
     },
     {
       "relation": "contains",
@@ -8388,9 +8289,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_props",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_props"
     },
     {
       "relation": "contains",
@@ -8398,9 +8299,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_tilelayer",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_tilelayer"
     },
     {
       "relation": "imports_from",
@@ -8409,9 +8310,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog"
     },
     {
       "relation": "imports",
@@ -8420,9 +8321,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog_dialog",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialog"
     },
     {
       "relation": "imports",
@@ -8431,9 +8332,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog_dialogclose",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogclose"
     },
     {
       "relation": "imports",
@@ -8442,9 +8343,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog_dialogcontent",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogcontent"
     },
     {
       "relation": "imports",
@@ -8453,9 +8354,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog_dialogdescription",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogdescription"
     },
     {
       "relation": "imports",
@@ -8464,9 +8365,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog_dialogheader",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogheader"
     },
     {
       "relation": "imports",
@@ -8475,9 +8376,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_ui_dialog_dialogtitle",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogtitle"
     },
     {
       "relation": "imports",
@@ -8486,9 +8387,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "lib_api_customer_fetchcustomerbusinessdetail",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerbusinessdetail"
     },
     {
       "relation": "imports_from",
@@ -8497,9 +8398,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "lib_api_index",
-      "confidence_score": 1.0
+      "target": "lib_api_index"
     },
     {
       "relation": "imports_from",
@@ -8508,9 +8409,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "lib_types",
-      "confidence_score": 1.0
+      "target": "lib_types"
     },
     {
       "relation": "imports",
@@ -8519,9 +8420,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "lib_types_bookingdto",
-      "confidence_score": 1.0
+      "target": "lib_types_bookingdto"
     },
     {
       "relation": "imports",
@@ -8530,9 +8431,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "lib_types_businessdetaildto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessdetaildto"
     },
     {
       "relation": "calls",
@@ -8562,9 +8463,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialog",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialog"
     },
     {
       "relation": "contains",
@@ -8572,9 +8473,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogclose",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogclose"
     },
     {
       "relation": "contains",
@@ -8582,9 +8483,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogcontent",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogcontent"
     },
     {
       "relation": "contains",
@@ -8592,9 +8493,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L122",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogdescription",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogdescription"
     },
     {
       "relation": "contains",
@@ -8602,9 +8503,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogfooter",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogfooter"
     },
     {
       "relation": "contains",
@@ -8612,9 +8513,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogheader",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogheader"
     },
     {
       "relation": "contains",
@@ -8622,9 +8523,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogoverlay",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogoverlay"
     },
     {
       "relation": "contains",
@@ -8632,9 +8533,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogportal",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogportal"
     },
     {
       "relation": "contains",
@@ -8642,9 +8543,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogtitle",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogtitle"
     },
     {
       "relation": "contains",
@@ -8652,9 +8553,9 @@
       "source_file": "components/ui/dialog.tsx",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_ui_dialog",
-      "target": "components_ui_dialog_dialogtrigger",
-      "confidence_score": 1.0
+      "target": "components_ui_dialog_dialogtrigger"
     },
     {
       "relation": "imports",
@@ -8739,9 +8640,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_cancelbooking",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_cancelbooking"
     },
     {
       "relation": "contains",
@@ -8749,9 +8650,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_createbooking",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_createbooking"
     },
     {
       "relation": "contains",
@@ -8759,9 +8660,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_customerbookingpayload",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_customerbookingpayload"
     },
     {
       "relation": "contains",
@@ -8769,9 +8670,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessbyslug",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessbyslug"
     },
     {
       "relation": "contains",
@@ -8779,9 +8680,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinesscategories",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinesscategories"
     },
     {
       "relation": "contains",
@@ -8789,9 +8690,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessreviews",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessreviews"
     },
     {
       "relation": "contains",
@@ -8799,9 +8700,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessservices",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessservices"
     },
     {
       "relation": "contains",
@@ -8809,9 +8710,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchbusinessstaff",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessstaff"
     },
     {
       "relation": "contains",
@@ -8819,9 +8720,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L150",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchcustomerbookings",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerbookings"
     },
     {
       "relation": "contains",
@@ -8829,9 +8730,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchcustomerbusinessdetail",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerbusinessdetail"
     },
     {
       "relation": "contains",
@@ -8839,9 +8740,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_fetchcustomerdashboard",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerdashboard"
     },
     {
       "relation": "contains",
@@ -8849,9 +8750,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_api_customer_searchbusinesses",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_searchbusinesses"
     },
     {
       "relation": "imports_from",
@@ -8860,9 +8761,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types",
-      "confidence_score": 1.0
+      "target": "lib_types"
     },
     {
       "relation": "imports",
@@ -8871,9 +8772,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_bookingdto",
-      "confidence_score": 1.0
+      "target": "lib_types_bookingdto"
     },
     {
       "relation": "imports",
@@ -8882,9 +8783,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_businesscarddto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesscarddto"
     },
     {
       "relation": "imports",
@@ -8893,9 +8794,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_businesscategorydto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesscategorydto"
     },
     {
       "relation": "imports",
@@ -8904,9 +8805,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_businessdetaildto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessdetaildto"
     },
     {
       "relation": "imports",
@@ -8915,9 +8816,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_businessdto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessdto"
     },
     {
       "relation": "imports",
@@ -8926,9 +8827,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_businesssearchdto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesssearchdto"
     },
     {
       "relation": "imports",
@@ -8937,9 +8838,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_customerdashboarddto",
-      "confidence_score": 1.0
+      "target": "lib_types_customerdashboarddto"
     },
     {
       "relation": "imports",
@@ -8948,9 +8849,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_paginatedresponse",
-      "confidence_score": 1.0
+      "target": "lib_types_paginatedresponse"
     },
     {
       "relation": "imports",
@@ -8959,9 +8860,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_reviewdto",
-      "confidence_score": 1.0
+      "target": "lib_types_reviewdto"
     },
     {
       "relation": "imports",
@@ -8970,9 +8871,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_servicedto",
-      "confidence_score": 1.0
+      "target": "lib_types_servicedto"
     },
     {
       "relation": "imports",
@@ -8981,9 +8882,9 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_customer",
-      "target": "lib_types_staffdto",
-      "confidence_score": 1.0
+      "target": "lib_types_staffdto"
     },
     {
       "relation": "re_exports",
@@ -8992,9 +8893,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer",
-      "confidence_score": 1.0
+      "target": "lib_api_customer"
     },
     {
       "relation": "imports",
@@ -9014,9 +8915,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchcustomerdashboard",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerdashboard"
     },
     {
       "relation": "imports",
@@ -9113,9 +9014,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_searchbusinesses",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_searchbusinesses"
     },
     {
       "relation": "imports",
@@ -9234,9 +9135,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchbusinesscategories",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinesscategories"
     },
     {
       "relation": "imports",
@@ -9289,9 +9190,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchbusinessbyslug",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessbyslug"
     },
     {
       "relation": "re_exports",
@@ -9300,9 +9201,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchcustomerbusinessdetail",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerbusinessdetail"
     },
     {
       "relation": "imports",
@@ -9355,9 +9256,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchbusinessreviews",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessreviews"
     },
     {
       "relation": "imports",
@@ -9410,9 +9311,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchbusinessstaff",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessstaff"
     },
     {
       "relation": "imports",
@@ -9465,9 +9366,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchbusinessservices",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchbusinessservices"
     },
     {
       "relation": "imports",
@@ -9520,9 +9421,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_createbooking",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_createbooking"
     },
     {
       "relation": "re_exports",
@@ -9531,9 +9432,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_cancelbooking",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_cancelbooking"
     },
     {
       "relation": "re_exports",
@@ -9542,9 +9443,9 @@
       "source_file": "lib/api/index.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_api_index",
-      "target": "lib_api_customer_fetchcustomerbookings",
-      "confidence_score": 1.0
+      "target": "lib_api_customer_fetchcustomerbookings"
     },
     {
       "relation": "imports_from",
@@ -9893,9 +9794,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L351",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_bookingdto",
-      "confidence_score": 1.0
+      "target": "lib_types_bookingdto"
     },
     {
       "relation": "contains",
@@ -9903,9 +9804,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_business",
-      "confidence_score": 1.0
+      "target": "lib_types_business"
     },
     {
       "relation": "contains",
@@ -9913,9 +9814,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_business_categories",
-      "confidence_score": 1.0
+      "target": "lib_types_business_categories"
     },
     {
       "relation": "contains",
@@ -9923,9 +9824,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L235",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessamenitydto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessamenitydto"
     },
     {
       "relation": "contains",
@@ -9933,9 +9834,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L182",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesscarddto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesscarddto"
     },
     {
       "relation": "contains",
@@ -9943,9 +9844,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesscategory",
-      "confidence_score": 1.0
+      "target": "lib_types_businesscategory"
     },
     {
       "relation": "contains",
@@ -9953,9 +9854,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesscategorydto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesscategorydto"
     },
     {
       "relation": "contains",
@@ -9963,9 +9864,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L344",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessdetaildto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessdetaildto"
     },
     {
       "relation": "contains",
@@ -9973,9 +9874,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L254",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessdto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessdto"
     },
     {
       "relation": "contains",
@@ -9983,9 +9884,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L229",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessgallerydto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessgallerydto"
     },
     {
       "relation": "contains",
@@ -9993,9 +9894,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L217",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesslocationdto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesslocationdto"
     },
     {
       "relation": "contains",
@@ -10003,9 +9904,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L240",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessopeninghoursdto",
-      "confidence_score": 1.0
+      "target": "lib_types_businessopeninghoursdto"
     },
     {
       "relation": "contains",
@@ -10013,9 +9914,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessreview",
-      "confidence_score": 1.0
+      "target": "lib_types_businessreview"
     },
     {
       "relation": "contains",
@@ -10023,9 +9924,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L160",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesssearchdto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesssearchdto"
     },
     {
       "relation": "contains",
@@ -10033,9 +9934,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessservice",
-      "confidence_score": 1.0
+      "target": "lib_types_businessservice"
     },
     {
       "relation": "contains",
@@ -10043,9 +9944,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businesssocialmediadto",
-      "confidence_score": 1.0
+      "target": "lib_types_businesssocialmediadto"
     },
     {
       "relation": "contains",
@@ -10053,9 +9954,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L211",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessstatus",
-      "confidence_score": 1.0
+      "target": "lib_types_businessstatus"
     },
     {
       "relation": "contains",
@@ -10063,9 +9964,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_businessteammember",
-      "confidence_score": 1.0
+      "target": "lib_types_businessteammember"
     },
     {
       "relation": "contains",
@@ -10073,9 +9974,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L395",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_countries",
-      "confidence_score": 1.0
+      "target": "lib_types_countries"
     },
     {
       "relation": "contains",
@@ -10083,9 +9984,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customeraccountdata",
-      "confidence_score": 1.0
+      "target": "lib_types_customeraccountdata"
     },
     {
       "relation": "contains",
@@ -10093,9 +9994,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerappointment",
-      "confidence_score": 1.0
+      "target": "lib_types_customerappointment"
     },
     {
       "relation": "contains",
@@ -10103,9 +10004,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerdashboarddto",
-      "confidence_score": 1.0
+      "target": "lib_types_customerdashboarddto"
     },
     {
       "relation": "contains",
@@ -10113,9 +10014,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerlogindata",
-      "confidence_score": 1.0
+      "target": "lib_types_customerlogindata"
     },
     {
       "relation": "contains",
@@ -10123,9 +10024,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_customerprofile",
-      "confidence_score": 1.0
+      "target": "lib_types_customerprofile"
     },
     {
       "relation": "contains",
@@ -10133,9 +10034,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L374",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_dashboardsummarydto",
-      "confidence_score": 1.0
+      "target": "lib_types_dashboardsummarydto"
     },
     {
       "relation": "contains",
@@ -10143,9 +10044,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L174",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_paginatedresponse",
-      "confidence_score": 1.0
+      "target": "lib_types_paginatedresponse"
     },
     {
       "relation": "contains",
@@ -10153,9 +10054,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_partneraccountdata",
-      "confidence_score": 1.0
+      "target": "lib_types_partneraccountdata"
     },
     {
       "relation": "contains",
@@ -10163,9 +10064,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_partnerbusinessdata",
-      "confidence_score": 1.0
+      "target": "lib_types_partnerbusinessdata"
     },
     {
       "relation": "contains",
@@ -10173,9 +10074,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L336",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_ratingbreakdowndto",
-      "confidence_score": 1.0
+      "target": "lib_types_ratingbreakdowndto"
     },
     {
       "relation": "contains",
@@ -10183,9 +10084,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L285",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_reviewdto",
-      "confidence_score": 1.0
+      "target": "lib_types_reviewdto"
     },
     {
       "relation": "contains",
@@ -10193,9 +10094,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L280",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_reviewimagedto",
-      "confidence_score": 1.0
+      "target": "lib_types_reviewimagedto"
     },
     {
       "relation": "contains",
@@ -10203,9 +10104,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L145",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicecategory",
-      "confidence_score": 1.0
+      "target": "lib_types_servicecategory"
     },
     {
       "relation": "contains",
@@ -10213,9 +10114,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L310",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicecategoryenum",
-      "confidence_score": 1.0
+      "target": "lib_types_servicecategoryenum"
     },
     {
       "relation": "contains",
@@ -10223,9 +10124,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L321",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicedto",
-      "confidence_score": 1.0
+      "target": "lib_types_servicedto"
     },
     {
       "relation": "contains",
@@ -10233,9 +10134,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_servicetype",
-      "confidence_score": 1.0
+      "target": "lib_types_servicetype"
     },
     {
       "relation": "contains",
@@ -10243,9 +10144,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L296",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_staffdto",
-      "confidence_score": 1.0
+      "target": "lib_types_staffdto"
     },
     {
       "relation": "contains",
@@ -10253,9 +10154,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L381",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_topservicedto",
-      "confidence_score": 1.0
+      "target": "lib_types_topservicedto"
     },
     {
       "relation": "contains",
@@ -10263,9 +10164,9 @@
       "source_file": "lib/types.ts",
       "source_location": "L388",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_types",
-      "target": "lib_types_topteammemberdto",
-      "confidence_score": 1.0
+      "target": "lib_types_topteammemberdto"
     },
     {
       "relation": "imports",
@@ -22348,5 +22249,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9202c94ebb2d608c1597ea9d4640ef8993999fd0"
+  "built_at_commit": "ecd34118ff745b1889e01b61a991e5d9c8d0b161"
 }
