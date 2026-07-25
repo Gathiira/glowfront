@@ -128,17 +128,15 @@ export default function Appointments() {
             <p className="mt-2 text-xs text-muted-foreground italic">Note: {a.notes}</p>
           )}
         </div>
-        <div className="flex flex-col items-end justify-between">
+        <div className="flex flex-col items-end">
           <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
-          <Button variant="ghost" size="sm" onClick={() => openDetail(a)} className="gap-1">
+          <Button variant="ghost" size="sm" onClick={() => openDetail(a)} className="mt-6 gap-1">
             <Eye className="size-4" /> View
           </Button>
-          {(a.status === "PENDING" || a.status === "COMPLETED") && (
-          <div className="flex flex-col items-end gap-2">
-            {a.status === "PENDING" && (
+          {a.status === "PENDING" && (
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" size="sm" className="text-destructive">
+                <Button variant="outline" size="sm" className="mt-6 text-destructive">
                   Cancel
                 </Button>
               </AlertDialogTrigger>
@@ -162,11 +160,9 @@ export default function Appointments() {
             </AlertDialog>
           )}
           {a.status === "COMPLETED" && (
-            <Button size="sm" onClick={() => openReview(a.id)}>
+            <Button size="sm" className="mt-6" onClick={() => openReview(a.id)}>
               Write a Review
             </Button>
-          )}
-          </div>
           )}
         </div>
       </CardContent>
