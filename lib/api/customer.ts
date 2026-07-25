@@ -9,6 +9,7 @@ import type {
   ReviewDto,
   StaffDto,
   ServiceDto,
+  BookingDto,
 } from "@/lib/types"
 
 export async function fetchCustomerDashboard(): Promise<CustomerDashboardDto> {
@@ -117,6 +118,38 @@ export async function createBooking(
     const res = await api
       .post(payload, `/customer/businesses/${payload.businessId}/book`)
       .json<ApiResponse<unknown>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function cancelBooking(bookingId: number): Promise<unknown> {
+  try {
+    const res = await api
+      .post({}, `/customer/bookings/${bookingId}/cancel`)
+      .json<ApiResponse<unknown>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function fetchCustomerBookings(
+  current: number = 0,
+  pageSize: number = 120,
+  startDate?: string,
+  endDate?: string,
+  status?: string
+): Promise<PaginatedResponse<BookingDto>> {
+  try {
+    let url = `/customer/bookings?current=${current}&pageSize=${pageSize}`
+    if (startDate) url += `&startDate=${startDate}`
+    if (endDate) url += `&endDate=${endDate}`
+    if (status) url += `&status=${status}`
+    const res = await api
+      .get(url)
+      .json<ApiResponse<PaginatedResponse<BookingDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)

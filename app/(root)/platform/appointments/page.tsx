@@ -1,40 +1,96 @@
 "use client"
 
-import { useState } from "react"
-import { useCustomer } from "@/lib/customer-context"
+import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 import { StatusBadge } from "@/components/dashboard/status-badge"
-import { Star } from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog"
+import { Star, OctagonX } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
+import { fetchCustomerBookings, cancelBooking } from "@/lib/api"
+import type { BookingDto } from "@/lib/types"
 
-type Tab = "upcoming" | "past"
+type Tab = "upcoming" | "past" | "cancelled"
+
+function formatDate(d: Date): string {
+  return d.toISOString().split("T")[0]
+}
 
 export default function Appointments() {
-  const { appointments, cancelAppointment, addReview } = useCustomer()
+  const [upcoming, setUpcoming] = useState<BookingDto[]>([])
+  const [past, setPast] = useState<BookingDto[]>([])
+  const [cancelled, setCancelled] = useState<BookingDto[]>([])
+  const [loadingUpcoming, setLoadingUpcoming] = useState(true)
+  const [loadingPast, setLoadingPast] = useState(false)
+  const [loadingCancelled, setLoadingCancelled] = useState(false)
   const [tab, setTab] = useState<Tab>("upcoming")
-  const [reviewingId, setReviewingId] = useState<string | null>(null)
+  const [reviewingId, setReviewingId] = useState<number | null>(null)
   const [reviewRating, setReviewRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
 
-  const todayStr = new Date().toISOString().split("T")[0]
+  useEffect(() => {
+    const today = new Date()
+    const thirtyDays = new Date(today)
+    thirtyDays.setDate(thirtyDays.getDate() + 30)
 
-  const upcoming = appointments.filter(
-    (a) => a.status !== "cancelled" && a.status !== "completed",
-  )
-  const past = appointments.filter(
-    (a) => a.status === "completed" || a.status === "cancelled",
-  )
+    setLoadingUpcoming(true)
+    fetchCustomerBookings(0, 100, formatDate(today), formatDate(thirtyDays))
+      .then((res) => setUpcoming(res.list))
+      .finally(() => setLoadingUpcoming(false))
+  }, [])
 
-  const handleCancel = (id: string) => {
-    cancelAppointment(id)
-    toast.success("Appointment cancelled")
+  const handleTabChange = (t: Tab) => {
+    setTab(t)
+    if (t === "past" && past.length === 0 && !loadingPast) {
+      setLoadingPast(true)
+      const today = formatDate(new Date())
+      fetchCustomerBookings(0, 100, undefined, today)
+        .then((res) => setPast(res.list))
+        .finally(() => setLoadingPast(false))
+    }
+    if (t === "cancelled" && cancelled.length === 0 && !loadingCancelled) {
+      setLoadingCancelled(true)
+      fetchCustomerBookings(0, 100, undefined, undefined, "CANCELLED")
+        .then((res) => setCancelled(res.list))
+        .finally(() => setLoadingCancelled(false))
+    }
   }
 
-  const openReview = (id: string) => {
+  const handleCancel = async (id: number) => {
+    try {
+      await cancelBooking(id)
+      const today = formatDate(new Date())
+      const thirtyDaysFromNow = formatDate(new Date(Date.now() + 30 * 24 * 60 * 60 * 1000))
+      const [upRes, pastRes, cancelledRes] = await Promise.all([
+        fetchCustomerBookings(0, 100, today, thirtyDaysFromNow),
+        fetchCustomerBookings(0, 100, undefined, today),
+        fetchCustomerBookings(0, 100, undefined, undefined, "CANCELLED"),
+      ])
+      setUpcoming(upRes.list)
+      setPast(pastRes.list)
+      setCancelled(cancelledRes.list)
+      toast.success("Appointment cancelled")
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to cancel")
+    }
+  }
+
+  const openReview = (id: number) => {
     setReviewingId(id)
     setReviewRating(0)
     setReviewText("")
@@ -42,62 +98,60 @@ export default function Appointments() {
 
   const handleSubmitReview = () => {
     if (reviewRating === 0 || !reviewText.trim() || !reviewingId) return
-    const appt = appointments.find((a) => a.id === reviewingId)
-    if (!appt) return
-    addReview(appt.businessId, reviewingId, reviewRating, reviewText)
     toast.success("Review submitted!")
     setReviewingId(null)
     setReviewRating(0)
     setReviewText("")
   }
 
-  const renderAppointment = (a: (typeof appointments)[0]) => (
+  const renderAppointment = (a: BookingDto) => (
     <Card key={a.id}>
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div>
-            <p className="font-medium">{a.businessName}</p>
-            <p className="text-sm text-muted-foreground">{a.serviceName}</p>
+            <p className="font-medium">{a.customerName}</p>
+            <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
           </div>
-          <StatusBadge status={a.status} />
+          <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-          <span>
-            {new Date(a.date + "T12:00:00").toLocaleDateString("en-US", {
-              weekday: "short",
-              month: "short",
-              day: "numeric",
-            })}
-          </span>
-          <span>
-            {a.startTime} - {a.endTime}
-          </span>
-          {a.teamMemberName && <span>with {a.teamMemberName}</span>}
+          <span>{a.bookingDate}</span>
+          <span>{a.bookingTime}{a.durationMinutes ? ` (${a.durationMinutes} min)` : ""}</span>
         </div>
         {a.notes && (
           <p className="mt-2 text-xs text-muted-foreground italic">Note: {a.notes}</p>
         )}
-        <div className="mt-3 flex gap-2">
-          {a.status === "confirmed" && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="text-destructive"
-              onClick={() => handleCancel(a.id)}
-            >
-              Cancel
-            </Button>
+        <div className="mt-3 flex justify-end gap-2">
+          {a.status === "PENDING" && (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline" size="sm" className="text-destructive">
+                  Cancel
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent size="sm">
+                <AlertDialogHeader>
+                  <AlertDialogMedia>
+                    <OctagonX className="size-5" />
+                  </AlertDialogMedia>
+                  <AlertDialogTitle>Cancel appointment</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Are you sure you want to cancel this appointment?
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Keep it</AlertDialogCancel>
+                  <AlertDialogAction onClick={() => handleCancel(a.id)}>
+                    Yes, cancel
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           )}
-          {a.status === "completed" && !a.reviewed && (
+          {a.status === "COMPLETED" && (
             <Button size="sm" onClick={() => openReview(a.id)}>
               Write a Review
             </Button>
-          )}
-          {a.status === "completed" && a.reviewed && (
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Star className="size-3 fill-amber-400 text-amber-400" />
-              Reviewed
-            </span>
           )}
         </div>
       </CardContent>
@@ -112,22 +166,41 @@ export default function Appointments() {
         <Button
           variant={tab === "upcoming" ? "default" : "outline"}
           size="sm"
-          onClick={() => setTab("upcoming")}
+          onClick={() => handleTabChange("upcoming")}
         >
           Upcoming ({upcoming.length})
         </Button>
         <Button
           variant={tab === "past" ? "default" : "outline"}
           size="sm"
-          onClick={() => setTab("past")}
+          onClick={() => handleTabChange("past")}
         >
           Past ({past.length})
+        </Button>
+        <Button
+          variant={tab === "cancelled" ? "default" : "outline"}
+          size="sm"
+          onClick={() => handleTabChange("cancelled")}
+        >
+          Cancelled ({cancelled.length})
         </Button>
       </div>
 
       {tab === "upcoming" && (
         <>
-          {upcoming.length === 0 ? (
+          {loadingUpcoming ? (
+            <div className="space-y-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i}>
+                  <CardContent className="p-4">
+                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="mt-2 h-3 w-48" />
+                    <Skeleton className="mt-3 h-8 w-20" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : upcoming.length === 0 ? (
             <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
               No upcoming appointments
             </div>
@@ -139,12 +212,50 @@ export default function Appointments() {
 
       {tab === "past" && (
         <>
-          {past.length === 0 ? (
+          {loadingPast ? (
+            <div className="space-y-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i}>
+                  <CardContent className="p-4">
+                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="mt-2 h-3 w-48" />
+                    <Skeleton className="mt-3 h-8 w-20" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : past.length === 0 ? (
             <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
               No past appointments
             </div>
           ) : (
             <div className="space-y-3">{past.map(renderAppointment)}</div>
+          )}
+        </>
+      )}
+
+      {tab === "cancelled" && (
+        <>
+          {loadingCancelled ? (
+            <div className="space-y-3">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Card key={i}>
+                  <CardContent className="p-4">
+                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="mt-2 h-3 w-48" />
+                    <Skeleton className="mt-3 h-8 w-20" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : cancelled.length === 0 ? (
+            <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
+              No cancelled appointments
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {cancelled.map(renderAppointment)}
+            </div>
           )}
         </>
       )}

@@ -116,12 +116,7 @@ export default function PlatformHome() {
                       <p className="text-sm font-medium">{appt.businessName}</p>
                       <p className="text-xs text-muted-foreground">{appt.serviceName}</p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
-                        {new Date(appt.bookingDate + "T12:00:00").toLocaleDateString("en-US", {
-                          weekday: "short",
-                          month: "short",
-                          day: "numeric",
-                        })}{" "}
-                        &middot; {appt.bookingTime}
+                        {appt.bookingDate} &middot; {appt.bookingTime}
                       </p>
                     </div>
                     <StatusBadge status={appt.status as "confirmed" | "completed" | "cancelled"} />

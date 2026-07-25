@@ -1,13 +1,15 @@
 "use client"
 
-import { useState } from "react"
-import { useCustomer } from "@/lib/customer-context"
+import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 import { StatusBadge } from "@/components/dashboard/status-badge"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { fetchCustomerBookings } from "@/lib/api"
+import type { BookingDto, PaginatedResponse } from "@/lib/types"
 
 function formatDate(year: number, month: number, day: number): string {
   return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
@@ -22,11 +24,21 @@ function getFirstDayOfMonth(year: number, month: number): number {
 }
 
 export default function CustomerCalendar() {
-  const { appointments } = useCustomer()
+  const [bookings, setBookings] = useState<BookingDto[]>([])
+  const [loading, setLoading] = useState(true)
   const today = new Date()
   const [year, setYear] = useState(today.getFullYear())
   const [month, setMonth] = useState(today.getMonth())
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
+
+  useEffect(() => {
+    const sd = formatDate(year, month, 1)
+    const ed = formatDate(year, month, getDaysInMonth(year, month))
+    setLoading(true)
+    fetchCustomerBookings(0, 120, sd, ed)
+      .then((res) => setBookings(res.list))
+      .finally(() => setLoading(false))
+  }, [year, month])
 
   const daysInMonth = getDaysInMonth(year, month)
   const firstDay = getFirstDayOfMonth(year, month)
@@ -54,15 +66,15 @@ export default function CustomerCalendar() {
     setSelectedDate(null)
   }
 
-  const apptsByDate = appointments.reduce(
+  const apptsByDate = bookings.reduce(
     (acc, a) => {
-      if (a.status !== "cancelled") {
-        if (!acc[a.date]) acc[a.date] = []
-        acc[a.date].push(a)
+      if (a.status !== "CANCELLED") {
+        if (!acc[a.bookingDate]) acc[a.bookingDate] = []
+        acc[a.bookingDate].push(a)
       }
       return acc
     },
-    {} as Record<string, typeof appointments>,
+    {} as Record<string, BookingDto[]>,
   )
 
   const selectedAppts = selectedDate ? apptsByDate[selectedDate] || [] : []
@@ -93,68 +105,81 @@ export default function CustomerCalendar() {
               ))}
             </div>
 
-            <div className="grid grid-cols-7">
-              {blanks.map((i) => (
-                <div key={`b-${i}`} className="min-h-20 border-b border-r bg-muted/20 p-1" />
-              ))}
-              {days.map((day) => {
-                const dateStr = formatDate(year, month, day)
-                const dayAppts = apptsByDate[dateStr] || []
-                const isToday = dateStr === todayStr
-                const isSelected = dateStr === selectedDate
-                return (
-                  <button
-                    key={day}
-                    type="button"
-                    onClick={() => setSelectedDate(dateStr)}
-                    className={cn(
-                      "relative min-h-20 border-b border-r p-1 text-left transition-colors hover:bg-muted/30",
-                      isSelected && "ring-2 ring-inset ring-primary",
-                    )}
-                  >
-                    <span
+            {loading ? (
+              <div className="grid grid-cols-7">
+                {Array.from({ length: 35 }).map((_, i) => (
+                  <Skeleton key={i} className="min-h-20 rounded-none border-b border-r" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-7">
+                {blanks.map((i) => (
+                  <div key={`b-${i}`} className="min-h-20 border-b border-r bg-muted/20 p-1" />
+                ))}
+                {days.map((day) => {
+                  const dateStr = formatDate(year, month, day)
+                  const dayAppts = apptsByDate[dateStr] || []
+                  const isToday = dateStr === todayStr
+                  const isSelected = dateStr === selectedDate
+                  return (
+                    <button
+                      key={day}
+                      type="button"
+                      onClick={() => setSelectedDate(dateStr)}
                       className={cn(
-                        "inline-flex size-6 items-center justify-center rounded-full text-sm",
-                        isToday && "bg-primary text-primary-foreground font-semibold",
+                        "relative min-h-20 border-b border-r p-1 text-left transition-colors hover:bg-muted/30",
+                        isSelected && "ring-2 ring-inset ring-primary",
                       )}
                     >
-                      {day}
-                    </span>
-                    {dayAppts.length > 0 && (
-                      <div className="mt-0.5 space-y-0.5">
-                        {dayAppts.slice(0, 2).map((a) => (
-                          <div
-                            key={a.id}
-                            className="truncate rounded bg-primary/10 px-1 py-0.5 text-[10px] leading-tight text-primary"
-                          >
-                            {a.startTime} {a.businessName}
-                          </div>
-                        ))}
-                        {dayAppts.length > 2 && (
-                          <p className="px-1 text-[10px] text-muted-foreground">
-                            +{dayAppts.length - 2} more
-                          </p>
+                      <span
+                        className={cn(
+                          "inline-flex size-6 items-center justify-center rounded-full text-sm",
+                          isToday && "bg-primary text-primary-foreground font-semibold",
                         )}
-                      </div>
-                    )}
-                  </button>
-                )
-              })}
-            </div>
+                      >
+                        {day}
+                      </span>
+                      {dayAppts.length > 0 && (
+                        <div className="mt-0.5 space-y-0.5">
+                          {dayAppts.slice(0, 2).map((a) => (
+                            <div
+                              key={a.id}
+                              className="truncate rounded bg-primary/10 px-1 py-0.5 text-[10px] leading-tight text-primary"
+                            >
+                              {a.bookingTime} {a.customerName}
+                            </div>
+                          ))}
+                          {dayAppts.length > 2 && (
+                            <p className="px-1 text-[10px] text-muted-foreground">
+                              +{dayAppts.length - 2} more
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
           </CardContent>
         </Card>
 
         <div className="space-y-3">
           {selectedDate ? (
             <>
-              <h3 className="text-lg font-semibold">
-                {new Date(selectedDate + "T12:00:00").toLocaleDateString("en-US", {
-                  weekday: "long",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </h3>
-              {selectedAppts.length === 0 ? (
+              <h3 className="text-lg font-semibold">{selectedDate}</h3>
+              {loading ? (
+                <div className="space-y-3">
+                  {Array.from({ length: 2 }).map((_, i) => (
+                    <Card key={i}>
+                      <CardContent className="p-4">
+                        <Skeleton className="h-4 w-32" />
+                        <Skeleton className="mt-2 h-3 w-48" />
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ) : selectedAppts.length === 0 ? (
                 <div className="flex h-32 items-center justify-center rounded-lg border text-sm text-muted-foreground">
                   No appointments on this day
                 </div>
@@ -164,16 +189,17 @@ export default function CustomerCalendar() {
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div>
-                          <p className="font-medium">{a.businessName}</p>
-                          <p className="text-sm text-muted-foreground">{a.serviceName}</p>
+                          <p className="font-medium">{a.customerName}</p>
+                          <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
                         </div>
-                        <StatusBadge status={a.status} />
+                        <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
                       </div>
                       <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
                         <span>
-                          {a.startTime} - {a.endTime}
+                          {a.bookingTime}
+                          {a.durationMinutes && ` (${a.durationMinutes} min)`}
                         </span>
-                        {a.teamMemberName && <span>with {a.teamMemberName}</span>}
+                        {a.notes && <span>&middot; {a.notes}</span>}
                       </div>
                     </CardContent>
                   </Card>
