@@ -9,4 +9,5 @@ export {
   fetchBusinessReviews,
   fetchBusinessStaff,
   fetchBusinessServices,
+  createBooking,
 } from "./customer"

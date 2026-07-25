@@ -37,6 +37,7 @@ import {
   fetchBusinessReviews,
   fetchBusinessStaff,
   fetchBusinessServices,
+  createBooking,
 } from "@/lib/api"
 import { Pagination } from "@/components/dashboard/pagination"
 import type {
@@ -422,32 +423,44 @@ export default function BusinessDetail() {
     year: "numeric",
   })
 
-  const handleBook = () => {
-    if (!selectedServiceData || !selectedDate || !selectedTime) return
-    const endHour =
-      parseInt(selectedTime) +
-      Math.ceil(selectedServiceData.durationMinutes / 60)
-    const endTime = `${endHour.toString().padStart(2, "0")}:00`
-    createAppointment({
-      businessId: String(business.id),
-      businessName: business.name,
-      serviceName: selectedServiceData.name,
-      servicePrice: selectedServiceData.price,
-      teamMemberName: selectedMember
-        ? staff.find((s) => s.id === Number(selectedMember))?.name
-        : undefined,
-      date: selectedDate,
-      startTime: selectedTime,
-      endTime,
-      status: "confirmed",
-      notes: notes || undefined,
-    })
-    toast.success("Appointment booked successfully!")
-    setSelectedService(null)
-    setSelectedMember(null)
-    setNotes("")
-    setSelectedDate(null)
-    setSelectedTime(null)
+  const handleBook = async () => {
+    if (!business || !selectedServiceData || !selectedDate || !selectedTime) return
+    try {
+      await createBooking({
+        businessId: business.id,
+        serviceId: selectedServiceData.id,
+        staffId: selectedMember ? Number(selectedMember) : undefined,
+        bookingDate: selectedDate,
+        bookingTime: selectedTime,
+        notes: notes || undefined,
+      })
+      const endHour =
+        parseInt(selectedTime) +
+        Math.ceil(selectedServiceData.durationMinutes / 60)
+      const endTime = `${endHour.toString().padStart(2, "0")}:00`
+      createAppointment({
+        businessId: String(business.id),
+        businessName: business.name,
+        serviceName: selectedServiceData.name,
+        servicePrice: selectedServiceData.price,
+        teamMemberName: selectedMember
+          ? staff.find((s) => s.id === Number(selectedMember))?.name
+          : undefined,
+        date: selectedDate,
+        startTime: selectedTime,
+        endTime,
+        status: "confirmed",
+        notes: notes || undefined,
+      })
+      toast.success("Appointment booked successfully!")
+      setSelectedService(null)
+      setSelectedMember(null)
+      setNotes("")
+      setSelectedDate(null)
+      setSelectedTime(null)
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Booking failed")
+    }
   }
 
   const handleSubmitReview = () => {

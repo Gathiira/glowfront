@@ -28,7 +28,7 @@ import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
-import { fetchBusinessBySlug, fetchBusinessReviews, fetchBusinessStaff, fetchBusinessServices } from "@/lib/api"
+import { fetchBusinessBySlug, fetchBusinessReviews, fetchBusinessStaff, fetchBusinessServices, createBooking } from "@/lib/api"
 import { Pagination } from "@/components/dashboard/pagination"
 import { CURRENCY } from "@/lib/types"
 import type { BusinessDto, ReviewDto, StaffDto, ServiceDto, PaginatedResponse } from "@/lib/types"
@@ -255,19 +255,33 @@ export default function BusinessDetailPage() {
     }
   }, [])
 
-  const handleBook = () => {
-    if (!selectedService || !bookingName || !bookingDate || !bookingTime) {
+  const handleBook = async () => {
+    if (!business || !selectedService || !bookingName || !bookingDate || !bookingTime) {
       toast.error("Please fill in all required fields")
       return
     }
-    toast.success("Booking request submitted! We'll contact you shortly.")
-    setSelectedService(null)
-    setBookingName("")
-    setBookingEmail("")
-    setBookingPhone("")
-    setBookingDate("")
-    setBookingTime("")
-    setBookingNotes("")
+    try {
+      await createBooking({
+        businessId: business.id,
+        serviceId: Number(selectedService),
+        bookingDate,
+        bookingTime,
+        notes: bookingNotes || undefined,
+        customerName: bookingName,
+        customerPhone: bookingPhone || undefined,
+        customerEmail: bookingEmail || undefined,
+      })
+      toast.success("Booking request submitted! We'll contact you shortly.")
+      setSelectedService(null)
+      setBookingName("")
+      setBookingEmail("")
+      setBookingPhone("")
+      setBookingDate("")
+      setBookingTime("")
+      setBookingNotes("")
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Booking failed")
+    }
   }
 
   useEffect(() => {

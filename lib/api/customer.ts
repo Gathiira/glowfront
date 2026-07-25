@@ -97,3 +97,28 @@ export async function fetchBusinessServices(
     throw await extractError(error)
   }
 }
+
+export type CustomerBookingPayload = {
+  businessId: number
+  serviceId: number
+  staffId?: number
+  bookingDate: string
+  bookingTime: string
+  notes?: string
+  customerName?: string
+  customerPhone?: string
+  customerEmail?: string
+}
+
+export async function createBooking(
+  payload: CustomerBookingPayload
+): Promise<unknown> {
+  try {
+    const res = await api
+      .post(payload, `/customer/businesses/${payload.businessId}/book`)
+      .json<ApiResponse<unknown>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
