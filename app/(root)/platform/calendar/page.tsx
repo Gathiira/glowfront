@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { StatusBadge } from "@/components/dashboard/status-badge"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Eye } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { fetchCustomerBookings } from "@/lib/api"
-import type { BookingDto, PaginatedResponse } from "@/lib/types"
+import { fetchCustomerBookings, cancelBooking } from "@/lib/api"
+import type { BookingDto } from "@/lib/types"
+import { BookingDetailDialog } from "@/components/customer/booking-detail-dialog"
+import { toast } from "sonner"
 
 function formatDate(year: number, month: number, day: number): string {
   return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
@@ -26,6 +28,7 @@ function getFirstDayOfMonth(year: number, month: number): number {
 export default function CustomerCalendar() {
   const [bookings, setBookings] = useState<BookingDto[]>([])
   const [loading, setLoading] = useState(true)
+  const [detailBooking, setDetailBooking] = useState<BookingDto | null>(null)
   const today = new Date()
   const [year, setYear] = useState(today.getFullYear())
   const [month, setMonth] = useState(today.getMonth())
@@ -66,12 +69,23 @@ export default function CustomerCalendar() {
     setSelectedDate(null)
   }
 
+  const handleCancel = async (id: number) => {
+    try {
+      await cancelBooking(id)
+      const sd = formatDate(year, month, 1)
+      const ed = formatDate(year, month, getDaysInMonth(year, month))
+      const res = await fetchCustomerBookings(0, 120, sd, ed)
+      setBookings(res.list)
+      toast.success("Appointment cancelled")
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to cancel")
+    }
+  }
+
   const apptsByDate = bookings.reduce(
     (acc, a) => {
-      if (a.status !== "CANCELLED") {
-        if (!acc[a.bookingDate]) acc[a.bookingDate] = []
-        acc[a.bookingDate].push(a)
-      }
+      if (!acc[a.bookingDate]) acc[a.bookingDate] = []
+      acc[a.bookingDate].push(a)
       return acc
     },
     {} as Record<string, BookingDto[]>,
@@ -144,9 +158,14 @@ export default function CustomerCalendar() {
                           {dayAppts.slice(0, 2).map((a) => (
                             <div
                               key={a.id}
-                              className="truncate rounded bg-primary/10 px-1 py-0.5 text-[10px] leading-tight text-primary"
+                              className={cn(
+                                "truncate rounded px-1 py-0.5 text-[10px] leading-tight",
+                                a.status === "CANCELLED"
+                                  ? "bg-muted text-muted-foreground line-through"
+                                  : "bg-primary/10 text-primary"
+                              )}
                             >
-                              {a.bookingTime} {a.customerName}
+                              {a.bookingTime} {a.businessName}
                             </div>
                           ))}
                           {dayAppts.length > 2 && (
@@ -186,20 +205,35 @@ export default function CustomerCalendar() {
               ) : (
                 selectedAppts.map((a) => (
                   <Card key={a.id}>
-                    <CardContent className="p-4">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <p className="font-medium">{a.customerName}</p>
-                          <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
+                    <CardContent className="flex items-stretch justify-between gap-4 p-4">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium">{a.customerName}</p>
+                        <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
+                        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                          <span className="font-medium text-foreground">{a.businessName}</span>
+                          <span>{a.serviceName}</span>
                         </div>
-                        <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
+                        <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
+                          <span>
+                            {a.bookingTime}
+                            {a.durationMinutes && ` (${a.durationMinutes} min)`}
+                          </span>
+                          {a.notes && <span>&middot; {a.notes}</span>}
+                        </div>
+                        <a
+                          href={`/business/${a.businessSlug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                        >
+                          View public page &rarr;
+                        </a>
                       </div>
-                      <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
-                        <span>
-                          {a.bookingTime}
-                          {a.durationMinutes && ` (${a.durationMinutes} min)`}
-                        </span>
-                        {a.notes && <span>&middot; {a.notes}</span>}
+                      <div className="flex flex-col items-end justify-between">
+                        <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
+                        <Button variant="ghost" size="sm" onClick={() => setDetailBooking(a)} className="gap-1">
+                          <Eye className="size-3.5" /> View
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -213,6 +247,12 @@ export default function CustomerCalendar() {
           )}
         </div>
       </div>
+
+      <BookingDetailDialog
+        booking={detailBooking}
+        onOpenChange={(o) => !o && setDetailBooking(null)}
+        onCancel={handleCancel}
+      />
     </div>
   )
 }

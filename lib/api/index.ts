@@ -12,4 +12,5 @@ export {
   createBooking,
   fetchCustomerBookings,
   cancelBooking,
+  fetchCustomerBusinessDetail,
 } from "./customer"

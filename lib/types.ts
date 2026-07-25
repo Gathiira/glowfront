@@ -333,13 +333,30 @@ export type ServiceDto = {
   active: boolean
 }
 
+export type RatingBreakdownDto = {
+  fiveStar: number
+  fourStar: number
+  threeStar: number
+  twoStar: number
+  oneStar: number
+}
+
+export type BusinessDetailDto = BusinessDto & {
+  services: ServiceDto[]
+  team: StaffDto[]
+  reviews: ReviewDto[]
+  ratingBreakdown: RatingBreakdownDto | null
+}
+
 export type BookingDto = {
   id: number
   businessId: number
+  businessName: string
+  businessSlug: string
   serviceId: number
+  serviceName: string
   staffId: number
   customerName: string
-  serviceName: string
   customerPhone: string
   customerEmail: string | null
   bookingDate: string

@@ -19,11 +19,12 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog"
-import { Star, OctagonX } from "lucide-react"
+import { Star, OctagonX, Eye } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { fetchCustomerBookings, cancelBooking } from "@/lib/api"
 import type { BookingDto } from "@/lib/types"
+import { BookingDetailDialog } from "@/components/customer/booking-detail-dialog"
 
 type Tab = "upcoming" | "past" | "cancelled"
 
@@ -42,6 +43,7 @@ export default function Appointments() {
   const [reviewingId, setReviewingId] = useState<number | null>(null)
   const [reviewRating, setReviewRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
+  const [detailBooking, setDetailBooking] = useState<BookingDto | null>(null)
 
   useEffect(() => {
     const today = new Date()
@@ -90,6 +92,10 @@ export default function Appointments() {
     }
   }
 
+  const openDetail = (a: BookingDto) => {
+    setDetailBooking(a)
+  }
+
   const openReview = (id: number) => {
     setReviewingId(id)
     setReviewRating(0)
@@ -106,23 +112,30 @@ export default function Appointments() {
 
   const renderAppointment = (a: BookingDto) => (
     <Card key={a.id}>
-      <CardContent className="p-4">
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="font-medium">{a.customerName}</p>
-            <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
+      <CardContent className="flex items-stretch justify-between gap-4 p-4">
+        <div className="min-w-0 flex-1">
+          <p className="font-medium">{a.customerName}</p>
+          <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <span className="font-medium text-foreground">{a.businessName}</span>
+            <span>{a.serviceName}</span>
           </div>
+          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <span>{a.bookingDate}</span>
+            <span>{a.bookingTime}{a.durationMinutes ? ` (${a.durationMinutes} min)` : ""}</span>
+          </div>
+          {a.notes && (
+            <p className="mt-2 text-xs text-muted-foreground italic">Note: {a.notes}</p>
+          )}
+        </div>
+        <div className="flex flex-col items-end justify-between">
           <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
-        </div>
-        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-          <span>{a.bookingDate}</span>
-          <span>{a.bookingTime}{a.durationMinutes ? ` (${a.durationMinutes} min)` : ""}</span>
-        </div>
-        {a.notes && (
-          <p className="mt-2 text-xs text-muted-foreground italic">Note: {a.notes}</p>
-        )}
-        <div className="mt-3 flex justify-end gap-2">
-          {a.status === "PENDING" && (
+          <Button variant="ghost" size="sm" onClick={() => openDetail(a)} className="gap-1">
+            <Eye className="size-4" /> View
+          </Button>
+          {(a.status === "PENDING" || a.status === "COMPLETED") && (
+          <div className="flex flex-col items-end gap-2">
+            {a.status === "PENDING" && (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline" size="sm" className="text-destructive">
@@ -152,6 +165,8 @@ export default function Appointments() {
             <Button size="sm" onClick={() => openReview(a.id)}>
               Write a Review
             </Button>
+          )}
+          </div>
           )}
         </div>
       </CardContent>
@@ -205,7 +220,7 @@ export default function Appointments() {
               No upcoming appointments
             </div>
           ) : (
-            <div className="space-y-3">{upcoming.map(renderAppointment)}</div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">{upcoming.map(renderAppointment)}</div>
           )}
         </>
       )}
@@ -229,7 +244,7 @@ export default function Appointments() {
               No past appointments
             </div>
           ) : (
-            <div className="space-y-3">{past.map(renderAppointment)}</div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">{past.map(renderAppointment)}</div>
           )}
         </>
       )}
@@ -253,7 +268,7 @@ export default function Appointments() {
               No cancelled appointments
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               {cancelled.map(renderAppointment)}
             </div>
           )}
@@ -316,6 +331,12 @@ export default function Appointments() {
           </div>
         </div>
       )}
+
+      <BookingDetailDialog
+        booking={detailBooking}
+        onOpenChange={(o) => !o && setDetailBooking(null)}
+        onCancel={handleCancel}
+      />
     </div>
   )
 }

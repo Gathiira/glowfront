@@ -10,6 +10,7 @@ import type {
   StaffDto,
   ServiceDto,
   BookingDto,
+  BusinessDetailDto,
 } from "@/lib/types"
 
 export async function fetchCustomerDashboard(): Promise<CustomerDashboardDto> {
@@ -48,6 +49,17 @@ export async function fetchBusinessBySlug(slug: string): Promise<BusinessDto> {
     const res = await api
       .get(`/customer/businesses/slug/${slug}`)
       .json<ApiResponse<BusinessDto>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function fetchCustomerBusinessDetail(slug: string): Promise<BusinessDetailDto> {
+  try {
+    const res = await api
+      .get(`/customer/businesses/slug/${slug}/detail`)
+      .json<ApiResponse<BusinessDetailDto>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
