@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-25)
 
 ## Corpus Check
-- 123 files · ~56,027 words
+- 123 files · ~56,076 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 711 nodes · 1384 edges · 55 communities (49 shown, 6 thin omitted)
+- 711 nodes · 1365 edges · 57 communities (49 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ba3e7237`
+- Built from commit: `e0d4da3d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -58,10 +58,12 @@
 - scroll-section.tsx
 - header.tsx
 - PaginatedResponse
+- field.tsx
+- loading-provider.tsx
 
 ## God Nodes (most connected - your core abstractions)
-1. `cn()` - 135 edges
-2. `Button()` - 30 edges
+1. `cn()` - 133 edges
+2. `Button()` - 29 edges
 3. `Card()` - 25 edges
 4. `CardContent()` - 25 edges
 5. `PageHeader()` - 18 edges
@@ -76,17 +78,17 @@
   README.md → backendimpl.md
 - `RootLayout()` --calls--> `cn()`  [EXTRACTED]
   app/layout.tsx → lib/utils.ts
-- `ThemeHotkey()` --references--> `react`  [EXTRACTED]
-  components/theme-provider.tsx → package.json
-- `AlertDialogOverlay()` --calls--> `cn()`  [EXTRACTED]
-  components/ui/alert-dialog.tsx → lib/utils.ts
 - `AlertTitle()` --calls--> `cn()`  [EXTRACTED]
+  components/ui/alert.tsx → lib/utils.ts
+- `AlertDescription()` --calls--> `cn()`  [EXTRACTED]
+  components/ui/alert.tsx → lib/utils.ts
+- `AlertAction()` --calls--> `cn()`  [EXTRACTED]
   components/ui/alert.tsx → lib/utils.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (55 total, 6 thin omitted)
+## Communities (57 total, 8 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
 Cohesion: 0.08
@@ -141,8 +143,8 @@ Cohesion: 0.27
 Nodes (10): Appointment, Calendar(), colors, formatDate(), getDaysInMonth(), getFirstDayOfMonth(), HOURS, isPastDate() (+2 more)
 
 ### Community 13 - "Platform Layout & Context"
-Cohesion: 0.09
-Nodes (28): Props, navItems, PlatformSidebar(), AlertDialog(), AlertDialogAction(), AlertDialogCancel(), AlertDialogContent(), AlertDialogDescription() (+20 more)
+Cohesion: 0.11
+Nodes (16): Props, navItems, PlatformSidebar(), CustomerContext, CustomerContextType, CustomerProvider(), mockAppointments, mockBusinesses (+8 more)
 
 ### Community 14 - "Field Components"
 Cohesion: 0.60
@@ -157,8 +159,8 @@ Cohesion: 0.18
 Nodes (8): BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), MapContainer, Marker, Popup, TileLayer
 
 ### Community 17 - "Location Picker & Map"
-Cohesion: 0.18
-Nodes (8): SelectContent(), SelectGroup(), SelectItem(), SelectLabel(), SelectScrollDownButton(), SelectScrollUpButton(), SelectSeparator(), SelectTrigger()
+Cohesion: 0.11
+Nodes (22): AlertDialogAction(), AlertDialogCancel(), AlertDialogContent(), AlertDialogDescription(), AlertDialogFooter(), AlertDialogHeader(), AlertDialogMedia(), AlertDialogOverlay() (+14 more)
 
 ### Community 18 - "API Client Layer"
 Cohesion: 0.11
@@ -169,12 +171,12 @@ Cohesion: 0.14
 Nodes (13): git *, graphify *, node *, npm *, npx *, pip *, pnpm *, uv * (+5 more)
 
 ### Community 20 - "Item Components"
-Cohesion: 0.12
-Nodes (28): CardAction(), CardDescription(), CardFooter(), Field(), FieldContent(), FieldDescription(), FieldError(), FieldLabel() (+20 more)
+Cohesion: 0.16
+Nodes (13): Item(), ItemActions(), ItemContent(), ItemDescription(), ItemFooter(), ItemGroup(), ItemHeader(), ItemMedia() (+5 more)
 
 ### Community 22 - "Input Group Components"
-Cohesion: 0.28
-Nodes (8): InputGroup(), InputGroupAddon(), inputGroupAddonVariants, InputGroupButton(), inputGroupButtonVariants, InputGroupInput(), InputGroupText(), InputGroupTextarea()
+Cohesion: 0.19
+Nodes (11): InputGroup(), InputGroupAddon(), inputGroupAddonVariants, InputGroupButton(), inputGroupButtonVariants, InputGroupInput(), InputGroupText(), InputGroupTextarea() (+3 more)
 
 ### Community 24 - "K8s & CI/CD"
 Cohesion: 0.70
@@ -202,15 +204,11 @@ Nodes (8): cities, Pagination(), PaginationProps, Footer(), Button(), buttonVari
 
 ### Community 42 - "page.tsx"
 Cohesion: 0.15
-Nodes (11): fontMono, inter, RootLayout(), Anchor, LoadingContext, LoadingProvider(), useLoading(), ThemeHotkey() (+3 more)
+Nodes (11): fontMono, inter, RootLayout(), LoadingProvider(), ThemeHotkey(), ThemeProvider(), CalendarDayButton(), InputOTPSlot() (+3 more)
 
 ### Community 43 - "scroll-section.tsx"
 Cohesion: 0.19
 Nodes (13): api, ApiError, ApiResponse, extractError(), getMsg(), isPublicPath(), PUBLIC_PATHS, fetchBusinessBySlug() (+5 more)
-
-### Community 44 - "scroll-section.tsx"
-Cohesion: 0.20
-Nodes (5): HoverCardContent(), Input(), PasswordInput(), PasswordInputProps, Switch()
 
 ### Community 45 - "types.ts"
 Cohesion: 0.12
@@ -224,10 +222,6 @@ Nodes (7): Catalog(), AddMember(), createPartnerService(), createPartnerStaff(),
 Cohesion: 0.32
 Nodes (6): DashboardLayout(), Props, ProfileDetails(), fetchPartnerBusiness(), BusinessDto, ReviewDto
 
-### Community 51 - "input-otp.tsx"
-Cohesion: 0.25
-Nodes (6): CalendarDayButton(), InputOTP(), InputOTPGroup(), InputOTPSlot(), react, react
-
 ### Community 52 - "scroll-section.tsx"
 Cohesion: 0.38
 Nodes (4): BusinessCard(), gradients, ScrollSection(), BusinessCardDto
@@ -236,21 +230,29 @@ Nodes (4): BusinessCard(), gradients, ScrollSection(), BusinessCardDto
 Cohesion: 0.50
 Nodes (4): TeamMembers(), fetchPartnerStaff(), PaginatedResponse, StaffDto
 
+### Community 55 - "field.tsx"
+Cohesion: 0.18
+Nodes (11): Field(), FieldContent(), FieldDescription(), FieldError(), FieldLabel(), FieldLegend(), FieldSeparator(), FieldSet() (+3 more)
+
+### Community 56 - "loading-provider.tsx"
+Cohesion: 0.47
+Nodes (4): Anchor, LoadingContext, useLoading(), Spinner()
+
 ## Knowledge Gaps
-- **220 isolated node(s):** `MapContainer`, `TileLayer`, `Marker`, `Popup`, `DAY_ORDER` (+215 more)
+- **220 isolated node(s):** `navItems`, `SubMenuItem`, `NavItem`, `navItems`, `bottomNavItems` (+215 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `Item Components` to `Dashboard Pages`, `Root Layout & Auth`, `page.tsx`, `page.tsx`, `OTP & Select Components`, `scroll-section.tsx`, `Platform Layout & Context`, `Dropdown Menu`, `Location Picker & Map`, `API Client Layer`, `input-otp.tsx`, `scroll-section.tsx`, `Input Group Components`, `Alert Components`?**
-  _High betweenness centrality (0.315) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
+- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Root Layout & Auth`, `page.tsx`, `page.tsx`, `OTP & Select Components`, `scroll-section.tsx`, `Dropdown Menu`, `API Client Layer`, `input-otp.tsx`, `scroll-section.tsx`, `Item Components`, `Input Group Components`, `field.tsx`, `loading-provider.tsx`, `Alert Components`?**
+  _High betweenness centrality (0.314) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `NPM Dependencies` to `page.tsx`, `Dev Tooling & Linting`?**
   _High betweenness centrality (0.161) - this node is a cross-community bridge._
-- **Why does `react` connect `input-otp.tsx` to `page.tsx`, `NPM Dependencies`?**
+- **Why does `react` connect `page.tsx` to `NPM Dependencies`?**
   _High betweenness centrality (0.154) - this node is a cross-community bridge._
-- **What connects `MapContainer`, `TileLayer`, `Marker` to the rest of the system?**
+- **What connects `navItems`, `SubMenuItem`, `NavItem` to the rest of the system?**
   _220 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.0821917808219178 - nodes in this community are weakly interconnected._
