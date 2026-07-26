@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
-import { fmt } from "@/lib/utils"
+import { fmt, fmtNum } from "@/lib/utils"
 import { Star } from "lucide-react"
 import { searchBusinesses, fetchBusinessCategories } from "@/lib/api"
 import { Pagination } from "@/components/dashboard/pagination"
@@ -66,7 +66,7 @@ function BusinessCard({ business }: { business: BusinessCardDto }) {
                 {fmt(business.overallRating)}
               </span>
               <span className="text-xs text-muted-foreground">
-                ({(business.totalReviews ?? 0).toLocaleString()})
+                ({fmtNum(business.totalReviews)})
               </span>
             </div>
             <p className="line-clamp-1 text-xs text-muted-foreground">

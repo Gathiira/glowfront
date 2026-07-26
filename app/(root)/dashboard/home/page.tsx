@@ -13,6 +13,7 @@ import {
   Star,
   User,
 } from "lucide-react"
+import { fmtNum } from "@/lib/utils"
 import { CURRENCY } from "@/lib/types"
 import type {
   DashboardSummaryDto,
@@ -28,7 +29,7 @@ import { formatTimeDisplay, formatDateShort } from "@/lib/date-utils"
 import { EmptyState } from "@/components/ui/empty-state"
 
 function formatCurrency(amount: number): string {
-  return `${CURRENCY} ${amount.toLocaleString()}`
+  return `${CURRENCY} ${fmtNum(amount)}`
 }
 
 export default function Home() {

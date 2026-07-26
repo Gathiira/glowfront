@@ -17,7 +17,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { ArrowLeft } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, fmtNum } from "@/lib/utils"
 import { CURRENCY } from "@/lib/types"
 import type { StaffDto, ServiceDto } from "@/lib/types"
 
@@ -200,7 +200,7 @@ export function BookingModal({
           <div className="rounded-lg border bg-primary/5 p-3">
             <p className="text-sm font-medium">{service.name}</p>
             <p className="text-xs text-muted-foreground">
-              {CURRENCY} {service.price.toLocaleString()} &middot;{" "}
+              {CURRENCY} {fmtNum(service.price)} &middot;{" "}
               {service.durationMinutes} min
             </p>
           </div>

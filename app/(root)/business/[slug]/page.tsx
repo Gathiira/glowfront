@@ -21,7 +21,7 @@ import { Footer } from "@/components/landing/_components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { cn, fmt } from "@/lib/utils"
+import { cn, fmt, fmtNum } from "@/lib/utils"
 import { toast } from "sonner"
 import { fetchBusinessBySlug, fetchBusinessReviews, fetchBusinessStaff, fetchBusinessServices, createBooking } from "@/lib/api"
 import { Pagination } from "@/components/dashboard/pagination"
@@ -310,9 +310,9 @@ export default function BusinessDetailPage() {
 
   const priceRange =
     business.priceRangeMin != null && business.priceRangeMax != null
-      ? `${CURRENCY} ${business.priceRangeMin.toLocaleString()} - ${business.priceRangeMax.toLocaleString()}`
+      ? `${CURRENCY} ${fmtNum(business.priceRangeMin)} - ${fmtNum(business.priceRangeMax)}`
       : business.priceRangeMin != null
-        ? `From ${CURRENCY} ${business.priceRangeMin.toLocaleString()}`
+        ? `From ${CURRENCY} ${fmtNum(business.priceRangeMin)}`
         : null
 
   return (
@@ -471,7 +471,7 @@ export default function BusinessDetailPage() {
                           {s.durationMinutes}min
                         </div>
                         <div className="flex items-center gap-1 font-medium">
-                          {CURRENCY} {s.price.toLocaleString()}
+                          {CURRENCY} {fmtNum(s.price)}
                         </div>
                         {selectedService === String(s.id) && (
                           <Check className="size-4 text-primary" />

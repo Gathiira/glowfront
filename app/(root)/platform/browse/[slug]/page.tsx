@@ -25,7 +25,7 @@ import {
   User,
   Shield,
 } from "lucide-react"
-import { cn, fmt } from "@/lib/utils"
+import { cn, fmt, fmtNum } from "@/lib/utils"
 import { CURRENCY } from "@/lib/types"
 import { toast } from "sonner"
 import {
@@ -336,9 +336,9 @@ export default function BusinessDetail() {
 
   const priceRange =
     business.priceRangeMin != null && business.priceRangeMax != null
-      ? `${CURRENCY} ${business.priceRangeMin.toLocaleString()} - ${business.priceRangeMax.toLocaleString()}`
+      ? `${CURRENCY} ${fmtNum(business.priceRangeMin)} - ${fmtNum(business.priceRangeMax)}`
       : business.priceRangeMin != null
-        ? `From ${CURRENCY} ${business.priceRangeMin.toLocaleString()}`
+        ? `From ${CURRENCY} ${fmtNum(business.priceRangeMin)}`
         : null
 
   const handleBook = async (data: {
@@ -540,7 +540,7 @@ export default function BusinessDetail() {
                           {s.durationMinutes}min
                         </div>
                         <div className="flex items-center gap-1 font-medium">
-                          {CURRENCY} {s.price.toLocaleString()}
+                          {CURRENCY} {fmtNum(s.price)}
                         </div>
                         {selectedService === String(s.id) && (
                           <Check className="size-4 text-primary" />
