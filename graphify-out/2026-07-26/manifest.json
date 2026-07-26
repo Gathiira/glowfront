@@ -750,8 +750,8 @@
     "semantic_hash": ""
   },
   "app/(root)/admin/home/page.tsx": {
-    "mtime": 1785066527.6245706,
-    "ast_hash": "a93caea0a9f640a6d1f7107e67f365f8",
+    "mtime": 1785072332.7990842,
+    "ast_hash": "231edd78556c8a23a6aa06450abd7c93",
     "semantic_hash": ""
   },
   "app/(root)/admin/layout.tsx": {
@@ -760,8 +760,8 @@
     "semantic_hash": ""
   },
   "app/(root)/admin/partners/page.tsx": {
-    "mtime": 1785070308.7405882,
-    "ast_hash": "461d4dcaac350d8981c87f98a8cc203c",
+    "mtime": 1785072329.4437928,
+    "ast_hash": "178921d49d82dbd4e1eff595b46555ab",
     "semantic_hash": ""
   },
   "components/admin/sidebar.tsx": {
@@ -770,8 +770,8 @@
     "semantic_hash": ""
   },
   "lib/api/admin.ts": {
-    "mtime": 1785070320.7455733,
-    "ast_hash": "5d7066c619a283325b4ef795bc4e6a4e",
+    "mtime": 1785072181.7595756,
+    "ast_hash": "dffb71fb4c1accdc4389e43636d8da16",
     "semantic_hash": ""
   },
   "app/(root)/admin/reviews/page.tsx": {
