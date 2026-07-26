@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 136 files · ~56,424 words
+- 136 files · ~56,446 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 740 nodes · 1099 edges · 67 communities (57 shown, 10 thin omitted)
+- 740 nodes · 1093 edges · 67 communities (57 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `25c31072`
+- Built from commit: `e5546d92`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,7 +99,7 @@ Cohesion: 0.07
 Nodes (31): BrowseContent(), cities, appointments, clients, segments, payments, days, Shift (+23 more)
 
 ### Community 1 - "Landing & Auth Pages"
-Cohesion: 0.10
+Cohesion: 0.09
 Nodes (16): BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), BusinessDetail(), DAY_ORDER, formatDate(), formatDay() (+8 more)
 
 ### Community 2 - "Auth Form Components"
@@ -167,8 +167,8 @@ Cohesion: 0.14
 Nodes (20): CardAction(), CardDescription(), CardFooter(), SelectContent(), SelectGroup(), SelectItem(), SelectLabel(), SelectScrollDownButton() (+12 more)
 
 ### Community 18 - "API Client Layer"
-Cohesion: 0.13
-Nodes (6): CustomerBookingPayload, BookingDto, BusinessDetailDto, BusinessSearchDto, CustomerDashboardDto, StaffDto
+Cohesion: 0.11
+Nodes (9): CustomerBookingPayload, BookingDto, BusinessDetailDto, BusinessDto, BusinessSearchDto, CustomerDashboardDto, PaginatedResponse, ReviewDto (+1 more)
 
 ### Community 19 - "OpenCode Config"
 Cohesion: 0.14
@@ -179,8 +179,8 @@ Cohesion: 0.16
 Nodes (13): Item(), ItemActions(), ItemContent(), ItemDescription(), ItemFooter(), ItemGroup(), ItemHeader(), ItemMedia() (+5 more)
 
 ### Community 22 - "Input Group Components"
-Cohesion: 0.28
-Nodes (7): DashboardLayout(), Props, ProfileDetails(), fetchPartnerBusiness(), BusinessDto, PaginatedResponse, ReviewDto
+Cohesion: 0.67
+Nodes (3): DashboardLayout(), Props, fetchPartnerBusiness()
 
 ### Community 24 - "K8s & CI/CD"
 Cohesion: 0.70
@@ -251,7 +251,7 @@ Cohesion: 0.40
 Nodes (4): MapContainer, Marker, Popup, TileLayer
 
 ## Knowledge Gaps
-- **238 isolated node(s):** `loginSchema`, `registerSchema`, `LoginFormData`, `RegisterFormData`, `Mode` (+233 more)
+- **238 isolated node(s):** `Props`, `loginSchema`, `registerSchema`, `LoginFormData`, `RegisterFormData` (+233 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -259,16 +259,16 @@ Nodes (4): MapContainer, Marker, Popup, TileLayer
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Business Browse`, `alert.tsx`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `input-otp.tsx`, `Item Components`, `page.tsx`, `field.tsx`?**
-  _High betweenness centrality (0.213) - this node is a cross-community bridge._
+  _High betweenness centrality (0.211) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
-  _High betweenness centrality (0.116) - this node is a cross-community bridge._
+  _High betweenness centrality (0.115) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `NPM Dependencies`?**
   _High betweenness centrality (0.109) - this node is a cross-community bridge._
-- **What connects `loginSchema`, `registerSchema`, `LoginFormData` to the rest of the system?**
+- **What connects `Props`, `loginSchema`, `registerSchema` to the rest of the system?**
   _238 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.0684811237928007 - nodes in this community are weakly interconnected._
 - **Should `Landing & Auth Pages` be split into smaller, more focused modules?**
-  _Cohesion score 0.0960591133004926 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09032258064516129 - nodes in this community are weakly interconnected._
 - **Should `Auth Form Components` be split into smaller, more focused modules?**
   _Cohesion score 0.09846153846153846 - nodes in this community are weakly interconnected._
