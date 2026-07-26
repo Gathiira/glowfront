@@ -75,7 +75,7 @@ export function BookingDetailDialog({
 
   return (
     <Dialog open={!!booking} onOpenChange={onOpenChange}>
-      <DialogContent className="bottom-0 max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+      <DialogContent className="max-h-[90vh]">
         <DialogHeader>
           <DialogTitle>Booking Details</DialogTitle>
           <DialogDescription>

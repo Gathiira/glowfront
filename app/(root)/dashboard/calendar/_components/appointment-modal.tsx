@@ -44,7 +44,7 @@ export function AppointmentModal({
         if (!v) onClose()
       }}
     >
-      <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+      <DialogContent className="max-h-[90vh]">
         <DialogHeader>
           <DialogTitle>
             {editingId

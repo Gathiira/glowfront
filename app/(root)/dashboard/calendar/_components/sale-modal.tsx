@@ -22,7 +22,7 @@ type Props = {
 export function SaleModal({ open, form, onFormChange, onSave, onClose }: Props) {
   return (
     <Dialog open={open} onOpenChange={(v) => { if (!v) onClose() }}>
-      <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+      <DialogContent className="max-h-[90vh]">
         <DialogHeader>
           <DialogTitle>Record Sale</DialogTitle>
           <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100">

@@ -60,7 +60,7 @@ export function ReviewModal({ open, onClose }: Props) {
         }
       }}
     >
-      <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+      <DialogContent className="max-h-[90vh]">
         <DialogHeader>
           <DialogTitle>Write a Review</DialogTitle>
         </DialogHeader>

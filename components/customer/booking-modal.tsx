@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -181,7 +182,7 @@ export function BookingModal({
         if (!v) handleClose()
       }}
     >
-      <DialogContent className="bottom-0 max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+      <DialogContent className="bottom-0 max-h-[90vh]">
         <DialogHeader>
           <DialogTitle>Book Appointment</DialogTitle>
         </DialogHeader>
@@ -426,9 +427,13 @@ export function BookingModal({
           </div>
         </form>
 
-        <DialogFooter className="flex justify-end gap-2">
+        <DialogFooter className="flex flex-row justify-end gap-2">
+          <DialogClose>
+            <Button variant="ghost" type="button">
+              close
+            </Button>
+          </DialogClose>
           <Button
-            className="flex-1 sm:flex-none"
             disabled={!selectedDate || !selectedTime || submitting}
             onClick={() => onFormSubmit()}
           >
