@@ -6,13 +6,112 @@
     {
       "label": "page.tsx",
       "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_root_search_page",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "FlyTo",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "app_root_search_page_flyto",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "flyto"
+    },
+    {
+      "label": "seededRandom()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "app_root_search_page_seededrandom",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "seededrandom()"
+    },
+    {
+      "label": "neighborhoodCoords",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "app_root_search_page_neighborhoodcoords",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "neighborhoodcoords"
+    },
+    {
+      "label": "getBusinessCoords()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "app_root_search_page_getbusinesscoords",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "getbusinesscoords()"
+    },
+    {
+      "label": "cities",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "app_root_search_page_cities",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "cities"
+    },
+    {
+      "label": "getKenyaBounds()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "app_root_search_page_getkenyabounds",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "getkenyabounds()"
+    },
+    {
+      "label": "BusinessWithCoords",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "app_root_search_page_businesswithcoords",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "businesswithcoords"
+    },
+    {
+      "label": "SearchPage()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "app_root_search_page_searchpage",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "searchpage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_dashboard_profile_details_page",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "page.tsx"
+      "norm_label": "page.tsx",
+      "id": "app_root_dashboard_profile_details_page"
     },
     {
       "label": "ProfileDetails()",
@@ -20,10 +119,10 @@
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "app_root_dashboard_profile_details_page_profiledetails",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "profiledetails()"
+      "norm_label": "profiledetails()",
+      "id": "app_root_dashboard_profile_details_page_profiledetails"
     },
     {
       "label": "business-map.tsx",
@@ -31,10 +130,10 @@
       "source_file": "components/map/business-map.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_map_business_map",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "business-map.tsx"
+      "norm_label": "business-map.tsx",
+      "id": "components_map_business_map"
     },
     {
       "label": "Props",
@@ -42,10 +141,10 @@
       "source_file": "components/map/business-map.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "components_map_business_map_props",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "components_map_business_map_props"
     },
     {
       "label": "BusinessMap()",
@@ -53,10 +152,10 @@
       "source_file": "components/map/business-map.tsx",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "components_map_business_map_businessmap",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "businessmap()"
+      "norm_label": "businessmap()",
+      "id": "components_map_business_map_businessmap"
     },
     {
       "label": "customer-flow.tsx",
@@ -332,105 +431,6 @@
       "community_name": "page.tsx",
       "norm_label": "customercalendar()",
       "id": "app_root_platform_calendar_page_customercalendar"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx",
-      "id": "app_root_search_page"
-    },
-    {
-      "label": "FlyTo",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L26",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "flyto",
-      "id": "app_root_search_page_flyto"
-    },
-    {
-      "label": "seededRandom()",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L31",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "seededrandom()",
-      "id": "app_root_search_page_seededrandom"
-    },
-    {
-      "label": "neighborhoodCoords",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L36",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "neighborhoodcoords",
-      "id": "app_root_search_page_neighborhoodcoords"
-    },
-    {
-      "label": "getBusinessCoords()",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L55",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "getbusinesscoords()",
-      "id": "app_root_search_page_getbusinesscoords"
-    },
-    {
-      "label": "cities",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L103",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "cities",
-      "id": "app_root_search_page_cities"
-    },
-    {
-      "label": "kenyaBounds",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L105",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "kenyabounds",
-      "id": "app_root_search_page_kenyabounds"
-    },
-    {
-      "label": "BusinessWithCoords",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L107",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "businesswithcoords",
-      "id": "app_root_search_page_businesswithcoords"
-    },
-    {
-      "label": "SearchPage()",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L109",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "searchpage()",
-      "id": "app_root_search_page_searchpage"
     },
     {
       "label": "page.tsx",
@@ -2000,8 +2000,8 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "Dashboard Pages",
+      "community": 68,
+      "community_name": "page.tsx",
       "norm_label": "searchbusinesses()",
       "id": "lib_api_customer_searchbusinesses"
     },
@@ -2011,8 +2011,8 @@
       "source_file": "lib/api/customer.ts",
       "source_location": "L38",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 68,
+      "community_name": "page.tsx",
       "norm_label": "fetchbusinesscategories()",
       "id": "lib_api_customer_fetchbusinesscategories"
     },
@@ -2286,8 +2286,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L153",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 70,
+      "community_name": "category-browser.tsx",
       "norm_label": "businesscategorydto",
       "id": "lib_types_businesscategorydto"
     },
@@ -2319,8 +2319,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L182",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "Dashboard Pages",
+      "community": 67,
+      "community_name": "scroll-section.tsx",
       "norm_label": "businesscarddto",
       "id": "lib_types_businesscarddto"
     },
@@ -3518,9 +3518,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "page.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page"
     },
     {
@@ -3529,9 +3529,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "cities",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_cities"
     },
     {
@@ -3540,9 +3540,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "businesscard()",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_businesscard"
     },
     {
@@ -3551,9 +3551,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L88",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "cardskeleton()",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_cardskeleton"
     },
     {
@@ -3562,9 +3562,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L104",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "browsecontent()",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_browsecontent"
     },
     {
@@ -3573,9 +3573,9 @@
       "source_file": "app/(root)/browse/page.tsx",
       "source_location": "L335",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "browsepage()",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "app_root_browse_page_browsepage"
     },
     {
@@ -3661,9 +3661,9 @@
       "source_file": "app/(root)/business/page.tsx",
       "source_location": "L143",
       "_origin": "ast",
-      "community": 7,
+      "community": 68,
       "norm_label": "businesspage()",
-      "community_name": "Business Browse",
+      "community_name": "page.tsx",
       "id": "app_root_business_page_businesspage"
     },
     {
@@ -4332,9 +4332,9 @@
       "source_file": "components/dashboard/pagination.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "pagination.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "components_dashboard_pagination"
     },
     {
@@ -4343,9 +4343,9 @@
       "source_file": "components/dashboard/pagination.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "paginationprops",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "components_dashboard_pagination_paginationprops"
     },
     {
@@ -4354,9 +4354,9 @@
       "source_file": "components/dashboard/pagination.tsx",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "pagination()",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "components_dashboard_pagination_pagination"
     },
     {
@@ -4486,9 +4486,9 @@
       "source_file": "components/landing/_components/business/business-faq.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "business-faq.tsx",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_components_business_business_faq"
     },
     {
@@ -4497,9 +4497,9 @@
       "source_file": "components/landing/_components/business/business-faq.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "businessfaq()",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_components_business_business_faq_businessfaq"
     },
     {
@@ -4508,9 +4508,9 @@
       "source_file": "components/landing/_components/business/business-header.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 69,
       "norm_label": "business-header.tsx",
-      "community_name": "Business Browse",
+      "community_name": "button.tsx",
       "id": "components_landing_components_business_business_header"
     },
     {
@@ -4519,9 +4519,9 @@
       "source_file": "components/landing/_components/business/business-header.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 7,
+      "community": 69,
       "norm_label": "navlinks",
-      "community_name": "Business Browse",
+      "community_name": "button.tsx",
       "id": "components_landing_components_business_business_header_navlinks"
     },
     {
@@ -4607,9 +4607,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 70,
       "norm_label": "category-browser.tsx",
-      "community_name": "Business Browse",
+      "community_name": "category-browser.tsx",
       "id": "components_landing_components_category_browser"
     },
     {
@@ -4618,9 +4618,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 7,
+      "community": 70,
       "norm_label": "iconmap",
-      "community_name": "Business Browse",
+      "community_name": "category-browser.tsx",
       "id": "components_landing_components_category_browser_iconmap"
     },
     {
@@ -4629,9 +4629,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 7,
+      "community": 70,
       "norm_label": "fallbackicons",
-      "community_name": "Business Browse",
+      "community_name": "category-browser.tsx",
       "id": "components_landing_components_category_browser_fallbackicons"
     },
     {
@@ -4640,9 +4640,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L50",
       "_origin": "ast",
-      "community": 7,
+      "community": 70,
       "norm_label": "geticon()",
-      "community_name": "Business Browse",
+      "community_name": "category-browser.tsx",
       "id": "components_landing_components_category_browser_geticon"
     },
     {
@@ -4651,9 +4651,9 @@
       "source_file": "components/landing/_components/category-browser.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "community": 7,
+      "community": 70,
       "norm_label": "categorybrowser()",
-      "community_name": "Business Browse",
+      "community_name": "category-browser.tsx",
       "id": "components_landing_components_category_browser_categorybrowser"
     },
     {
@@ -4662,9 +4662,9 @@
       "source_file": "components/landing/_components/city-browser.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "city-browser.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_landing_components_city_browser"
     },
     {
@@ -4673,9 +4673,9 @@
       "source_file": "components/landing/_components/city-browser.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "citybrowser()",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_landing_components_city_browser_citybrowser"
     },
     {
@@ -4684,9 +4684,9 @@
       "source_file": "components/landing/_components/cta-section.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "cta-section.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_landing_components_cta_section"
     },
     {
@@ -4695,9 +4695,9 @@
       "source_file": "components/landing/_components/cta-section.tsx",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "ctasection()",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_landing_components_cta_section_ctasection"
     },
     {
@@ -4706,9 +4706,9 @@
       "source_file": "components/landing/_components/footer.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "footer.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "components_landing_components_footer"
     },
     {
@@ -4717,9 +4717,9 @@
       "source_file": "components/landing/_components/footer.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 0,
+      "community": 68,
       "norm_label": "footer()",
-      "community_name": "Dashboard Pages",
+      "community_name": "page.tsx",
       "id": "components_landing_components_footer_footer"
     },
     {
@@ -4728,9 +4728,9 @@
       "source_file": "components/landing/_components/hero.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "hero.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_landing_components_hero"
     },
     {
@@ -4739,9 +4739,9 @@
       "source_file": "components/landing/_components/hero.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "hero()",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_landing_components_hero_hero"
     },
     {
@@ -4783,9 +4783,9 @@
       "source_file": "components/landing/_components/reviews.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "reviews.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_components_reviews"
     },
     {
@@ -4794,9 +4794,9 @@
       "source_file": "components/landing/_components/reviews.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "reviews()",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_components_reviews_reviews"
     },
     {
@@ -4827,9 +4827,9 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "business-card.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_business_card"
     },
     {
@@ -4838,9 +4838,9 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "businesscard()",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_business_card_businesscard"
     },
     {
@@ -4849,9 +4849,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "data.ts",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data"
     },
     {
@@ -4860,9 +4860,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "review",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_review"
     },
     {
@@ -4871,9 +4871,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "reviews",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_reviews"
     },
     {
@@ -4882,9 +4882,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L38",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "citylinks",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_citylinks"
     },
     {
@@ -4893,9 +4893,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "countries",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_countries"
     },
     {
@@ -4904,9 +4904,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L52",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "allcategories",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_allcategories"
     },
     {
@@ -4926,9 +4926,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L78",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "businessfaqs",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_businessfaqs"
     },
     {
@@ -4937,9 +4937,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L89",
       "_origin": "ast",
-      "community": 7,
+      "community": 67,
       "norm_label": "gradients",
-      "community_name": "Business Browse",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_data_gradients"
     },
     {
@@ -4948,9 +4948,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "scroll-section.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_scroll_section"
     },
     {
@@ -4959,9 +4959,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "cardskeleton()",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_scroll_section_cardskeleton"
     },
     {
@@ -4970,9 +4970,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 0,
+      "community": 67,
       "norm_label": "scrollsection()",
-      "community_name": "Dashboard Pages",
+      "community_name": "scroll-section.tsx",
       "id": "components_landing_scroll_section_scrollsection"
     },
     {
@@ -5289,9 +5289,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "button.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_ui_button"
     },
     {
@@ -5300,9 +5300,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "buttonvariants",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_ui_button_buttonvariants"
     },
     {
@@ -5311,9 +5311,9 @@
       "source_file": "components/ui/button.tsx",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "button()",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_ui_button_button"
     },
     {
@@ -5322,9 +5322,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "calendar.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_ui_calendar"
     },
     {
@@ -5333,9 +5333,9 @@
       "source_file": "components/ui/calendar.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 0,
+      "community": 69,
       "norm_label": "calendar()",
-      "community_name": "Dashboard Pages",
+      "community_name": "button.tsx",
       "id": "components_ui_calendar_calendar"
     },
     {
@@ -8187,12 +8187,125 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_businesswithcoords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_cities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_flyto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_getbusinesscoords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_getkenyabounds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_neighborhoodcoords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_searchpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_seededrandom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "app_root_search_page_getbusinesscoords",
+      "target": "app_root_search_page_seededrandom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "app_root_search_page_searchpage",
+      "target": "app_root_search_page_getbusinesscoords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L384",
+      "weight": 1.0,
+      "source": "app_root_search_page_searchpage",
+      "target": "app_root_search_page_getkenyabounds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_profile_details_page",
-      "target": "app_root_dashboard_profile_details_page_profiledetails",
-      "confidence_score": 1.0
+      "target": "app_root_dashboard_profile_details_page_profiledetails"
     },
     {
       "relation": "imports_from",
@@ -8201,9 +8314,9 @@
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_profile_details_page",
-      "target": "components_map_business_map",
-      "confidence_score": 1.0
+      "target": "components_map_business_map"
     },
     {
       "relation": "imports",
@@ -8212,9 +8325,9 @@
       "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_profile_details_page",
-      "target": "components_map_business_map_businessmap",
-      "confidence_score": 1.0
+      "target": "components_map_business_map_businessmap"
     },
     {
       "relation": "imports_from",
@@ -8255,9 +8368,9 @@
       "source_file": "components/map/business-map.tsx",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_map_business_map",
-      "target": "components_map_business_map_businessmap",
-      "confidence_score": 1.0
+      "target": "components_map_business_map_businessmap"
     },
     {
       "relation": "contains",
@@ -8265,9 +8378,9 @@
       "source_file": "components/map/business-map.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_map_business_map",
-      "target": "components_map_business_map_props",
-      "confidence_score": 1.0
+      "target": "components_map_business_map_props"
     },
     {
       "relation": "imports",
@@ -8503,108 +8616,6 @@
       "confidence_score": 1.0,
       "source": "app_root_platform_calendar_page",
       "target": "app_root_platform_calendar_page_customercalendar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L107",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_businesswithcoords"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L103",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_cities"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_flyto"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L55",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_getbusinesscoords"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L105",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_kenyabounds"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_neighborhoodcoords"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L109",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_searchpage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_seededrandom"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L58",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page_getbusinesscoords",
-      "target": "app_root_search_page_seededrandom"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L146",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_search_page_searchpage",
-      "target": "app_root_search_page_getbusinesscoords"
     },
     {
       "relation": "contains",
@@ -19651,5 +19662,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e5546d923580bdcad5c6c0a102ae0623a1be69eb"
+  "built_at_commit": "d4daebd9f59410a3ece26ac53b704f89261d3f10"
 }

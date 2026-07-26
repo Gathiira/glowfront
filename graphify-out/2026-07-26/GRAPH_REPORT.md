@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 136 files · ~56,446 words
+- 136 files · ~56,466 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 740 nodes · 1093 edges · 67 communities (57 shown, 10 thin omitted)
+- 740 nodes · 1094 edges · 71 communities (61 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e5546d92`
+- Built from commit: `d4daebd9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -64,6 +64,10 @@
 - review-modal.tsx
 - page.tsx
 - how-it-works.tsx
+- scroll-section.tsx
+- page.tsx
+- button.tsx
+- category-browser.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 120 edges
@@ -92,11 +96,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (67 total, 10 thin omitted)
+## Communities (71 total, 10 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
-Cohesion: 0.07
-Nodes (31): BrowseContent(), cities, appointments, clients, segments, payments, days, Shift (+23 more)
+Cohesion: 0.14
+Nodes (20): appointments, clients, segments, payments, days, Shift, PageHeader(), Props (+12 more)
 
 ### Community 1 - "Landing & Auth Pages"
 Cohesion: 0.09
@@ -123,8 +127,8 @@ Cohesion: 0.07
 Nodes (29): ./*, dom, dom.iterable, esnext, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+21 more)
 
 ### Community 7 - "Business Browse"
-Cohesion: 0.08
-Nodes (28): allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics, successServices, BusinessFaq() (+20 more)
+Cohesion: 0.16
+Nodes (12): allInOnePoints, businessStats, features, marketplacePoints, metrics, successServices, BusinessHeader(), BusinessHero() (+4 more)
 
 ### Community 8 - "Dashboard Layout & Sidebar"
 Cohesion: 0.33
@@ -239,8 +243,8 @@ Cohesion: 0.16
 Nodes (12): Field(), FieldContent(), FieldDescription(), FieldError(), FieldGroup(), FieldLabel(), FieldLegend(), FieldSeparator() (+4 more)
 
 ### Community 56 - "page.tsx"
-Cohesion: 0.28
-Nodes (8): BusinessWithCoords, cities, FlyTo, getBusinessCoords(), kenyaBounds, neighborhoodCoords, SearchPage(), seededRandom()
+Cohesion: 0.31
+Nodes (8): BusinessWithCoords, cities, FlyTo, getBusinessCoords(), getKenyaBounds(), neighborhoodCoords, SearchPage(), seededRandom()
 
 ### Community 57 - "partner-flow.tsx"
 Cohesion: 0.29
@@ -250,24 +254,40 @@ Nodes (3): FormDataType, formSchema, Mode
 Cohesion: 0.40
 Nodes (4): MapContainer, Marker, Popup, TileLayer
 
+### Community 67 - "scroll-section.tsx"
+Cohesion: 0.14
+Nodes (10): BusinessCard(), BusinessFaq(), allCategories, businessFaqs, cityLinks, countries, gradients, Review (+2 more)
+
+### Community 68 - "page.tsx"
+Cohesion: 0.19
+Nodes (8): BrowseContent(), cities, BusinessPage(), Pagination(), PaginationProps, Footer(), fetchBusinessCategories(), searchBusinesses()
+
+### Community 69 - "button.tsx"
+Cohesion: 0.26
+Nodes (4): navLinks, Button(), buttonVariants, Calendar()
+
+### Community 70 - "category-browser.tsx"
+Cohesion: 0.40
+Nodes (5): CategoryBrowser(), fallbackIcons, getIcon(), iconMap, BusinessCategoryDto
+
 ## Knowledge Gaps
-- **238 isolated node(s):** `Props`, `loginSchema`, `registerSchema`, `LoginFormData`, `RegisterFormData` (+233 more)
+- **237 isolated node(s):** `FlyTo`, `neighborhoodCoords`, `cities`, `BusinessWithCoords`, `Props` (+232 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Business Browse`, `alert.tsx`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `input-otp.tsx`, `Item Components`, `page.tsx`, `field.tsx`?**
+- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `scroll-section.tsx`, `button.tsx`, `Business Browse`, `alert.tsx`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `input-otp.tsx`, `Item Components`, `page.tsx`, `field.tsx`?**
   _High betweenness centrality (0.211) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
   _High betweenness centrality (0.115) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `NPM Dependencies`?**
   _High betweenness centrality (0.109) - this node is a cross-community bridge._
-- **What connects `Props`, `loginSchema`, `registerSchema` to the rest of the system?**
-  _238 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `FlyTo`, `neighborhoodCoords`, `cities` to the rest of the system?**
+  _237 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
-  _Cohesion score 0.0684811237928007 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13513513513513514 - nodes in this community are weakly interconnected._
 - **Should `Landing & Auth Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.09032258064516129 - nodes in this community are weakly interconnected._
 - **Should `Auth Form Components` be split into smaller, more focused modules?**
