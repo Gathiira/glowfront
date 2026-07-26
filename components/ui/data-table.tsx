@@ -50,7 +50,7 @@ export function DataTable<T>({
   }
 
   const table = (
-    <div className="overflow-x-auto">
+    <div className="w-full overflow-x-auto">
       <Table>
         <TableHeader>
           <TableRow>

@@ -1,9 +1,10 @@
 "use client"
 
-import { Suspense, useEffect, useState, useCallback } from "react"
+import { Suspense, useEffect, useState, useCallback, useRef } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { formatDateTime } from "@/lib/date-utils"
 import {
   fetchAdminBusinesses,
   blockBusiness,
@@ -14,11 +15,25 @@ import {
   deleteAdminBusinessService,
 } from "@/lib/api/admin"
 import { fetchBusinessCategories, fetchBusinessServices } from "@/lib/api"
-import type { BusinessDto, ServiceDto, PaginatedResponse, BusinessCategoryDto } from "@/lib/types"
+import type {
+  BusinessDto,
+  ServiceDto,
+  PaginatedResponse,
+  BusinessCategoryDto,
+} from "@/lib/types"
 import { Pagination } from "@/components/dashboard/pagination"
 import { DataTable } from "@/components/ui/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
-import { Search, Ban, CheckCircle, XCircle, Undo2, Plus, Trash2, Scissors } from "lucide-react"
+import {
+  Search,
+  Ban,
+  CheckCircle,
+  XCircle,
+  Undo2,
+  Plus,
+  Trash2,
+  Scissors,
+} from "lucide-react"
 import { CURRENCY } from "@/lib/types"
 import { toast } from "sonner"
 import {
@@ -55,7 +70,13 @@ const PAGE_SIZE = 15
 
 export default function AdminBusinessesPage() {
   return (
-    <Suspense fallback={<div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
+          Loading...
+        </div>
+      }
+    >
       <AdminBusinesses />
     </Suspense>
   )
@@ -66,14 +87,27 @@ function AdminBusinesses() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const [businesses, setBusinesses] = useState<PaginatedResponse<BusinessDto> | null>(null)
+  const [businesses, setBusinesses] =
+    useState<PaginatedResponse<BusinessDto> | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [current, setCurrent] = useState(0)
-  const [search, setSearch] = useState("")
-  const [statusFilter, setStatusFilter] = useState<string>(searchParams.get("status") || "")
+  const [searchInput, setSearchInput] = useState<string | null>(null)
+  const [search, setSearch] = useState<string | null>(null)
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const [statusFilter, setStatusFilter] = useState<string>(
+    searchParams.get("status") || ""
+  )
+
+  useEffect(() => {
+    clearTimeout(searchTimer.current)
+    searchTimer.current = setTimeout(() => setSearch(searchInput || null), 400)
+    return () => clearTimeout(searchTimer.current)
+  }, [searchInput])
   // Services modal
-  const [selectedBusiness, setSelectedBusiness] = useState<BusinessDto | null>(null)
+  const [selectedBusiness, setSelectedBusiness] = useState<BusinessDto | null>(
+    null
+  )
   const [services, setServices] = useState<ServiceDto[]>([])
   const [servicesLoading, setServicesLoading] = useState(false)
 
@@ -93,7 +127,12 @@ function AdminBusinesses() {
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchAdminBusinesses(current, PAGE_SIZE, statusFilter || undefined, search || undefined)
+      const data = await fetchAdminBusinesses(
+        current,
+        PAGE_SIZE,
+        statusFilter || undefined,
+        search || undefined
+      )
       setBusinesses(data)
     } catch (err) {
       console.error("Failed to load businesses:", err)
@@ -108,8 +147,12 @@ function AdminBusinesses() {
   }, [fetchData])
 
   useEffect(() => {
-    fetchBusinessCategories().then(setCategories).catch(() => {})
-  }, [])
+    if (addDialogOpen && categories.length === 0) {
+      fetchBusinessCategories()
+        .then(setCategories)
+        .catch(() => {})
+    }
+  }, [addDialogOpen])
 
   const handleAction = async (id: number, action: string) => {
     try {
@@ -151,7 +194,12 @@ function AdminBusinesses() {
   }
 
   const handleAddService = async () => {
-    if (!selectedBusiness || !newService.name || !newService.categoryId || newService.price <= 0) {
+    if (
+      !selectedBusiness ||
+      !newService.name ||
+      !newService.categoryId ||
+      newService.price <= 0
+    ) {
       toast.error("Please fill in all required fields")
       return
     }
@@ -166,7 +214,14 @@ function AdminBusinesses() {
       })
       toast.success("Service added")
       setAddDialogOpen(false)
-      setNewService({ name: "", description: "", categoryId: "", durationMinutes: 30, price: 0, currency: CURRENCY })
+      setNewService({
+        name: "",
+        description: "",
+        categoryId: "",
+        durationMinutes: 30,
+        price: 0,
+        currency: CURRENCY,
+      })
       const data = await fetchBusinessServices(selectedBusiness.id, 0, 100)
       setServices(data.list)
     } catch (err) {
@@ -182,7 +237,9 @@ function AdminBusinesses() {
       const data = await fetchBusinessServices(selectedBusiness.id, 0, 100)
       setServices(data.list)
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to delete service")
+      toast.error(
+        err instanceof Error ? err.message : "Failed to delete service"
+      )
     }
   }
 
@@ -221,7 +278,9 @@ function AdminBusinesses() {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(business.id, "block")}>
+                <AlertDialogAction
+                  onClick={() => handleAction(business.id, "block")}
+                >
                   Block
                 </AlertDialogAction>
               </AlertDialogFooter>
@@ -229,7 +288,7 @@ function AdminBusinesses() {
           </AlertDialog>
         )
       case "SUSPENDED":
-      case "DEACTIVATED":
+      case "INACTIVE":
         return (
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -250,7 +309,9 @@ function AdminBusinesses() {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(business.id, "unblock")}>
+                <AlertDialogAction
+                  onClick={() => handleAction(business.id, "unblock")}
+                >
                   Unblock
                 </AlertDialogAction>
               </AlertDialogFooter>
@@ -279,7 +340,9 @@ function AdminBusinesses() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => handleAction(business.id, "approve")}>
+                  <AlertDialogAction
+                    onClick={() => handleAction(business.id, "approve")}
+                  >
                     Approve
                   </AlertDialogAction>
                 </AlertDialogFooter>
@@ -304,7 +367,9 @@ function AdminBusinesses() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => handleAction(business.id, "reject")}>
+                  <AlertDialogAction
+                    onClick={() => handleAction(business.id, "reject")}
+                  >
                     Reject
                   </AlertDialogAction>
                 </AlertDialogFooter>
@@ -317,7 +382,13 @@ function AdminBusinesses() {
     }
   }
 
-  const statuses = ["", "ACTIVE", "PENDING_VERIFICATION", "SUSPENDED", "DEACTIVATED"]
+  const statuses = [
+    "",
+    "ACTIVE",
+    "PENDING_VERIFICATION",
+    "SUSPENDED",
+    "INACTIVE",
+  ]
 
   const columns = [
     {
@@ -328,7 +399,9 @@ function AdminBusinesses() {
     {
       key: "category",
       label: "Category",
-      render: (b: BusinessDto) => <span className="text-muted-foreground">{b.categoryName}</span>,
+      render: (b: BusinessDto) => (
+        <span className="text-muted-foreground">{b.categoryName}</span>
+      ),
     },
     {
       key: "location",
@@ -347,7 +420,7 @@ function AdminBusinesses() {
           status={
             b.status === "PENDING_VERIFICATION"
               ? "pending"
-              : b.status === "SUSPENDED" || b.status === "DEACTIVATED"
+              : b.status === "SUSPENDED" || b.status === "INACTIVE"
                 ? "blocked"
                 : "confirmed"
           }
@@ -359,8 +432,17 @@ function AdminBusinesses() {
       label: "Rating",
       render: (b: BusinessDto) => (
         <span className="text-muted-foreground">
-          {b.overallRating ? `${b.overallRating.toFixed(1)} (${b.totalReviews})` : "No ratings"}
+          {b.overallRating
+            ? `${b.overallRating.toFixed(1)} (${b.totalReviews ?? 0})`
+            : "No ratings"}
         </span>
+      ),
+    },
+    {
+      key: "created",
+      label: "Created",
+      render: (b: BusinessDto) => (
+        <span className="text-muted-foreground">{b.createdAt ? formatDateTime(b.createdAt) : "-"}</span>
       ),
     },
     {
@@ -371,7 +453,11 @@ function AdminBusinesses() {
         <div className="flex items-center justify-end gap-1">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline" size="xs" onClick={() => openServices(b)}>
+              <Button
+                variant="outline"
+                size="xs"
+                onClick={() => openServices(b)}
+              >
                 <Scissors className="size-3" />
                 Services
               </Button>
@@ -382,9 +468,13 @@ function AdminBusinesses() {
               </DialogHeader>
               <div className="max-h-96 space-y-4 overflow-y-auto">
                 {servicesLoading ? (
-                  <p className="py-4 text-center text-sm text-muted-foreground">Loading services...</p>
+                  <p className="py-4 text-center text-sm text-muted-foreground">
+                    Loading services...
+                  </p>
                 ) : services.length === 0 ? (
-                  <p className="py-4 text-center text-sm text-muted-foreground">No services yet</p>
+                  <p className="py-4 text-center text-sm text-muted-foreground">
+                    No services yet
+                  </p>
                 ) : (
                   <div className="space-y-2">
                     {services.map((s) => (
@@ -395,15 +485,22 @@ function AdminBusinesses() {
                         <div>
                           <p className="text-sm font-medium">{s.name}</p>
                           <p className="text-xs text-muted-foreground">
-                            {s.categoryName} &middot; {s.durationMinutes} min &middot; {s.currency} {s.price}
+                            {s.categoryName} &middot; {s.durationMinutes} min
+                            &middot; {s.currency} {s.price}
                           </p>
                           {s.description && (
-                            <p className="mt-0.5 text-xs text-muted-foreground">{s.description}</p>
+                            <p className="mt-0.5 text-xs text-muted-foreground">
+                              {s.description}
+                            </p>
                           )}
                         </div>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button variant="ghost" size="icon-xs" className="text-destructive">
+                            <Button
+                              variant="ghost"
+                              size="icon-xs"
+                              className="text-destructive"
+                            >
                               <Trash2 className="size-3" />
                             </Button>
                           </AlertDialogTrigger>
@@ -412,14 +509,19 @@ function AdminBusinesses() {
                               <AlertDialogMedia>
                                 <Trash2 className="size-6 text-destructive" />
                               </AlertDialogMedia>
-                              <AlertDialogTitle>Delete Service</AlertDialogTitle>
+                              <AlertDialogTitle>
+                                Delete Service
+                              </AlertDialogTitle>
                               <AlertDialogDescription>
-                                Delete &quot;{s.name}&quot; from {selectedBusiness?.name}?
+                                Delete &quot;{s.name}&quot; from{" "}
+                                {selectedBusiness?.name}?
                               </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
                               <AlertDialogCancel>Cancel</AlertDialogCancel>
-                              <AlertDialogAction onClick={() => handleDeleteService(s.id)}>
+                              <AlertDialogAction
+                                onClick={() => handleDeleteService(s.id)}
+                              >
                                 Delete
                               </AlertDialogAction>
                             </AlertDialogFooter>
@@ -444,26 +546,44 @@ function AdminBusinesses() {
                     </DialogHeader>
                     <div className="space-y-4 py-4">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Service Name *</label>
+                        <label className="text-sm font-medium">
+                          Service Name *
+                        </label>
                         <Input
                           value={newService.name}
-                          onChange={(e) => setNewService({ ...newService, name: e.target.value })}
+                          onChange={(e) =>
+                            setNewService({
+                              ...newService,
+                              name: e.target.value,
+                            })
+                          }
                           placeholder="e.g. Haircut"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Description</label>
+                        <label className="text-sm font-medium">
+                          Description
+                        </label>
                         <Input
                           value={newService.description}
-                          onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+                          onChange={(e) =>
+                            setNewService({
+                              ...newService,
+                              description: e.target.value,
+                            })
+                          }
                           placeholder="Brief description"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Category *</label>
+                        <label className="text-sm font-medium">
+                          Category *
+                        </label>
                         <Select
                           value={newService.categoryId}
-                          onValueChange={(v) => setNewService({ ...newService, categoryId: v })}
+                          onValueChange={(v) =>
+                            setNewService({ ...newService, categoryId: v })
+                          }
                         >
                           <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select category" />
@@ -479,11 +599,18 @@ function AdminBusinesses() {
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium">Duration (min) *</label>
+                          <label className="text-sm font-medium">
+                            Duration (min) *
+                          </label>
                           <Input
                             type="number"
                             value={newService.durationMinutes}
-                            onChange={(e) => setNewService({ ...newService, durationMinutes: Number(e.target.value) })}
+                            onChange={(e) =>
+                              setNewService({
+                                ...newService,
+                                durationMinutes: Number(e.target.value),
+                              })
+                            }
                           />
                         </div>
                         <div className="space-y-2">
@@ -491,7 +618,12 @@ function AdminBusinesses() {
                           <Input
                             type="number"
                             value={newService.price}
-                            onChange={(e) => setNewService({ ...newService, price: Number(e.target.value) })}
+                            onChange={(e) =>
+                              setNewService({
+                                ...newService,
+                                price: Number(e.target.value),
+                              })
+                            }
                           />
                         </div>
                       </div>
@@ -515,7 +647,10 @@ function AdminBusinesses() {
 
   return (
     <div>
-      <PageHeader title="Businesses" description="Manage all platform businesses" />
+      <PageHeader
+        title="Businesses"
+        description="Manage all platform businesses"
+      />
 
       <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative flex-1">
@@ -523,8 +658,11 @@ function AdminBusinesses() {
           <Input
             placeholder="Search businesses..."
             className="pl-9"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setCurrent(0) }}
+            value={searchInput ?? ""}
+            onChange={(e) => {
+              setSearchInput(e.target.value)
+              setCurrent(0)
+            }}
           />
         </div>
       </div>
@@ -560,7 +698,8 @@ function AdminBusinesses() {
           {businesses && businesses.totalPages > 0 && (
             <>
               <div className="mt-4 text-sm text-muted-foreground">
-                {businesses.totalElements} business{businesses.totalElements !== 1 ? "es" : ""} found
+                {businesses.totalElements} business
+                {businesses.totalElements !== 1 ? "es" : ""} found
               </div>
               <Pagination
                 currentPage={current}

@@ -1,22 +1,21 @@
 "use client"
 
-import { Suspense, useEffect, useState, useCallback } from "react"
+import { Suspense, useEffect, useState, useCallback, useRef } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { formatDateTime } from "@/lib/date-utils"
 import {
   fetchAdminPartners,
   blockPartner,
   unblockPartner,
-  approvePartner,
-  rejectPartner,
   type AdminPartnerDto,
 } from "@/lib/api/admin"
 import type { PaginatedResponse } from "@/lib/types"
 import { Pagination } from "@/components/dashboard/pagination"
 import { DataTable } from "@/components/ui/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
-import { Search, Ban, CheckCircle, XCircle, Undo2 } from "lucide-react"
+import { Search, Ban, Undo2 } from "lucide-react"
 import { toast } from "sonner"
 import {
   AlertDialog,
@@ -36,7 +35,13 @@ const PAGE_SIZE = 15
 
 export default function AdminPartnersPage() {
   return (
-    <Suspense fallback={<div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
+          Loading...
+        </div>
+      }
+    >
       <AdminPartners />
     </Suspense>
   )
@@ -47,17 +52,33 @@ function AdminPartners() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const [partners, setPartners] = useState<PaginatedResponse<AdminPartnerDto> | null>(null)
+  const [partners, setPartners] =
+    useState<PaginatedResponse<AdminPartnerDto> | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [current, setCurrent] = useState(0)
-  const [search, setSearch] = useState("")
-  const [statusFilter, setStatusFilter] = useState<string>(searchParams.get("status") || "")
+  const [searchInput, setSearchInput] = useState<string | null>(null)
+  const [search, setSearch] = useState<string | null>(null)
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const [statusFilter, setStatusFilter] = useState<string>(
+    searchParams.get("status") || ""
+  )
+
+  useEffect(() => {
+    clearTimeout(searchTimer.current)
+    searchTimer.current = setTimeout(() => setSearch(searchInput || null), 400)
+    return () => clearTimeout(searchTimer.current)
+  }, [searchInput])
   const fetchData = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchAdminPartners(current, PAGE_SIZE, statusFilter || undefined, search || undefined)
+      const data = await fetchAdminPartners(
+        current,
+        PAGE_SIZE,
+        statusFilter || undefined,
+        search || undefined
+      )
       setPartners(data)
     } catch (err) {
       console.error("Failed to load partners:", err)
@@ -81,14 +102,6 @@ function AdminPartners() {
         case "unblock":
           await unblockPartner(id)
           toast.success("Partner unblocked")
-          break
-        case "approve":
-          await approvePartner(id)
-          toast.success("Partner approved")
-          break
-        case "reject":
-          await rejectPartner(id)
-          toast.success("Partner rejected")
           break
       }
       fetchData()
@@ -127,12 +140,15 @@ function AdminPartners() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Block Partner</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to block {partner.firstName} {partner.lastName}?
+                  Are you sure you want to block {partner.firstName}{" "}
+                  {partner.lastName}?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(partner.id, "block")}>
+                <AlertDialogAction
+                  onClick={() => handleAction(partner.id, "block")}
+                >
                   Block
                 </AlertDialogAction>
               </AlertDialogFooter>
@@ -140,6 +156,7 @@ function AdminPartners() {
           </AlertDialog>
         )
       case "BLOCKED":
+      case "SUSPENDED":
         return (
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -155,96 +172,16 @@ function AdminPartners() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Unblock Partner</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to unblock {partner.firstName} {partner.lastName}?
+                  Are you sure you want to unblock {partner.firstName}{" "}
+                  {partner.lastName}?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(partner.id, "unblock")}>
+                <AlertDialogAction
+                  onClick={() => handleAction(partner.id, "unblock")}
+                >
                   Unblock
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        )
-      case "PENDING":
-        return (
-          <div className="flex gap-1">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline" size="xs" className="text-green-600">
-                  <CheckCircle className="size-3" />
-                  Approve
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
-                <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <CheckCircle className="size-6 text-green-600" />
-                  </AlertDialogMedia>
-                  <AlertDialogTitle>Approve Partner</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Approve {partner.firstName} {partner.lastName}?
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => handleAction(partner.id, "approve")}>
-                    Approve
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="destructive" size="xs">
-                  <XCircle className="size-3" />
-                  Reject
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
-                <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <XCircle className="size-6 text-destructive" />
-                  </AlertDialogMedia>
-                  <AlertDialogTitle>Reject Partner</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Reject {partner.firstName} {partner.lastName}?
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => handleAction(partner.id, "reject")}>
-                    Reject
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </div>
-        )
-      case "REJECTED":
-        return (
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline" size="xs">
-                <Undo2 className="size-3" />
-                Reconsider
-              </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent size="sm">
-              <AlertDialogHeader>
-                <AlertDialogMedia>
-                  <Undo2 className="size-6 text-primary" />
-                </AlertDialogMedia>
-                <AlertDialogTitle>Reconsider Partner</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Change status for {partner.firstName} {partner.lastName}?
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(partner.id, "approve")}>
-                  Approve
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -255,48 +192,71 @@ function AdminPartners() {
     }
   }
 
-  const statuses = ["", "ACTIVE", "BLOCKED", "PENDING", "REJECTED"]
+  const statuses = ["", "ACTIVE", "INACTIVE", "SUSPENDED", "DELETED"]
 
   const columns = [
     {
       key: "name",
       label: "Name",
-      render: (p: AdminPartnerDto) => <span className="font-medium">{p.firstName} {p.lastName}</span>,
+      render: (p: AdminPartnerDto) => (
+        <span className="font-medium">
+          {p.firstName} {p.lastName}
+        </span>
+      ),
     },
     {
       key: "email",
       label: "Email",
-      render: (p: AdminPartnerDto) => <span className="text-muted-foreground">{p.email}</span>,
+      render: (p: AdminPartnerDto) => (
+        <span className="text-muted-foreground">{p.email}</span>
+      ),
     },
     {
       key: "phone",
       label: "Phone",
-      render: (p: AdminPartnerDto) => <span className="text-muted-foreground">{p.phoneNumber}</span>,
+      render: (p: AdminPartnerDto) => (
+        <span className="text-muted-foreground">{p.phone}</span>
+      ),
     },
     {
       key: "business",
       label: "Business",
-      render: (p: AdminPartnerDto) => <span className="text-muted-foreground">{p.businessName}</span>,
+      render: (p: AdminPartnerDto) => (
+        <span className="text-muted-foreground">{p.businessName}</span>
+      ),
     },
     {
       key: "status",
       label: "Status",
-      render: (p: AdminPartnerDto) => (
-        <StatusBadge status={p.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed" | "blocked"} />
-      ),
+      render: (p: AdminPartnerDto) => {
+        const map: Record<
+          string,
+          "confirmed" | "pending" | "cancelled" | "completed" | "blocked"
+        > = {
+          ACTIVE: "confirmed",
+          INACTIVE: "blocked",
+          SUSPENDED: "blocked",
+          DELETED: "cancelled",
+        }
+        return <StatusBadge status={map[p.status] || "pending"} />
+      },
     },
     {
       key: "joined",
       label: "Joined",
       render: (p: AdminPartnerDto) => (
-        <span className="text-muted-foreground">{new Date(p.createdAt).toLocaleDateString()}</span>
+        <span className="text-muted-foreground">
+          {formatDateTime(p.createdAt)}
+        </span>
       ),
     },
     {
       key: "actions",
       label: "Actions",
       align: "right" as const,
-      render: (p: AdminPartnerDto) => <div className="flex justify-end">{getActionButton(p)}</div>,
+      render: (p: AdminPartnerDto) => (
+        <div className="flex justify-end">{getActionButton(p)}</div>
+      ),
     },
   ]
 
@@ -310,8 +270,11 @@ function AdminPartners() {
           <Input
             placeholder="Search partners..."
             className="pl-9"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setCurrent(0) }}
+            value={searchInput ?? ""}
+            onChange={(e) => {
+              setSearchInput(e.target.value)
+              setCurrent(0)
+            }}
           />
         </div>
       </div>
@@ -347,7 +310,8 @@ function AdminPartners() {
           {partners && partners.totalPages > 0 && (
             <>
               <div className="mt-4 text-sm text-muted-foreground">
-                {partners.totalElements} partner{partners.totalElements !== 1 ? "s" : ""} found
+                {partners.totalElements} partner
+                {partners.totalElements !== 1 ? "s" : ""} found
               </div>
               <Pagination
                 currentPage={current}

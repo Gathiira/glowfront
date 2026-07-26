@@ -1,22 +1,21 @@
 "use client"
 
-import { Suspense, useEffect, useState, useCallback } from "react"
+import { Suspense, useEffect, useState, useCallback, useRef } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { formatDateTime } from "@/lib/date-utils"
 import {
   fetchAdminCustomers,
   blockCustomer,
   unblockCustomer,
-  approveCustomer,
-  rejectCustomer,
   type AdminUserDto,
 } from "@/lib/api/admin"
 import type { PaginatedResponse } from "@/lib/types"
 import { Pagination } from "@/components/dashboard/pagination"
 import { DataTable } from "@/components/ui/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
-import { Search, Ban, CheckCircle, XCircle, Undo2 } from "lucide-react"
+import { Search, Ban, Undo2 } from "lucide-react"
 import { toast } from "sonner"
 import {
   AlertDialog,
@@ -36,7 +35,13 @@ const PAGE_SIZE = 15
 
 export default function AdminCustomersPage() {
   return (
-    <Suspense fallback={<div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
+          Loading...
+        </div>
+      }
+    >
       <AdminCustomers />
     </Suspense>
   )
@@ -47,17 +52,33 @@ function AdminCustomers() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const [customers, setCustomers] = useState<PaginatedResponse<AdminUserDto> | null>(null)
+  const [customers, setCustomers] =
+    useState<PaginatedResponse<AdminUserDto> | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [current, setCurrent] = useState(0)
-  const [search, setSearch] = useState("")
-  const [statusFilter, setStatusFilter] = useState<string>(searchParams.get("status") || "")
+  const [searchInput, setSearchInput] = useState<string | null>(null)
+  const [search, setSearch] = useState<string | null>(null)
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const [statusFilter, setStatusFilter] = useState<string>(
+    searchParams.get("status") || ""
+  )
+
+  useEffect(() => {
+    clearTimeout(searchTimer.current)
+    searchTimer.current = setTimeout(() => setSearch(searchInput || null), 400)
+    return () => clearTimeout(searchTimer.current)
+  }, [searchInput])
   const fetchData = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchAdminCustomers(current, PAGE_SIZE, statusFilter || undefined, search || undefined)
+      const data = await fetchAdminCustomers(
+        current,
+        PAGE_SIZE,
+        statusFilter || undefined,
+        search || undefined
+      )
       setCustomers(data)
     } catch (err) {
       console.error("Failed to load customers:", err)
@@ -81,14 +102,6 @@ function AdminCustomers() {
         case "unblock":
           await unblockCustomer(id)
           toast.success("Customer unblocked")
-          break
-        case "approve":
-          await approveCustomer(id)
-          toast.success("Customer approved")
-          break
-        case "reject":
-          await rejectCustomer(id)
-          toast.success("Customer rejected")
           break
       }
       fetchData()
@@ -127,19 +140,23 @@ function AdminCustomers() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Block Customer</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to block {customer.firstName} {customer.lastName}?
+                  Are you sure you want to block {customer.firstName}{" "}
+                  {customer.lastName}?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(customer.id, "block")}>
+                <AlertDialogAction
+                  onClick={() => handleAction(customer.id, "block")}
+                >
                   Block
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
         )
-      case "BLOCKED":
+      case "INACTIVE":
+      case "SUSPENDED":
         return (
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -155,121 +172,90 @@ function AdminCustomers() {
                 </AlertDialogMedia>
                 <AlertDialogTitle>Unblock Customer</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to unblock {customer.firstName} {customer.lastName}?
+                  Are you sure you want to unblock {customer.firstName}{" "}
+                  {customer.lastName}?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleAction(customer.id, "unblock")}>
+                <AlertDialogAction
+                  onClick={() => handleAction(customer.id, "unblock")}
+                >
                   Unblock
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
         )
-      case "PENDING":
-        return (
-          <div className="flex gap-1">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline" size="xs" className="text-green-600">
-                  <CheckCircle className="size-3" />
-                  Approve
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
-                <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <CheckCircle className="size-6 text-green-600" />
-                  </AlertDialogMedia>
-                  <AlertDialogTitle>Approve Customer</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Approve {customer.firstName} {customer.lastName}?
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => handleAction(customer.id, "approve")}>
-                    Approve
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="destructive" size="xs">
-                  <XCircle className="size-3" />
-                  Reject
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent size="sm">
-                <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <XCircle className="size-6 text-destructive" />
-                  </AlertDialogMedia>
-                  <AlertDialogTitle>Reject Customer</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Reject {customer.firstName} {customer.lastName}?
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => handleAction(customer.id, "reject")}>
-                    Reject
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </div>
-        )
       default:
         return null
     }
   }
 
-  const statuses = ["", "ACTIVE", "BLOCKED", "PENDING"]
+  const statuses = ["", "ACTIVE", "INACTIVE", "SUSPENDED", "DELETED"]
 
   const columns = [
     {
       key: "name",
       label: "Name",
-      render: (c: AdminUserDto) => <span className="font-medium">{c.firstName} {c.lastName}</span>,
+      render: (c: AdminUserDto) => (
+        <span className="font-medium">
+          {c.firstName} {c.lastName}
+        </span>
+      ),
     },
     {
       key: "email",
       label: "Email",
-      render: (c: AdminUserDto) => <span className="text-muted-foreground">{c.email}</span>,
+      render: (c: AdminUserDto) => (
+        <span className="text-muted-foreground">{c.email}</span>
+      ),
     },
     {
       key: "phone",
       label: "Phone",
-      render: (c: AdminUserDto) => <span className="text-muted-foreground">{c.phone}</span>,
+      render: (c: AdminUserDto) => (
+        <span className="text-muted-foreground">{c.phone}</span>
+      ),
     },
     {
       key: "status",
       label: "Status",
-      render: (c: AdminUserDto) => (
-        <StatusBadge status={c.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed" | "blocked"} />
-      ),
+      render: (c: AdminUserDto) => {
+        const map: Record<string, "confirmed" | "pending" | "cancelled" | "completed" | "blocked"> = {
+          ACTIVE: "confirmed",
+          INACTIVE: "blocked",
+          SUSPENDED: "blocked",
+          DELETED: "cancelled",
+        }
+        return <StatusBadge status={map[c.status] || "pending"} />
+      },
     },
     {
       key: "joined",
       label: "Joined",
       render: (c: AdminUserDto) => (
-        <span className="text-muted-foreground">{new Date(c.createdAt).toLocaleDateString()}</span>
+        <span className="text-muted-foreground">
+          {formatDateTime(c.createdAt)}
+        </span>
       ),
     },
     {
       key: "actions",
       label: "Actions",
       align: "right" as const,
-      render: (c: AdminUserDto) => <div className="flex justify-end">{getActionButton(c)}</div>,
+      render: (c: AdminUserDto) => (
+        <div className="flex justify-end">{getActionButton(c)}</div>
+      ),
     },
   ]
 
   return (
     <div>
-      <PageHeader title="Customers" description="Manage all platform customers" />
+      <PageHeader
+        title="Customers"
+        description="Manage all platform customers"
+      />
 
       <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative flex-1">
@@ -277,8 +263,11 @@ function AdminCustomers() {
           <Input
             placeholder="Search customers..."
             className="pl-9"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setCurrent(0) }}
+            value={searchInput ?? ""}
+            onChange={(e) => {
+              setSearchInput(e.target.value)
+              setCurrent(0)
+            }}
           />
         </div>
       </div>
@@ -314,7 +303,8 @@ function AdminCustomers() {
           {customers && customers.totalPages > 0 && (
             <>
               <div className="mt-4 text-sm text-muted-foreground">
-                {customers.totalElements} customer{customers.totalElements !== 1 ? "s" : ""} found
+                {customers.totalElements} customer
+                {customers.totalElements !== 1 ? "s" : ""} found
               </div>
               <Pagination
                 currentPage={current}

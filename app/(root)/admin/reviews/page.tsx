@@ -9,6 +9,7 @@ import type { ReviewDto, PaginatedResponse } from "@/lib/types"
 import { Pagination } from "@/components/dashboard/pagination"
 import { CheckCircle, XCircle, Star } from "lucide-react"
 import { toast } from "sonner"
+import { formatDateTime } from "@/lib/date-utils"
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -108,7 +109,7 @@ function AdminReviews() {
       key: "date",
       label: "Date",
       render: (r: ReviewDto) => (
-        <span className="text-muted-foreground">{new Date(r.createdAt).toLocaleDateString()}</span>
+        <span className="text-muted-foreground">{formatDateTime(r.createdAt)}</span>
       ),
     },
     {

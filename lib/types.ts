@@ -212,7 +212,7 @@ export type BusinessStatus =
   | "PENDING_VERIFICATION"
   | "ACTIVE"
   | "SUSPENDED"
-  | "DEACTIVATED"
+  | "INACTIVE"
 
 export type BusinessLocationDto = {
   id: number
@@ -275,6 +275,7 @@ export type BusinessDto = {
   amenities: BusinessAmenityDto[]
   openingHours: BusinessOpeningHoursDto[]
   socialMedia: BusinessSocialMediaDto[]
+  createdAt?: string
 }
 
 export type ReviewImageDto = {

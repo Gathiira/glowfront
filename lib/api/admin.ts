@@ -22,10 +22,10 @@ export type AdminPartnerDto = {
   firstName: string
   lastName: string
   email: string
-  phoneNumber: string
+  phone: string
   businessName: string
   businessId: number
-  status: "ACTIVE" | "BLOCKED" | "PENDING" | "REJECTED"
+  status: "ACTIVE" | "BLOCKED" | "PENDING" | "REJECTED" | "SUSPENDED"
   createdAt: string
 }
 
@@ -45,7 +45,9 @@ export type AdminDashboardDto = {
 
 export async function fetchAdminDashboard(): Promise<AdminDashboardDto> {
   try {
-    const res = await api.get("/admin/dashboard/summary").json<ApiResponse<AdminDashboardDto>>()
+    const res = await api
+      .get("/admin/dashboard/summary")
+      .json<ApiResponse<AdminDashboardDto>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
@@ -61,8 +63,10 @@ export async function fetchAdminCustomers(
   try {
     let url = `/admin/customers?current=${current}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
-    if (search) url += `&search=${encodeURIComponent(search)}`
-    const res = await api.get(url).json<ApiResponse<PaginatedResponse<AdminUserDto>>>()
+    if (search) url += `&name=${encodeURIComponent(search)}`
+    const res = await api
+      .get(url)
+      .json<ApiResponse<PaginatedResponse<AdminUserDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
@@ -110,8 +114,10 @@ export async function fetchAdminPartners(
   try {
     let url = `/admin/partners?current=${current}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
-    if (search) url += `&search=${encodeURIComponent(search)}`
-    const res = await api.get(url).json<ApiResponse<PaginatedResponse<AdminPartnerDto>>>()
+    if (search) url += `&name=${encodeURIComponent(search)}`
+    const res = await api
+      .get(url)
+      .json<ApiResponse<PaginatedResponse<AdminPartnerDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
@@ -159,8 +165,10 @@ export async function fetchAdminBusinesses(
   try {
     let url = `/admin/businesses?current=${current}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
-    if (search) url += `&search=${encodeURIComponent(search)}`
-    const res = await api.get(url).json<ApiResponse<PaginatedResponse<BusinessDto>>>()
+    if (search) url += `&name=${encodeURIComponent(search)}`
+    const res = await api
+      .get(url)
+      .json<ApiResponse<PaginatedResponse<BusinessDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
@@ -227,7 +235,9 @@ export async function deleteAdminBusinessService(
   serviceId: number
 ): Promise<void> {
   try {
-    await api.delete(`/admin/businesses/${businessId}/services/${serviceId}`).json()
+    await api
+      .delete(`/admin/businesses/${businessId}/services/${serviceId}`)
+      .json()
   } catch (error) {
     throw await extractError(error)
   }
@@ -260,7 +270,9 @@ export async function fetchAdminReviews(
   try {
     let url = `/admin/reviews?current=${current}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
-    const res = await api.get(url).json<ApiResponse<PaginatedResponse<ReviewDto>>>()
+    const res = await api
+      .get(url)
+      .json<ApiResponse<PaginatedResponse<ReviewDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)

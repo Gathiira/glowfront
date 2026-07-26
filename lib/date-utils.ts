@@ -39,3 +39,7 @@ export function formatDateShort(dateStr: string): string {
     day: "numeric",
   })
 }
+
+export function formatDateTime(dateStr: string): string {
+  return new Date(dateStr).toLocaleString()
+}
