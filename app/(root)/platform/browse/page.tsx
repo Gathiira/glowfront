@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Star, MapPin, Search } from "lucide-react"
 import { searchBusinesses, fetchBusinessCategories } from "@/lib/api"
+import { EmptyState } from "@/components/ui/empty-state"
 import { Pagination } from "@/components/dashboard/pagination"
 import type {
   BusinessSearchDto,
@@ -124,9 +125,7 @@ export default function Browse() {
           {error}
         </div>
       ) : !results || results.list.length === 0 ? (
-        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
-          No businesses found
-        </div>
+        <EmptyState message="No businesses found" />
       ) : (
         <>
           <div className="mb-4 text-sm text-muted-foreground">

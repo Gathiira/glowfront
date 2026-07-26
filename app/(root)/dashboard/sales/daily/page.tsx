@@ -2,16 +2,8 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { SummaryCard } from "@/components/dashboard/summary-card"
+import { DataTable } from "@/components/ui/data-table"
 import { CURRENCY } from "@/lib/types"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 
 const transactions = [
   { id: "#1234", client: "Sarah Johnson", service: "Hair Coloring", amount: 120, time: "2:00 PM" },
@@ -34,37 +26,18 @@ export default function DailySales() {
         <SummaryCard title="Average Ticket" value={`${CURRENCY} ${(total / transactions.length).toFixed(0)}`} subtitle="Today" />
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Today&apos;s Transactions</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Client</TableHead>
-                <TableHead>Service</TableHead>
-                <TableHead>Time</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {transactions.map((t) => (
-                <TableRow key={t.id}>
-                  <TableCell className="font-medium">{t.id}</TableCell>
-                  <TableCell>{t.client}</TableCell>
-                  <TableCell>{t.service}</TableCell>
-                  <TableCell>{t.time}</TableCell>
-                  <TableCell className="text-right">{CURRENCY} {t.amount}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            </Table>
-          </div>
-        </CardContent>
-      </Card>
+      <DataTable
+        title="Today&apos;s Transactions"
+        data={transactions}
+        keyExtractor={(t) => t.id}
+        columns={[
+          { key: "id", label: "ID", render: (t) => <span className="font-medium">{t.id}</span> },
+          { key: "client", label: "Client", render: (t) => t.client },
+          { key: "service", label: "Service", render: (t) => t.service },
+          { key: "time", label: "Time", render: (t) => t.time },
+          { key: "amount", label: "Amount", align: "right", render: (t) => `${CURRENCY} ${t.amount}` },
+        ]}
+      />
     </div>
   )
 }

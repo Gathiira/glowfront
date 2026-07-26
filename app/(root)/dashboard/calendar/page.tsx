@@ -3,12 +3,14 @@
 import { useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { formatDate, getDaysInMonth, getFirstDayOfMonth, isPastDate, isPastHour } from "@/lib/date-utils"
+import { AppointmentModal } from "./_components/appointment-modal"
+import { SaleModal } from "./_components/sale-modal"
 
 type Appointment = {
   id: string
-  date: string // YYYY-MM-DD
+  date: string
   startHour: number
   endHour: number
   client: string
@@ -32,30 +34,7 @@ const statusColors: Record<string, string> = {
   blocked: "border-l-gray-400",
 }
 
-function formatDate(year: number, month: number, day: number): string {
-  return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
-}
-
-function getDaysInMonth(year: number, month: number): number {
-  return new Date(year, month + 1, 0).getDate()
-}
-
-function getFirstDayOfMonth(year: number, month: number): number {
-  return new Date(year, month, 1).getDay()
-}
-
 const HOURS = Array.from({ length: 12 }, (_, i) => i + 8)
-
-function isPastDate(dateStr: string): boolean {
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-  return new Date(dateStr + "T00:00:00") < today
-}
-
-function isPastHour(dateStr: string, hour: number): boolean {
-  const now = new Date()
-  return new Date(dateStr + "T" + String(hour).padStart(2, "0") + ":00:00") <= now
-}
 
 export default function Calendar() {
   const today = new Date()
@@ -141,7 +120,8 @@ export default function Calendar() {
     setSelectedHour(appt.startHour)
   }
 
-  // Build calendar grid
+  const closeModal = () => { setModal(null); setEditingId(null) }
+
   const todayStr = formatDate(today.getFullYear(), today.getMonth(), today.getDate())
   const blanks = Array.from({ length: firstDay }, (_, i) => i)
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1)
@@ -161,9 +141,7 @@ export default function Calendar() {
       </PageHeader>
 
       <div className="grid gap-4 lg:grid-cols-[1fr_350px]">
-        {/* Month grid */}
         <div className="rounded-lg border">
-          {/* Day headers */}
           <div className="grid grid-cols-7 border-b">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
               <div key={d} className="py-2 text-center text-xs font-medium text-muted-foreground">
@@ -172,7 +150,6 @@ export default function Calendar() {
             ))}
           </div>
 
-          {/* Calendar grid */}
           <div className="grid grid-cols-7">
             {blanks.map((i) => (
               <div key={`blank-${i}`} className="min-h-20 border-b border-r bg-muted/20 p-1 md:min-h-24" />
@@ -223,7 +200,6 @@ export default function Calendar() {
           </div>
         </div>
 
-        {/* Day detail panel */}
         <div className="space-y-4">
           {selectedDate ? (
             <>
@@ -243,7 +219,6 @@ export default function Calendar() {
                 </div>
               ) : (
                 <>
-                  {/* Quick actions */}
                   <div className="flex gap-2">
                     <Button size="sm" className="flex-1" onClick={() => openCreate("appointment")}>
                       + Appointment
@@ -256,7 +231,6 @@ export default function Calendar() {
                     </Button>
                   </div>
 
-                  {/* Time slots */}
                   <div className="rounded-lg border">
                     <div className="border-b px-3 py-2 text-sm font-medium">Time Slots</div>
                     <div className="divide-y">
@@ -314,104 +288,25 @@ export default function Calendar() {
         </div>
       </div>
 
-      {/* Modals */}
-      {(modal === "appointment" || modal === "block") && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-          onClick={() => { setModal(null); setEditingId(null) }}
-        >
-          <div
-            className="w-full max-w-md rounded-xl bg-background p-6 shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-lg font-semibold">
-              {editingId ? "Edit Appointment" : modal === "block" ? "Block Time" : "New Appointment"}
-            </h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              {selectedDate && new Date(selectedDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
-              {selectedHour !== null && ` · ${selectedHour.toString().padStart(2, "0")}:00`}
-            </p>
-            <div className="space-y-3">
-              {modal !== "block" && (
-                <Input
-                  placeholder="Client name"
-                  value={form.client}
-                  onChange={(e) => setForm({ ...form, client: e.target.value })}
-                />
-              )}
-              <Input
-                placeholder="Service"
-                value={form.service}
-                onChange={(e) => setForm({ ...form, service: e.target.value })}
-              />
-              {modal !== "block" && (
-                <Input
-                  placeholder="Phone (optional)"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                />
-              )}
-              <textarea
-                placeholder="Notes (optional)"
-                value={form.notes}
-                onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                className="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-sm transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm dark:bg-input/30"
-                rows={2}
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-4">
-              {editingId && (
-                <Button variant="destructive" onClick={() => handleDelete(editingId)}>
-                  Delete
-                </Button>
-              )}
-              <Button variant="outline" onClick={() => { setModal(null); setEditingId(null) }}>
-                Cancel
-              </Button>
-              <Button onClick={handleSave}>
-                {editingId ? "Update" : modal === "block" ? "Block" : "Save"}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+      <AppointmentModal
+        modal={modal === "sale" ? null : modal}
+        editingId={editingId}
+        selectedDate={selectedDate}
+        selectedHour={selectedHour}
+        form={form}
+        onFormChange={setForm}
+        onSave={handleSave}
+        onDelete={handleDelete}
+        onClose={closeModal}
+      />
 
-      {modal === "sale" && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-          onClick={() => setModal(null)}
-        >
-          <div
-            className="w-full max-w-md rounded-xl bg-background p-6 shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-lg font-semibold">Record Sale</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              {selectedDate && new Date(selectedDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
-            </p>
-            <div className="space-y-3">
-              <Input
-                placeholder="Client name"
-                value={form.client}
-                onChange={(e) => setForm({ ...form, client: e.target.value })}
-              />
-              <Input
-                placeholder="Service"
-                value={form.service}
-                onChange={(e) => setForm({ ...form, service: e.target.value })}
-              />
-              <Input
-                placeholder="Amount"
-                type="number"
-              />
-            </div>
-            <div className="flex justify-end gap-2 pt-4">
-              <Button variant="outline" onClick={() => setModal(null)}>Cancel</Button>
-              <Button onClick={() => setModal(null)}>Record Payment</Button>
-            </div>
-          </div>
-        </div>
-      )}
+      <SaleModal
+        open={modal === "sale"}
+        form={{ client: form.client, service: form.service }}
+        onFormChange={(f) => setForm((prev) => ({ ...prev, ...f }))}
+        onSave={() => setModal(null)}
+        onClose={() => setModal(null)}
+      />
     </div>
   )
 }

@@ -2,33 +2,22 @@
 
 import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { StatusBadge } from "@/components/dashboard/status-badge"
-import { ChevronLeft, ChevronRight, Eye } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { formatDate, getDaysInMonth, getFirstDayOfMonth } from "@/lib/date-utils"
 import { fetchCustomerBookings, cancelBooking } from "@/lib/api"
 import type { BookingDto } from "@/lib/types"
 import dynamic from "next/dynamic"
+import { AppointmentCard } from "@/components/customer/appointment-card"
+import { EmptyState } from "@/components/ui/empty-state"
+import { toast } from "sonner"
 
 const BookingDetailDialog = dynamic(
   () => import("@/components/customer/booking-detail-dialog").then((m) => m.BookingDetailDialog),
   { ssr: false }
 )
-import { toast } from "sonner"
-
-function formatDate(year: number, month: number, day: number): string {
-  return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
-}
-
-function getDaysInMonth(year: number, month: number): number {
-  return new Date(year, month + 1, 0).getDate()
-}
-
-function getFirstDayOfMonth(year: number, month: number): number {
-  return new Date(year, month, 1).getDay()
-}
 
 export default function CustomerCalendar() {
   const [bookings, setBookings] = useState<BookingDto[]>([])
@@ -55,22 +44,14 @@ export default function CustomerCalendar() {
   const monthLabel = new Date(year, month).toLocaleDateString("en-US", { month: "long", year: "numeric" })
 
   const prevMonth = () => {
-    if (month === 0) {
-      setYear((y) => y - 1)
-      setMonth(11)
-    } else {
-      setMonth((m) => m - 1)
-    }
+    if (month === 0) { setYear((y) => y - 1); setMonth(11) }
+    else setMonth((m) => m - 1)
     setSelectedDate(null)
   }
 
   const nextMonth = () => {
-    if (month === 11) {
-      setYear((y) => y + 1)
-      setMonth(0)
-    } else {
-      setMonth((m) => m + 1)
-    }
+    if (month === 11) { setYear((y) => y + 1); setMonth(0) }
+    else setMonth((m) => m + 1)
     setSelectedDate(null)
   }
 
@@ -107,20 +88,24 @@ export default function CustomerCalendar() {
         <Card>
           <CardContent className="p-4">
             <div className="mb-4 flex items-center justify-between">
-              <Button variant="outline" size="icon" onClick={prevMonth}>
+              <button
+                className="inline-flex items-center justify-center rounded-md border p-2 hover:bg-muted"
+                onClick={prevMonth}
+              >
                 <ChevronLeft className="size-4" />
-              </Button>
+              </button>
               <span className="text-lg font-medium">{monthLabel}</span>
-              <Button variant="outline" size="icon" onClick={nextMonth}>
+              <button
+                className="inline-flex items-center justify-center rounded-md border p-2 hover:bg-muted"
+                onClick={nextMonth}
+              >
                 <ChevronRight className="size-4" />
-              </Button>
+              </button>
             </div>
 
             <div className="grid grid-cols-7 border-b text-center text-xs font-medium text-muted-foreground">
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                <div key={d} className="py-2">
-                  {d}
-                </div>
+                <div key={d} className="py-2">{d}</div>
               ))}
             </div>
 
@@ -204,51 +189,19 @@ export default function CustomerCalendar() {
                   ))}
                 </div>
               ) : selectedAppts.length === 0 ? (
-                <div className="flex h-32 items-center justify-center rounded-lg border text-sm text-muted-foreground">
-                  No appointments on this day
-                </div>
+                <EmptyState message="No appointments on this day" />
               ) : (
                 selectedAppts.map((a) => (
-                  <Card key={a.id}>
-                    <CardContent className="flex items-stretch justify-between gap-4 p-4">
-                      <div className="min-w-0 flex-1">
-                        <p className="font-medium">{a.customerName}</p>
-                        <p className="text-sm text-muted-foreground">{a.customerPhone}</p>
-                        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                          <span className="font-medium text-foreground">{a.businessName}</span>
-                          <span>{a.serviceName}</span>
-                        </div>
-                        <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
-                          <span>
-                            {a.bookingTime}
-                            {a.durationMinutes && ` (${a.durationMinutes} min)`}
-                          </span>
-                          {a.notes && <span>&middot; {a.notes}</span>}
-                        </div>
-                        <a
-                          href={`/business/${a.businessSlug}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-2 inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                        >
-                          View public page &rarr;
-                        </a>
-                      </div>
-                      <div className="flex flex-col items-end justify-between">
-                        <StatusBadge status={a.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed"} />
-                        <Button variant="ghost" size="sm" onClick={() => setDetailBooking(a)} className="gap-1">
-                          <Eye className="size-3.5" /> View
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <AppointmentCard
+                    key={a.id}
+                    booking={a}
+                    onView={(a) => setDetailBooking(a)}
+                  />
                 ))
               )}
             </>
           ) : (
-            <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
-              Select a day to view appointments
-            </div>
+            <EmptyState message="Select a day to view appointments" />
           )}
         </div>
       </div>

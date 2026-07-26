@@ -2,22 +2,15 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { DataTable } from "@/components/ui/data-table"
 import { CURRENCY } from "@/lib/types"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 
 const movements = [
-  { id: 1, type: "Cash In", description: "Payment — Sarah Johnson", amount: 120, method: "Credit Card", date: "2026-06-18" },
-  { id: 2, type: "Cash In", description: "Payment — Mike Chen", amount: 45, method: "Cash", date: "2026-06-18" },
-  { id: 3, type: "Cash Out", description: "Supplier — Hair Products", amount: -200, method: "Bank Transfer", date: "2026-06-17" },
-  { id: 4, type: "Cash In", description: "Payment — Lisa Park", amount: 55, method: "Cash", date: "2026-06-17" },
-  { id: 5, type: "Cash Out", description: "Utility Bill", amount: -150, method: "Bank Transfer", date: "2026-06-16" },
+  { id: 1, type: "Cash In" as const, description: "Payment — Sarah Johnson", amount: 120, method: "Credit Card", date: "2026-06-18" },
+  { id: 2, type: "Cash In" as const, description: "Payment — Mike Chen", amount: 45, method: "Cash", date: "2026-06-18" },
+  { id: 3, type: "Cash Out" as const, description: "Supplier — Hair Products", amount: -200, method: "Bank Transfer", date: "2026-06-17" },
+  { id: 4, type: "Cash In" as const, description: "Payment — Lisa Park", amount: 55, method: "Cash", date: "2026-06-17" },
+  { id: 5, type: "Cash Out" as const, description: "Utility Bill", amount: -150, method: "Bank Transfer", date: "2026-06-16" },
 ]
 
 export default function CashMovement() {
@@ -43,43 +36,35 @@ export default function CashMovement() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Movement History</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Type</TableHead>
-                <TableHead>Description</TableHead>
-                <TableHead>Method</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {movements.map((m) => (
-                <TableRow key={m.id}>
-                  <TableCell>
-                    <span className={m.type === "Cash In" ? "text-green-600" : "text-red-600"}>
-                      {m.type}
-                    </span>
-                  </TableCell>
-                  <TableCell>{m.description}</TableCell>
-                  <TableCell>{m.method}</TableCell>
-                  <TableCell>{m.date}</TableCell>
-                  <TableCell className={`text-right font-medium ${m.amount > 0 ? "text-green-600" : "text-red-600"}`}>
-                    {m.amount > 0 ? "+" : ""}{CURRENCY} {Math.abs(m.amount)}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            </Table>
-          </div>
-        </CardContent>
-      </Card>
+      <DataTable
+        title="Movement History"
+        data={movements}
+        keyExtractor={(m) => m.id}
+        columns={[
+          {
+            key: "type",
+            label: "Type",
+            render: (m) => (
+              <span className={m.type === "Cash In" ? "text-green-600" : "text-red-600"}>
+                {m.type}
+              </span>
+            ),
+          },
+          { key: "description", label: "Description", render: (m) => m.description },
+          { key: "method", label: "Method", render: (m) => m.method },
+          { key: "date", label: "Date", render: (m) => m.date },
+          {
+            key: "amount",
+            label: "Amount",
+            align: "right",
+            render: (m) => (
+              <span className={`font-medium ${m.amount > 0 ? "text-green-600" : "text-red-600"}`}>
+                {m.amount > 0 ? "+" : ""}{CURRENCY} {Math.abs(m.amount)}
+              </span>
+            ),
+          },
+        ]}
+      />
     </div>
   )
 }

@@ -24,17 +24,11 @@ import {
   fetchTopServices,
   fetchTopTeamMember,
 } from "@/lib/api/partner"
+import { formatTimeDisplay } from "@/lib/date-utils"
+import { EmptyState } from "@/components/ui/empty-state"
 
 function formatCurrency(amount: number): string {
   return `${CURRENCY} ${amount.toLocaleString()}`
-}
-
-function formatTimeDisplay(time: string): string {
-  const [h, m] = time.split(":")
-  const hour = Number.parseInt(h)
-  const ampm = hour >= 12 ? "PM" : "AM"
-  const h12 = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour
-  return `${h12}:${m} ${ampm}`
 }
 
 export default function Home() {
@@ -55,7 +49,6 @@ export default function Home() {
         setTopServices(t)
         setTopMember(m)
       } catch {
-        // silently fail — data stays null and UI shows skeleton
       } finally {
         setLoading(false)
       }
@@ -67,7 +60,6 @@ export default function Home() {
     <div>
       <PageHeader title="Dashboard" description="Overview of your business today" />
 
-      {/* Top tiles */}
       <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Recent Sales"
@@ -102,7 +94,6 @@ export default function Home() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        {/* Top services */}
         <Card>
           <CardHeader>
             <CardTitle>Top Services</CardTitle>
@@ -138,16 +129,13 @@ export default function Home() {
                   </div>
                 ))}
                 {topServices.length === 0 && (
-                  <p className="py-4 text-center text-sm text-muted-foreground">
-                    No service data yet
-                  </p>
+                  <EmptyState message="No service data yet" height="h-32" />
                 )}
               </div>
             )}
           </CardContent>
         </Card>
 
-        {/* Top team member */}
         <Card>
           <CardHeader>
             <CardTitle>Top Team Member</CardTitle>
@@ -175,9 +163,7 @@ export default function Home() {
                 </div>
               </div>
             ) : (
-              <p className="py-4 text-center text-sm text-muted-foreground">
-                No team member data yet
-              </p>
+              <EmptyState message="No team member data yet" height="h-32" />
             )}
           </CardContent>
         </Card>
