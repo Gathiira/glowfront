@@ -25,7 +25,7 @@ import {
   User,
   Shield,
 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, fmt } from "@/lib/utils"
 import { CURRENCY } from "@/lib/types"
 import { toast } from "sonner"
 import {
@@ -444,7 +444,7 @@ export default function BusinessDetail() {
                         <div className="flex items-center gap-1 text-sm">
                           <Star className="size-4 fill-amber-400 text-amber-400" />
                           <span className="font-medium">
-                            {business.overallRating.toFixed(1)}
+                            {fmt(business.overallRating)}
                           </span>
                           <span className="text-muted-foreground">
                             ({business.totalReviews ?? 0} reviews)
@@ -594,7 +594,7 @@ export default function BusinessDetail() {
                           {m.averageRating > 0 && (
                             <div className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
                               <Star className="size-3 fill-amber-400 text-amber-400" />
-                              {m.averageRating.toFixed(1)}
+                              {fmt(m.averageRating)}
                               <span>({m.reviewCount})</span>
                             </div>
                           )}
@@ -708,7 +708,7 @@ export default function BusinessDetail() {
                     <div className="flex items-center gap-1 text-sm">
                       <Star className="size-4 fill-amber-400 text-amber-400" />
                       <span className="font-medium">
-                        {business.overallRating.toFixed(1)}
+                        {fmt(business.overallRating)}
                       </span>
                       <span className="text-muted-foreground">
                         ({business.totalReviews ?? 0} reviews)

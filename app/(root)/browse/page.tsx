@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
+import { fmt } from "@/lib/utils"
 import { Star } from "lucide-react"
 import { searchBusinesses, fetchBusinessCategories } from "@/lib/api"
 import { Pagination } from "@/components/dashboard/pagination"
@@ -62,10 +63,10 @@ function BusinessCard({ business }: { business: BusinessCardDto }) {
             <div className="flex items-center gap-1">
               <Star className="size-3 fill-amber-400 text-amber-400" />
               <span className="text-xs font-medium">
-                {business.overallRating.toFixed(1)}
+                {fmt(business.overallRating)}
               </span>
               <span className="text-xs text-muted-foreground">
-                ({business.totalReviews.toLocaleString()})
+                ({(business.totalReviews ?? 0).toLocaleString()})
               </span>
             </div>
             <p className="line-clamp-1 text-xs text-muted-foreground">

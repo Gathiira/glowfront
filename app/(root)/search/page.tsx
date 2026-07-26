@@ -17,7 +17,7 @@ import type {
   BusinessCategoryDto,
   BusinessSearchDto,
 } from "@/lib/types"
-import { cn } from "@/lib/utils"
+import { cn, fmt } from "@/lib/utils"
 import { MapContainer, TileLayer, Marker, Popup } from "@/components/map/map-loader"
 const FlyTo = NextDynamic(
   () => import("./_components/fly-to").then((m) => m.FlyTo),
@@ -328,7 +328,7 @@ export default function SearchPage() {
                     <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
                       <span className="flex items-center gap-0.5">
                         <Star className="size-3 fill-amber-400 text-amber-400" />
-                        {biz.overallRating.toFixed(1)}
+                        {fmt(biz.overallRating)}
                       </span>
                       <span>&middot;</span>
                       <span className="flex items-center gap-0.5">
@@ -402,8 +402,8 @@ export default function SearchPage() {
                         {biz.address}
                       </p>
                       <p className="mt-1 text-xs">
-                        {"★".repeat(Math.round(biz.overallRating))}{" "}
-                        {biz.overallRating.toFixed(1)}
+                        {"★".repeat(Math.round(biz.overallRating ?? 0))}{" "}
+                        {fmt(biz.overallRating)}
                       </p>
                     </div>
                   </Popup>

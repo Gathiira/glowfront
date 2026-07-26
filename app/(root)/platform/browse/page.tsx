@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Star, MapPin, Search } from "lucide-react"
+import { fmt } from "@/lib/utils"
 import { searchBusinesses, fetchBusinessCategories } from "@/lib/api"
 import { EmptyState } from "@/components/ui/empty-state"
 import { Pagination } from "@/components/dashboard/pagination"
@@ -158,7 +159,7 @@ export default function Browse() {
                         <div className="flex items-center gap-1 text-sm">
                           <Star className="size-3.5 fill-amber-400 text-amber-400" />
                           <span className="font-medium">
-                            {b.overallRating.toFixed(1)}
+                            {fmt(b.overallRating)}
                           </span>
                           <span className="text-muted-foreground">
                             ({b.totalReviews})

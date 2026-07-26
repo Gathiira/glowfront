@@ -25,7 +25,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 import { Star, OctagonX, Phone, Mail, MapPin, ExternalLink } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, fmt } from "@/lib/utils"
 import { toast } from "sonner"
 import { fetchCustomerBusinessDetail } from "@/lib/api"
 import type { BookingDto, BusinessDetailDto } from "@/lib/types"
@@ -185,7 +185,7 @@ export function BookingDetailDialog({
                         <div className="flex items-center gap-0.5">
                           <Star className="size-4 fill-amber-400 text-amber-400" />
                           <span className="font-medium">
-                            {businessDetail.overallRating.toFixed(1)}
+                            {fmt(businessDetail.overallRating)}
                           </span>
                         </div>
                         <span className="text-muted-foreground">

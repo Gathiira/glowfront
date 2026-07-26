@@ -5,6 +5,7 @@ import Image from "next/image"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { fmt } from "@/lib/utils"
 import { Star, User } from "lucide-react"
 import Link from "next/link"
 import { fetchPartnerStaff } from "@/lib/api/partner"
@@ -91,7 +92,7 @@ export default function TeamMembers() {
                   {m.averageRating > 0 && (
                     <div className="flex items-center gap-1 text-sm">
                       <Star className="size-3.5 fill-yellow-400 text-yellow-400" />
-                      <span className="font-medium">{m.averageRating.toFixed(1)}</span>
+                      <span className="font-medium">{fmt(m.averageRating)}</span>
                       <span className="text-muted-foreground">
                         ({m.reviewCount} review{m.reviewCount !== 1 ? "s" : ""})
                       </span>

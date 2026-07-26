@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Star } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { cn, fmt } from "@/lib/utils"
 import { gradients } from "./data"
 import type { BusinessCardDto } from "@/lib/types"
 
@@ -39,9 +39,9 @@ export function BusinessCard({ business, index }: { business: BusinessCardDto; i
             </h3>
             <div className="flex items-center gap-1">
               <Star className="size-3 fill-amber-400 text-amber-400" />
-              <span className="text-xs font-medium">{business.overallRating.toFixed(1)}</span>
+              <span className="text-xs font-medium">{fmt(business.overallRating)}</span>
               <span className="text-xs text-muted-foreground">
-                ({business.totalReviews.toLocaleString()})
+                ({(business.totalReviews ?? 0).toLocaleString()})
               </span>
             </div>
             <p className="line-clamp-1 text-xs text-muted-foreground">

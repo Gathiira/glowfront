@@ -8,7 +8,7 @@ import { BusinessMap } from "@/components/map/business-map"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/lib/utils"
+import { cn, fmt } from "@/lib/utils"
 import { fetchPartnerBusiness } from "@/lib/api/partner"
 import { fetchBusinessReviews } from "@/lib/api"
 import type { BusinessDto, ReviewDto, PaginatedResponse } from "@/lib/types"
@@ -171,7 +171,7 @@ export default function ProfileDetails() {
             {business.overallRating != null && (
               <div className="mt-4 flex items-center gap-2 text-sm">
                 <Star className="size-4 fill-amber-400 text-amber-400" />
-                <span className="font-medium">{business.overallRating.toFixed(1)}</span>
+                <span className="font-medium">{fmt(business.overallRating)}</span>
                 <span className="text-muted-foreground">({business.totalReviews ?? 0} reviews)</span>
               </div>
             )}
