@@ -30,7 +30,7 @@ spec:
 
       containers:
         - name: app
-          image: ghcr.io/gathiira/glowfront:sha-ffaa40a
+          image: ghcr.io/gathiira/glowfront:sha-7c73deb
           imagePullPolicy: IfNotPresent
 
           ports:
