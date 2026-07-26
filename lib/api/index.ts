@@ -31,10 +31,11 @@ export {
   unblockBusiness,
   approveBusiness,
   rejectBusiness,
-  fetchAdminBusinessServices,
   createAdminBusinessService,
   deleteAdminBusinessService,
-  fetchAdminCategories,
   createAdminCategory,
   deleteAdminCategory,
+  fetchAdminReviews,
+  approveReview,
+  rejectReview,
 } from "./admin"

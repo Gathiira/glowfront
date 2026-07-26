@@ -4,6 +4,7 @@ import type {
   BusinessCategoryDto,
   BusinessDto,
   ServiceDto,
+  ReviewDto,
 } from "@/lib/types"
 
 export type AdminUserDto = {
@@ -38,6 +39,8 @@ export type AdminDashboardDto = {
   pendingBusinesses: number
   totalCategories: number
   totalServices: number
+  totalReviews: number
+  totalBookings: number
 }
 
 export async function fetchAdminDashboard(): Promise<AdminDashboardDto> {
@@ -196,21 +199,6 @@ export async function rejectBusiness(businessId: number): Promise<void> {
   }
 }
 
-export async function fetchAdminBusinessServices(
-  businessId: number,
-  current: number = 0,
-  pageSize: number = 50
-): Promise<PaginatedResponse<ServiceDto>> {
-  try {
-    const res = await api
-      .get(`/admin/businesses/${businessId}/services?current=${current}&pageSize=${pageSize}`)
-      .json<ApiResponse<PaginatedResponse<ServiceDto>>>()
-    return res.data
-  } catch (error) {
-    throw await extractError(error)
-  }
-}
-
 export type AdminCreateServicePayload = {
   name: string
   description?: string
@@ -245,15 +233,6 @@ export async function deleteAdminBusinessService(
   }
 }
 
-export async function fetchAdminCategories(): Promise<BusinessCategoryDto[]> {
-  try {
-    const res = await api.get("/admin/categories").json<ApiResponse<BusinessCategoryDto[]>>()
-    return res.data
-  } catch (error) {
-    throw await extractError(error)
-  }
-}
-
 export type AdminCreateCategoryPayload = {
   name: string
   displayName: string
@@ -268,6 +247,37 @@ export async function createAdminCategory(
       .post(payload, "/admin/categories")
       .json<ApiResponse<BusinessCategoryDto>>()
     return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function fetchAdminReviews(
+  current: number = 0,
+  pageSize: number = 20,
+  status?: string
+): Promise<PaginatedResponse<ReviewDto>> {
+  try {
+    let url = `/admin/reviews?current=${current}&pageSize=${pageSize}`
+    if (status) url += `&status=${status}`
+    const res = await api.get(url).json<ApiResponse<PaginatedResponse<ReviewDto>>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function approveReview(reviewId: number): Promise<void> {
+  try {
+    await api.post({}, `/admin/reviews/${reviewId}/approve`).json()
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function rejectReview(reviewId: number): Promise<void> {
+  try {
+    await api.post({}, `/admin/reviews/${reviewId}/reject`).json()
   } catch (error) {
     throw await extractError(error)
   }

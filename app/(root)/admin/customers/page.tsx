@@ -13,18 +13,10 @@ import {
   type AdminUserDto,
 } from "@/lib/api/admin"
 import type { PaginatedResponse } from "@/lib/types"
-import { EmptyState } from "@/components/ui/empty-state"
 import { Pagination } from "@/components/dashboard/pagination"
+import { DataTable } from "@/components/ui/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
 import { Search, Ban, CheckCircle, XCircle, Undo2 } from "lucide-react"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 import { toast } from "sonner"
 import {
   AlertDialog,
@@ -237,6 +229,44 @@ function AdminCustomers() {
 
   const statuses = ["", "ACTIVE", "BLOCKED", "PENDING"]
 
+  const columns = [
+    {
+      key: "name",
+      label: "Name",
+      render: (c: AdminUserDto) => <span className="font-medium">{c.firstName} {c.lastName}</span>,
+    },
+    {
+      key: "email",
+      label: "Email",
+      render: (c: AdminUserDto) => <span className="text-muted-foreground">{c.email}</span>,
+    },
+    {
+      key: "phone",
+      label: "Phone",
+      render: (c: AdminUserDto) => <span className="text-muted-foreground">{c.phone}</span>,
+    },
+    {
+      key: "status",
+      label: "Status",
+      render: (c: AdminUserDto) => (
+        <StatusBadge status={c.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed" | "blocked"} />
+      ),
+    },
+    {
+      key: "joined",
+      label: "Joined",
+      render: (c: AdminUserDto) => (
+        <span className="text-muted-foreground">{new Date(c.createdAt).toLocaleDateString()}</span>
+      ),
+    },
+    {
+      key: "actions",
+      label: "Actions",
+      align: "right" as const,
+      render: (c: AdminUserDto) => <div className="flex justify-end">{getActionButton(c)}</div>,
+    },
+  ]
+
   return (
     <div>
       <PageHeader title="Customers" description="Manage all platform customers" />
@@ -266,61 +296,34 @@ function AdminCustomers() {
         ))}
       </div>
 
-      {loading ? (
-        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
-          Loading...
-        </div>
-      ) : error ? (
+      {error ? (
         <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-destructive">
           {error}
         </div>
-      ) : !customers || customers.list.length === 0 ? (
-        <EmptyState message="No customers found" />
       ) : (
         <>
-          <div className="mb-4 text-sm text-muted-foreground">
-            {customers.totalElements} customer{customers.totalElements !== 1 ? "s" : ""} found
-          </div>
-
-          <div className="rounded-lg border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Phone</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Joined</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {customers.list.map((c) => (
-                  <TableRow key={c.id}>
-                    <TableCell className="font-medium">
-                      {c.firstName} {c.lastName}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">{c.email}</TableCell>
-                    <TableCell className="text-muted-foreground">{c.phone}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={c.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed" | "blocked"} />
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {new Date(c.createdAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell className="text-right">{getActionButton(c)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          <Pagination
-            currentPage={current}
-            totalPages={customers.totalPages}
-            totalElements={customers.totalElements}
-            onPageChange={setCurrent}
+          <DataTable
+            data={customers?.list || []}
+            columns={columns}
+            keyExtractor={(c) => c.id}
+            loading={loading}
+            emptyMessage="No customers found"
+            cardless
           />
+
+          {customers && customers.totalPages > 0 && (
+            <>
+              <div className="mt-4 text-sm text-muted-foreground">
+                {customers.totalElements} customer{customers.totalElements !== 1 ? "s" : ""} found
+              </div>
+              <Pagination
+                currentPage={current}
+                totalPages={customers.totalPages}
+                totalElements={customers.totalElements}
+                onPageChange={setCurrent}
+              />
+            </>
+          )}
         </>
       )}
     </div>

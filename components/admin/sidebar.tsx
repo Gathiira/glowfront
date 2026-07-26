@@ -15,6 +15,7 @@ import {
   Shield,
   LogOut,
   AlertTriangle,
+  MessageSquareText,
 } from "lucide-react"
 import {
   AlertDialog,
@@ -34,6 +35,7 @@ const navItems = [
   { label: "Customers", href: "/admin/customers", icon: Users },
   { label: "Partners", href: "/admin/partners", icon: Briefcase },
   { label: "Businesses", href: "/admin/businesses", icon: Building2 },
+  { label: "Reviews", href: "/admin/reviews", icon: MessageSquareText },
   { label: "Categories", href: "/admin/categories", icon: Tags },
 ]
 

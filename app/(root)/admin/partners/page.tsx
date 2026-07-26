@@ -13,18 +13,10 @@ import {
   type AdminPartnerDto,
 } from "@/lib/api/admin"
 import type { PaginatedResponse } from "@/lib/types"
-import { EmptyState } from "@/components/ui/empty-state"
 import { Pagination } from "@/components/dashboard/pagination"
+import { DataTable } from "@/components/ui/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
 import { Search, Ban, CheckCircle, XCircle, Undo2 } from "lucide-react"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 import { toast } from "sonner"
 import {
   AlertDialog,
@@ -265,6 +257,49 @@ function AdminPartners() {
 
   const statuses = ["", "ACTIVE", "BLOCKED", "PENDING", "REJECTED"]
 
+  const columns = [
+    {
+      key: "name",
+      label: "Name",
+      render: (p: AdminPartnerDto) => <span className="font-medium">{p.firstName} {p.lastName}</span>,
+    },
+    {
+      key: "email",
+      label: "Email",
+      render: (p: AdminPartnerDto) => <span className="text-muted-foreground">{p.email}</span>,
+    },
+    {
+      key: "phone",
+      label: "Phone",
+      render: (p: AdminPartnerDto) => <span className="text-muted-foreground">{p.phoneNumber}</span>,
+    },
+    {
+      key: "business",
+      label: "Business",
+      render: (p: AdminPartnerDto) => <span className="text-muted-foreground">{p.businessName}</span>,
+    },
+    {
+      key: "status",
+      label: "Status",
+      render: (p: AdminPartnerDto) => (
+        <StatusBadge status={p.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed" | "blocked"} />
+      ),
+    },
+    {
+      key: "joined",
+      label: "Joined",
+      render: (p: AdminPartnerDto) => (
+        <span className="text-muted-foreground">{new Date(p.createdAt).toLocaleDateString()}</span>
+      ),
+    },
+    {
+      key: "actions",
+      label: "Actions",
+      align: "right" as const,
+      render: (p: AdminPartnerDto) => <div className="flex justify-end">{getActionButton(p)}</div>,
+    },
+  ]
+
   return (
     <div>
       <PageHeader title="Partners" description="Manage all platform partners" />
@@ -294,63 +329,34 @@ function AdminPartners() {
         ))}
       </div>
 
-      {loading ? (
-        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
-          Loading...
-        </div>
-      ) : error ? (
+      {error ? (
         <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-destructive">
           {error}
         </div>
-      ) : !partners || partners.list.length === 0 ? (
-        <EmptyState message="No partners found" />
       ) : (
         <>
-          <div className="mb-4 text-sm text-muted-foreground">
-            {partners.totalElements} partner{partners.totalElements !== 1 ? "s" : ""} found
-          </div>
-
-          <div className="rounded-lg border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Phone</TableHead>
-                  <TableHead>Business</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Joined</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {partners.list.map((p) => (
-                  <TableRow key={p.id}>
-                    <TableCell className="font-medium">
-                      {p.firstName} {p.lastName}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">{p.email}</TableCell>
-                    <TableCell className="text-muted-foreground">{p.phoneNumber}</TableCell>
-                    <TableCell className="text-muted-foreground">{p.businessName}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={p.status.toLowerCase() as "confirmed" | "pending" | "cancelled" | "completed" | "blocked"} />
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {new Date(p.createdAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell className="text-right">{getActionButton(p)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          <Pagination
-            currentPage={current}
-            totalPages={partners.totalPages}
-            totalElements={partners.totalElements}
-            onPageChange={setCurrent}
+          <DataTable
+            data={partners?.list || []}
+            columns={columns}
+            keyExtractor={(p) => p.id}
+            loading={loading}
+            emptyMessage="No partners found"
+            cardless
           />
+
+          {partners && partners.totalPages > 0 && (
+            <>
+              <div className="mt-4 text-sm text-muted-foreground">
+                {partners.totalElements} partner{partners.totalElements !== 1 ? "s" : ""} found
+              </div>
+              <Pagination
+                currentPage={current}
+                totalPages={partners.totalPages}
+                totalElements={partners.totalElements}
+                onPageChange={setCurrent}
+              />
+            </>
+          )}
         </>
       )}
     </div>

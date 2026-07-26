@@ -5,8 +5,8 @@ import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
+import { fetchBusinessCategories } from "@/lib/api"
 import {
-  fetchAdminCategories,
   createAdminCategory,
   deleteAdminCategory,
 } from "@/lib/api/admin"
@@ -48,7 +48,7 @@ export default function AdminCategories() {
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchAdminCategories()
+      const data = await fetchBusinessCategories()
       setCategories(data)
     } catch (err) {
       console.error("Failed to load categories:", err)

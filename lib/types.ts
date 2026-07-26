@@ -282,14 +282,18 @@ export type ReviewImageDto = {
   imageUrl: string
 }
 
+export type ReviewStatus = "PENDING" | "APPROVED" | "REJECTED"
+
 export type ReviewDto = {
   id: number
   businessId: number
+  businessName?: string
   customerName: string
   customerEmail: string
   rating: number
   comment: string
   images: ReviewImageDto[]
+  status?: ReviewStatus
   createdAt: string
 }
 

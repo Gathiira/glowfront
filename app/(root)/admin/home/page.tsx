@@ -12,6 +12,8 @@ import {
   Tags,
   Ban,
   Clock,
+  MessageSquareText,
+  CalendarCheck,
 } from "lucide-react"
 import { fetchAdminDashboard } from "@/lib/api/admin"
 import type { AdminDashboardDto } from "@/lib/api/admin"
@@ -59,34 +61,25 @@ export default function AdminHome() {
         description="Overview of the platform"
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          title="Total Customers"
-          value={dashboard.totalCustomers}
-          description="Registered users"
-          icon={<Users className="size-5" />}
-        />
-        <StatCard
-          title="Total Partners"
-          value={dashboard.totalPartners}
-          description="Service providers"
-          icon={<Briefcase className="size-5" />}
-        />
-        <StatCard
-          title="Total Businesses"
-          value={dashboard.totalBusinesses}
-          description={`${dashboard.activeBusinesses} active`}
-          icon={<Building2 className="size-5" />}
-        />
-        <StatCard
-          title="Categories"
-          value={dashboard.totalCategories}
-          description="Service categories"
-          icon={<Tags className="size-5" />}
-        />
-      </div>
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-sm font-medium">
+              <Clock className="size-4 text-amber-500" />
+              Pending Businesses
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-bold">{dashboard.pendingBusinesses}</p>
+            <Link
+              href="/admin/businesses?status=PENDING_VERIFICATION"
+              className="mt-1 text-xs text-muted-foreground hover:text-primary"
+            >
+              Review now &rarr;
+            </Link>
+          </CardContent>
+        </Card>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-sm font-medium">
@@ -122,24 +115,45 @@ export default function AdminHome() {
             </Link>
           </CardContent>
         </Card>
+      </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-sm font-medium">
-              <Clock className="size-4 text-amber-500" />
-              Pending Businesses
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-bold">{dashboard.pendingBusinesses}</p>
-            <Link
-              href="/admin/businesses?status=PENDING_VERIFICATION"
-              className="mt-1 text-xs text-muted-foreground hover:text-primary"
-            >
-              Review now &rarr;
-            </Link>
-          </CardContent>
-        </Card>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <StatCard
+          title="Total Customers"
+          value={dashboard.totalCustomers}
+          description="Registered users"
+          icon={<Users className="size-5" />}
+        />
+        <StatCard
+          title="Total Partners"
+          value={dashboard.totalPartners}
+          description="Service providers"
+          icon={<Briefcase className="size-5" />}
+        />
+        <StatCard
+          title="Total Businesses"
+          value={dashboard.totalBusinesses}
+          description={`${dashboard.activeBusinesses} active`}
+          icon={<Building2 className="size-5" />}
+        />
+        <StatCard
+          title="Categories"
+          value={dashboard.totalCategories}
+          description="Service categories"
+          icon={<Tags className="size-5" />}
+        />
+        <StatCard
+          title="Total Reviews"
+          value={dashboard.totalReviews}
+          description="Platform reviews"
+          icon={<MessageSquareText className="size-5" />}
+        />
+        <StatCard
+          title="Total Bookings"
+          value={dashboard.totalBookings}
+          description="All time bookings"
+          icon={<CalendarCheck className="size-5" />}
+        />
       </div>
     </div>
   )

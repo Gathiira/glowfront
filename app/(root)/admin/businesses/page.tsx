@@ -10,24 +10,15 @@ import {
   unblockBusiness,
   approveBusiness,
   rejectBusiness,
-  fetchAdminBusinessServices,
   createAdminBusinessService,
   deleteAdminBusinessService,
 } from "@/lib/api/admin"
-import { fetchBusinessCategories } from "@/lib/api"
+import { fetchBusinessCategories, fetchBusinessServices } from "@/lib/api"
 import type { BusinessDto, ServiceDto, PaginatedResponse, BusinessCategoryDto } from "@/lib/types"
-import { EmptyState } from "@/components/ui/empty-state"
 import { Pagination } from "@/components/dashboard/pagination"
+import { DataTable } from "@/components/ui/data-table"
 import { StatusBadge } from "@/components/dashboard/status-badge"
 import { Search, Ban, CheckCircle, XCircle, Undo2, Plus, Trash2, Scissors } from "lucide-react"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 import { CURRENCY } from "@/lib/types"
 import { toast } from "sonner"
 import {
@@ -150,7 +141,7 @@ function AdminBusinesses() {
     setSelectedBusiness(business)
     setServicesLoading(true)
     try {
-      const data = await fetchAdminBusinessServices(business.id)
+      const data = await fetchBusinessServices(business.id, 0, 100)
       setServices(data.list)
     } catch (err) {
       toast.error("Failed to load services")
@@ -176,7 +167,7 @@ function AdminBusinesses() {
       toast.success("Service added")
       setAddDialogOpen(false)
       setNewService({ name: "", description: "", categoryId: "", durationMinutes: 30, price: 0, currency: CURRENCY })
-      const data = await fetchAdminBusinessServices(selectedBusiness.id)
+      const data = await fetchBusinessServices(selectedBusiness.id, 0, 100)
       setServices(data.list)
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Failed to add service")
@@ -188,7 +179,7 @@ function AdminBusinesses() {
     try {
       await deleteAdminBusinessService(selectedBusiness.id, serviceId)
       toast.success("Service deleted")
-      const data = await fetchAdminBusinessServices(selectedBusiness.id)
+      const data = await fetchBusinessServices(selectedBusiness.id, 0, 100)
       setServices(data.list)
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Failed to delete service")
@@ -328,6 +319,200 @@ function AdminBusinesses() {
 
   const statuses = ["", "ACTIVE", "PENDING_VERIFICATION", "SUSPENDED", "DEACTIVATED"]
 
+  const columns = [
+    {
+      key: "name",
+      label: "Name",
+      render: (b: BusinessDto) => <span className="font-medium">{b.name}</span>,
+    },
+    {
+      key: "category",
+      label: "Category",
+      render: (b: BusinessDto) => <span className="text-muted-foreground">{b.categoryName}</span>,
+    },
+    {
+      key: "location",
+      label: "Location",
+      render: (b: BusinessDto) => (
+        <span className="text-muted-foreground">
+          {b.location ? `${b.location.city}, ${b.location.country}` : "-"}
+        </span>
+      ),
+    },
+    {
+      key: "status",
+      label: "Status",
+      render: (b: BusinessDto) => (
+        <StatusBadge
+          status={
+            b.status === "PENDING_VERIFICATION"
+              ? "pending"
+              : b.status === "SUSPENDED" || b.status === "DEACTIVATED"
+                ? "blocked"
+                : "confirmed"
+          }
+        />
+      ),
+    },
+    {
+      key: "rating",
+      label: "Rating",
+      render: (b: BusinessDto) => (
+        <span className="text-muted-foreground">
+          {b.overallRating ? `${b.overallRating.toFixed(1)} (${b.totalReviews})` : "No ratings"}
+        </span>
+      ),
+    },
+    {
+      key: "actions",
+      label: "Actions",
+      align: "right" as const,
+      render: (b: BusinessDto) => (
+        <div className="flex items-center justify-end gap-1">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="xs" onClick={() => openServices(b)}>
+                <Scissors className="size-3" />
+                Services
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>Services - {selectedBusiness?.name}</DialogTitle>
+              </DialogHeader>
+              <div className="max-h-96 space-y-4 overflow-y-auto">
+                {servicesLoading ? (
+                  <p className="py-4 text-center text-sm text-muted-foreground">Loading services...</p>
+                ) : services.length === 0 ? (
+                  <p className="py-4 text-center text-sm text-muted-foreground">No services yet</p>
+                ) : (
+                  <div className="space-y-2">
+                    {services.map((s) => (
+                      <div
+                        key={s.id}
+                        className="flex items-center justify-between rounded-lg border p-3"
+                      >
+                        <div>
+                          <p className="text-sm font-medium">{s.name}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {s.categoryName} &middot; {s.durationMinutes} min &middot; {s.currency} {s.price}
+                          </p>
+                          {s.description && (
+                            <p className="mt-0.5 text-xs text-muted-foreground">{s.description}</p>
+                          )}
+                        </div>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="ghost" size="icon-xs" className="text-destructive">
+                              <Trash2 className="size-3" />
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent size="sm">
+                            <AlertDialogHeader>
+                              <AlertDialogMedia>
+                                <Trash2 className="size-6 text-destructive" />
+                              </AlertDialogMedia>
+                              <AlertDialogTitle>Delete Service</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Delete &quot;{s.name}&quot; from {selectedBusiness?.name}?
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => handleDeleteService(s.id)}>
+                                Delete
+                              </AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="flex justify-end border-t pt-4">
+                <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="sm">
+                      <Plus className="size-3" />
+                      Add Service
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Add Service</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4 py-4">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Service Name *</label>
+                        <Input
+                          value={newService.name}
+                          onChange={(e) => setNewService({ ...newService, name: e.target.value })}
+                          placeholder="e.g. Haircut"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Description</label>
+                        <Input
+                          value={newService.description}
+                          onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+                          placeholder="Brief description"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Category *</label>
+                        <Select
+                          value={newService.categoryId}
+                          onValueChange={(v) => setNewService({ ...newService, categoryId: v })}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {categories.map((cat) => (
+                              <SelectItem key={cat.id} value={String(cat.id)}>
+                                {cat.displayName}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium">Duration (min) *</label>
+                          <Input
+                            type="number"
+                            value={newService.durationMinutes}
+                            onChange={(e) => setNewService({ ...newService, durationMinutes: Number(e.target.value) })}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium">Price *</label>
+                          <Input
+                            type="number"
+                            value={newService.price}
+                            onChange={(e) => setNewService({ ...newService, price: Number(e.target.value) })}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                      </DialogClose>
+                      <Button onClick={handleAddService}>Add Service</Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </DialogContent>
+          </Dialog>
+          {getActionButton(b)}
+        </div>
+      ),
+    },
+  ]
+
   return (
     <div>
       <PageHeader title="Businesses" description="Manage all platform businesses" />
@@ -357,211 +542,34 @@ function AdminBusinesses() {
         ))}
       </div>
 
-      {loading ? (
-        <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">
-          Loading...
-        </div>
-      ) : error ? (
+      {error ? (
         <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-destructive">
           {error}
         </div>
-      ) : !businesses || businesses.list.length === 0 ? (
-        <EmptyState message="No businesses found" />
       ) : (
         <>
-          <div className="mb-4 text-sm text-muted-foreground">
-            {businesses.totalElements} business{businesses.totalElements !== 1 ? "es" : ""} found
-          </div>
-
-          <div className="rounded-lg border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead>Location</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Rating</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {businesses.list.map((b) => (
-                  <TableRow key={b.id}>
-                    <TableCell className="font-medium">{b.name}</TableCell>
-                    <TableCell className="text-muted-foreground">{b.categoryName}</TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {b.location ? `${b.location.city}, ${b.location.country}` : "-"}
-                    </TableCell>
-                    <TableCell>
-                      <StatusBadge
-                        status={
-                          b.status === "PENDING_VERIFICATION"
-                            ? "pending"
-                            : b.status === "SUSPENDED" || b.status === "DEACTIVATED"
-                              ? "blocked"
-                              : "confirmed"
-                        }
-                      />
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {b.overallRating ? `${b.overallRating.toFixed(1)} (${b.totalReviews})` : "No ratings"}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex items-center justify-end gap-1">
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button variant="outline" size="xs" onClick={() => openServices(b)}>
-                              <Scissors className="size-3" />
-                              Services
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="max-w-2xl">
-                            <DialogHeader>
-                              <DialogTitle>Services - {selectedBusiness?.name}</DialogTitle>
-                            </DialogHeader>
-                            <div className="max-h-96 space-y-4 overflow-y-auto">
-                              {servicesLoading ? (
-                                <p className="py-4 text-center text-sm text-muted-foreground">Loading services...</p>
-                              ) : services.length === 0 ? (
-                                <EmptyState message="No services yet" height="h-32" />
-                              ) : (
-                                <div className="space-y-2">
-                                  {services.map((s) => (
-                                    <div
-                                      key={s.id}
-                                      className="flex items-center justify-between rounded-lg border p-3"
-                                    >
-                                      <div>
-                                        <p className="text-sm font-medium">{s.name}</p>
-                                        <p className="text-xs text-muted-foreground">
-                                          {s.categoryName} &middot; {s.durationMinutes} min &middot; {s.currency} {s.price}
-                                        </p>
-                                        {s.description && (
-                                          <p className="mt-0.5 text-xs text-muted-foreground">{s.description}</p>
-                                        )}
-                                      </div>
-                                      <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                          <Button variant="ghost" size="icon-xs" className="text-destructive">
-                                            <Trash2 className="size-3" />
-                                          </Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent size="sm">
-                                          <AlertDialogHeader>
-                                            <AlertDialogMedia>
-                                              <Trash2 className="size-6 text-destructive" />
-                                            </AlertDialogMedia>
-                                            <AlertDialogTitle>Delete Service</AlertDialogTitle>
-                                            <AlertDialogDescription>
-                                              Delete &quot;{s.name}&quot; from {selectedBusiness?.name}?
-                                            </AlertDialogDescription>
-                                          </AlertDialogHeader>
-                                          <AlertDialogFooter>
-                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction onClick={() => handleDeleteService(s.id)}>
-                                              Delete
-                                            </AlertDialogAction>
-                                          </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                      </AlertDialog>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                            <div className="flex justify-end border-t pt-4">
-                              <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
-                                <DialogTrigger asChild>
-                                  <Button size="sm">
-                                    <Plus className="size-3" />
-                                    Add Service
-                                  </Button>
-                                </DialogTrigger>
-                                <DialogContent>
-                                  <DialogHeader>
-                                    <DialogTitle>Add Service</DialogTitle>
-                                  </DialogHeader>
-                                  <div className="space-y-4 py-4">
-                                    <div className="space-y-2">
-                                      <label className="text-sm font-medium">Service Name *</label>
-                                      <Input
-                                        value={newService.name}
-                                        onChange={(e) => setNewService({ ...newService, name: e.target.value })}
-                                        placeholder="e.g. Haircut"
-                                      />
-                                    </div>
-                                    <div className="space-y-2">
-                                      <label className="text-sm font-medium">Description</label>
-                                      <Input
-                                        value={newService.description}
-                                        onChange={(e) => setNewService({ ...newService, description: e.target.value })}
-                                        placeholder="Brief description"
-                                      />
-                                    </div>
-                                    <div className="space-y-2">
-                                      <label className="text-sm font-medium">Category *</label>
-                                      <Select
-                                        value={newService.categoryId}
-                                        onValueChange={(v) => setNewService({ ...newService, categoryId: v })}
-                                      >
-                                        <SelectTrigger className="w-full">
-                                          <SelectValue placeholder="Select category" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                          {categories.map((cat) => (
-                                            <SelectItem key={cat.id} value={String(cat.id)}>
-                                              {cat.displayName}
-                                            </SelectItem>
-                                          ))}
-                                        </SelectContent>
-                                      </Select>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                      <div className="space-y-2">
-                                        <label className="text-sm font-medium">Duration (min) *</label>
-                                        <Input
-                                          type="number"
-                                          value={newService.durationMinutes}
-                                          onChange={(e) => setNewService({ ...newService, durationMinutes: Number(e.target.value) })}
-                                        />
-                                      </div>
-                                      <div className="space-y-2">
-                                        <label className="text-sm font-medium">Price *</label>
-                                        <Input
-                                          type="number"
-                                          value={newService.price}
-                                          onChange={(e) => setNewService({ ...newService, price: Number(e.target.value) })}
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <DialogFooter>
-                                    <DialogClose asChild>
-                                      <Button variant="outline">Cancel</Button>
-                                    </DialogClose>
-                                    <Button onClick={handleAddService}>Add Service</Button>
-                                  </DialogFooter>
-                                </DialogContent>
-                              </Dialog>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-                        {getActionButton(b)}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          <Pagination
-            currentPage={current}
-            totalPages={businesses.totalPages}
-            totalElements={businesses.totalElements}
-            onPageChange={setCurrent}
+          <DataTable
+            data={businesses?.list || []}
+            columns={columns}
+            keyExtractor={(b) => b.id}
+            loading={loading}
+            emptyMessage="No businesses found"
+            cardless
           />
+
+          {businesses && businesses.totalPages > 0 && (
+            <>
+              <div className="mt-4 text-sm text-muted-foreground">
+                {businesses.totalElements} business{businesses.totalElements !== 1 ? "es" : ""} found
+              </div>
+              <Pagination
+                currentPage={current}
+                totalPages={businesses.totalPages}
+                totalElements={businesses.totalElements}
+                onPageChange={setCurrent}
+              />
+            </>
+          )}
         </>
       )}
     </div>
