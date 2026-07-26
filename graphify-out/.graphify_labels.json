@@ -74,21 +74,5 @@
   "72": "clsx",
   "73": "@hookform/resolvers",
   "74": "input-otp",
-  "75": "lucide-react",
-  "76": "next",
-  "77": "next-themes",
-  "78": "radix-ui",
-  "79": "react-day-picker",
-  "80": "react-dom",
-  "81": "react-leaflet",
-  "82": "shadcn",
-  "83": "sonner",
-  "84": "swr",
-  "85": "tailwind-merge",
-  "86": "@tanstack/react-table",
-  "87": "tw-animate-css",
-  "88": "wretch",
-  "89": "zod",
-  "90": "page.tsx",
-  "91": "input-otp.tsx"
+  "90": "page.tsx"
 }

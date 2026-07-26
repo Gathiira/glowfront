@@ -88,5 +88,7 @@
   "86": "@tanstack/react-table",
   "87": "tw-animate-css",
   "88": "wretch",
-  "89": "zod"
+  "89": "zod",
+  "90": "page.tsx",
+  "91": "input-otp.tsx"
 }
