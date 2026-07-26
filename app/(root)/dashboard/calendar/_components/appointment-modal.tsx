@@ -2,6 +2,15 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { X } from "lucide-react"
 
 type Props = {
   modal: "appointment" | "block" | null
@@ -26,35 +35,49 @@ export function AppointmentModal({
   onDelete,
   onClose,
 }: Props) {
-  if (modal !== "appointment" && modal !== "block") return null
+  const open = modal === "appointment" || modal === "block"
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-      onClick={onClose}
+    <Dialog
+      open={open}
+      onOpenChange={(v) => {
+        if (!v) onClose()
+      }}
     >
-      <div
-        className="w-full max-w-md rounded-xl bg-background p-6 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 className="text-lg font-semibold">
-          {editingId ? "Edit Appointment" : modal === "block" ? "Block Time" : "New Appointment"}
-        </h3>
-        <p className="mb-4 text-sm text-muted-foreground">
+      <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+        <DialogHeader>
+          <DialogTitle>
+            {editingId
+              ? "Edit Appointment"
+              : modal === "block"
+                ? "Block Time"
+                : "New Appointment"}
+          </DialogTitle>
+          <DialogClose className="absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100">
+            <X className="size-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+        </DialogHeader>
+
+        <p className="text-sm text-muted-foreground">
           {selectedDate &&
             new Date(selectedDate + "T12:00:00").toLocaleDateString("en-US", {
               weekday: "short",
               month: "short",
               day: "numeric",
             })}
-          {selectedHour !== null && ` · ${selectedHour.toString().padStart(2, "0")}:00`}
+          {selectedHour !== null &&
+            ` · ${selectedHour.toString().padStart(2, "0")}:00`}
         </p>
+
         <div className="space-y-3">
           {modal !== "block" && (
             <Input
               placeholder="Client name"
               value={form.client}
-              onChange={(e) => onFormChange({ ...form, client: e.target.value })}
+              onChange={(e) =>
+                onFormChange({ ...form, client: e.target.value })
+              }
             />
           )}
           <Input
@@ -77,7 +100,8 @@ export function AppointmentModal({
             rows={2}
           />
         </div>
-        <div className="flex justify-end gap-2 pt-4">
+
+        <DialogFooter className="flex justify-end gap-2 pt-2">
           {editingId && (
             <Button variant="destructive" onClick={() => onDelete(editingId)}>
               Delete
@@ -89,8 +113,8 @@ export function AppointmentModal({
           <Button onClick={onSave}>
             {editingId ? "Update" : modal === "block" ? "Block" : "Save"}
           </Button>
-        </div>
-      </div>
-    </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }

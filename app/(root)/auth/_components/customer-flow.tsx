@@ -428,7 +428,7 @@ const CustomerFlow = () => {
       </div>
 
       <Dialog open={mode === "success"}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
           <DialogHeader>
             <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary/10">
               <Sparkles className="size-8 text-primary" />

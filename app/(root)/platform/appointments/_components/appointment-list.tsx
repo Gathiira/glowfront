@@ -65,7 +65,7 @@ export function AppointmentList({
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Keep it</AlertDialogCancel>
-                      <AlertDialogAction onClick={() => onCancel(a.id)}>
+                      <AlertDialogAction variant="destructive" onClick={() => onCancel(a.id)}>
                         Yes, cancel
                       </AlertDialogAction>
                     </AlertDialogFooter>

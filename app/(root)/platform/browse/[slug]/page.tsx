@@ -1,20 +1,17 @@
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
 import { useCustomer } from "@/lib/customer-context"
 import { Footer } from "@/components/landing/_components/footer"
 import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Star,
@@ -48,11 +45,9 @@ import type {
 } from "@/lib/types"
 
 import { BusinessMap } from "@/components/map/business-map"
+import { BookingModal } from "@/components/customer/booking-modal"
+import { ReviewModal } from "@/app/(root)/platform/appointments/_components/review-modal"
 
-const HOURS = Array.from(
-  { length: 10 },
-  (_, i) => `${(i + 9).toString().padStart(2, "0")}:00`
-)
 const REVIEW_PAGE_SIZE = 5
 
 const DAY_ORDER = [
@@ -76,24 +71,6 @@ function formatTime(time: string): string {
   const ampm = hour >= 12 ? "PM" : "AM"
   const h12 = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour
   return `${h12}:${m} ${ampm}`
-}
-
-function formatDate(date: Date): string {
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
-}
-
-function getDaysInMonth(year: number, month: number): number {
-  return new Date(year, month + 1, 0).getDate()
-}
-
-function getFirstDayOfMonth(year: number, month: number): number {
-  return new Date(year, month, 1).getDay()
-}
-
-function isPastDate(dateStr: string): boolean {
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-  return new Date(dateStr + "T00:00:00") < today
 }
 
 function StarRating({
@@ -241,16 +218,9 @@ export default function BusinessDetail() {
 
   const [selectedService, setSelectedService] = useState<string | null>(null)
   const [selectedMember, setSelectedMember] = useState<string | null>(null)
-  const [notes, setNotes] = useState("")
-
-  const [calYear, setCalYear] = useState(new Date().getFullYear())
-  const [calMonth, setCalMonth] = useState(new Date().getMonth())
-  const [selectedDate, setSelectedDate] = useState<string | null>(null)
-  const [selectedTime, setSelectedTime] = useState<string | null>(null)
+  const [bookingOpen, setBookingOpen] = useState(false)
 
   const [reviewModal, setReviewModal] = useState(false)
-  const [reviewRating, setReviewRating] = useState(0)
-  const [reviewText, setReviewText] = useState("")
 
   const loadBusiness = useCallback(async () => {
     setLoading(true)
@@ -313,15 +283,9 @@ export default function BusinessDetail() {
   const customerAppts = business
     ? getAppointmentsForBusiness(String(business.id))
     : []
-  const existingAppts = customerAppts.filter(
-    (a) => a.date === selectedDate && a.status !== "cancelled"
-  )
-
-  const availableTimes = useMemo(() => {
-    if (!selectedDate) return []
-    const booked = existingAppts.map((a) => a.startTime)
-    return HOURS.filter((h) => !booked.includes(h))
-  }, [selectedDate, existingAppts])
+  const bookedSlots = customerAppts
+    .filter((a) => a.status !== "cancelled")
+    .map((a) => ({ date: a.date, startTime: a.startTime }))
 
   const selectedServiceData = services.find(
     (s) => s.id === Number(selectedService)
@@ -377,28 +341,24 @@ export default function BusinessDetail() {
         ? `From ${CURRENCY} ${business.priceRangeMin.toLocaleString()}`
         : null
 
-  const daysInMonth = getDaysInMonth(calYear, calMonth)
-  const firstDay = getFirstDayOfMonth(calYear, calMonth)
-  const blanks = Array.from({ length: firstDay }, (_, i) => i)
-  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1)
-  const monthLabel = new Date(calYear, calMonth).toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric",
-  })
-
-  const handleBook = async () => {
-    if (!business || !selectedServiceData || !selectedDate || !selectedTime) return
+  const handleBook = async (data: {
+    date: string
+    time: string
+    staffId?: number
+    notes?: string
+  }) => {
+    if (!business || !selectedServiceData) return
     try {
       await createBooking({
         businessId: business.id,
         serviceId: selectedServiceData.id,
-        staffId: selectedMember ? Number(selectedMember) : undefined,
-        bookingDate: selectedDate,
-        bookingTime: selectedTime,
-        notes: notes || undefined,
+        staffId: data.staffId,
+        bookingDate: data.date,
+        bookingTime: data.time,
+        notes: data.notes,
       })
       const endHour =
-        parseInt(selectedTime) +
+        parseInt(data.time) +
         Math.ceil(selectedServiceData.durationMinutes / 60)
       const endTime = `${endHour.toString().padStart(2, "0")}:00`
       createAppointment({
@@ -409,34 +369,24 @@ export default function BusinessDetail() {
         teamMemberName: selectedMember
           ? staff.find((s) => s.id === Number(selectedMember))?.name
           : undefined,
-        date: selectedDate,
-        startTime: selectedTime,
+        date: data.date,
+        startTime: data.time,
         endTime,
         status: "confirmed",
-        notes: notes || undefined,
+        notes: data.notes,
       })
       toast.success("Appointment booked successfully!")
       setSelectedService(null)
       setSelectedMember(null)
-      setNotes("")
-      setSelectedDate(null)
-      setSelectedTime(null)
+      setBookingOpen(false)
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Booking failed")
     }
   }
 
-  const handleSubmitReview = () => {
-    if (reviewRating === 0 || !reviewText.trim()) return
-    toast.success("Review submitted!")
-    setReviewModal(false)
-    setReviewRating(0)
-    setReviewText("")
-  }
-
   return (
     <div className="min-h-screen">
-      <main className="mx-auto max-w-7xl px-4 py-8">
+      <main className="mx-auto max-w-7xl px-2 sm:px-4 py-8">
         <Button
           variant="ghost"
           size="sm"
@@ -566,7 +516,10 @@ export default function BusinessDetail() {
                     <button
                       key={s.id}
                       type="button"
-                      onClick={() => setSelectedService(String(s.id))}
+                      onClick={() => {
+                        setSelectedService(String(s.id))
+                        setBookingOpen(true)
+                      }}
                       className={cn(
                         "flex w-full items-center justify-between rounded-lg border p-4 text-left transition-colors hover:bg-muted",
                         selectedService === String(s.id) &&
@@ -799,177 +752,6 @@ export default function BusinessDetail() {
 
           {/* Sidebar */}
           <div className="lg:sticky lg:top-8 lg:self-start">
-            <Card>
-              <CardHeader>
-                <CardTitle>Book an Appointment</CardTitle>
-                <CardDescription>
-                  Fill in the details and we&apos;ll confirm your booking
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {selectedService && selectedServiceData && (
-                  <>
-                    <div className="rounded-lg border bg-primary/5 p-3">
-                      <p className="text-sm font-medium">
-                        {selectedServiceData.name}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {CURRENCY} {selectedServiceData.price.toLocaleString()}{" "}
-                        &middot; {selectedServiceData.durationMinutes} min
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="mb-2 flex items-center justify-between">
-                        <p className="text-sm font-medium">Select Date</p>
-                        <div className="flex gap-1">
-                          <Button
-                            variant="outline"
-                            size="icon-xs"
-                            onClick={() => {
-                              if (calMonth === 0) {
-                                setCalYear((y) => y - 1)
-                                setCalMonth(11)
-                              } else {
-                                setCalMonth((m) => m - 1)
-                              }
-                              setSelectedDate(null)
-                              setSelectedTime(null)
-                            }}
-                          >
-                            <ArrowLeft className="size-3" />
-                          </Button>
-                          <span className="flex items-center px-2 text-sm font-medium">
-                            {monthLabel}
-                          </span>
-                          <Button
-                            variant="outline"
-                            size="icon-xs"
-                            onClick={() => {
-                              if (calMonth === 11) {
-                                setCalYear((y) => y + 1)
-                                setCalMonth(0)
-                              } else {
-                                setCalMonth((m) => m + 1)
-                              }
-                              setSelectedDate(null)
-                              setSelectedTime(null)
-                            }}
-                          >
-                            <ArrowLeft className="size-3 rotate-180" />
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-7 gap-0.5 text-center text-xs">
-                        {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
-                          <div
-                            key={d}
-                            className="py-1 font-medium text-muted-foreground"
-                          >
-                            {d}
-                          </div>
-                        ))}
-                        {blanks.map((i) => (
-                          <div key={`b-${i}`} />
-                        ))}
-                        {days.map((day) => {
-                          const dateStr = formatDate(
-                            new Date(calYear, calMonth, day)
-                          )
-                          const past = isPastDate(dateStr)
-                          return (
-                            <button
-                              key={day}
-                              type="button"
-                              disabled={past}
-                              onClick={() => {
-                                setSelectedDate(dateStr)
-                                setSelectedTime(null)
-                              }}
-                              className={cn(
-                                "flex aspect-square items-center justify-center rounded-full text-sm transition-colors",
-                                past
-                                  ? "cursor-not-allowed opacity-30"
-                                  : "hover:bg-muted",
-                                selectedDate === dateStr
-                                  ? "bg-primary text-primary-foreground hover:bg-primary"
-                                  : "",
-                                !past &&
-                                  existingAppts.length >= HOURS.length &&
-                                  "text-destructive/60"
-                              )}
-                            >
-                              {day}
-                            </button>
-                          )
-                        })}
-                      </div>
-                    </div>
-
-                    {selectedDate && (
-                      <div>
-                        <p className="mb-2 text-sm font-medium">Select Time</p>
-                        {availableTimes.length === 0 ? (
-                          <p className="text-sm text-muted-foreground">
-                            No available slots
-                          </p>
-                        ) : (
-                          <div className="grid grid-cols-3 gap-2">
-                            {availableTimes.map((t) => (
-                              <button
-                                key={t}
-                                type="button"
-                                onClick={() => setSelectedTime(t)}
-                                className={cn(
-                                  "rounded-lg border px-3 py-2 text-sm transition-colors hover:bg-muted",
-                                  selectedTime === t &&
-                                    "border-primary bg-primary/5 font-medium"
-                                )}
-                              >
-                                {t}
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    <Separator />
-
-                    <div>
-                      <label
-                        htmlFor="book-notes"
-                        className="mb-1 block text-sm font-medium"
-                      >
-                        Notes
-                      </label>
-                      <Textarea
-                        id="book-notes"
-                        placeholder="Any special requests..."
-                        value={notes}
-                        onChange={(e) => setNotes(e.target.value)}
-                        rows={3}
-                      />
-                    </div>
-
-                    <Button
-                      className="w-full"
-                      disabled={!selectedDate || !selectedTime}
-                      onClick={handleBook}
-                    >
-                      Book Appointment
-                    </Button>
-                  </>
-                )}
-
-                {!selectedService && (
-                  <p className="text-center text-sm text-muted-foreground">
-                    Select a service to book
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
             {/* Quick Opening Hours */}
             {sortedHours.length > 0 && (
               <Card className="mt-4">
@@ -1001,63 +783,20 @@ export default function BusinessDetail() {
 
       <Footer />
 
-      {/* Review Modal */}
-      {reviewModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-          onClick={() => setReviewModal(false)}
-        >
-          <div
-            className="w-full max-w-md rounded-xl bg-background p-6 shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-lg font-semibold">Write a Review</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              Share your experience at {business.name}
-            </p>
-
-            <div className="mb-4 flex justify-center gap-1">
-              {Array.from({ length: 5 }, (_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setReviewRating(i + 1)}
-                  className="transition-transform hover:scale-110"
-                >
-                  <Star
-                    className={cn(
-                      "size-8",
-                      i < reviewRating
-                        ? "fill-amber-400 text-amber-400"
-                        : "text-muted-foreground"
-                    )}
-                  />
-                </button>
-              ))}
-            </div>
-
-            <Textarea
-              placeholder="Tell us about your experience..."
-              value={reviewText}
-              onChange={(e) => setReviewText(e.target.value)}
-              rows={4}
-              className="mb-4"
-            />
-
-            <div className="flex justify-end gap-2">
-              <Button variant="outline" onClick={() => setReviewModal(false)}>
-                Cancel
-              </Button>
-              <Button
-                onClick={handleSubmitReview}
-                disabled={reviewRating === 0 || !reviewText.trim()}
-              >
-                Submit Review
-              </Button>
-            </div>
-          </div>
-        </div>
+      {selectedServiceData && (
+        <BookingModal
+          open={bookingOpen}
+          onClose={() => setBookingOpen(false)}
+          service={selectedServiceData}
+          staff={staff}
+          selectedMember={selectedMember}
+          onSelectMember={setSelectedMember}
+          onBook={handleBook}
+          bookedSlots={bookedSlots}
+        />
       )}
+
+      <ReviewModal open={reviewModal} onClose={() => setReviewModal(false)} />
     </div>
   )
 }

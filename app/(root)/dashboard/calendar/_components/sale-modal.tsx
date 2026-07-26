@@ -2,6 +2,14 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog"
+import { X } from "lucide-react"
 
 type Props = {
   open: boolean
@@ -12,25 +20,25 @@ type Props = {
 }
 
 export function SaleModal({ open, form, onFormChange, onSave, onClose }: Props) {
-  if (!open) return null
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-      onClick={onClose}
-    >
-      <div
-        className="w-full max-w-md rounded-xl bg-background p-6 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 className="text-lg font-semibold">Record Sale</h3>
-        <p className="mb-4 text-sm text-muted-foreground">
+    <Dialog open={open} onOpenChange={(v) => { if (!v) onClose() }}>
+      <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+        <DialogHeader>
+          <DialogTitle>Record Sale</DialogTitle>
+          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100">
+            <X className="size-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+        </DialogHeader>
+
+        <p className="text-sm text-muted-foreground">
           {new Date().toLocaleDateString("en-US", {
             weekday: "short",
             month: "short",
             day: "numeric",
           })}
         </p>
+
         <div className="space-y-3">
           <Input
             placeholder="Client name"
@@ -44,13 +52,14 @@ export function SaleModal({ open, form, onFormChange, onSave, onClose }: Props) 
           />
           <Input placeholder="Amount" type="number" />
         </div>
-        <div className="flex justify-end gap-2 pt-4">
+
+        <div className="flex justify-end gap-2 pt-2">
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>
           <Button onClick={onSave}>Record Payment</Button>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }

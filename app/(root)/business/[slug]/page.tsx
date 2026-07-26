@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useMemo } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -19,10 +19,7 @@ import {
 import { Header } from "@/components/landing/_components/header"
 import { Footer } from "@/components/landing/_components/footer"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
@@ -31,6 +28,7 @@ import { Pagination } from "@/components/dashboard/pagination"
 import { CURRENCY } from "@/lib/types"
 import type { BusinessDto, ReviewDto, StaffDto, ServiceDto, PaginatedResponse } from "@/lib/types"
 import { BusinessMap } from "@/components/map/business-map"
+import { BookingModal } from "@/components/customer/booking-modal"
 
 const REVIEW_PAGE_SIZE = 5
 
@@ -183,12 +181,13 @@ export default function BusinessDetailPage() {
   const [services, setServices] = useState<ServiceDto[]>([])
 
   const [selectedService, setSelectedService] = useState<string | null>(null)
-  const [bookingName, setBookingName] = useState("")
-  const [bookingEmail, setBookingEmail] = useState("")
-  const [bookingPhone, setBookingPhone] = useState("")
-  const [bookingDate, setBookingDate] = useState("")
-  const [bookingTime, setBookingTime] = useState("")
-  const [bookingNotes, setBookingNotes] = useState("")
+  const [bookingOpen, setBookingOpen] = useState(false)
+  const [selectedMember, setSelectedMember] = useState<string | null>(null)
+
+  const selectedServiceData = useMemo(
+    () => services.find((s) => String(s.id) === selectedService) ?? null,
+    [services, selectedService]
+  )
 
   const loadBusiness = useCallback(async () => {
     setLoading(true)
@@ -215,30 +214,38 @@ export default function BusinessDetailPage() {
     }
   }, [])
 
-  const handleBook = async () => {
-    if (!business || !selectedService || !bookingName || !bookingDate || !bookingTime) {
-      toast.error("Please fill in all required fields")
+  const handleBook = async (data: {
+    date: string
+    time: string
+    staffId?: number
+    notes?: string
+    customerName?: string
+    customerEmail?: string
+    customerPhone?: string
+  }) => {
+    if (!business || !selectedServiceData) {
+      toast.error("Please select a service")
+      return
+    }
+    if (!data.customerName) {
+      toast.error("Please fill in your name")
       return
     }
     try {
       await createBooking({
         businessId: business.id,
-        serviceId: Number(selectedService),
-        bookingDate,
-        bookingTime,
-        notes: bookingNotes || undefined,
-        customerName: bookingName,
-        customerPhone: bookingPhone || undefined,
-        customerEmail: bookingEmail || undefined,
+        serviceId: selectedServiceData.id,
+        bookingDate: data.date,
+        bookingTime: data.time,
+        notes: data.notes || undefined,
+        customerName: data.customerName,
+        customerPhone: data.customerPhone || undefined,
+        customerEmail: data.customerEmail || undefined,
       })
       toast.success("Booking request submitted! We'll contact you shortly.")
       setSelectedService(null)
-      setBookingName("")
-      setBookingEmail("")
-      setBookingPhone("")
-      setBookingDate("")
-      setBookingTime("")
-      setBookingNotes("")
+      setSelectedMember(null)
+      setBookingOpen(false)
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Booking failed")
     }
@@ -282,7 +289,6 @@ export default function BusinessDetailPage() {
             <Link href="/browse">Browse Businesses</Link>
           </Button>
         </div>
-        <Footer />
       </div>
     )
   }
@@ -437,13 +443,17 @@ export default function BusinessDetailPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Services &amp; Pricing</CardTitle>
+                  <p className="text-sm text-muted-foreground">Click a service to book</p>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {services.map((s) => (
                     <button
                       key={s.id}
                       type="button"
-                      onClick={() => setSelectedService(String(s.id))}
+                      onClick={() => {
+                        setSelectedService(String(s.id))
+                        setBookingOpen(true)
+                      }}
                       className={cn(
                         "flex w-full items-center justify-between rounded-lg border p-4 text-left transition-colors hover:bg-muted",
                         selectedService === String(s.id) && "border-primary bg-primary/5"
@@ -658,106 +668,11 @@ export default function BusinessDetailPage() {
 
           {/* Sidebar */}
           <div className="lg:sticky lg:top-8 lg:self-start">
-            <Card>
-              <CardHeader>
-                <CardTitle>Book an Appointment</CardTitle>
-                <CardDescription>
-                  Fill in the details and we&apos;ll confirm your booking
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {selectedService && (
-                  <>
-                    <div>
-                      <label htmlFor="book-date" className="mb-1 block text-sm font-medium">
-                        Date *
-                      </label>
-                      <Input
-                        id="book-date"
-                        type="date"
-                        value={bookingDate}
-                        onChange={(e) => setBookingDate(e.target.value)}
-                        min={new Date().toISOString().split("T")[0]}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="book-time" className="mb-1 block text-sm font-medium">
-                        Time *
-                      </label>
-                      <Input
-                        id="book-time"
-                        type="time"
-                        value={bookingTime}
-                        onChange={(e) => setBookingTime(e.target.value)}
-                      />
-                    </div>
-                    <Separator />
-                    <div>
-                      <label htmlFor="book-name" className="mb-1 block text-sm font-medium">
-                        Name *
-                      </label>
-                      <Input
-                        id="book-name"
-                        placeholder="Your name"
-                        value={bookingName}
-                        onChange={(e) => setBookingName(e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="book-email" className="mb-1 block text-sm font-medium">
-                        Email
-                      </label>
-                      <Input
-                        id="book-email"
-                        type="email"
-                        placeholder="your@email.com"
-                        value={bookingEmail}
-                        onChange={(e) => setBookingEmail(e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="book-phone" className="mb-1 block text-sm font-medium">
-                        Phone
-                      </label>
-                      <Input
-                        id="book-phone"
-                        type="tel"
-                        placeholder="+254 7XX XXX XXX"
-                        value={bookingPhone}
-                        onChange={(e) => setBookingPhone(e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="book-notes" className="mb-1 block text-sm font-medium">
-                        Notes
-                      </label>
-                      <Textarea
-                        id="book-notes"
-                        placeholder="Any special requests..."
-                        value={bookingNotes}
-                        onChange={(e) => setBookingNotes(e.target.value)}
-                        rows={3}
-                      />
-                    </div>
-                    <Button className="w-full" onClick={handleBook}>
-                      Book Appointment
-                    </Button>
-                  </>
-                )}
-
-                {!selectedService && (
-                  <p className="text-center text-sm text-muted-foreground">
-                    Select a service to book
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
             {/* Quick Opening Hours */}
             {sortedHours.length > 0 && (
               <Card className="mt-4">
                 <CardHeader>
-                  <CardTitle className="text-base">Hours</CardTitle>
+                  <CardTitle className="text-base">Operating Hours</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-1.5">
                   {sortedHours.map((h) => (
@@ -779,6 +694,24 @@ export default function BusinessDetailPage() {
           </div>
         </div>
       </main>
+
+      {selectedServiceData && (
+        <BookingModal
+          open={bookingOpen}
+          onClose={() => {
+            setBookingOpen(false)
+            setSelectedService(null)
+            setSelectedMember(null)
+          }}
+          service={selectedServiceData}
+          staff={staff}
+          selectedMember={selectedMember}
+          onSelectMember={setSelectedMember}
+          onBook={handleBook}
+          bookedSlots={[]}
+          customerInfo
+        />
+      )}
 
       <Footer />
     </div>

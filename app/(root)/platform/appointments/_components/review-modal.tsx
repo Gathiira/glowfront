@@ -1,11 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Star } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
+
+export const reviewSchema = z.object({
+  rating: z.number().min(1, "Please select a rating").max(5),
+  text: z.string().min(1, "Please write a review").max(1000),
+})
+
+type ReviewFormData = z.infer<typeof reviewSchema>
 
 type Props = {
   open: boolean
@@ -13,73 +29,94 @@ type Props = {
 }
 
 export function ReviewModal({ open, onClose }: Props) {
-  const [rating, setRating] = useState(0)
-  const [text, setText] = useState("")
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<ReviewFormData>({
+    resolver: zodResolver(reviewSchema),
+    defaultValues: { rating: 0, text: "" },
+    mode: "onChange",
+  })
 
-  if (!open) return null
+  const rating = watch("rating")
 
-  const handleSubmit = () => {
-    if (rating === 0 || !text.trim()) return
+  const onSubmit = () => {
     toast.success("Review submitted!")
-    setRating(0)
-    setText("")
+    reset()
     onClose()
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-      onClick={onClose}
+    <Dialog
+      open={open}
+      onOpenChange={(v) => {
+        if (!v) {
+          reset()
+          onClose()
+        }
+      }}
     >
-      <div
-        className="w-full max-w-md rounded-xl bg-background p-6 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 className="text-lg font-semibold">Write a Review</h3>
-        <p className="mb-4 text-sm text-muted-foreground">
-          How was your experience?
-        </p>
+      <DialogContent className="max-h-[90vh] rounded-b-none sm:rounded-b-lg">
+        <DialogHeader>
+          <DialogTitle>Write a Review</DialogTitle>
+        </DialogHeader>
 
-        <div className="mb-4 flex justify-center gap-1">
-          {Array.from({ length: 5 }, (_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setRating(i + 1)}
-              className="transition-transform hover:scale-110"
-            >
-              <Star
-                className={cn(
-                  "size-8",
-                  i < rating
-                    ? "fill-amber-400 text-amber-400"
-                    : "text-muted-foreground",
-                )}
-              />
-            </button>
-          ))}
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <p className="text-sm text-muted-foreground">
+            How was your experience?
+          </p>
 
-        <Textarea
-          placeholder="Tell us about your experience..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={4}
-          className="mb-4"
-        />
+          <div className="flex justify-center gap-1">
+            {Array.from({ length: 5 }, (_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() =>
+                  setValue("rating", i + 1, { shouldValidate: true })
+                }
+                className="transition-transform hover:scale-110"
+              >
+                <Star
+                  className={cn(
+                    "size-8",
+                    i < rating
+                      ? "fill-amber-400 text-amber-400"
+                      : "text-muted-foreground"
+                  )}
+                />
+              </button>
+            ))}
+          </div>
+          {errors.rating && (
+            <p className="text-center text-xs text-destructive">
+              {errors.rating.message}
+            </p>
+          )}
 
-        <div className="flex justify-end gap-2">
-          <Button variant="outline" onClick={onClose}>
-            Cancel
-          </Button>
-          <Button
-            onClick={handleSubmit}
-            disabled={rating === 0 || !text.trim()}
-          >
-            Submit Review
-          </Button>
-        </div>
-      </div>
-    </div>
+          <Textarea
+            placeholder="Tell us about your experience..."
+            {...register("text")}
+            rows={4}
+          />
+          {errors.text && (
+            <p className="text-xs text-destructive">{errors.text.message}</p>
+          )}
+        </form>
+        <DialogFooter>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" type="button" onClick={onClose}>
+              Cancel
+            </Button>
+            <Button onClick={() => handleSubmit(onSubmit)()} disabled={!isValid}>
+              Submit Review
+            </Button>
+          </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
