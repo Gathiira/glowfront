@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
-import { ROLE_CUSTOMER, ROLE_PARTNER } from "@/lib/roles"
+import { ROLE_CUSTOMER, ROLE_PARTNER, ROLE_ADMIN } from "@/lib/roles"
 
 const SESSION_COOKIE = process.env.SESSION_COOKIE_NAME ?? "session"
 
 function normalizeRole(role: string): string {
   if (role === "partner") return ROLE_PARTNER
   if (role === "customer") return ROLE_CUSTOMER
+  if (role === "admin") return ROLE_ADMIN
   return role
 }
 
@@ -39,11 +40,18 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
-  if (pathname.startsWith("/platform") && !roles.includes(ROLE_CUSTOMER)) {
+  if (pathname.startsWith("/platform") && !roles.includes(ROLE_CUSTOMER) && !roles.includes(ROLE_ADMIN)) {
     return NextResponse.redirect(new URL("/dashboard/home", request.url))
   }
 
-  if (pathname.startsWith("/dashboard") && !roles.includes(ROLE_PARTNER)) {
+  if (pathname.startsWith("/dashboard") && !roles.includes(ROLE_PARTNER) && !roles.includes(ROLE_ADMIN)) {
+    return NextResponse.redirect(new URL("/platform/home", request.url))
+  }
+
+  if (pathname.startsWith("/admin") && !roles.includes(ROLE_ADMIN)) {
+    if (roles.includes(ROLE_PARTNER)) {
+      return NextResponse.redirect(new URL("/dashboard/home", request.url))
+    }
     return NextResponse.redirect(new URL("/platform/home", request.url))
   }
 
@@ -51,5 +59,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/platform/:path*", "/dashboard/:path*"],
+  matcher: ["/platform/:path*", "/dashboard/:path*", "/admin/:path*"],
 }
