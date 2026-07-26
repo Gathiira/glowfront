@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 137 files · ~56,872 words
+- 137 files · ~56,899 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 747 nodes · 1094 edges · 90 communities (58 shown, 32 thin omitted)
+- 748 nodes · 1095 edges · 92 communities (57 shown, 35 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c08f8b4c`
+- Built from commit: `7e51fc35`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -87,6 +87,8 @@
 - tw-animate-css
 - wretch
 - zod
+- page.tsx
+- input-otp.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 120 edges
@@ -115,11 +117,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (90 total, 32 thin omitted)
+## Communities (92 total, 35 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
-Cohesion: 0.10
-Nodes (25): appointments, clients, segments, payments, PageHeader(), Props, Props, StatCard() (+17 more)
+Cohesion: 0.12
+Nodes (21): appointments, clients, segments, payments, days, Shift, PageHeader(), Props (+13 more)
 
 ### Community 1 - "Landing & Auth Pages"
 Cohesion: 0.08
@@ -146,8 +148,8 @@ Cohesion: 0.07
 Nodes (29): ./*, dom, dom.iterable, esnext, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+21 more)
 
 ### Community 7 - "Business Browse"
-Cohesion: 0.05
-Nodes (42): BrowseContent(), cities, allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics (+34 more)
+Cohesion: 0.06
+Nodes (36): BrowseContent(), cities, allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics (+28 more)
 
 ### Community 8 - "Dashboard Layout & Sidebar"
 Cohesion: 0.33
@@ -182,16 +184,16 @@ Cohesion: 0.12
 Nodes (9): DropdownMenuCheckboxItem(), DropdownMenuContent(), DropdownMenuItem(), DropdownMenuLabel(), DropdownMenuRadioItem(), DropdownMenuSeparator(), DropdownMenuShortcut(), DropdownMenuSubContent() (+1 more)
 
 ### Community 16 - "Business Detail Page"
-Cohesion: 0.12
-Nodes (19): AppointmentModal(), Props, Props, SaleModal(), Appointment, Calendar(), colors, HOURS (+11 more)
+Cohesion: 0.14
+Nodes (18): AppointmentModal(), Props, Props, SaleModal(), Appointment, Calendar(), colors, HOURS (+10 more)
 
 ### Community 17 - "Location Picker & Map"
-Cohesion: 0.17
-Nodes (17): SelectContent(), SelectGroup(), SelectItem(), SelectLabel(), SelectScrollDownButton(), SelectScrollUpButton(), SelectSeparator(), SelectTrigger() (+9 more)
+Cohesion: 0.13
+Nodes (21): CardAction(), CardDescription(), CardFooter(), SelectContent(), SelectGroup(), SelectItem(), SelectLabel(), SelectScrollDownButton() (+13 more)
 
 ### Community 18 - "API Client Layer"
-Cohesion: 0.12
-Nodes (7): CustomerBookingPayload, BookingDto, BusinessDetailDto, BusinessDto, CustomerDashboardDto, ReviewDto, StaffDto
+Cohesion: 0.10
+Nodes (11): CustomerBookingPayload, BookingDto, BusinessCardDto, BusinessCategoryDto, BusinessDetailDto, BusinessDto, BusinessSearchDto, CustomerDashboardDto (+3 more)
 
 ### Community 19 - "OpenCode Config"
 Cohesion: 0.14
@@ -226,16 +228,12 @@ Cohesion: 0.40
 Nodes (4): Available commands, graphify, Project Agents, When to use
 
 ### Community 42 - "alert.tsx"
-Cohesion: 0.24
-Nodes (9): InputGroup(), InputGroupAddon(), inputGroupAddonVariants, InputGroupButton(), inputGroupButtonVariants, InputGroupInput(), InputGroupText(), InputGroupTextarea() (+1 more)
+Cohesion: 0.18
+Nodes (12): InputGroup(), InputGroupAddon(), inputGroupAddonVariants, InputGroupButton(), inputGroupButtonVariants, InputGroupInput(), InputGroupText(), InputGroupTextarea() (+4 more)
 
 ### Community 43 - "customer-flow.tsx"
 Cohesion: 0.18
 Nodes (6): LoginFormData, loginSchema, Mode, RegisterFormData, registerSchema, Header()
-
-### Community 44 - "scroll-section.tsx"
-Cohesion: 0.18
-Nodes (4): HoverCardContent(), InputOTP(), InputOTPGroup(), Switch()
 
 ### Community 45 - "alert-dialog.tsx"
 Cohesion: 0.15
@@ -280,21 +278,21 @@ Nodes (6): ThemeHotkey(), ThemeProvider(), CalendarDayButton(), InputOTPSlot(), 
 ## Knowledge Gaps
 - **242 isolated node(s):** `loginSchema`, `registerSchema`, `LoginFormData`, `RegisterFormData`, `Mode` (+237 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Business Browse`, `alert.tsx`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `input-otp.tsx`, `Item Components`, `page.tsx`, `field.tsx`, `review-modal.tsx`?**
-  _High betweenness centrality (0.208) - this node is a cross-community bridge._
+- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Business Browse`, `alert.tsx`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `input-otp.tsx`, `Item Components`, `page.tsx`, `field.tsx`, `input-otp.tsx`, `review-modal.tsx`?**
+  _High betweenness centrality (0.207) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `Dev Tooling & Linting`, `review-modal.tsx`, `clsx`, `@hookform/resolvers`, `input-otp`, `lucide-react`, `next`, `next-themes`, `radix-ui`, `react-day-picker`, `react-dom`, `react-leaflet`, `shadcn`, `sonner`, `swr`, `tailwind-merge`, `@tanstack/react-table`, `tw-animate-css`, `wretch`, `zod`?**
   _High betweenness centrality (0.113) - this node is a cross-community bridge._
 - **Why does `react` connect `review-modal.tsx` to `NPM Dependencies`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+  _High betweenness centrality (0.106) - this node is a cross-community bridge._
 - **What connects `loginSchema`, `registerSchema`, `LoginFormData` to the rest of the system?**
   _242 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
-  _Cohesion score 0.10042283298097252 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1173054587688734 - nodes in this community are weakly interconnected._
 - **Should `Landing & Auth Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.08143939393939394 - nodes in this community are weakly interconnected._
 - **Should `Auth Form Components` be split into smaller, more focused modules?**

@@ -4,15 +4,147 @@
   "graph": {},
   "nodes": [
     {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_root_dashboard_home_page",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "formatCurrency()",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "app_root_dashboard_home_page_formatcurrency",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "formatcurrency()"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "app_root_dashboard_home_page_home",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "home()"
+    },
+    {
+      "label": "date-utils.ts",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_date_utils",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "date-utils.ts"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_date_utils_formatdate",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "getDaysInMonth()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "lib_date_utils_getdaysinmonth",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "getdaysinmonth()"
+    },
+    {
+      "label": "getFirstDayOfMonth()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "lib_date_utils_getfirstdayofmonth",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "getfirstdayofmonth()"
+    },
+    {
+      "label": "isPastDate()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "lib_date_utils_ispastdate",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "ispastdate()"
+    },
+    {
+      "label": "isPastHour()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "lib_date_utils_ispasthour",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "ispasthour()"
+    },
+    {
+      "label": "isoFormatDate()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "lib_date_utils_isoformatdate",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "isoformatdate()"
+    },
+    {
+      "label": "formatTimeDisplay()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "lib_date_utils_formattimedisplay",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "formattimedisplay()"
+    },
+    {
+      "label": "formatDateShort()",
+      "file_type": "code",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "lib_date_utils_formatdateshort",
+      "community": 16,
+      "community_name": "Business Detail Page",
+      "norm_label": "formatdateshort()"
+    },
+    {
       "label": "customer-flow.tsx",
       "file_type": "code",
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "customer-flow.tsx"
+      "norm_label": "customer-flow.tsx",
+      "id": "app_root_auth_components_customer_flow"
     },
     {
       "label": "loginSchema",
@@ -20,10 +152,10 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_loginschema",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "loginschema"
+      "norm_label": "loginschema",
+      "id": "app_root_auth_components_customer_flow_loginschema"
     },
     {
       "label": "registerSchema",
@@ -31,10 +163,10 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L30",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_registerschema",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "registerschema"
+      "norm_label": "registerschema",
+      "id": "app_root_auth_components_customer_flow_registerschema"
     },
     {
       "label": "LoginFormData",
@@ -42,10 +174,10 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L49",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_loginformdata",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "loginformdata"
+      "norm_label": "loginformdata",
+      "id": "app_root_auth_components_customer_flow_loginformdata"
     },
     {
       "label": "RegisterFormData",
@@ -53,10 +185,10 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L50",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_registerformdata",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "registerformdata"
+      "norm_label": "registerformdata",
+      "id": "app_root_auth_components_customer_flow_registerformdata"
     },
     {
       "label": "Mode",
@@ -64,10 +196,10 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_mode",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "mode"
+      "norm_label": "mode",
+      "id": "app_root_auth_components_customer_flow_mode"
     },
     {
       "label": "CustomerFlow()",
@@ -75,10 +207,10 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_customerflow",
       "community": 43,
       "community_name": "customer-flow.tsx",
-      "norm_label": "customerflow()"
+      "norm_label": "customerflow()",
+      "id": "app_root_auth_components_customer_flow_customerflow"
     },
     {
       "label": "appointment-modal.tsx",
@@ -86,10 +218,10 @@
       "source_file": "app/(root)/dashboard/calendar/_components/appointment-modal.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_dashboard_calendar_components_appointment_modal",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "appointment-modal.tsx"
+      "norm_label": "appointment-modal.tsx",
+      "id": "app_root_dashboard_calendar_components_appointment_modal"
     },
     {
       "label": "Props",
@@ -97,10 +229,10 @@
       "source_file": "app/(root)/dashboard/calendar/_components/appointment-modal.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "app_root_dashboard_calendar_components_appointment_modal_props",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "app_root_dashboard_calendar_components_appointment_modal_props"
     },
     {
       "label": "AppointmentModal()",
@@ -108,10 +240,10 @@
       "source_file": "app/(root)/dashboard/calendar/_components/appointment-modal.tsx",
       "source_location": "L27",
       "_origin": "ast",
-      "id": "app_root_dashboard_calendar_components_appointment_modal_appointmentmodal",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "appointmentmodal()"
+      "norm_label": "appointmentmodal()",
+      "id": "app_root_dashboard_calendar_components_appointment_modal_appointmentmodal"
     },
     {
       "label": "sale-modal.tsx",
@@ -119,10 +251,10 @@
       "source_file": "app/(root)/dashboard/calendar/_components/sale-modal.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_dashboard_calendar_components_sale_modal",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "sale-modal.tsx"
+      "norm_label": "sale-modal.tsx",
+      "id": "app_root_dashboard_calendar_components_sale_modal"
     },
     {
       "label": "Props",
@@ -130,10 +262,10 @@
       "source_file": "app/(root)/dashboard/calendar/_components/sale-modal.tsx",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "app_root_dashboard_calendar_components_sale_modal_props",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "app_root_dashboard_calendar_components_sale_modal_props"
     },
     {
       "label": "SaleModal()",
@@ -141,10 +273,10 @@
       "source_file": "app/(root)/dashboard/calendar/_components/sale-modal.tsx",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "app_root_dashboard_calendar_components_sale_modal_salemodal",
       "community": 16,
       "community_name": "Business Detail Page",
-      "norm_label": "salemodal()"
+      "norm_label": "salemodal()",
+      "id": "app_root_dashboard_calendar_components_sale_modal_salemodal"
     },
     {
       "label": "review-modal.tsx",
@@ -152,10 +284,10 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_platform_appointments_components_review_modal",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "review-modal.tsx"
+      "norm_label": "review-modal.tsx",
+      "id": "app_root_platform_appointments_components_review_modal"
     },
     {
       "label": "reviewSchema",
@@ -163,10 +295,10 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "app_root_platform_appointments_components_review_modal_reviewschema",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "reviewschema"
+      "norm_label": "reviewschema",
+      "id": "app_root_platform_appointments_components_review_modal_reviewschema"
     },
     {
       "label": "ReviewFormData",
@@ -174,10 +306,10 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "app_root_platform_appointments_components_review_modal_reviewformdata",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "reviewformdata"
+      "norm_label": "reviewformdata",
+      "id": "app_root_platform_appointments_components_review_modal_reviewformdata"
     },
     {
       "label": "Props",
@@ -185,10 +317,10 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L26",
       "_origin": "ast",
-      "id": "app_root_platform_appointments_components_review_modal_props",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "app_root_platform_appointments_components_review_modal_props"
     },
     {
       "label": "ReviewModal()",
@@ -196,10 +328,10 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L31",
       "_origin": "ast",
-      "id": "app_root_platform_appointments_components_review_modal_reviewmodal",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "reviewmodal()"
+      "norm_label": "reviewmodal()",
+      "id": "app_root_platform_appointments_components_review_modal_reviewmodal"
     },
     {
       "label": "booking-detail-dialog.tsx",
@@ -207,10 +339,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog",
       "community": 70,
       "community_name": "category-browser.tsx",
-      "norm_label": "booking-detail-dialog.tsx"
+      "norm_label": "booking-detail-dialog.tsx",
+      "id": "components_customer_booking_detail_dialog"
     },
     {
       "label": "Props",
@@ -218,10 +350,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_props",
       "community": 70,
       "community_name": "category-browser.tsx",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "components_customer_booking_detail_dialog_props"
     },
     {
       "label": "BookingDetailDialog()",
@@ -229,10 +361,10 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_bookingdetaildialog",
       "community": 70,
       "community_name": "category-browser.tsx",
-      "norm_label": "bookingdetaildialog()"
+      "norm_label": "bookingdetaildialog()",
+      "id": "components_customer_booking_detail_dialog_bookingdetaildialog"
     },
     {
       "label": "booking-modal.tsx",
@@ -240,10 +372,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_customer_booking_modal",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "booking-modal.tsx"
+      "norm_label": "booking-modal.tsx",
+      "id": "components_customer_booking_modal"
     },
     {
       "label": "HOURS",
@@ -251,10 +383,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_hours",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "hours"
+      "norm_label": "hours",
+      "id": "components_customer_booking_modal_hours"
     },
     {
       "label": "formatDate()",
@@ -262,10 +394,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_formatdate",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "formatdate()"
+      "norm_label": "formatdate()",
+      "id": "components_customer_booking_modal_formatdate"
     },
     {
       "label": "getDaysInMonth()",
@@ -273,10 +405,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_getdaysinmonth",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "getdaysinmonth()"
+      "norm_label": "getdaysinmonth()",
+      "id": "components_customer_booking_modal_getdaysinmonth"
     },
     {
       "label": "getFirstDayOfMonth()",
@@ -284,10 +416,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L37",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_getfirstdayofmonth",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "getfirstdayofmonth()"
+      "norm_label": "getfirstdayofmonth()",
+      "id": "components_customer_booking_modal_getfirstdayofmonth"
     },
     {
       "label": "isPastDate()",
@@ -295,10 +427,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L41",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_ispastdate",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "ispastdate()"
+      "norm_label": "ispastdate()",
+      "id": "components_customer_booking_modal_ispastdate"
     },
     {
       "label": "bookingSchema",
@@ -306,10 +438,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_bookingschema",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "bookingschema"
+      "norm_label": "bookingschema",
+      "id": "components_customer_booking_modal_bookingschema"
     },
     {
       "label": "BookingFormData",
@@ -317,10 +449,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L54",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_bookingformdata",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "bookingformdata"
+      "norm_label": "bookingformdata",
+      "id": "components_customer_booking_modal_bookingformdata"
     },
     {
       "label": "Props",
@@ -328,10 +460,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L56",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_props",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "props"
+      "norm_label": "props",
+      "id": "components_customer_booking_modal_props"
     },
     {
       "label": "BookingModal()",
@@ -339,10 +471,10 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L76",
       "_origin": "ast",
-      "id": "components_customer_booking_modal_bookingmodal",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "bookingmodal()"
+      "norm_label": "bookingmodal()",
+      "id": "components_customer_booking_modal_bookingmodal"
     },
     {
       "label": "page.tsx",
@@ -1370,39 +1502,6 @@
     {
       "label": "page.tsx",
       "file_type": "code",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "page.tsx",
-      "id": "app_root_dashboard_home_page"
-    },
-    {
-      "label": "formatCurrency()",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L30",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "formatcurrency()",
-      "id": "app_root_dashboard_home_page_formatcurrency"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L34",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "home()",
-      "id": "app_root_dashboard_home_page_home"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
       "source_file": "app/(root)/dashboard/sales/cash-movement/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
@@ -1505,8 +1604,8 @@
       "source_file": "app/(root)/platform/browse/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
+      "community": 90,
+      "community_name": "page.tsx",
       "norm_label": "page.tsx",
       "id": "app_root_platform_browse_page"
     },
@@ -1516,8 +1615,8 @@
       "source_file": "app/(root)/platform/browse/page.tsx",
       "source_location": "L23",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
+      "community": 90,
+      "community_name": "page.tsx",
       "norm_label": "browse()",
       "id": "app_root_platform_browse_page_browse"
     },
@@ -1604,8 +1703,8 @@
       "source_file": "components/ui/empty-state.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
+      "community": 90,
+      "community_name": "page.tsx",
       "norm_label": "empty-state.tsx",
       "id": "components_ui_empty_state"
     },
@@ -1615,8 +1714,8 @@
       "source_file": "components/ui/empty-state.tsx",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
+      "community": 90,
+      "community_name": "page.tsx",
       "norm_label": "props",
       "id": "components_ui_empty_state_props"
     },
@@ -1626,8 +1725,8 @@
       "source_file": "components/ui/empty-state.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
+      "community": 90,
+      "community_name": "page.tsx",
       "norm_label": "emptystate()",
       "id": "components_ui_empty_state_emptystate"
     },
@@ -1663,94 +1762,6 @@
       "community_name": "loading-state.tsx",
       "norm_label": "loadingstate()",
       "id": "components_ui_loading_state_loadingstate"
-    },
-    {
-      "label": "date-utils.ts",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "date-utils.ts",
-      "id": "lib_date_utils"
-    },
-    {
-      "label": "formatDate()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "formatdate()",
-      "id": "lib_date_utils_formatdate"
-    },
-    {
-      "label": "getDaysInMonth()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "getdaysinmonth()",
-      "id": "lib_date_utils_getdaysinmonth"
-    },
-    {
-      "label": "getFirstDayOfMonth()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "getfirstdayofmonth()",
-      "id": "lib_date_utils_getfirstdayofmonth"
-    },
-    {
-      "label": "isPastDate()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "ispastdate()",
-      "id": "lib_date_utils_ispastdate"
-    },
-    {
-      "label": "isPastHour()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "ispasthour()",
-      "id": "lib_date_utils_ispasthour"
-    },
-    {
-      "label": "isoFormatDate()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L24",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "isoformatdate()",
-      "id": "lib_date_utils_isoformatdate"
-    },
-    {
-      "label": "formatTimeDisplay()",
-      "file_type": "code",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L28",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Business Detail Page",
-      "norm_label": "formattimedisplay()",
-      "id": "lib_date_utils_formattimedisplay"
     },
     {
       "label": "partner-registration-flow.tsx",
@@ -2363,8 +2374,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L153",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "businesscategorydto",
       "id": "lib_types_businesscategorydto"
     },
@@ -2374,8 +2385,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L160",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "businesssearchdto",
       "id": "lib_types_businesssearchdto"
     },
@@ -2385,8 +2396,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L174",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "paginatedresponse",
       "id": "lib_types_paginatedresponse"
     },
@@ -2396,8 +2407,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L182",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "businesscarddto",
       "id": "lib_types_businesscarddto"
     },
@@ -3969,9 +3980,9 @@
       "source_file": "app/(root)/dashboard/team/shifts/[id]/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "page.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "app_root_dashboard_team_shifts_id_page"
     },
     {
@@ -3980,9 +3991,9 @@
       "source_file": "app/(root)/dashboard/team/shifts/[id]/page.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "days",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "app_root_dashboard_team_shifts_id_page_days"
     },
     {
@@ -3991,9 +4002,9 @@
       "source_file": "app/(root)/dashboard/team/shifts/[id]/page.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "shift",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "app_root_dashboard_team_shifts_id_page_shift"
     },
     {
@@ -4002,9 +4013,9 @@
       "source_file": "app/(root)/dashboard/team/shifts/[id]/page.tsx",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "membershifts()",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "app_root_dashboard_team_shifts_id_page_membershifts"
     },
     {
@@ -4860,9 +4871,9 @@
       "source_file": "components/landing/_components/reviews.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 7,
       "norm_label": "reviews.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "Business Browse",
       "id": "components_landing_components_reviews"
     },
     {
@@ -4871,9 +4882,9 @@
       "source_file": "components/landing/_components/reviews.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 0,
+      "community": 7,
       "norm_label": "reviews()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Business Browse",
       "id": "components_landing_components_reviews_reviews"
     },
     {
@@ -4904,9 +4915,9 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "business-card.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_business_card"
     },
     {
@@ -4915,9 +4926,9 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "businesscard()",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_business_card_businesscard"
     },
     {
@@ -4937,9 +4948,9 @@
       "source_file": "components/landing/data.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 7,
       "norm_label": "review",
-      "community_name": "Dashboard Pages",
+      "community_name": "Business Browse",
       "id": "components_landing_data_review"
     },
     {
@@ -5025,9 +5036,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "scroll-section.tsx",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_scroll_section"
     },
     {
@@ -5036,9 +5047,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "cardskeleton()",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_scroll_section_cardskeleton"
     },
     {
@@ -5047,9 +5058,9 @@
       "source_file": "components/landing/scroll-section.tsx",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 7,
+      "community": 0,
       "norm_label": "scrollsection()",
-      "community_name": "Business Browse",
+      "community_name": "Dashboard Pages",
       "id": "components_landing_scroll_section_scrollsection"
     },
     {
@@ -5476,9 +5487,9 @@
       "source_file": "components/ui/card.tsx",
       "source_location": "L49",
       "_origin": "ast",
-      "community": 0,
+      "community": 17,
       "norm_label": "carddescription()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Location Picker & Map",
       "id": "components_ui_card_carddescription"
     },
     {
@@ -5487,9 +5498,9 @@
       "source_file": "components/ui/card.tsx",
       "source_location": "L59",
       "_origin": "ast",
-      "community": 0,
+      "community": 17,
       "norm_label": "cardaction()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Location Picker & Map",
       "id": "components_ui_card_cardaction"
     },
     {
@@ -5509,9 +5520,9 @@
       "source_file": "components/ui/card.tsx",
       "source_location": "L82",
       "_origin": "ast",
-      "community": 0,
+      "community": 17,
       "norm_label": "cardfooter()",
-      "community_name": "Dashboard Pages",
+      "community_name": "Location Picker & Map",
       "id": "components_ui_card_cardfooter"
     },
     {
@@ -5971,9 +5982,9 @@
       "source_file": "components/ui/input-otp.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 44,
+      "community": 91,
       "norm_label": "input-otp.tsx",
-      "community_name": "scroll-section.tsx",
+      "community_name": "input-otp.tsx",
       "id": "components_ui_input_otp"
     },
     {
@@ -5982,9 +5993,9 @@
       "source_file": "components/ui/input-otp.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 44,
+      "community": 91,
       "norm_label": "inputotp()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "input-otp.tsx",
       "id": "components_ui_input_otp_inputotp"
     },
     {
@@ -5993,9 +6004,9 @@
       "source_file": "components/ui/input-otp.tsx",
       "source_location": "L30",
       "_origin": "ast",
-      "community": 44,
+      "community": 91,
       "norm_label": "inputotpgroup()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "input-otp.tsx",
       "id": "components_ui_input_otp_inputotpgroup"
     },
     {
@@ -6015,9 +6026,9 @@
       "source_file": "components/ui/input-otp.tsx",
       "source_location": "L73",
       "_origin": "ast",
-      "community": 44,
+      "community": 91,
       "norm_label": "inputotpseparator()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "input-otp.tsx",
       "id": "components_ui_input_otp_inputotpseparator"
     },
     {
@@ -6026,9 +6037,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 42,
       "norm_label": "input.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "alert.tsx",
       "id": "components_ui_input"
     },
     {
@@ -6037,9 +6048,9 @@
       "source_file": "components/ui/input.tsx",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 0,
+      "community": 42,
       "norm_label": "input()",
-      "community_name": "Dashboard Pages",
+      "community_name": "alert.tsx",
       "id": "components_ui_input_input"
     },
     {
@@ -6213,9 +6224,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 42,
       "norm_label": "password-input.tsx",
-      "community_name": "Dashboard Pages",
+      "community_name": "alert.tsx",
       "id": "components_ui_password_input"
     },
     {
@@ -6224,9 +6235,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 0,
+      "community": 42,
       "norm_label": "passwordinputprops",
-      "community_name": "Dashboard Pages",
+      "community_name": "alert.tsx",
       "id": "components_ui_password_input_passwordinputprops"
     },
     {
@@ -6235,9 +6246,9 @@
       "source_file": "components/ui/password-input.tsx",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 0,
+      "community": 42,
       "norm_label": "passwordinput()",
-      "community_name": "Dashboard Pages",
+      "community_name": "alert.tsx",
       "id": "components_ui_password_input_passwordinput"
     },
     {
@@ -6433,9 +6444,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 44,
+      "community": 17,
       "norm_label": "switch.tsx",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Location Picker & Map",
       "id": "components_ui_switch"
     },
     {
@@ -6444,9 +6455,9 @@
       "source_file": "components/ui/switch.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 44,
+      "community": 17,
       "norm_label": "switch()",
-      "community_name": "scroll-section.tsx",
+      "community_name": "Location Picker & Map",
       "id": "components_ui_switch_switch"
     },
     {
@@ -6741,9 +6752,9 @@
       "source_file": "lib/utils.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 44,
+      "community": 42,
       "norm_label": "utils.ts",
-      "community_name": "scroll-section.tsx",
+      "community_name": "alert.tsx",
       "id": "lib_utils"
     },
     {
@@ -8264,12 +8275,299 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "app_root_dashboard_home_page_formatcurrency",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "app_root_dashboard_home_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_date_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_date_utils_formatdateshort",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page",
+      "target": "lib_date_utils_formattimedisplay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page_home",
+      "target": "app_root_dashboard_home_page_formatcurrency",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page_home",
+      "target": "lib_date_utils_formatdateshort"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/home/page.tsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "app_root_dashboard_home_page_home",
+      "target": "lib_date_utils_formattimedisplay"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_calendar_page",
+      "target": "lib_date_utils"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_formatdateshort",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_formattimedisplay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_getdaysinmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_getfirstdayofmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_isoformatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_ispastdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/date-utils.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "lib_date_utils",
+      "target": "lib_date_utils_ispasthour",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_calendar_page",
+      "target": "lib_date_utils_formatdate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "app_root_dashboard_calendar_page_calendar",
+      "target": "lib_date_utils_formatdate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_calendar_page",
+      "target": "lib_date_utils_getdaysinmonth"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "app_root_dashboard_calendar_page_calendar",
+      "target": "lib_date_utils_getdaysinmonth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_calendar_page",
+      "target": "lib_date_utils_getfirstdayofmonth"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "app_root_dashboard_calendar_page_calendar",
+      "target": "lib_date_utils_getfirstdayofmonth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_calendar_page",
+      "target": "lib_date_utils_ispastdate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "app_root_dashboard_calendar_page_calendar",
+      "target": "lib_date_utils_ispastdate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_calendar_page",
+      "target": "lib_date_utils_ispasthour"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/dashboard/calendar/page.tsx",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "app_root_dashboard_calendar_page_calendar",
+      "target": "lib_date_utils_ispasthour"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_customerflow",
-      "confidence_score": 1.0
+      "target": "app_root_auth_components_customer_flow_customerflow"
     },
     {
       "relation": "contains",
@@ -8277,9 +8575,9 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_loginformdata",
-      "confidence_score": 1.0
+      "target": "app_root_auth_components_customer_flow_loginformdata"
     },
     {
       "relation": "contains",
@@ -8287,9 +8585,9 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_loginschema",
-      "confidence_score": 1.0
+      "target": "app_root_auth_components_customer_flow_loginschema"
     },
     {
       "relation": "contains",
@@ -8297,9 +8595,9 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_mode",
-      "confidence_score": 1.0
+      "target": "app_root_auth_components_customer_flow_mode"
     },
     {
       "relation": "contains",
@@ -8307,9 +8605,9 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_registerformdata",
-      "confidence_score": 1.0
+      "target": "app_root_auth_components_customer_flow_registerformdata"
     },
     {
       "relation": "contains",
@@ -8317,9 +8615,9 @@
       "source_file": "app/(root)/auth/_components/customer-flow.tsx",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_registerschema",
-      "confidence_score": 1.0
+      "target": "app_root_auth_components_customer_flow_registerschema"
     },
     {
       "relation": "imports_from",
@@ -8338,9 +8636,9 @@
       "source_file": "app/(root)/dashboard/calendar/_components/appointment-modal.tsx",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_calendar_components_appointment_modal",
-      "target": "app_root_dashboard_calendar_components_appointment_modal_appointmentmodal",
-      "confidence_score": 1.0
+      "target": "app_root_dashboard_calendar_components_appointment_modal_appointmentmodal"
     },
     {
       "relation": "contains",
@@ -8348,9 +8646,9 @@
       "source_file": "app/(root)/dashboard/calendar/_components/appointment-modal.tsx",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_calendar_components_appointment_modal",
-      "target": "app_root_dashboard_calendar_components_appointment_modal_props",
-      "confidence_score": 1.0
+      "target": "app_root_dashboard_calendar_components_appointment_modal_props"
     },
     {
       "relation": "imports_from",
@@ -8380,9 +8678,9 @@
       "source_file": "app/(root)/dashboard/calendar/_components/sale-modal.tsx",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_calendar_components_sale_modal",
-      "target": "app_root_dashboard_calendar_components_sale_modal_props",
-      "confidence_score": 1.0
+      "target": "app_root_dashboard_calendar_components_sale_modal_props"
     },
     {
       "relation": "contains",
@@ -8390,9 +8688,9 @@
       "source_file": "app/(root)/dashboard/calendar/_components/sale-modal.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_dashboard_calendar_components_sale_modal",
-      "target": "app_root_dashboard_calendar_components_sale_modal_salemodal",
-      "confidence_score": 1.0
+      "target": "app_root_dashboard_calendar_components_sale_modal_salemodal"
     },
     {
       "relation": "imports_from",
@@ -8422,9 +8720,9 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_appointments_components_review_modal",
-      "target": "app_root_platform_appointments_components_review_modal_props",
-      "confidence_score": 1.0
+      "target": "app_root_platform_appointments_components_review_modal_props"
     },
     {
       "relation": "contains",
@@ -8432,9 +8730,9 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_appointments_components_review_modal",
-      "target": "app_root_platform_appointments_components_review_modal_reviewformdata",
-      "confidence_score": 1.0
+      "target": "app_root_platform_appointments_components_review_modal_reviewformdata"
     },
     {
       "relation": "contains",
@@ -8442,9 +8740,9 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_appointments_components_review_modal",
-      "target": "app_root_platform_appointments_components_review_modal_reviewmodal",
-      "confidence_score": 1.0
+      "target": "app_root_platform_appointments_components_review_modal_reviewmodal"
     },
     {
       "relation": "contains",
@@ -8452,9 +8750,9 @@
       "source_file": "app/(root)/platform/appointments/_components/review-modal.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_root_platform_appointments_components_review_modal",
-      "target": "app_root_platform_appointments_components_review_modal_reviewschema",
-      "confidence_score": 1.0
+      "target": "app_root_platform_appointments_components_review_modal_reviewschema"
     },
     {
       "relation": "imports_from",
@@ -8484,9 +8782,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_bookingdetaildialog",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_bookingdetaildialog"
     },
     {
       "relation": "contains",
@@ -8494,9 +8792,9 @@
       "source_file": "components/customer/booking-detail-dialog.tsx",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_props",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_detail_dialog_props"
     },
     {
       "relation": "imports_from",
@@ -8526,9 +8824,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_bookingformdata",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_bookingformdata"
     },
     {
       "relation": "contains",
@@ -8536,9 +8834,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_bookingmodal",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_bookingmodal"
     },
     {
       "relation": "contains",
@@ -8546,9 +8844,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_bookingschema",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_bookingschema"
     },
     {
       "relation": "contains",
@@ -8556,9 +8854,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_formatdate",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_formatdate"
     },
     {
       "relation": "contains",
@@ -8566,9 +8864,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_getdaysinmonth",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_getdaysinmonth"
     },
     {
       "relation": "contains",
@@ -8576,9 +8874,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_getfirstdayofmonth",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_getfirstdayofmonth"
     },
     {
       "relation": "contains",
@@ -8586,9 +8884,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_hours",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_hours"
     },
     {
       "relation": "contains",
@@ -8596,9 +8894,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_ispastdate",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_ispastdate"
     },
     {
       "relation": "contains",
@@ -8606,9 +8904,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal",
-      "target": "components_customer_booking_modal_props",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_props"
     },
     {
       "relation": "calls",
@@ -8617,9 +8915,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L296",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal_bookingmodal",
-      "target": "components_customer_booking_modal_formatdate",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_formatdate"
     },
     {
       "relation": "calls",
@@ -8628,9 +8926,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal_bookingmodal",
-      "target": "components_customer_booking_modal_getdaysinmonth",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_getdaysinmonth"
     },
     {
       "relation": "calls",
@@ -8639,9 +8937,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal_bookingmodal",
-      "target": "components_customer_booking_modal_getfirstdayofmonth",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_getfirstdayofmonth"
     },
     {
       "relation": "calls",
@@ -8650,9 +8948,9 @@
       "source_file": "components/customer/booking-modal.tsx",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_booking_modal_bookingmodal",
-      "target": "components_customer_booking_modal_ispastdate",
-      "confidence_score": 1.0
+      "target": "components_customer_booking_modal_ispastdate"
     },
     {
       "relation": "imports",
@@ -9648,213 +9946,6 @@
       "target": "app_root_dashboard_calendar_page_statuscolors"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_calendar_page",
-      "target": "lib_date_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_calendar_page",
-      "target": "lib_date_utils_formatdate"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_calendar_page",
-      "target": "lib_date_utils_getdaysinmonth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_calendar_page",
-      "target": "lib_date_utils_getfirstdayofmonth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_calendar_page",
-      "target": "lib_date_utils_ispastdate"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_calendar_page",
-      "target": "lib_date_utils_ispasthour"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "app_root_dashboard_calendar_page_calendar",
-      "target": "lib_date_utils_formatdate"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L55",
-      "weight": 1.0,
-      "source": "app_root_dashboard_calendar_page_calendar",
-      "target": "lib_date_utils_getdaysinmonth"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L56",
-      "weight": 1.0,
-      "source": "app_root_dashboard_calendar_page_calendar",
-      "target": "lib_date_utils_getfirstdayofmonth"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L83",
-      "weight": 1.0,
-      "source": "app_root_dashboard_calendar_page_calendar",
-      "target": "lib_date_utils_ispastdate"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/calendar/page.tsx",
-      "source_location": "L85",
-      "weight": 1.0,
-      "source": "app_root_dashboard_calendar_page_calendar",
-      "target": "lib_date_utils_ispasthour"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "app_root_dashboard_home_page_formatcurrency"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "app_root_dashboard_home_page_home"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "components_ui_empty_state"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "components_ui_empty_state_emptystate"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_date_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page",
-      "target": "lib_date_utils_formattimedisplay"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L66",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_home_page_home",
-      "target": "app_root_dashboard_home_page_formatcurrency"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/home/page.tsx",
-      "source_location": "L88",
-      "weight": 1.0,
-      "source": "app_root_dashboard_home_page_home",
-      "target": "lib_date_utils_formattimedisplay"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/sales/cash-movement/page.tsx",
@@ -10101,76 +10192,6 @@
       "confidence_score": 1.0,
       "source": "components_ui_loading_state",
       "target": "components_ui_loading_state_props"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_formatdate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_formattimedisplay"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_getdaysinmonth"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_getfirstdayofmonth"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_isoformatdate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_ispastdate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/date-utils.ts",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_date_utils",
-      "target": "lib_date_utils_ispasthour"
     },
     {
       "relation": "imports_from",
@@ -19733,5 +19754,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c08f8b4c33b6be38e4ce8a8d06000e5f8bd52906"
+  "built_at_commit": "7e51fc3585a1883b226c22d3a13cd9e2ea009a7c"
 }
