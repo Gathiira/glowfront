@@ -16,7 +16,6 @@ import {
   Check,
   Shield,
   User,
-  DollarSign,
 } from "lucide-react"
 import { Header } from "@/components/landing/_components/header"
 import { Footer } from "@/components/landing/_components/footer"

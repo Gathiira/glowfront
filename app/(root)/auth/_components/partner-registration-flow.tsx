@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import type { PartnerAccountData } from "@/lib/types"
 import {
   accountFormSchema,
   type AccountFormData,

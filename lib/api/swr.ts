@@ -1,5 +1,5 @@
 import useSWR, { type SWRConfiguration } from "swr"
-import { api, extractError } from "./client"
+import { api } from "./client"
 import type { BusinessCategoryDto } from "@/lib/types"
 import type { ApiResponse } from "./client"
 
@@ -10,13 +10,4 @@ export function useCategories(options?: SWRConfiguration) {
     revalidateOnFocus: false,
     ...options,
   })
-}
-
-export async function fetchCategories(): Promise<BusinessCategoryDto[]> {
-  try {
-    const res = await api.get("/customer/categories").json<ApiResponse<BusinessCategoryDto[]>>()
-    return res.data
-  } catch (error) {
-    throw await extractError(error)
-  }
 }
