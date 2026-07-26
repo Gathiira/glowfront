@@ -1,6 +1,5 @@
 {
   "0": "Dashboard Pages",
-  "1": "Landing & Auth Pages",
   "2": "Auth Form Components",
   "3": "NPM Dependencies",
   "4": "Dev Tooling & Linting",
@@ -43,8 +42,6 @@
   "41": "page.tsx",
   "42": "alert.tsx",
   "43": "customer-flow.tsx",
-  "44": "scroll-section.tsx",
-  "45": "alert-dialog.tsx",
   "46": "route.ts",
   "47": "route.ts",
   "48": "route.ts",
@@ -55,7 +52,6 @@
   "53": "page.tsx",
   "54": "left-side.tsx",
   "55": "field.tsx",
-  "56": "page.tsx",
   "57": "partner-flow.tsx",
   "58": "map-loader.ts",
   "59": "page.tsx",
@@ -71,8 +67,6 @@
   "69": "button.tsx",
   "70": "category-browser.tsx",
   "71": "loading-state.tsx",
-  "72": "clsx",
-  "73": "@hookform/resolvers",
   "74": "input-otp",
   "90": "page.tsx"
 }

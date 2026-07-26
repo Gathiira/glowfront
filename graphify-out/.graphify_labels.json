@@ -1,5 +1,6 @@
 {
   "0": "Dashboard Pages",
+  "1": "admin.ts",
   "2": "Auth Form Components",
   "3": "NPM Dependencies",
   "4": "Dev Tooling & Linting",
@@ -42,6 +43,7 @@
   "41": "page.tsx",
   "42": "alert.tsx",
   "43": "customer-flow.tsx",
+  "44": "alert.tsx",
   "46": "route.ts",
   "47": "route.ts",
   "48": "route.ts",
@@ -56,7 +58,6 @@
   "58": "map-loader.ts",
   "59": "page.tsx",
   "60": "page.tsx",
-  "61": "review-modal.tsx",
   "62": "page.tsx",
   "63": "how-it-works.tsx",
   "64": "page.tsx",
