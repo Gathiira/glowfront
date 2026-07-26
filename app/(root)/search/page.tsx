@@ -18,11 +18,7 @@ import type {
   BusinessSearchDto,
 } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import L from "leaflet"
-import { setupLeafletIcon } from "@/components/map/leaflet-icon"
 import { MapContainer, TileLayer, Marker, Popup } from "@/components/map/map-loader"
-
-setupLeafletIcon()
 const FlyTo = NextDynamic(
   () => import("./_components/fly-to").then((m) => m.FlyTo),
   { ssr: false }
@@ -102,7 +98,12 @@ function getBusinessCoords(address: string, index: number): [number, number] {
 
 const cities = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"]
 
-const kenyaBounds = L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0))
+function getKenyaBounds() {
+  if (typeof window === "undefined") return null
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const L = require("leaflet")
+  return L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0))
+}
 
 type BusinessWithCoords = BusinessCardDto & { coords: [number, number] }
 
@@ -117,6 +118,10 @@ export default function SearchPage() {
   const [categories, setCategories] = useState<BusinessCategoryDto[]>([])
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapRef = useRef<any>(null)
+
+  useEffect(() => {
+    import("@/components/map/leaflet-icon").then((m) => m.setupLeafletIcon())
+  }, [])
 
   useEffect(() => {
     fetchBusinessCategories()
@@ -376,7 +381,7 @@ export default function SearchPage() {
               center={[-1.2921, 36.8219]}
               zoom={11}
               className="h-full w-full"
-              maxBounds={kenyaBounds}
+              maxBounds={typeof window !== "undefined" ? getKenyaBounds() : null}
               maxBoundsViscosity={1.0}
               minZoom={8}
               ref={mapRef}
