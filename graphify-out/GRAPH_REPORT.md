@@ -1,7 +1,7 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 137 files · ~56,878 words
+- 137 files · ~56,872 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `be81a7fa`
+- Built from commit: `c08f8b4c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
