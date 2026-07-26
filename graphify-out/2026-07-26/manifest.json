@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "app/(root)/dashboard/layout.tsx": {
-    "mtime": 1784966640.2357376,
-    "ast_hash": "0a10330036770b9b4e2c0299f592ee60",
+    "mtime": 1785071305.3738492,
+    "ast_hash": "cca7304ca3e1ab5a71ab3849f05ba008",
     "semantic_hash": ""
   },
   "app/(root)/dashboard/page.tsx": {
@@ -205,9 +205,9 @@
     "semantic_hash": ""
   },
   "app/(root)/platform/layout.tsx": {
-    "mtime": 1781861438.9372141,
-    "ast_hash": "a70fabb4344cc708b1b59196b462a165",
-    "semantic_hash": "a70fabb4344cc708b1b59196b462a165"
+    "mtime": 1785071303.2203398,
+    "ast_hash": "8ba107b8a21fb0d06cfe2f67f60edb7f",
+    "semantic_hash": ""
   },
   "app/(root)/platform/profile/page.tsx": {
     "mtime": 1785046187.4787269,
@@ -255,8 +255,8 @@
     "semantic_hash": "a0238eb4ceb9341a82b6e3640ca96743"
   },
   "components/customer/sidebar.tsx": {
-    "mtime": 1784967655.8249881,
-    "ast_hash": "d793d0d4decd92ccb671aa3c16123a00",
+    "mtime": 1785071282.3205209,
+    "ast_hash": "7f22574fec5b1bcf1ad3709de43c7202",
     "semantic_hash": ""
   },
   "components/dashboard/page-header.tsx": {
@@ -270,8 +270,8 @@
     "semantic_hash": "7bac84c8e21a4b04482034f0798d65eb"
   },
   "components/dashboard/sidebar.tsx": {
-    "mtime": 1784967655.3559651,
-    "ast_hash": "eb13241d6477e10412efac02382e394b",
+    "mtime": 1785071296.3361654,
+    "ast_hash": "19790395b90ef01e8e8e2e2040fc3c9f",
     "semantic_hash": ""
   },
   "components/dashboard/stat-card.tsx": {
@@ -797,6 +797,16 @@
   "components/admin/mobile-nav.tsx": {
     "mtime": 1785070871.050876,
     "ast_hash": "7cf6f1b65f769e648b922dd616e418b6",
+    "semantic_hash": ""
+  },
+  "components/customer/mobile-nav.tsx": {
+    "mtime": 1785071254.8496504,
+    "ast_hash": "17bee4ae4b9894b67d9fdf7dc6441990",
+    "semantic_hash": ""
+  },
+  "components/dashboard/mobile-nav.tsx": {
+    "mtime": 1785071269.1318953,
+    "ast_hash": "95d870993165e096291370dda10ca518",
     "semantic_hash": ""
   }
 }

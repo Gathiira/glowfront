@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 150 files · ~63,822 words
+- 152 files · ~64,325 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 816 nodes · 1278 edges · 75 communities (59 shown, 16 thin omitted)
+- 823 nodes · 1284 edges · 74 communities (58 shown, 16 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bf5fc0b2`
+- Built from commit: `a8ac0087`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,7 +40,6 @@
 - Input Group Components
 - K8s & CI/CD
 - Roles & Proxy
-- Alert Components
 - Project Overview
 - Graphify Skill
 - ESLint Config
@@ -99,7 +98,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (75 total, 16 thin omitted)
+## Communities (74 total, 16 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
 Cohesion: 0.13
@@ -134,8 +133,8 @@ Cohesion: 0.06
 Nodes (34): allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics, successServices, PaginationProps (+26 more)
 
 ### Community 8 - "Dashboard Layout & Sidebar"
-Cohesion: 0.33
-Nodes (4): bottomNavItems, NavItem, navItems, SubMenuItem
+Cohesion: 0.20
+Nodes (8): Props, bottomNavItems, DashboardMobileNav(), drawerItems, NavItem, navItems, Sidebar(), SubMenuItem
 
 ### Community 9 - "UI Config & Utilities"
 Cohesion: 0.09
@@ -146,7 +145,7 @@ Cohesion: 0.09
 Nodes (21): Business, BUSINESS_CATEGORIES, BusinessAmenityDto, BusinessCategory, BusinessGalleryDto, BusinessLocationDto, BusinessOpeningHoursDto, BusinessReview (+13 more)
 
 ### Community 11 - "OTP & Select Components"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (9): CreateServicePayload, CreateStaffPayload, CustomerAccountData, CustomerLoginData, DashboardSummaryDto, PartnerAccountData, PartnerBusinessData, TopServiceDto (+1 more)
 
 ### Community 12 - "Business Detail"
@@ -154,8 +153,8 @@ Cohesion: 0.83
 Nodes (3): AddMember(), createPartnerStaff(), fetchPartnerServices()
 
 ### Community 13 - "Platform Layout & Context"
-Cohesion: 0.18
-Nodes (8): Props, navItems, PlatformSidebar(), CustomerContext, CustomerContextType, CustomerProvider(), mockProfile, profileFromStorage()
+Cohesion: 0.29
+Nodes (5): CustomerContext, CustomerContextType, CustomerProvider(), mockProfile, profileFromStorage()
 
 ### Community 14 - "Field Components"
 Cohesion: 0.31
@@ -186,8 +185,8 @@ Cohesion: 0.16
 Nodes (13): Item(), ItemActions(), ItemContent(), ItemDescription(), ItemFooter(), ItemGroup(), ItemHeader(), ItemMedia() (+5 more)
 
 ### Community 22 - "Input Group Components"
-Cohesion: 0.67
-Nodes (3): DashboardLayout(), Props, fetchPartnerBusiness()
+Cohesion: 0.24
+Nodes (6): Props, bottomNavItems, drawerItems, PlatformMobileNav(), navItems, PlatformSidebar()
 
 ### Community 24 - "K8s & CI/CD"
 Cohesion: 0.70
@@ -196,10 +195,6 @@ Nodes (5): Glowfront ConfigMap, Glowfront HorizontalPodAutoscaler, Kustomization
 ### Community 25 - "Roles & Proxy"
 Cohesion: 0.24
 Nodes (6): Props, AdminMobileNav(), bottomNavItems, drawerItems, AdminSidebar(), navItems
-
-### Community 26 - "Alert Components"
-Cohesion: 0.47
-Nodes (4): Anchor, LoadingContext, useLoading(), Spinner()
 
 ### Community 27 - "Project Overview"
 Cohesion: 0.40
@@ -226,8 +221,8 @@ Cohesion: 0.40
 Nodes (3): AccountFormData, accountFormSchema, Props
 
 ### Community 51 - "input-otp.tsx"
-Cohesion: 0.15
-Nodes (11): fontMono, inter, RootLayout(), LoadingProvider(), ThemeHotkey(), ThemeProvider(), CalendarDayButton(), InputOTPSlot() (+3 more)
+Cohesion: 0.12
+Nodes (15): fontMono, inter, RootLayout(), Anchor, LoadingContext, LoadingProvider(), useLoading(), ThemeHotkey() (+7 more)
 
 ### Community 53 - "page.tsx"
 Cohesion: 0.14
@@ -262,21 +257,21 @@ Cohesion: 0.40
 Nodes (3): Props, ReviewFormData, reviewSchema
 
 ## Knowledge Gaps
-- **250 isolated node(s):** `Props`, `bottomNavItems`, `drawerItems`, `navItems`, `Column` (+245 more)
+- **253 isolated node(s):** `Props`, `Props`, `bottomNavItems`, `drawerItems`, `navItems` (+248 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `page.tsx` to `Dashboard Pages`, `category-browser.tsx`, `Business Browse`, `page.tsx`, `alert.tsx`, `alert.tsx`, `Dropdown Menu`, `Location Picker & Map`, `input-otp.tsx`, `Item Components`, `field.tsx`, `hover-card.tsx`, `Alert Components`?**
-  _High betweenness centrality (0.254) - this node is a cross-community bridge._
+- **Why does `cn()` connect `page.tsx` to `Dashboard Pages`, `category-browser.tsx`, `Business Browse`, `page.tsx`, `alert.tsx`, `alert.tsx`, `Dropdown Menu`, `Location Picker & Map`, `input-otp.tsx`, `Item Components`, `field.tsx`, `hover-card.tsx`?**
+  _High betweenness centrality (0.248) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
-  _High betweenness centrality (0.119) - this node is a cross-community bridge._
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `NPM Dependencies`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
-- **What connects `Props`, `bottomNavItems`, `drawerItems` to the rest of the system?**
-  _250 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.112) - this node is a cross-community bridge._
+- **What connects `Props`, `Props`, `bottomNavItems` to the rest of the system?**
+  _253 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.12685560053981107 - nodes in this community are weakly interconnected._
 - **Should `admin.ts` be split into smaller, more focused modules?**
