@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 import { ROLE_CUSTOMER, ROLE_PARTNER } from "@/lib/roles"
-import type { Role } from "@/lib/roles"
 
 const SESSION_COOKIE = process.env.SESSION_COOKIE_NAME ?? "session"
 

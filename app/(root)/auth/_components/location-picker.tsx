@@ -11,6 +11,9 @@ import {
 import L from "leaflet"
 
 import "leaflet/dist/leaflet.css"
+import { setupLeafletIcon } from "@/components/map/leaflet-icon"
+
+setupLeafletIcon()
 
 const defaultIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
@@ -23,8 +26,6 @@ const defaultIcon = L.icon({
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
 })
-
-L.Marker.prototype.options.icon = defaultIcon
 
 type Location = {
   lat: number

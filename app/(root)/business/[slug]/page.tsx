@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import NextDynamic from "next/dynamic"
 import {
   Star,
   MapPin,
@@ -31,45 +30,7 @@ import { fetchBusinessBySlug, fetchBusinessReviews, fetchBusinessStaff, fetchBus
 import { Pagination } from "@/components/dashboard/pagination"
 import { CURRENCY } from "@/lib/types"
 import type { BusinessDto, ReviewDto, StaffDto, ServiceDto, PaginatedResponse } from "@/lib/types"
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let L: any = null
-if (typeof window !== "undefined") {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  L = require("leaflet")
-
-  const defaultIcon = L.icon({
-    iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-    iconRetinaUrl:
-      "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-    shadowUrl:
-      "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-  })
-
-  L.Marker.prototype.options.icon = defaultIcon
-}
-
-import "leaflet/dist/leaflet.css"
-
-const MapContainer = NextDynamic(
-  () => import("react-leaflet").then((m) => m.MapContainer),
-  { ssr: false }
-)
-const TileLayer = NextDynamic(
-  () => import("react-leaflet").then((m) => m.TileLayer),
-  { ssr: false }
-)
-const Marker = NextDynamic(
-  () => import("react-leaflet").then((m) => m.Marker),
-  { ssr: false }
-)
-const Popup = NextDynamic(() => import("react-leaflet").then((m) => m.Popup), {
-  ssr: false,
-})
+import { BusinessMap } from "@/components/map/business-map"
 
 const REVIEW_PAGE_SIZE = 5
 
@@ -640,31 +601,11 @@ export default function BusinessDetailPage() {
                   <CardTitle>Location</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-[300px] w-full overflow-hidden rounded-lg">
-                    {typeof window !== "undefined" && (
-                      <MapContainer
-                        center={coords}
-                        zoom={14}
-                        className="h-full w-full"
-                        scrollWheelZoom={false}
-                      >
-                        <TileLayer
-                          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        <Marker position={coords}>
-                          <Popup>
-                            <div className="text-sm">
-                              <p className="font-semibold">{business.name}</p>
-                              <p className="text-xs text-muted-foreground">
-                                {locationText}
-                              </p>
-                            </div>
-                          </Popup>
-                        </Marker>
-                      </MapContainer>
-                    )}
-                  </div>
+                  <BusinessMap
+                    center={coords}
+                    name={business.name}
+                    locationText={locationText}
+                  />
                   <p className="mt-2 flex items-center gap-1 text-sm text-muted-foreground">
                     <MapPin className="size-4" />
                     {locationText}

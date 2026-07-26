@@ -18,43 +18,11 @@ import type {
   BusinessSearchDto,
 } from "@/lib/types"
 import { cn } from "@/lib/utils"
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let L: any = null
+import L from "leaflet"
+import { setupLeafletIcon } from "@/components/map/leaflet-icon"
+import { MapContainer, TileLayer, Marker, Popup } from "@/components/map/map-loader"
 
-if (typeof window !== "undefined") {
-  L = require("leaflet")
-
-  const defaultIcon = L.icon({
-    iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-    iconRetinaUrl:
-      "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-  })
-
-  L.Marker.prototype.options.icon = defaultIcon
-}
-
-const MapContainer = NextDynamic(
-  () => import("react-leaflet").then((m) => m.MapContainer),
-  { ssr: false }
-)
-const TileLayer = NextDynamic(
-  () => import("react-leaflet").then((m) => m.TileLayer),
-  { ssr: false }
-)
-const Marker = NextDynamic(
-  () => import("react-leaflet").then((m) => m.Marker),
-  {
-    ssr: false,
-  }
-)
-const Popup = NextDynamic(() => import("react-leaflet").then((m) => m.Popup), {
-  ssr: false,
-})
+setupLeafletIcon()
 const FlyTo = NextDynamic(
   () => import("./_components/fly-to").then((m) => m.FlyTo),
   { ssr: false }
@@ -134,10 +102,7 @@ function getBusinessCoords(address: string, index: number): [number, number] {
 
 const cities = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"]
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const kenyaBounds: any = L
-  ? L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0))
-  : null
+const kenyaBounds = L.latLngBounds(L.latLng(-4.7, 33.5), L.latLng(5.0, 42.0))
 
 type BusinessWithCoords = BusinessCardDto & { coords: [number, number] }
 

@@ -29,32 +29,7 @@ import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { fetchCustomerBusinessDetail } from "@/lib/api"
 import type { BookingDto, BusinessDetailDto } from "@/lib/types"
-import dynamic from "next/dynamic"
-import "leaflet/dist/leaflet.css"
-import L from "leaflet"
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-})
-
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((m) => m.MapContainer),
-  { ssr: false }
-)
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((m) => m.TileLayer),
-  { ssr: false }
-)
-const Marker = dynamic(
-  () => import("react-leaflet").then((m) => m.Marker),
-  { ssr: false }
-)
-const Popup = dynamic(
-  () => import("react-leaflet").then((m) => m.Popup),
-  { ssr: false }
-)
+import { BusinessMap } from "@/components/map/business-map"
 
 type Props = {
   booking: BookingDto | null
@@ -184,25 +159,11 @@ export function BookingDetailDialog({ booking, onOpenChange, onCancel }: Props) 
                       {businessDetail.location.streetAddress}{businessDetail.location.city ? `, ${businessDetail.location.city}` : ""}
                     </p>
                     {mapReady && (
-                    <div className="h-48 w-full overflow-hidden rounded-lg">
-                      <MapContainer
-                        key={booking.id}
+                      <BusinessMap
                         center={[businessDetail.location.latitude, businessDetail.location.longitude]}
-                        zoom={14}
-                        className="h-full w-full"
-                        scrollWheelZoom={false}
-                      >
-                        <TileLayer
-                          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
-                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        <Marker position={[businessDetail.location.latitude, businessDetail.location.longitude]}>
-                          <Popup>
-                            <p className="text-sm font-semibold">{businessDetail.name}</p>
-                          </Popup>
-                        </Marker>
-                      </MapContainer>
-                    </div>
+                        name={businessDetail.name}
+                        height="h-48"
+                      />
                     )}
                     {businessDetail.location.mapsUrl && (
                       <a
