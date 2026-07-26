@@ -42,7 +42,6 @@
   "40": "UI Assets",
   "41": "page.tsx",
   "42": "alert.tsx",
-  "43": "page.tsx",
   "44": "scroll-section.tsx",
   "45": "alert-dialog.tsx",
   "46": "route.ts",
@@ -51,8 +50,6 @@
   "49": "BusinessCategoryDto",
   "50": "client.ts",
   "51": "input-otp.tsx",
-  "52": "header.tsx",
   "53": "page.tsx",
-  "54": "input-otp.tsx",
   "55": "field.tsx"
 }

@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 133 files · ~58,098 words
+- 136 files · ~57,850 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 749 nodes · 1265 edges · 56 communities (48 shown, 8 thin omitted)
+- 744 nodes · 1233 edges · 53 communities (48 shown, 5 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8805792b`
+- Built from commit: `194c2add`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -49,27 +49,24 @@
 - UI Assets
 - page.tsx
 - alert.tsx
-- page.tsx
 - scroll-section.tsx
 - alert-dialog.tsx
 - BusinessCategoryDto
 - input-otp.tsx
-- header.tsx
 - page.tsx
-- input-otp.tsx
 - field.tsx
 
 ## God Nodes (most connected - your core abstractions)
-1. `cn()` - 122 edges
-2. `Button()` - 23 edges
+1. `cn()` - 120 edges
+2. `Button()` - 22 edges
 3. `Card()` - 17 edges
 4. `CardContent()` - 17 edges
 5. `compilerOptions` - 16 edges
-6. `BusinessDetail()` - 12 edges
-7. `CardHeader()` - 11 edges
-8. `CardTitle()` - 11 edges
-9. `fetchBusinessCategories()` - 9 edges
-10. `BusinessCategoryDto` - 9 edges
+6. `CardHeader()` - 11 edges
+7. `CardTitle()` - 11 edges
+8. `bash` - 9 edges
+9. `PageHeader()` - 9 edges
+10. `BusinessCategoryDto` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Project README` --semantically_similar_to--> `Backend API Specification`  [INFERRED] [semantically similar]
@@ -86,19 +83,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (56 total, 8 thin omitted)
+## Communities (53 total, 5 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
-Cohesion: 0.11
-Nodes (23): appointments, clients, segments, payments, days, Shift, PageHeader(), Props (+15 more)
+Cohesion: 0.13
+Nodes (21): appointments, clients, segments, payments, days, Shift, PageHeader(), Props (+13 more)
 
 ### Community 1 - "Landing & Auth Pages"
-Cohesion: 0.13
-Nodes (18): BusinessDetail(), DAY_ORDER, formatDate(), formatDay(), formatTime(), getDaysInMonth(), getFirstDayOfMonth(), HOURS (+10 more)
+Cohesion: 0.05
+Nodes (37): defaultCenter, defaultIcon, Location, LocationPicker(), Props, reverseGeocode(), searchQuery(), SearchResult (+29 more)
 
 ### Community 2 - "Auth Form Components"
-Cohesion: 0.06
-Nodes (24): FormDataType, formSchema, Mode, defaultCenter, defaultIcon, Location, LocationPicker(), Props (+16 more)
+Cohesion: 0.08
+Nodes (16): FormDataType, formSchema, Mode, FormDataType, formSchema, Mode, Props, Step (+8 more)
 
 ### Community 3 - "NPM Dependencies"
 Cohesion: 0.04
@@ -110,15 +107,15 @@ Nodes (38): eslint, eslint-config-next, @eslint/eslintrc, devDependencies, eslin
 
 ### Community 5 - "Root Layout & Auth"
 Cohesion: 0.07
-Nodes (32): CustomerFlow(), LoginFormData, loginSchema, Mode, RegisterFormData, registerSchema, BookingDetailDialog(), MapContainer (+24 more)
+Nodes (26): CustomerFlow(), LoginFormData, loginSchema, Mode, RegisterFormData, registerSchema, Anchor, LoadingContext (+18 more)
 
 ### Community 6 - "TypeScript Config"
 Cohesion: 0.07
 Nodes (29): ./*, dom, dom.iterable, esnext, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+21 more)
 
 ### Community 7 - "Business Browse"
-Cohesion: 0.15
-Nodes (15): fetchSection(), LandingPage(), CityBrowser(), CtaSection(), HowItWorks(), steps, Reviews(), StatsBar() (+7 more)
+Cohesion: 0.05
+Nodes (50): fetchSection(), LandingPage(), BrowseContent(), cities, allInOnePoints, BusinessPage(), businessStats, features (+42 more)
 
 ### Community 8 - "Dashboard Layout & Sidebar"
 Cohesion: 0.33
@@ -129,16 +126,16 @@ Cohesion: 0.09
 Nodes (21): aliases, components, hooks, lib, ui, utils, iconLibrary, menuAccent (+13 more)
 
 ### Community 10 - "Business Types & DTOs"
-Cohesion: 0.06
-Nodes (46): Catalog(), DashboardLayout(), Props, ProfileDetails(), AddMember(), TeamMembers(), CustomerBookingPayload, createPartnerService() (+38 more)
+Cohesion: 0.12
+Nodes (16): BUSINESS_CATEGORIES, BusinessAmenityDto, BusinessCategory, BusinessGalleryDto, BusinessLocationDto, BusinessOpeningHoursDto, BusinessService, BusinessSocialMediaDto (+8 more)
 
 ### Community 11 - "OTP & Select Components"
-Cohesion: 0.17
-Nodes (12): allInOnePoints, businessStats, features, marketplacePoints, metrics, successServices, BusinessFaq(), BusinessHero() (+4 more)
+Cohesion: 0.12
+Nodes (9): CreateServicePayload, CreateStaffPayload, CustomerAccountData, CustomerLoginData, DashboardSummaryDto, PartnerAccountData, PartnerBusinessData, TopServiceDto (+1 more)
 
 ### Community 12 - "Business Detail"
-Cohesion: 0.19
-Nodes (8): BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), MapContainer, Marker, Popup, TileLayer
+Cohesion: 0.39
+Nodes (7): Catalog(), AddMember(), createPartnerService(), createPartnerStaff(), fetchPartnerCategories(), fetchPartnerServices(), ServiceDto
 
 ### Community 13 - "Platform Layout & Context"
 Cohesion: 0.11
@@ -157,12 +154,12 @@ Cohesion: 0.07
 Nodes (33): AppointmentModal(), Props, Props, SaleModal(), Appointment, Calendar(), colors, HOURS (+25 more)
 
 ### Community 17 - "Location Picker & Map"
-Cohesion: 0.12
-Nodes (22): CardAction(), CardDescription(), CardFooter(), SelectContent(), SelectGroup(), SelectItem(), SelectLabel(), SelectScrollDownButton() (+14 more)
+Cohesion: 0.13
+Nodes (21): CardAction(), CardDescription(), CardFooter(), SelectContent(), SelectGroup(), SelectItem(), SelectLabel(), SelectScrollDownButton() (+13 more)
 
 ### Community 18 - "API Client Layer"
-Cohesion: 0.18
-Nodes (12): BusinessWithCoords, cities, FlyTo, getBusinessCoords(), MapContainer, Marker, neighborhoodCoords, Popup (+4 more)
+Cohesion: 0.14
+Nodes (5): CustomerBookingPayload, BookingDto, BusinessDetailDto, BusinessSearchDto, CustomerDashboardDto
 
 ### Community 19 - "OpenCode Config"
 Cohesion: 0.14
@@ -173,8 +170,8 @@ Cohesion: 0.16
 Nodes (13): Item(), ItemActions(), ItemContent(), ItemDescription(), ItemFooter(), ItemGroup(), ItemHeader(), ItemMedia() (+5 more)
 
 ### Community 22 - "Input Group Components"
-Cohesion: 0.21
-Nodes (6): BrowseContent(), cities, Pagination(), PaginationProps, Footer(), searchBusinesses()
+Cohesion: 0.28
+Nodes (7): DashboardLayout(), Props, ProfileDetails(), fetchPartnerBusiness(), BusinessDto, PaginatedResponse, ReviewDto
 
 ### Community 24 - "K8s & CI/CD"
 Cohesion: 0.70
@@ -197,16 +194,16 @@ Cohesion: 0.40
 Nodes (4): Available commands, graphify, Project Agents, When to use
 
 ### Community 41 - "page.tsx"
-Cohesion: 0.22
-Nodes (8): BusinessHeader(), navLinks, BusinessTestimonials(), Hero(), businessTestimonials, Button(), buttonVariants, Calendar()
+Cohesion: 0.67
+Nodes (3): TeamMembers(), fetchPartnerStaff(), StaffDto
 
 ### Community 42 - "alert.tsx"
 Cohesion: 0.19
 Nodes (11): InputGroup(), InputGroupAddon(), inputGroupAddonVariants, InputGroupButton(), inputGroupButtonVariants, InputGroupInput(), InputGroupText(), InputGroupTextarea() (+3 more)
 
-### Community 43 - "page.tsx"
-Cohesion: 0.38
-Nodes (6): BusinessPage(), CategoryBrowser(), fallbackIcons, getIcon(), iconMap, fetchBusinessCategories()
+### Community 44 - "scroll-section.tsx"
+Cohesion: 0.21
+Nodes (3): HoverCardContent(), InputOTP(), InputOTPGroup()
 
 ### Community 45 - "alert-dialog.tsx"
 Cohesion: 0.15
@@ -217,8 +214,8 @@ Cohesion: 0.40
 Nodes (3): AccountFormData, accountFormSchema, Props
 
 ### Community 51 - "input-otp.tsx"
-Cohesion: 0.15
-Nodes (11): fontMono, inter, RootLayout(), LoadingProvider(), ThemeHotkey(), ThemeProvider(), CalendarDayButton(), InputOTPSlot() (+3 more)
+Cohesion: 0.16
+Nodes (10): fontMono, inter, RootLayout(), ThemeHotkey(), ThemeProvider(), CalendarDayButton(), InputOTPSlot(), Toaster() (+2 more)
 
 ### Community 53 - "page.tsx"
 Cohesion: 0.40
@@ -229,24 +226,24 @@ Cohesion: 0.18
 Nodes (11): Field(), FieldContent(), FieldDescription(), FieldError(), FieldLabel(), FieldLegend(), FieldSeparator(), FieldSet() (+3 more)
 
 ## Knowledge Gaps
-- **240 isolated node(s):** `Props`, `Props`, `Appointment`, `colors`, `statusColors` (+235 more)
+- **227 isolated node(s):** `defaultIcon`, `Location`, `Props`, `SearchResult`, `defaultCenter` (+222 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Root Layout & Auth`, `page.tsx`, `alert.tsx`, `OTP & Select Components`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `API Client Layer`, `input-otp.tsx`, `Item Components`, `page.tsx`, `input-otp.tsx`, `field.tsx`?**
-  _High betweenness centrality (0.288) - this node is a cross-community bridge._
+- **Why does `cn()` connect `Location Picker & Map` to `Dashboard Pages`, `Root Layout & Auth`, `Business Browse`, `alert.tsx`, `scroll-section.tsx`, `alert-dialog.tsx`, `Dropdown Menu`, `input-otp.tsx`, `Item Components`, `page.tsx`, `field.tsx`?**
+  _High betweenness centrality (0.283) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
   _High betweenness centrality (0.149) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `NPM Dependencies`?**
-  _High betweenness centrality (0.143) - this node is a cross-community bridge._
-- **What connects `Props`, `Props`, `Appointment` to the rest of the system?**
-  _240 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.144) - this node is a cross-community bridge._
+- **What connects `defaultIcon`, `Location`, `Props` to the rest of the system?**
+  _227 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
-  _Cohesion score 0.11313131313131314 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1282051282051282 - nodes in this community are weakly interconnected._
 - **Should `Landing & Auth Pages` be split into smaller, more focused modules?**
-  _Cohesion score 0.13043478260869565 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.053246753246753244 - nodes in this community are weakly interconnected._
 - **Should `Auth Form Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.06025641025641026 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08374384236453201 - nodes in this community are weakly interconnected._
