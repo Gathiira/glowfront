@@ -90,7 +90,7 @@ export default function AdminHome() {
           <CardContent>
             <p className="text-2xl font-bold">{dashboard.blockedCustomers}</p>
             <Link
-              href="/admin/customers?status=BLOCKED"
+              href="/admin/customers?status=SUSPENDED"
               className="mt-1 text-xs text-muted-foreground hover:text-primary"
             >
               View all &rarr;
@@ -108,7 +108,7 @@ export default function AdminHome() {
           <CardContent>
             <p className="text-2xl font-bold">{dashboard.blockedPartners}</p>
             <Link
-              href="/admin/partners?status=BLOCKED"
+              href="/admin/partners?status=SUSPENDED"
               className="mt-1 text-xs text-muted-foreground hover:text-primary"
             >
               View all &rarr;

@@ -155,7 +155,7 @@ function AdminPartners() {
             </AlertDialogContent>
           </AlertDialog>
         )
-      case "BLOCKED":
+      case "INACTIVE":
       case "SUSPENDED":
         return (
           <AlertDialog>

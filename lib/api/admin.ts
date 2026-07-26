@@ -13,7 +13,7 @@ export type AdminUserDto = {
   lastName: string
   email: string
   phone: string
-  status: "ACTIVE" | "BLOCKED" | "PENDING"
+  status: "ACTIVE" | "INACTIVE" | "SUSPENDED" | "DELETED"
   createdAt: string
 }
 
@@ -25,7 +25,7 @@ export type AdminPartnerDto = {
   phone: string
   businessName: string
   businessId: number
-  status: "ACTIVE" | "BLOCKED" | "PENDING" | "REJECTED" | "SUSPENDED"
+  status: "ACTIVE" | "INACTIVE" | "SUSPENDED" | "DELETED"
   createdAt: string
 }
 
