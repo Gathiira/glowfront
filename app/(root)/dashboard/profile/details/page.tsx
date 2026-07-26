@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { PageHeader } from "@/components/dashboard/page-header"
+import { BusinessMap } from "@/components/map/business-map"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -195,23 +196,14 @@ export default function ProfileDetails() {
                 ].filter(Boolean).join(", ")}
               </p>
               {business.location.latitude && business.location.longitude && (
-                <div className="overflow-hidden rounded-lg">
-                  <iframe
-                    title="Business location"
-                    width="100%"
-                    height="250"
-                    frameBorder="0"
-                    src={`https://www.openstreetmap.org/export/embed.html?bbox=${business.location.longitude - 0.01},${business.location.latitude - 0.01},${business.location.longitude + 0.01},${business.location.latitude + 0.01}&layer=mapnik&marker=${business.location.latitude},${business.location.longitude}`}
-                    className="rounded-lg"
-                  />
-                </div>
-              )}
-              {business.location.mapsUrl && (
-                <Button variant="outline" size="sm" className="mt-3" asChild>
-                  <a href={business.location.mapsUrl} target="_blank" rel="noopener noreferrer">
-                    <MapPin className="size-3.5" /> Open in Google Maps
-                  </a>
-                </Button>
+                <BusinessMap
+                  center={[business.location.latitude, business.location.longitude]}
+                  name={business.name}
+                  locationText={[
+                    business.location.streetAddress,
+                    business.location.city,
+                  ].filter(Boolean).join(", ")}
+                />
               )}
             </CardContent>
           </Card>
