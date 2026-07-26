@@ -25,6 +25,7 @@
   "23": "Business Categories",
   "24": "K8s & CI/CD",
   "25": "Roles & Proxy",
+  "26": "user-badge.tsx",
   "27": "Project Overview",
   "28": "Hover Card",
   "29": "Graphify Skill",
@@ -71,6 +72,9 @@
   "70": "category-browser.tsx",
   "71": "loading-state.tsx",
   "72": "page.tsx",
+  "73": "mobile-nav.tsx",
   "74": "input-otp",
+  "75": "sidebar.tsx",
+  "76": "sidebar.tsx",
   "90": "page.tsx"
 }

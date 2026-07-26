@@ -1,16 +1,16 @@
 # Graph Report - manshade  (2026-07-26)
 
 ## Corpus Check
-- 152 files · ~64,325 words
+- 154 files · ~64,488 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 823 nodes · 1284 edges · 74 communities (58 shown, 16 thin omitted)
+- 829 nodes · 1285 edges · 78 communities (57 shown, 21 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a8ac0087`
+- Built from commit: `dc1654f0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,6 +40,7 @@
 - Input Group Components
 - K8s & CI/CD
 - Roles & Proxy
+- user-badge.tsx
 - Project Overview
 - Graphify Skill
 - ESLint Config
@@ -68,7 +69,10 @@
 - button.tsx
 - category-browser.tsx
 - loading-state.tsx
+- mobile-nav.tsx
 - input-otp
+- sidebar.tsx
+- sidebar.tsx
 - page.tsx
 
 ## God Nodes (most connected - your core abstractions)
@@ -98,7 +102,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (74 total, 16 thin omitted)
+## Communities (78 total, 21 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
 Cohesion: 0.13
@@ -130,11 +134,11 @@ Nodes (29): ./*, dom, dom.iterable, esnext, .next/dev/types/**/*.ts, next-env.d.
 
 ### Community 7 - "Business Browse"
 Cohesion: 0.06
-Nodes (34): allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics, successServices, PaginationProps (+26 more)
+Nodes (33): allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics, successServices, PaginationProps (+25 more)
 
 ### Community 8 - "Dashboard Layout & Sidebar"
-Cohesion: 0.20
-Nodes (8): Props, bottomNavItems, DashboardMobileNav(), drawerItems, NavItem, navItems, Sidebar(), SubMenuItem
+Cohesion: 0.40
+Nodes (3): NavItem, navItems, SubMenuItem
 
 ### Community 9 - "UI Config & Utilities"
 Cohesion: 0.09
@@ -184,17 +188,13 @@ Nodes (13): git *, graphify *, node *, npm *, npx *, pip *, pnpm *, uv * (+5 mor
 Cohesion: 0.16
 Nodes (13): Item(), ItemActions(), ItemContent(), ItemDescription(), ItemFooter(), ItemGroup(), ItemHeader(), ItemMedia() (+5 more)
 
-### Community 22 - "Input Group Components"
-Cohesion: 0.24
-Nodes (6): Props, bottomNavItems, drawerItems, PlatformMobileNav(), navItems, PlatformSidebar()
-
 ### Community 24 - "K8s & CI/CD"
 Cohesion: 0.70
 Nodes (5): Glowfront ConfigMap, Glowfront HorizontalPodAutoscaler, Kustomization Configuration, Glowfront Namespace, Glowfront NodePort Service
 
-### Community 25 - "Roles & Proxy"
-Cohesion: 0.24
-Nodes (6): Props, AdminMobileNav(), bottomNavItems, drawerItems, AdminSidebar(), navItems
+### Community 26 - "user-badge.tsx"
+Cohesion: 0.18
+Nodes (7): Props, Props, Props, Props, UserBadge(), UserProfile, useUser()
 
 ### Community 27 - "Project Overview"
 Cohesion: 0.40
@@ -250,28 +250,28 @@ Nodes (4): MapContainer, Marker, Popup, TileLayer
 
 ### Community 70 - "category-browser.tsx"
 Cohesion: 0.05
-Nodes (39): BusinessCard(), cities, BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), StarRating(), formatCurrency() (+31 more)
+Nodes (40): BusinessCard(), cities, BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), StarRating(), formatCurrency() (+32 more)
 
 ### Community 74 - "input-otp"
 Cohesion: 0.40
 Nodes (3): Props, ReviewFormData, reviewSchema
 
 ## Knowledge Gaps
-- **253 isolated node(s):** `Props`, `Props`, `bottomNavItems`, `drawerItems`, `navItems` (+248 more)
+- **255 isolated node(s):** `Props`, `loginSchema`, `LoginFormData`, `Props`, `Props` (+250 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `page.tsx` to `Dashboard Pages`, `category-browser.tsx`, `Business Browse`, `page.tsx`, `alert.tsx`, `alert.tsx`, `Dropdown Menu`, `Location Picker & Map`, `input-otp.tsx`, `Item Components`, `field.tsx`, `hover-card.tsx`?**
-  _High betweenness centrality (0.248) - this node is a cross-community bridge._
+  _High betweenness centrality (0.244) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
-  _High betweenness centrality (0.116) - this node is a cross-community bridge._
+  _High betweenness centrality (0.115) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `NPM Dependencies`?**
-  _High betweenness centrality (0.112) - this node is a cross-community bridge._
-- **What connects `Props`, `Props`, `bottomNavItems` to the rest of the system?**
-  _253 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.110) - this node is a cross-community bridge._
+- **What connects `Props`, `loginSchema`, `LoginFormData` to the rest of the system?**
+  _255 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.12685560053981107 - nodes in this community are weakly interconnected._
 - **Should `admin.ts` be split into smaller, more focused modules?**

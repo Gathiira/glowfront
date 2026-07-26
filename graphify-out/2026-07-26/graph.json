@@ -6,34 +6,111 @@
     {
       "label": "layout.tsx",
       "file_type": "code",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_root_admin_layout",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_root_admin_layout_props",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "props"
+    },
+    {
+      "label": "AdminLayout()",
+      "file_type": "code",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "app_root_admin_layout_adminlayout",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "adminlayout()"
+    },
+    {
+      "label": "admin-flow.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_root_auth_components_admin_flow",
+      "community": 45,
+      "community_name": "admin-flow.tsx",
+      "norm_label": "admin-flow.tsx"
+    },
+    {
+      "label": "loginSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "app_root_auth_components_admin_flow_loginschema",
+      "community": 45,
+      "community_name": "admin-flow.tsx",
+      "norm_label": "loginschema"
+    },
+    {
+      "label": "LoginFormData",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "app_root_auth_components_admin_flow_loginformdata",
+      "community": 45,
+      "community_name": "admin-flow.tsx",
+      "norm_label": "loginformdata"
+    },
+    {
+      "label": "AdminFlow()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "app_root_auth_components_admin_flow_adminflow",
+      "community": 45,
+      "community_name": "admin-flow.tsx",
+      "norm_label": "adminflow()"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
       "source_file": "app/(root)/dashboard/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_root_dashboard_layout",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
+      "community": 26,
+      "community_name": "user-badge.tsx",
       "norm_label": "layout.tsx"
     },
     {
       "label": "Props",
       "file_type": "code",
       "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "app_root_dashboard_layout_props",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
+      "community": 26,
+      "community_name": "user-badge.tsx",
       "norm_label": "props"
     },
     {
       "label": "DashboardLayout()",
       "file_type": "code",
       "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "app_root_dashboard_layout_dashboardlayout",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
+      "community": 26,
+      "community_name": "user-badge.tsx",
       "norm_label": "dashboardlayout()"
     },
     {
@@ -43,31 +120,97 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_root_platform_layout",
-      "community": 22,
-      "community_name": "Input Group Components",
+      "community": 26,
+      "community_name": "user-badge.tsx",
       "norm_label": "layout.tsx"
     },
     {
       "label": "Props",
       "file_type": "code",
       "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "app_root_platform_layout_props",
-      "community": 22,
-      "community_name": "Input Group Components",
+      "community": 26,
+      "community_name": "user-badge.tsx",
       "norm_label": "props"
     },
     {
       "label": "PlatformLayout()",
       "file_type": "code",
       "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "app_root_platform_layout_platformlayout",
-      "community": 22,
-      "community_name": "Input Group Components",
+      "community": 26,
+      "community_name": "user-badge.tsx",
       "norm_label": "platformlayout()"
+    },
+    {
+      "label": "user-badge.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_ui_user_badge",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "user-badge.tsx"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "components_ui_user_badge_props",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "props"
+    },
+    {
+      "label": "UserBadge()",
+      "file_type": "code",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "components_ui_user_badge_userbadge",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "userbadge()"
+    },
+    {
+      "label": "use-user.ts",
+      "file_type": "code",
+      "source_file": "lib/use-user.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_use_user",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "use-user.ts"
+    },
+    {
+      "label": "UserProfile",
+      "file_type": "code",
+      "source_file": "lib/use-user.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "lib_use_user_userprofile",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "userprofile"
+    },
+    {
+      "label": "useUser()",
+      "file_type": "code",
+      "source_file": "lib/use-user.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "lib_use_user_useuser",
+      "community": 26,
+      "community_name": "user-badge.tsx",
+      "norm_label": "useuser()"
     },
     {
       "label": "mobile-nav.tsx",
@@ -75,10 +218,10 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_customer_mobile_nav",
       "community": 22,
       "community_name": "Input Group Components",
-      "norm_label": "mobile-nav.tsx"
+      "norm_label": "mobile-nav.tsx",
+      "id": "components_customer_mobile_nav"
     },
     {
       "label": "bottomNavItems",
@@ -86,10 +229,10 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "components_customer_mobile_nav_bottomnavitems",
       "community": 22,
       "community_name": "Input Group Components",
-      "norm_label": "bottomnavitems"
+      "norm_label": "bottomnavitems",
+      "id": "components_customer_mobile_nav_bottomnavitems"
     },
     {
       "label": "drawerItems",
@@ -97,10 +240,10 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "components_customer_mobile_nav_draweritems",
       "community": 22,
       "community_name": "Input Group Components",
-      "norm_label": "draweritems"
+      "norm_label": "draweritems",
+      "id": "components_customer_mobile_nav_draweritems"
     },
     {
       "label": "PlatformMobileNav()",
@@ -108,10 +251,10 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L48",
       "_origin": "ast",
-      "id": "components_customer_mobile_nav_platformmobilenav",
       "community": 22,
       "community_name": "Input Group Components",
-      "norm_label": "platformmobilenav()"
+      "norm_label": "platformmobilenav()",
+      "id": "components_customer_mobile_nav_platformmobilenav"
     },
     {
       "label": "sidebar.tsx",
@@ -119,10 +262,10 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_customer_sidebar",
-      "community": 22,
-      "community_name": "Input Group Components",
-      "norm_label": "sidebar.tsx"
+      "community": 76,
+      "community_name": "sidebar.tsx",
+      "norm_label": "sidebar.tsx",
+      "id": "components_customer_sidebar"
     },
     {
       "label": "navItems",
@@ -130,10 +273,10 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L30",
       "_origin": "ast",
-      "id": "components_customer_sidebar_navitems",
-      "community": 22,
-      "community_name": "Input Group Components",
-      "norm_label": "navitems"
+      "community": 76,
+      "community_name": "sidebar.tsx",
+      "norm_label": "navitems",
+      "id": "components_customer_sidebar_navitems"
     },
     {
       "label": "PlatformSidebar()",
@@ -141,10 +284,10 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L38",
       "_origin": "ast",
-      "id": "components_customer_sidebar_platformsidebar",
-      "community": 22,
-      "community_name": "Input Group Components",
-      "norm_label": "platformsidebar()"
+      "community": 76,
+      "community_name": "sidebar.tsx",
+      "norm_label": "platformsidebar()",
+      "id": "components_customer_sidebar_platformsidebar"
     },
     {
       "label": "mobile-nav.tsx",
@@ -152,10 +295,10 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_dashboard_mobile_nav",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "mobile-nav.tsx"
+      "community": 73,
+      "community_name": "mobile-nav.tsx",
+      "norm_label": "mobile-nav.tsx",
+      "id": "components_dashboard_mobile_nav"
     },
     {
       "label": "bottomNavItems",
@@ -163,10 +306,10 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "components_dashboard_mobile_nav_bottomnavitems",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "bottomnavitems"
+      "community": 73,
+      "community_name": "mobile-nav.tsx",
+      "norm_label": "bottomnavitems",
+      "id": "components_dashboard_mobile_nav_bottomnavitems"
     },
     {
       "label": "drawerItems",
@@ -174,10 +317,10 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L43",
       "_origin": "ast",
-      "id": "components_dashboard_mobile_nav_draweritems",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "draweritems"
+      "community": 73,
+      "community_name": "mobile-nav.tsx",
+      "norm_label": "draweritems",
+      "id": "components_dashboard_mobile_nav_draweritems"
     },
     {
       "label": "DashboardMobileNav()",
@@ -185,10 +328,10 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L62",
       "_origin": "ast",
-      "id": "components_dashboard_mobile_nav_dashboardmobilenav",
-      "community": 8,
-      "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "dashboardmobilenav()"
+      "community": 73,
+      "community_name": "mobile-nav.tsx",
+      "norm_label": "dashboardmobilenav()",
+      "id": "components_dashboard_mobile_nav_dashboardmobilenav"
     },
     {
       "label": "sidebar.tsx",
@@ -196,10 +339,10 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_dashboard_sidebar",
       "community": 8,
       "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "sidebar.tsx"
+      "norm_label": "sidebar.tsx",
+      "id": "components_dashboard_sidebar"
     },
     {
       "label": "SubMenuItem",
@@ -207,10 +350,10 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "id": "components_dashboard_sidebar_submenuitem",
       "community": 8,
       "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "submenuitem"
+      "norm_label": "submenuitem",
+      "id": "components_dashboard_sidebar_submenuitem"
     },
     {
       "label": "NavItem",
@@ -218,10 +361,10 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "components_dashboard_sidebar_navitem",
       "community": 8,
       "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "navitem"
+      "norm_label": "navitem",
+      "id": "components_dashboard_sidebar_navitem"
     },
     {
       "label": "navItems",
@@ -229,10 +372,10 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L47",
       "_origin": "ast",
-      "id": "components_dashboard_sidebar_navitems",
       "community": 8,
       "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "navitems"
+      "norm_label": "navitems",
+      "id": "components_dashboard_sidebar_navitems"
     },
     {
       "label": "Sidebar()",
@@ -240,10 +383,10 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L94",
       "_origin": "ast",
-      "id": "components_dashboard_sidebar_sidebar",
       "community": 8,
       "community_name": "Dashboard Layout & Sidebar",
-      "norm_label": "sidebar()"
+      "norm_label": "sidebar()",
+      "id": "components_dashboard_sidebar_sidebar"
     },
     {
       "label": "page.tsx",
@@ -310,39 +453,6 @@
       "community_name": "admin.ts",
       "norm_label": "admincustomers()",
       "id": "app_root_admin_customers_page_admincustomers"
-    },
-    {
-      "label": "layout.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "Roles & Proxy",
-      "norm_label": "layout.tsx",
-      "id": "app_root_admin_layout"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "Roles & Proxy",
-      "norm_label": "props",
-      "id": "app_root_admin_layout_props"
-    },
-    {
-      "label": "AdminLayout()",
-      "file_type": "code",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 25,
-      "community_name": "Roles & Proxy",
-      "norm_label": "adminlayout()",
-      "id": "app_root_admin_layout_adminlayout"
     },
     {
       "label": "page.tsx",
@@ -460,8 +570,8 @@
       "source_file": "components/admin/sidebar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Roles & Proxy",
+      "community": 75,
+      "community_name": "sidebar.tsx",
       "norm_label": "sidebar.tsx",
       "id": "components_admin_sidebar"
     },
@@ -471,8 +581,8 @@
       "source_file": "components/admin/sidebar.tsx",
       "source_location": "L30",
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Roles & Proxy",
+      "community": 75,
+      "community_name": "sidebar.tsx",
       "norm_label": "navitems",
       "id": "components_admin_sidebar_navitems"
     },
@@ -482,8 +592,8 @@
       "source_file": "components/admin/sidebar.tsx",
       "source_location": "L39",
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Roles & Proxy",
+      "community": 75,
+      "community_name": "sidebar.tsx",
       "norm_label": "adminsidebar()",
       "id": "components_admin_sidebar_adminsidebar"
     },
@@ -1445,50 +1555,6 @@
       "id": "app_root_admin_home_page_adminhome"
     },
     {
-      "label": "admin-flow.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "admin-flow.tsx",
-      "norm_label": "admin-flow.tsx",
-      "id": "app_root_auth_components_admin_flow"
-    },
-    {
-      "label": "loginSchema",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "admin-flow.tsx",
-      "norm_label": "loginschema",
-      "id": "app_root_auth_components_admin_flow_loginschema"
-    },
-    {
-      "label": "LoginFormData",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "admin-flow.tsx",
-      "norm_label": "loginformdata",
-      "id": "app_root_auth_components_admin_flow_loginformdata"
-    },
-    {
-      "label": "AdminFlow()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "admin-flow.tsx",
-      "norm_label": "adminflow()",
-      "id": "app_root_auth_components_admin_flow_adminflow"
-    },
-    {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "app/(root)/auth/admin/page.tsx",
@@ -2088,8 +2154,8 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 70,
+      "community_name": "category-browser.tsx",
       "norm_label": "business-card.tsx",
       "id": "components_landing_business_card"
     },
@@ -2099,8 +2165,8 @@
       "source_file": "components/landing/business-card.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 7,
-      "community_name": "Business Browse",
+      "community": 70,
+      "community_name": "category-browser.tsx",
       "norm_label": "businesscard()",
       "id": "components_landing_business_card_businesscard"
     },
@@ -9100,8 +9166,91 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_root_admin_layout",
+      "target": "app_root_admin_layout_adminlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_root_admin_layout",
+      "target": "app_root_admin_layout_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_root_admin_layout",
+      "target": "components_ui_user_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/admin/layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_root_admin_layout",
+      "target": "components_ui_user_badge_userbadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/admin/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_admin_page",
+      "target": "app_root_auth_components_admin_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "app_root_auth_components_admin_flow",
+      "target": "app_root_auth_components_admin_flow_adminflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "app_root_auth_components_admin_flow",
+      "target": "app_root_auth_components_admin_flow_loginformdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "app_root_auth_components_admin_flow",
+      "target": "app_root_auth_components_admin_flow_loginschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "app_root_dashboard_layout",
       "target": "app_root_dashboard_layout_dashboardlayout",
@@ -9111,7 +9260,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "app_root_dashboard_layout",
       "target": "app_root_dashboard_layout_props",
@@ -9122,10 +9271,10 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "app_root_dashboard_layout",
-      "target": "components_dashboard_mobile_nav",
+      "target": "components_ui_user_badge",
       "confidence_score": 1.0
     },
     {
@@ -9133,39 +9282,17 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "app_root_dashboard_layout",
-      "target": "components_dashboard_mobile_nav_dashboardmobilenav",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "app_root_dashboard_layout",
-      "target": "components_dashboard_sidebar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/layout.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "app_root_dashboard_layout",
-      "target": "components_dashboard_sidebar_sidebar",
+      "target": "components_ui_user_badge_userbadge",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "source": "app_root_platform_layout",
       "target": "app_root_platform_layout_platformlayout",
@@ -9175,7 +9302,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "source": "app_root_platform_layout",
       "target": "app_root_platform_layout_props",
@@ -9186,10 +9313,10 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "source": "app_root_platform_layout",
-      "target": "components_customer_mobile_nav",
+      "target": "components_ui_user_badge",
       "confidence_score": 1.0
     },
     {
@@ -9197,32 +9324,83 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0,
       "source": "app_root_platform_layout",
-      "target": "components_customer_mobile_nav_platformmobilenav",
+      "target": "components_ui_user_badge_userbadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "components_ui_user_badge",
+      "target": "components_ui_user_badge_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "components_ui_user_badge",
+      "target": "components_ui_user_badge_userbadge",
       "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L2",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L3",
       "weight": 1.0,
-      "source": "app_root_platform_layout",
-      "target": "components_customer_sidebar",
+      "source": "components_ui_user_badge",
+      "target": "lib_use_user",
       "confidence_score": 1.0
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/layout.tsx",
-      "source_location": "L2",
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L3",
       "weight": 1.0,
-      "source": "app_root_platform_layout",
-      "target": "components_customer_sidebar_platformsidebar",
+      "source": "components_ui_user_badge",
+      "target": "lib_use_user_useuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/ui/user-badge.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_ui_user_badge_userbadge",
+      "target": "lib_use_user_useuser"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/use-user.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_use_user",
+      "target": "lib_use_user_userprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/use-user.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "lib_use_user",
+      "target": "lib_use_user_useuser",
       "confidence_score": 1.0
     },
     {
@@ -9231,9 +9409,9 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_mobile_nav",
-      "target": "components_customer_mobile_nav_bottomnavitems",
-      "confidence_score": 1.0
+      "target": "components_customer_mobile_nav_bottomnavitems"
     },
     {
       "relation": "contains",
@@ -9241,9 +9419,9 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_mobile_nav",
-      "target": "components_customer_mobile_nav_draweritems",
-      "confidence_score": 1.0
+      "target": "components_customer_mobile_nav_draweritems"
     },
     {
       "relation": "contains",
@@ -9251,9 +9429,9 @@
       "source_file": "components/customer/mobile-nav.tsx",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_mobile_nav",
-      "target": "components_customer_mobile_nav_platformmobilenav",
-      "confidence_score": 1.0
+      "target": "components_customer_mobile_nav_platformmobilenav"
     },
     {
       "relation": "contains",
@@ -9261,9 +9439,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_sidebar",
-      "target": "components_customer_sidebar_navitems",
-      "confidence_score": 1.0
+      "target": "components_customer_sidebar_navitems"
     },
     {
       "relation": "contains",
@@ -9271,9 +9449,9 @@
       "source_file": "components/customer/sidebar.tsx",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_customer_sidebar",
-      "target": "components_customer_sidebar_platformsidebar",
-      "confidence_score": 1.0
+      "target": "components_customer_sidebar_platformsidebar"
     },
     {
       "relation": "contains",
@@ -9281,9 +9459,9 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_mobile_nav",
-      "target": "components_dashboard_mobile_nav_bottomnavitems",
-      "confidence_score": 1.0
+      "target": "components_dashboard_mobile_nav_bottomnavitems"
     },
     {
       "relation": "contains",
@@ -9291,9 +9469,9 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_mobile_nav",
-      "target": "components_dashboard_mobile_nav_dashboardmobilenav",
-      "confidence_score": 1.0
+      "target": "components_dashboard_mobile_nav_dashboardmobilenav"
     },
     {
       "relation": "contains",
@@ -9301,9 +9479,9 @@
       "source_file": "components/dashboard/mobile-nav.tsx",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_mobile_nav",
-      "target": "components_dashboard_mobile_nav_draweritems",
-      "confidence_score": 1.0
+      "target": "components_dashboard_mobile_nav_draweritems"
     },
     {
       "relation": "contains",
@@ -9311,9 +9489,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_navitem",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_navitem"
     },
     {
       "relation": "contains",
@@ -9321,9 +9499,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_navitems",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_navitems"
     },
     {
       "relation": "contains",
@@ -9331,9 +9509,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_sidebar",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_sidebar"
     },
     {
       "relation": "contains",
@@ -9341,9 +9519,9 @@
       "source_file": "components/dashboard/sidebar.tsx",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_dashboard_sidebar",
-      "target": "components_dashboard_sidebar_submenuitem",
-      "confidence_score": 1.0
+      "target": "components_dashboard_sidebar_submenuitem"
     },
     {
       "relation": "contains",
@@ -9824,70 +10002,6 @@
       "weight": 1.0,
       "source": "app_root_admin_customers_page_admincustomers",
       "target": "lib_date_utils_formatdatetime"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_admin_layout",
-      "target": "app_root_admin_layout_adminlayout"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_admin_layout",
-      "target": "app_root_admin_layout_props"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_admin_layout",
-      "target": "components_admin_mobile_nav"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_admin_layout",
-      "target": "components_admin_mobile_nav_adminmobilenav"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_admin_layout",
-      "target": "components_admin_sidebar"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/admin/layout.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_admin_layout",
-      "target": "components_admin_sidebar_adminsidebar"
     },
     {
       "relation": "contains",
@@ -12174,47 +12288,6 @@
       "confidence_score": 1.0,
       "source": "app_root_admin_home_page",
       "target": "app_root_admin_home_page_adminhome"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/admin/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_auth_admin_page",
-      "target": "app_root_auth_components_admin_flow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_auth_components_admin_flow",
-      "target": "app_root_auth_components_admin_flow_adminflow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_auth_components_admin_flow",
-      "target": "app_root_auth_components_admin_flow_loginformdata"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/admin-flow.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_auth_components_admin_flow",
-      "target": "app_root_auth_components_admin_flow_loginschema"
     },
     {
       "relation": "contains",
@@ -22598,5 +22671,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a8ac00870ea3abea3aa146aafb3500dd7cbe8633"
+  "built_at_commit": "dc1654f0b8ad887e1f4bff18027e2c596989cd26"
 }

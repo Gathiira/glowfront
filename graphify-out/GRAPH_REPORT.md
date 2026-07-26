@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 829 nodes · 1285 edges · 78 communities (57 shown, 21 thin omitted)
+- 829 nodes · 1272 edges · 79 communities (58 shown, 21 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dc1654f0`
+- Built from commit: `a920c05e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,6 +74,7 @@
 - sidebar.tsx
 - sidebar.tsx
 - page.tsx
+- page.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 134 edges
@@ -102,7 +103,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (78 total, 21 thin omitted)
+## Communities (79 total, 21 thin omitted)
 
 ### Community 0 - "Dashboard Pages"
 Cohesion: 0.13
@@ -110,7 +111,7 @@ Nodes (20): appointments, clients, segments, payments, days, Shift, PageHeader()
 
 ### Community 1 - "admin.ts"
 Cohesion: 0.07
-Nodes (45): AdminBusinesses(), AdminCategories(), AdminCustomers(), AdminPartners(), AdminReviews(), movements, transactions, allTransactions (+37 more)
+Nodes (42): AdminBusinesses(), AdminCategories(), AdminCustomers(), AdminPartners(), AdminReviews(), movements, transactions, allTransactions (+34 more)
 
 ### Community 2 - "Auth Form Components"
 Cohesion: 0.12
@@ -134,7 +135,7 @@ Nodes (29): ./*, dom, dom.iterable, esnext, .next/dev/types/**/*.ts, next-env.d.
 
 ### Community 7 - "Business Browse"
 Cohesion: 0.06
-Nodes (33): allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics, successServices, PaginationProps (+25 more)
+Nodes (34): allInOnePoints, BusinessPage(), businessStats, features, marketplacePoints, metrics, successServices, PaginationProps (+26 more)
 
 ### Community 8 - "Dashboard Layout & Sidebar"
 Cohesion: 0.40
@@ -153,8 +154,8 @@ Cohesion: 0.10
 Nodes (9): CreateServicePayload, CreateStaffPayload, CustomerAccountData, CustomerLoginData, DashboardSummaryDto, PartnerAccountData, PartnerBusinessData, TopServiceDto (+1 more)
 
 ### Community 12 - "Business Detail"
-Cohesion: 0.83
-Nodes (3): AddMember(), createPartnerStaff(), fetchPartnerServices()
+Cohesion: 0.60
+Nodes (4): AddMember(), createPartnerStaff(), fetchPartnerServices(), ServiceDto
 
 ### Community 13 - "Platform Layout & Context"
 Cohesion: 0.29
@@ -177,8 +178,8 @@ Cohesion: 0.15
 Nodes (9): AlertDialogAction(), AlertDialogCancel(), AlertDialogContent(), AlertDialogDescription(), AlertDialogFooter(), AlertDialogHeader(), AlertDialogMedia(), AlertDialogOverlay() (+1 more)
 
 ### Community 18 - "API Client Layer"
-Cohesion: 0.12
-Nodes (6): CustomerBookingPayload, BookingDto, BusinessDetailDto, BusinessSearchDto, CustomerDashboardDto, StaffDto
+Cohesion: 0.11
+Nodes (7): CustomerBookingPayload, BookingDto, BusinessDetailDto, BusinessDto, BusinessSearchDto, CustomerDashboardDto, StaffDto
 
 ### Community 19 - "OpenCode Config"
 Cohesion: 0.14
@@ -249,32 +250,36 @@ Cohesion: 0.40
 Nodes (4): MapContainer, Marker, Popup, TileLayer
 
 ### Community 70 - "category-browser.tsx"
-Cohesion: 0.05
-Nodes (40): BusinessCard(), cities, BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), StarRating(), formatCurrency() (+32 more)
+Cohesion: 0.06
+Nodes (32): BusinessCard(), cities, BusinessDetailPage(), DAY_ORDER, formatDay(), formatTime(), StarRating(), formatCurrency() (+24 more)
 
 ### Community 74 - "input-otp"
 Cohesion: 0.40
 Nodes (3): Props, ReviewFormData, reviewSchema
 
+### Community 77 - "page.tsx"
+Cohesion: 0.31
+Nodes (8): BusinessWithCoords, cities, FlyTo, getBusinessCoords(), getKenyaBounds(), neighborhoodCoords, SearchPage(), seededRandom()
+
 ## Knowledge Gaps
-- **255 isolated node(s):** `Props`, `loginSchema`, `LoginFormData`, `Props`, `Props` (+250 more)
+- **255 isolated node(s):** `AdminCreateServicePayload`, `AdminCreateCategoryPayload`, `Props`, `loginSchema`, `LoginFormData` (+250 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `page.tsx` to `Dashboard Pages`, `category-browser.tsx`, `Business Browse`, `page.tsx`, `alert.tsx`, `alert.tsx`, `Dropdown Menu`, `Location Picker & Map`, `input-otp.tsx`, `Item Components`, `field.tsx`, `hover-card.tsx`?**
-  _High betweenness centrality (0.244) - this node is a cross-community bridge._
+- **Why does `cn()` connect `page.tsx` to `Dashboard Pages`, `category-browser.tsx`, `Business Browse`, `page.tsx`, `alert.tsx`, `alert.tsx`, `page.tsx`, `Dropdown Menu`, `Location Picker & Map`, `input-otp.tsx`, `Item Components`, `field.tsx`, `hover-card.tsx`?**
+  _High betweenness centrality (0.245) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `NPM Dependencies` to `input-otp.tsx`, `Dev Tooling & Linting`?**
   _High betweenness centrality (0.115) - this node is a cross-community bridge._
 - **Why does `react` connect `input-otp.tsx` to `NPM Dependencies`?**
   _High betweenness centrality (0.110) - this node is a cross-community bridge._
-- **What connects `Props`, `loginSchema`, `LoginFormData` to the rest of the system?**
+- **What connects `AdminCreateServicePayload`, `AdminCreateCategoryPayload`, `Props` to the rest of the system?**
   _255 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard Pages` be split into smaller, more focused modules?**
   _Cohesion score 0.12685560053981107 - nodes in this community are weakly interconnected._
 - **Should `admin.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07403846153846154 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.074034902168165 - nodes in this community are weakly interconnected._
 - **Should `Auth Form Components` be split into smaller, more focused modules?**
   _Cohesion score 0.11688311688311688 - nodes in this community are weakly interconnected._
