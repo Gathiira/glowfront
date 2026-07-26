@@ -5,6 +5,7 @@ import type { ReactNode } from "react"
 import { Sidebar } from "@/components/dashboard/sidebar"
 import { DashboardMobileNav } from "@/components/dashboard/mobile-nav"
 import { fetchPartnerBusiness } from "@/lib/api/partner"
+import { UserBadge } from "@/components/ui/user-badge"
 
 type Props = { children: ReactNode }
 
@@ -26,9 +27,12 @@ export default function DashboardLayout({ children }: Props) {
             <p className="text-sm font-medium text-muted-foreground">
               Partner Dashboard
             </p>
-            {businessName && (
-              <span className="text-sm font-semibold">{businessName}</span>
-            )}
+            <div className="flex items-center gap-4">
+              {businessName && (
+                <span className="text-sm font-semibold">{businessName}</span>
+              )}
+              <UserBadge storageKeys={["customer_profile", "partner_profile"]} />
+            </div>
           </div>
         </header>
         <main className="flex-1 px-4 py-4 pb-24 md:p-6 md:pb-6">{children}</main>

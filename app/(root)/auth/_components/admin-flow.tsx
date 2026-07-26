@@ -44,6 +44,9 @@ const AdminFlow = () => {
         showError(json.msg || "Login failed")
         return
       }
+      if (json.data?.profile) {
+        localStorage.setItem("admin_profile", JSON.stringify(json.data.profile))
+      }
       showSuccess("Welcome, admin")
       router.push("/admin/home")
     } catch (err) {

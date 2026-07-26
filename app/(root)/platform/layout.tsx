@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import { PlatformSidebar } from "@/components/customer/sidebar"
 import { PlatformMobileNav } from "@/components/customer/mobile-nav"
 import { CustomerProvider } from "@/lib/customer-context"
+import { UserBadge } from "@/components/ui/user-badge"
 
 type Props = { children: ReactNode }
 
@@ -16,6 +17,7 @@ export default function PlatformLayout({ children }: Props) {
               <p className="text-sm font-medium text-muted-foreground">
                 Customer Platform
               </p>
+              <UserBadge storageKeys={["customer_profile"]} />
             </div>
           </header>
           <main className="flex-1 px-4 py-4 pb-24 md:p-6 md:pb-6">{children}</main>
