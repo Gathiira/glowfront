@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { identifier, password } = body
 
-    const res = await fetch(API_URL + "/api/v1/customer/login", {
+    const res = await fetch(API_URL + "/api/v1/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ identifier, password }),
