@@ -4,444 +4,26 @@
   "graph": {},
   "nodes": [
     {
-      "label": "customer-flow.tsx",
+      "label": "page.tsx",
       "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "customer-flow.tsx"
+      "id": "app_root_dashboard_profile_details_page",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "page.tsx"
     },
     {
-      "label": "loginSchema",
+      "label": "ProfileDetails()",
       "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_loginschema",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "loginschema"
-    },
-    {
-      "label": "registerSchema",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_registerschema",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "registerschema"
-    },
-    {
-      "label": "LoginFormData",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_loginformdata",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "loginformdata"
-    },
-    {
-      "label": "RegisterFormData",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L50",
-      "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_registerformdata",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "registerformdata"
-    },
-    {
-      "label": "Mode",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_mode",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "mode"
-    },
-    {
-      "label": "CustomerFlow()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L54",
-      "_origin": "ast",
-      "id": "app_root_auth_components_customer_flow_customerflow",
-      "community": 43,
-      "community_name": "customer-flow.tsx",
-      "norm_label": "customerflow()"
-    },
-    {
-      "label": "partner-flow.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow",
-      "community": 57,
-      "community_name": "partner-flow.tsx",
-      "norm_label": "partner-flow.tsx"
-    },
-    {
-      "label": "formSchema",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_formschema",
-      "community": 57,
-      "community_name": "partner-flow.tsx",
-      "norm_label": "formschema"
-    },
-    {
-      "label": "FormDataType",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_formdatatype",
-      "community": 57,
-      "community_name": "partner-flow.tsx",
-      "norm_label": "formdatatype"
-    },
-    {
-      "label": "Mode",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_mode",
-      "community": 57,
-      "community_name": "partner-flow.tsx",
-      "norm_label": "mode"
-    },
-    {
-      "label": "PartnerFlow()",
-      "file_type": "code",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L31",
-      "_origin": "ast",
-      "id": "app_root_auth_components_partner_flow_partnerflow",
-      "community": 57,
-      "community_name": "partner-flow.tsx",
-      "norm_label": "partnerflow()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/catalog/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_dashboard_catalog_page",
-      "community": 64,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "Catalog()",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/catalog/page.tsx",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "app_root_dashboard_catalog_page_catalog",
-      "community": 64,
-      "community_name": "page.tsx",
-      "norm_label": "catalog()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/profile/portfolio/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_dashboard_profile_portfolio_page",
-      "community": 65,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "ProfilePortfolio()",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/profile/portfolio/page.tsx",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "app_root_dashboard_profile_portfolio_page_profileportfolio",
-      "community": 65,
-      "community_name": "page.tsx",
-      "norm_label": "profileportfolio()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/team/members/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_dashboard_team_members_page",
-      "community": 41,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "TeamMembers()",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/team/members/page.tsx",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "app_root_dashboard_team_members_page_teammembers",
-      "community": 41,
-      "community_name": "page.tsx",
-      "norm_label": "teammembers()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_platform_appointments_page",
-      "community": 59,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "BookingDetailDialog",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "app_root_platform_appointments_page_bookingdetaildialog",
-      "community": 59,
-      "community_name": "page.tsx",
-      "norm_label": "bookingdetaildialog"
-    },
-    {
-      "label": "Tab",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "app_root_platform_appointments_page_tab",
-      "community": 59,
-      "community_name": "page.tsx",
-      "norm_label": "tab"
-    },
-    {
-      "label": "Appointments()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "app_root_platform_appointments_page_appointments",
-      "community": 59,
-      "community_name": "page.tsx",
-      "norm_label": "appointments()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/calendar/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_platform_calendar_page",
-      "community": 62,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "BookingDetailDialog",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/calendar/page.tsx",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "app_root_platform_calendar_page_bookingdetaildialog",
-      "community": 62,
-      "community_name": "page.tsx",
-      "norm_label": "bookingdetaildialog"
-    },
-    {
-      "label": "CustomerCalendar()",
-      "file_type": "code",
-      "source_file": "app/(root)/platform/calendar/page.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "app_root_platform_calendar_page_customercalendar",
-      "community": 62,
-      "community_name": "page.tsx",
-      "norm_label": "customercalendar()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_search_page",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "FlyTo",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "app_root_search_page_flyto",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "flyto"
-    },
-    {
-      "label": "seededRandom()",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L31",
-      "_origin": "ast",
-      "id": "app_root_search_page_seededrandom",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "seededrandom()"
-    },
-    {
-      "label": "neighborhoodCoords",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "app_root_search_page_neighborhoodcoords",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "neighborhoodcoords"
-    },
-    {
-      "label": "getBusinessCoords()",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L55",
-      "_origin": "ast",
-      "id": "app_root_search_page_getbusinesscoords",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "getbusinesscoords()"
-    },
-    {
-      "label": "cities",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L103",
-      "_origin": "ast",
-      "id": "app_root_search_page_cities",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "cities"
-    },
-    {
-      "label": "kenyaBounds",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L105",
-      "_origin": "ast",
-      "id": "app_root_search_page_kenyabounds",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "kenyabounds"
-    },
-    {
-      "label": "BusinessWithCoords",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L107",
-      "_origin": "ast",
-      "id": "app_root_search_page_businesswithcoords",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "businesswithcoords"
-    },
-    {
-      "label": "SearchPage()",
-      "file_type": "code",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L109",
-      "_origin": "ast",
-      "id": "app_root_search_page_searchpage",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "searchpage()"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_page",
-      "community": 60,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx"
-    },
-    {
-      "label": "fetchSection()",
-      "file_type": "code",
-      "source_file": "app/page.tsx",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "app_page_fetchsection",
-      "community": 60,
-      "community_name": "page.tsx",
-      "norm_label": "fetchsection()"
-    },
-    {
-      "label": "LandingPage()",
-      "file_type": "code",
-      "source_file": "app/page.tsx",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "app_page_landingpage",
-      "community": 60,
-      "community_name": "page.tsx",
-      "norm_label": "landingpage()"
-    },
-    {
-      "label": "booking-detail-dialog.tsx",
-      "file_type": "code",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog",
+      "id": "app_root_dashboard_profile_details_page_profiledetails",
       "community": 1,
       "community_name": "Landing & Auth Pages",
-      "norm_label": "booking-detail-dialog.tsx"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_props",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "props"
-    },
-    {
-      "label": "BookingDetailDialog()",
-      "file_type": "code",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L40",
-      "_origin": "ast",
-      "id": "components_customer_booking_detail_dialog_bookingdetaildialog",
-      "community": 1,
-      "community_name": "Landing & Auth Pages",
-      "norm_label": "bookingdetaildialog()"
+      "norm_label": "profiledetails()"
     },
     {
       "label": "business-map.tsx",
@@ -458,7 +40,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "components/map/business-map.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "components_map_business_map_props",
       "community": 1,
@@ -469,7 +51,7 @@
       "label": "BusinessMap()",
       "file_type": "code",
       "source_file": "components/map/business-map.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "components_map_business_map_businessmap",
       "community": 1,
@@ -477,15 +59,455 @@
       "norm_label": "businessmap()"
     },
     {
+      "label": "customer-flow.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "customer-flow.tsx",
+      "id": "app_root_auth_components_customer_flow"
+    },
+    {
+      "label": "loginSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "loginschema",
+      "id": "app_root_auth_components_customer_flow_loginschema"
+    },
+    {
+      "label": "registerSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "registerschema",
+      "id": "app_root_auth_components_customer_flow_registerschema"
+    },
+    {
+      "label": "LoginFormData",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "loginformdata",
+      "id": "app_root_auth_components_customer_flow_loginformdata"
+    },
+    {
+      "label": "RegisterFormData",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L50",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "registerformdata",
+      "id": "app_root_auth_components_customer_flow_registerformdata"
+    },
+    {
+      "label": "Mode",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L52",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "mode",
+      "id": "app_root_auth_components_customer_flow_mode"
+    },
+    {
+      "label": "CustomerFlow()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L54",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "customer-flow.tsx",
+      "norm_label": "customerflow()",
+      "id": "app_root_auth_components_customer_flow_customerflow"
+    },
+    {
+      "label": "partner-flow.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "partner-flow.tsx",
+      "norm_label": "partner-flow.tsx",
+      "id": "app_root_auth_components_partner_flow"
+    },
+    {
+      "label": "formSchema",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "partner-flow.tsx",
+      "norm_label": "formschema",
+      "id": "app_root_auth_components_partner_flow_formschema"
+    },
+    {
+      "label": "FormDataType",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "partner-flow.tsx",
+      "norm_label": "formdatatype",
+      "id": "app_root_auth_components_partner_flow_formdatatype"
+    },
+    {
+      "label": "Mode",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "partner-flow.tsx",
+      "norm_label": "mode",
+      "id": "app_root_auth_components_partner_flow_mode"
+    },
+    {
+      "label": "PartnerFlow()",
+      "file_type": "code",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "partner-flow.tsx",
+      "norm_label": "partnerflow()",
+      "id": "app_root_auth_components_partner_flow_partnerflow"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/catalog/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_root_dashboard_catalog_page"
+    },
+    {
+      "label": "Catalog()",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/catalog/page.tsx",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "page.tsx",
+      "norm_label": "catalog()",
+      "id": "app_root_dashboard_catalog_page_catalog"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/profile/portfolio/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 65,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_root_dashboard_profile_portfolio_page"
+    },
+    {
+      "label": "ProfilePortfolio()",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/profile/portfolio/page.tsx",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 65,
+      "community_name": "page.tsx",
+      "norm_label": "profileportfolio()",
+      "id": "app_root_dashboard_profile_portfolio_page_profileportfolio"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/team/members/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_root_dashboard_team_members_page"
+    },
+    {
+      "label": "TeamMembers()",
+      "file_type": "code",
+      "source_file": "app/(root)/dashboard/team/members/page.tsx",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "page.tsx",
+      "norm_label": "teammembers()",
+      "id": "app_root_dashboard_team_members_page_teammembers"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_root_platform_appointments_page"
+    },
+    {
+      "label": "BookingDetailDialog",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "page.tsx",
+      "norm_label": "bookingdetaildialog",
+      "id": "app_root_platform_appointments_page_bookingdetaildialog"
+    },
+    {
+      "label": "Tab",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "page.tsx",
+      "norm_label": "tab",
+      "id": "app_root_platform_appointments_page_tab"
+    },
+    {
+      "label": "Appointments()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 59,
+      "community_name": "page.tsx",
+      "norm_label": "appointments()",
+      "id": "app_root_platform_appointments_page_appointments"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/calendar/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_root_platform_calendar_page"
+    },
+    {
+      "label": "BookingDetailDialog",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/calendar/page.tsx",
+      "source_location": "L17",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "page.tsx",
+      "norm_label": "bookingdetaildialog",
+      "id": "app_root_platform_calendar_page_bookingdetaildialog"
+    },
+    {
+      "label": "CustomerCalendar()",
+      "file_type": "code",
+      "source_file": "app/(root)/platform/calendar/page.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "page.tsx",
+      "norm_label": "customercalendar()",
+      "id": "app_root_platform_calendar_page_customercalendar"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_root_search_page"
+    },
+    {
+      "label": "FlyTo",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "flyto",
+      "id": "app_root_search_page_flyto"
+    },
+    {
+      "label": "seededRandom()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "seededrandom()",
+      "id": "app_root_search_page_seededrandom"
+    },
+    {
+      "label": "neighborhoodCoords",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L36",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "neighborhoodcoords",
+      "id": "app_root_search_page_neighborhoodcoords"
+    },
+    {
+      "label": "getBusinessCoords()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L55",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "getbusinesscoords()",
+      "id": "app_root_search_page_getbusinesscoords"
+    },
+    {
+      "label": "cities",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L103",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "cities",
+      "id": "app_root_search_page_cities"
+    },
+    {
+      "label": "kenyaBounds",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L105",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "kenyabounds",
+      "id": "app_root_search_page_kenyabounds"
+    },
+    {
+      "label": "BusinessWithCoords",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L107",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "businesswithcoords",
+      "id": "app_root_search_page_businesswithcoords"
+    },
+    {
+      "label": "SearchPage()",
+      "file_type": "code",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L109",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "searchpage()",
+      "id": "app_root_search_page_searchpage"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx",
+      "id": "app_page"
+    },
+    {
+      "label": "fetchSection()",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "page.tsx",
+      "norm_label": "fetchsection()",
+      "id": "app_page_fetchsection"
+    },
+    {
+      "label": "LandingPage()",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "page.tsx",
+      "norm_label": "landingpage()",
+      "id": "app_page_landingpage"
+    },
+    {
+      "label": "booking-detail-dialog.tsx",
+      "file_type": "code",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "booking-detail-dialog.tsx",
+      "id": "components_customer_booking_detail_dialog"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L34",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "props",
+      "id": "components_customer_booking_detail_dialog_props"
+    },
+    {
+      "label": "BookingDetailDialog()",
+      "file_type": "code",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L40",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Landing & Auth Pages",
+      "norm_label": "bookingdetaildialog()",
+      "id": "components_customer_booking_detail_dialog_bookingdetaildialog"
+    },
+    {
       "label": "customer-context.tsx",
       "file_type": "code",
       "source_file": "lib/customer-context.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "lib_customer_context",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "customer-context.tsx"
+      "norm_label": "customer-context.tsx",
+      "id": "lib_customer_context"
     },
     {
       "label": "mockProfile",
@@ -493,10 +515,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "lib_customer_context_mockprofile",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "mockprofile"
+      "norm_label": "mockprofile",
+      "id": "lib_customer_context_mockprofile"
     },
     {
       "label": "profileFromStorage()",
@@ -504,10 +526,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "lib_customer_context_profilefromstorage",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "profilefromstorage()"
+      "norm_label": "profilefromstorage()",
+      "id": "lib_customer_context_profilefromstorage"
     },
     {
       "label": "clearCustomerProfile()",
@@ -515,10 +537,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "lib_customer_context_clearcustomerprofile",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "clearcustomerprofile()"
+      "norm_label": "clearcustomerprofile()",
+      "id": "lib_customer_context_clearcustomerprofile"
     },
     {
       "label": "CustomerContextType",
@@ -526,10 +548,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "lib_customer_context_customercontexttype",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "customercontexttype"
+      "norm_label": "customercontexttype",
+      "id": "lib_customer_context_customercontexttype"
     },
     {
       "label": "CustomerContext",
@@ -537,10 +559,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L53",
       "_origin": "ast",
-      "id": "lib_customer_context_customercontext",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "customercontext"
+      "norm_label": "customercontext",
+      "id": "lib_customer_context_customercontext"
     },
     {
       "label": "CustomerProvider()",
@@ -548,10 +570,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L55",
       "_origin": "ast",
-      "id": "lib_customer_context_customerprovider",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "customerprovider()"
+      "norm_label": "customerprovider()",
+      "id": "lib_customer_context_customerprovider"
     },
     {
       "label": "useCustomer()",
@@ -559,10 +581,10 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L99",
       "_origin": "ast",
-      "id": "lib_customer_context_usecustomer",
       "community": 13,
       "community_name": "Platform Layout & Context",
-      "norm_label": "usecustomer()"
+      "norm_label": "usecustomer()",
+      "id": "lib_customer_context_usecustomer"
     },
     {
       "label": "location-picker.tsx",
@@ -2286,8 +2308,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L174",
       "_origin": "ast",
-      "community": 22,
-      "community_name": "Input Group Components",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "paginatedresponse",
       "id": "lib_types_paginatedresponse"
     },
@@ -2385,8 +2407,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L254",
       "_origin": "ast",
-      "community": 22,
-      "community_name": "Input Group Components",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "businessdto",
       "id": "lib_types_businessdto"
     },
@@ -2407,8 +2429,8 @@
       "source_file": "lib/types.ts",
       "source_location": "L285",
       "_origin": "ast",
-      "community": 22,
-      "community_name": "Input Group Components",
+      "community": 18,
+      "community_name": "API Client Layer",
       "norm_label": "reviewdto",
       "id": "lib_types_reviewdto"
     },
@@ -2719,28 +2741,6 @@
       "community_name": "Input Group Components",
       "norm_label": "dashboardlayout()",
       "id": "app_root_dashboard_layout_dashboardlayout"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 22,
-      "community_name": "Input Group Components",
-      "norm_label": "page.tsx",
-      "id": "app_root_dashboard_profile_details_page"
-    },
-    {
-      "label": "ProfileDetails()",
-      "file_type": "code",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L28",
-      "_origin": "ast",
-      "community": 22,
-      "community_name": "Input Group Components",
-      "norm_label": "profiledetails()",
-      "id": "app_root_dashboard_profile_details_page_profiledetails"
     },
     {
       "label": "page.tsx",
@@ -8187,366 +8187,21 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L54",
-      "weight": 1.0,
-      "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_customerflow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_loginformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_loginschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_mode",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L50",
-      "weight": 1.0,
-      "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_registerformdata",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "app_root_auth_components_customer_flow",
-      "target": "app_root_auth_components_customer_flow_registerschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/customer/page.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_auth_customer_page",
-      "target": "app_root_auth_components_customer_flow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_formdatatype",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_formschema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
       "source_location": "L29",
       "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_mode",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "source": "app_root_auth_components_partner_flow",
-      "target": "app_root_auth_components_partner_flow_partnerflow",
+      "source": "app_root_dashboard_profile_details_page",
+      "target": "app_root_dashboard_profile_details_page_profiledetails",
       "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/auth/partner/page.tsx",
-      "source_location": "L4",
+      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
+      "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_auth_partner_page",
-      "target": "app_root_auth_components_partner_flow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/catalog/page.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "app_root_dashboard_catalog_page",
-      "target": "app_root_dashboard_catalog_page_catalog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/portfolio/page.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "app_root_dashboard_profile_portfolio_page",
-      "target": "app_root_dashboard_profile_portfolio_page_profileportfolio",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/team/members/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "app_root_dashboard_team_members_page",
-      "target": "app_root_dashboard_team_members_page_teammembers",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "app_root_platform_appointments_page_appointments",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "app_root_platform_appointments_page_bookingdetaildialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/appointments/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "app_root_platform_appointments_page",
-      "target": "app_root_platform_appointments_page_tab",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/calendar/page.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "app_root_platform_calendar_page",
-      "target": "app_root_platform_calendar_page_bookingdetaildialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/platform/calendar/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "app_root_platform_calendar_page",
-      "target": "app_root_platform_calendar_page_customercalendar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L107",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_businesswithcoords",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L103",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_cities",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_flyto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L55",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_getbusinesscoords",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L105",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_kenyabounds",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_neighborhoodcoords",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L109",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_searchpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "source": "app_root_search_page",
-      "target": "app_root_search_page_seededrandom",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L58",
-      "weight": 1.0,
-      "source": "app_root_search_page_getbusinesscoords",
-      "target": "app_root_search_page_seededrandom",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/search/page.tsx",
-      "source_location": "L146",
-      "weight": 1.0,
-      "source": "app_root_search_page_searchpage",
-      "target": "app_root_search_page_getbusinesscoords",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "app_page",
-      "target": "app_page_fetchsection",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "app_page",
-      "target": "app_page_landingpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/page.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "app_page_landingpage",
-      "target": "app_page_fetchsection",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L40",
-      "weight": 1.0,
-      "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_bookingdetaildialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "components_customer_booking_detail_dialog",
-      "target": "components_customer_booking_detail_dialog_props",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L32",
-      "weight": 1.0,
-      "source": "components_customer_booking_detail_dialog",
+      "source": "app_root_dashboard_profile_details_page",
       "target": "components_map_business_map",
       "confidence_score": 1.0
     },
@@ -8554,10 +8209,10 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "components/customer/booking-detail-dialog.tsx",
-      "source_location": "L32",
+      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
+      "source_location": "L7",
       "weight": 1.0,
-      "source": "components_customer_booking_detail_dialog",
+      "source": "app_root_dashboard_profile_details_page",
       "target": "components_map_business_map_businessmap",
       "confidence_score": 1.0
     },
@@ -8584,10 +8239,21 @@
       "target": "components_map_business_map"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_customer_booking_detail_dialog",
+      "target": "components_map_business_map"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/map/business-map.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "components_map_business_map",
       "target": "components_map_business_map_businessmap",
@@ -8597,7 +8263,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/map/business-map.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "components_map_business_map",
       "target": "components_map_business_map_props",
@@ -8626,6 +8292,372 @@
       "target": "components_map_business_map_businessmap"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_customer_booking_detail_dialog",
+      "target": "components_map_business_map_businessmap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_customer_flow",
+      "target": "app_root_auth_components_customer_flow_customerflow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_customer_flow",
+      "target": "app_root_auth_components_customer_flow_loginformdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_customer_flow",
+      "target": "app_root_auth_components_customer_flow_loginschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_customer_flow",
+      "target": "app_root_auth_components_customer_flow_mode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_customer_flow",
+      "target": "app_root_auth_components_customer_flow_registerformdata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/customer-flow.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_customer_flow",
+      "target": "app_root_auth_components_customer_flow_registerschema"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/customer/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_customer_page",
+      "target": "app_root_auth_components_customer_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_formdatatype"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_formschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_mode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/_components/partner-flow.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_components_partner_flow",
+      "target": "app_root_auth_components_partner_flow_partnerflow"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/auth/partner/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_auth_partner_page",
+      "target": "app_root_auth_components_partner_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/catalog/page.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_catalog_page",
+      "target": "app_root_dashboard_catalog_page_catalog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/profile/portfolio/page.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_profile_portfolio_page",
+      "target": "app_root_dashboard_profile_portfolio_page_profileportfolio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/dashboard/team/members/page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_dashboard_team_members_page",
+      "target": "app_root_dashboard_team_members_page_teammembers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_appointments_page",
+      "target": "app_root_platform_appointments_page_appointments"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_appointments_page",
+      "target": "app_root_platform_appointments_page_bookingdetaildialog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/appointments/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_appointments_page",
+      "target": "app_root_platform_appointments_page_tab"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/calendar/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_calendar_page",
+      "target": "app_root_platform_calendar_page_bookingdetaildialog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/platform/calendar/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_platform_calendar_page",
+      "target": "app_root_platform_calendar_page_customercalendar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_businesswithcoords"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_cities"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_flyto"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_getbusinesscoords"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_kenyabounds"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_neighborhoodcoords"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_searchpage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page",
+      "target": "app_root_search_page_seededrandom"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page_getbusinesscoords",
+      "target": "app_root_search_page_seededrandom"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/search/page.tsx",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_root_search_page_searchpage",
+      "target": "app_root_search_page_getbusinesscoords"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page",
+      "target": "app_page_fetchsection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page",
+      "target": "app_page_landingpage"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_page_landingpage",
+      "target": "app_page_fetchsection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_customer_booking_detail_dialog",
+      "target": "components_customer_booking_detail_dialog_bookingdetaildialog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/customer/booking-detail-dialog.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_customer_booking_detail_dialog",
+      "target": "components_customer_booking_detail_dialog_props"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8642,9 +8674,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_clearcustomerprofile",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_clearcustomerprofile"
     },
     {
       "relation": "contains",
@@ -8652,9 +8684,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_customercontext",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_customercontext"
     },
     {
       "relation": "contains",
@@ -8662,9 +8694,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_customercontexttype",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_customercontexttype"
     },
     {
       "relation": "contains",
@@ -8672,9 +8704,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_customerprovider",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_customerprovider"
     },
     {
       "relation": "contains",
@@ -8682,9 +8714,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_mockprofile",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_mockprofile"
     },
     {
       "relation": "contains",
@@ -8692,9 +8724,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_profilefromstorage",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_profilefromstorage"
     },
     {
       "relation": "contains",
@@ -8702,9 +8734,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context",
-      "target": "lib_customer_context_usecustomer",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_usecustomer"
     },
     {
       "relation": "calls",
@@ -8713,9 +8745,9 @@
       "source_file": "lib/customer-context.tsx",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_customer_context_customerprovider",
-      "target": "lib_customer_context_profilefromstorage",
-      "confidence_score": 1.0
+      "target": "lib_customer_context_profilefromstorage"
     },
     {
       "relation": "imports",
@@ -10134,17 +10166,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_api_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/(root)/platform/home/page.tsx",
       "source_location": "L14",
       "weight": 1.0,
@@ -10800,17 +10821,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "app/(root)/dashboard/team/add/page.tsx",
       "source_location": "L22",
       "weight": 1.0,
@@ -11378,17 +11388,6 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_types_paginatedresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "lib/api/partner.ts",
       "source_location": "L2",
       "weight": 1.0,
@@ -11433,34 +11432,12 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_types_businessdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "lib/api/partner.ts",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lib_api_partner",
       "target": "lib_types_businessdto"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_types_reviewdto"
     },
     {
       "relation": "imports",
@@ -11789,49 +11766,6 @@
       "source_location": "L14",
       "weight": 1.0,
       "source": "app_root_dashboard_layout_dashboardlayout",
-      "target": "lib_api_partner_fetchpartnerbusiness"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "app_root_dashboard_profile_details_page_profiledetails"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_api_partner"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_root_dashboard_profile_details_page",
-      "target": "lib_api_partner_fetchpartnerbusiness"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/(root)/dashboard/profile/details/page.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "app_root_dashboard_profile_details_page_profiledetails",
       "target": "lib_api_partner_fetchpartnerbusiness"
     },
     {
@@ -19717,5 +19651,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "25c31072faba2454532096bc5e24f76a440ce2c0"
+  "built_at_commit": "e5546d923580bdcad5c6c0a102ae0623a1be69eb"
 }

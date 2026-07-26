@@ -42,6 +42,7 @@
   "40": "UI Assets",
   "41": "page.tsx",
   "42": "alert.tsx",
+  "43": "customer-flow.tsx",
   "44": "scroll-section.tsx",
   "45": "alert-dialog.tsx",
   "46": "route.ts",
@@ -50,6 +51,19 @@
   "49": "BusinessCategoryDto",
   "50": "client.ts",
   "51": "input-otp.tsx",
+  "52": "dialog.tsx",
   "53": "page.tsx",
-  "55": "field.tsx"
+  "54": "left-side.tsx",
+  "55": "field.tsx",
+  "56": "page.tsx",
+  "57": "partner-flow.tsx",
+  "58": "map-loader.ts",
+  "59": "page.tsx",
+  "60": "page.tsx",
+  "61": "review-modal.tsx",
+  "62": "page.tsx",
+  "63": "how-it-works.tsx",
+  "64": "page.tsx",
+  "65": "page.tsx",
+  "66": "stats-bar.tsx"
 }
