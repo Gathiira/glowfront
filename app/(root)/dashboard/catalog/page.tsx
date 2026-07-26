@@ -3,12 +3,7 @@
 import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -43,7 +38,6 @@ export default function Catalog() {
   })
 
   const loadData = async () => {
-    setLoading(true)
     try {
       const [svc, cats] = await Promise.all([
         fetchPartnerServices(),
@@ -56,13 +50,18 @@ export default function Catalog() {
     }
   }
 
-  useEffect(() => { loadData() }, [])
+  useEffect(() => {
+    loadData()
+  }, [])
 
-  const grouped = categories.reduce<Record<string, ServiceDto[]>>((acc, cat) => {
-    const items = services.filter((s) => s.categoryId === cat.id)
-    if (items.length) acc[cat.displayName] = items
-    return acc
-  }, {})
+  const grouped = categories.reduce<Record<string, ServiceDto[]>>(
+    (acc, cat) => {
+      const items = services.filter((s) => s.categoryId === cat.id)
+      if (items.length) acc[cat.displayName] = items
+      return acc
+    },
+    {}
+  )
 
   const handleAdd = async () => {
     if (!newService.name || !newService.categoryId || !newService.price) return
@@ -76,7 +75,13 @@ export default function Catalog() {
         durationMinutes: Number(newService.duration) || 30,
       })
       showSuccess("Service added successfully")
-      setNewService({ name: "", description: "", categoryId: "", price: "", duration: "" })
+      setNewService({
+        name: "",
+        description: "",
+        categoryId: "",
+        price: "",
+        duration: "",
+      })
       setShowAdd(false)
       loadData()
     } catch (err) {
@@ -107,59 +112,83 @@ export default function Catalog() {
             <CardTitle>New Service</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <label className="mb-1.5 block text-sm font-medium">Service name</label>
+            <label className="mb-1.5 block text-sm font-medium">
+              Service name
+            </label>
             <Input
               placeholder="Service name"
               value={newService.name}
-              onChange={(e) => setNewService({ ...newService, name: e.target.value })}
+              onChange={(e) =>
+                setNewService({ ...newService, name: e.target.value })
+              }
             />
-            <label className="mb-1.5 block text-sm font-medium">Description</label>
+            <label className="mb-1.5 block text-sm font-medium">
+              Description
+            </label>
             <Textarea
               placeholder="Description (optional)"
               value={newService.description}
-              onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+              onChange={(e) =>
+                setNewService({ ...newService, description: e.target.value })
+              }
             />
             <div className="flex flex-wrap gap-3">
               <div>
-                <label className="mb-1.5 block text-sm font-medium">Category</label>
+                <label className="mb-1.5 block text-sm font-medium">
+                  Category
+                </label>
                 <Select
                   value={newService.categoryId}
-                  onValueChange={(v) => setNewService({ ...newService, categoryId: v })}
+                  onValueChange={(v) =>
+                    setNewService({ ...newService, categoryId: v })
+                  }
                 >
-                  <SelectTrigger className="min-w-[200px]">
+                  <SelectTrigger className="min-w-50">
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
-                <SelectContent>
-                  {categories.map((c) => (
-                    <SelectItem key={c.id} value={String(c.id)}>
-                      {c.displayName}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                  <SelectContent>
+                    {categories.map((c) => (
+                      <SelectItem key={c.id} value={String(c.id)}>
+                        {c.displayName}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div>
-                <label className="mb-1.5 block text-sm font-medium">Price</label>
+                <label className="mb-1.5 block text-sm font-medium">
+                  Price
+                </label>
                 <Input
                   placeholder="Price"
                   type="number"
-                  className="min-w-[140px] flex-1"
+                  className="min-w-35 flex-1"
                   value={newService.price}
-                  onChange={(e) => setNewService({ ...newService, price: e.target.value })}
+                  onChange={(e) =>
+                    setNewService({ ...newService, price: e.target.value })
+                  }
                 />
               </div>
               <div>
-                <label className="mb-1.5 block text-sm font-medium">Duration (min)</label>
+                <label className="mb-1.5 block text-sm font-medium">
+                  Duration (min)
+                </label>
                 <Input
                   placeholder="Duration (min)"
                   type="number"
-                  className="min-w-[140px] flex-1"
+                  className="min-w-35 flex-1"
                   value={newService.duration}
-                  onChange={(e) => setNewService({ ...newService, duration: e.target.value })}
-                 />
+                  onChange={(e) =>
+                    setNewService({ ...newService, duration: e.target.value })
+                  }
+                />
               </div>
             </div>
-            <Button className="w-full sm:w-auto" onClick={handleAdd} disabled={submitting}>
+            <Button
+              className="w-full sm:w-auto"
+              onClick={handleAdd}
+              disabled={submitting}
+            >
               {submitting ? "Saving..." : "Save Service"}
             </Button>
           </CardContent>
@@ -199,7 +228,9 @@ export default function Catalog() {
                         <p className="font-medium">{s.name}</p>
                         <p className="text-xs text-muted-foreground">
                           {s.durationMinutes} min
-                          {s.description && <span> &middot; {s.description}</span>}
+                          {s.description && (
+                            <span> &middot; {s.description}</span>
+                          )}
                         </p>
                       </div>
                       <span className="font-semibold">

@@ -31,7 +31,7 @@ export default function CustomerCalendar() {
   useEffect(() => {
     const sd = formatDate(year, month, 1)
     const ed = formatDate(year, month, getDaysInMonth(year, month))
-    setLoading(true)
+
     fetchCustomerBookings(0, 120, sd, ed)
       .then((res) => setBookings(res.list))
       .finally(() => setLoading(false))

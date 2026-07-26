@@ -45,27 +45,22 @@ export default function LandingPage() {
       sortDirection: "desc",
     }
 
-    setLoadingRecommended(true)
     fetchSection({ ...base, pageSize: 16 })
       .then(setRecommended)
       .finally(() => setLoadingRecommended(false))
 
-    setLoadingFeatured(true)
     fetchSection({ ...base, pageSize: 10, sortBy: "totalReviews" })
       .then(setFeatured)
       .finally(() => setLoadingFeatured(false))
 
-    setLoadingNew(true)
     fetchSection({ ...base, pageSize: 8, sortBy: "createdAt" })
       .then(setNewBusinesses)
       .finally(() => setLoadingNew(false))
 
-    setLoadingTrending(true)
     fetchSection({ ...base, pageSize: 6, minRating: 4 })
       .then(setTrending)
       .finally(() => setLoadingTrending(false))
 
-    setLoadingDeals(true)
     fetchSection({ ...base, pageSize: 7, sortBy: "priceRangeMin", sortDirection: "asc" })
       .then(setDeals)
       .finally(() => setLoadingDeals(false))

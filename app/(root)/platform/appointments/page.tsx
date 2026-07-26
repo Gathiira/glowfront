@@ -12,7 +12,10 @@ import { AppointmentList } from "./_components/appointment-list"
 import { ReviewModal } from "./_components/review-modal"
 
 const BookingDetailDialog = dynamic(
-  () => import("@/components/customer/booking-detail-dialog").then((m) => m.BookingDetailDialog),
+  () =>
+    import("@/components/customer/booking-detail-dialog").then(
+      (m) => m.BookingDetailDialog
+    ),
   { ssr: false }
 )
 
@@ -34,8 +37,12 @@ export default function Appointments() {
     const thirtyDays = new Date(today)
     thirtyDays.setDate(thirtyDays.getDate() + 30)
 
-    setLoadingUpcoming(true)
-    fetchCustomerBookings(0, 100, isoFormatDate(today), isoFormatDate(thirtyDays))
+    fetchCustomerBookings(
+      0,
+      100,
+      isoFormatDate(today),
+      isoFormatDate(thirtyDays)
+    )
       .then((res) => setUpcoming(res.list))
       .finally(() => setLoadingUpcoming(false))
   }, [])
@@ -61,7 +68,9 @@ export default function Appointments() {
     try {
       await cancelBooking(id)
       const today = isoFormatDate(new Date())
-      const thirtyDaysFromNow = isoFormatDate(new Date(Date.now() + 30 * 24 * 60 * 60 * 1000))
+      const thirtyDaysFromNow = isoFormatDate(
+        new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      )
       const [upRes, pastRes, cancelledRes] = await Promise.all([
         fetchCustomerBookings(0, 100, today, thirtyDaysFromNow),
         fetchCustomerBookings(0, 100, undefined, today),
@@ -79,20 +88,48 @@ export default function Appointments() {
   const openDetail = (a: BookingDto) => setDetailBooking(a)
 
   const tabs: { key: Tab; label: string; count: number; loading: boolean }[] = [
-    { key: "upcoming", label: "Upcoming", count: upcoming.length, loading: loadingUpcoming },
+    {
+      key: "upcoming",
+      label: "Upcoming",
+      count: upcoming.length,
+      loading: loadingUpcoming,
+    },
     { key: "past", label: "Past", count: past.length, loading: loadingPast },
-    { key: "cancelled", label: "Cancelled", count: cancelled.length, loading: loadingCancelled },
+    {
+      key: "cancelled",
+      label: "Cancelled",
+      count: cancelled.length,
+      loading: loadingCancelled,
+    },
   ]
 
-  const listProps: Record<Tab, { bookings: BookingDto[]; loading: boolean; emptyMessage: string }> = {
-    upcoming: { bookings: upcoming, loading: loadingUpcoming, emptyMessage: "No upcoming appointments" },
-    past: { bookings: past, loading: loadingPast, emptyMessage: "No past appointments" },
-    cancelled: { bookings: cancelled, loading: loadingCancelled, emptyMessage: "No cancelled appointments" },
+  const listProps: Record<
+    Tab,
+    { bookings: BookingDto[]; loading: boolean; emptyMessage: string }
+  > = {
+    upcoming: {
+      bookings: upcoming,
+      loading: loadingUpcoming,
+      emptyMessage: "No upcoming appointments",
+    },
+    past: {
+      bookings: past,
+      loading: loadingPast,
+      emptyMessage: "No past appointments",
+    },
+    cancelled: {
+      bookings: cancelled,
+      loading: loadingCancelled,
+      emptyMessage: "No cancelled appointments",
+    },
   }
 
   return (
     <div>
-      <PageHeader title="My Appointments" description="Manage your bookings and reviews" />
+      <PageHeader
+        title="My Appointments"
+        description="Manage your bookings and reviews"
+      />
 
       <div className="mb-6 flex gap-2">
         {tabs.map((t) => (

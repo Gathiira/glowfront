@@ -370,7 +370,7 @@ export default function SearchPage() {
         </div>
 
         {/* Right panel – map */}
-        <div className="relative hidden flex-1 lg:block">
+        <div className="relative z-0 hidden flex-1 lg:block">
           {typeof window !== "undefined" && (
             <MapContainer
               center={[-1.2921, 36.8219]}

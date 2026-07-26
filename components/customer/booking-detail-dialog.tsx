@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, startTransition } from "react"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { StatusBadge } from "@/components/dashboard/status-badge"
@@ -43,21 +43,17 @@ export function BookingDetailDialog({ booking, onOpenChange, onCancel }: Props) 
   const [mapReady, setMapReady] = useState(false)
 
   useEffect(() => {
-    if (booking) {
-      setMapReady(false)
-      const t = setTimeout(() => setMapReady(true), 300)
-      return () => clearTimeout(t)
-    }
+    if (!booking) return
+    const t = setTimeout(() => setMapReady(true), 300)
+    return () => { clearTimeout(t); setMapReady(false) }
   }, [booking])
 
   useEffect(() => {
     if (!booking) return
-    setBusinessDetail(null)
-    setLoadingDetail(true)
+    startTransition(() => { setBusinessDetail(null); setLoadingDetail(true) })
     fetchCustomerBusinessDetail(booking.businessSlug)
-      .then(setBusinessDetail)
-      .catch(() => toast.error("Failed to load business details"))
-      .finally(() => setLoadingDetail(false))
+      .then((data) => { setBusinessDetail(data); setLoadingDetail(false) })
+      .catch(() => { toast.error("Failed to load business details"); setLoadingDetail(false) })
   }, [booking])
 
   return (

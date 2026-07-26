@@ -17,7 +17,6 @@ export default function TeamMembers() {
   const pageSize = 12
 
   useEffect(() => {
-    setLoading(true)
     fetchPartnerStaff(page, pageSize)
       .then(setData)
       .finally(() => setLoading(false))

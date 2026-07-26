@@ -76,7 +76,7 @@ const CustomerFlow = () => {
   })
 
   const handleLogin = async (data: LoginFormData) => {
-    startLoading(btnRef)
+    startLoading()
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -86,21 +86,14 @@ const CustomerFlow = () => {
           password: data.password,
         }),
       })
-
       const json = await res.json()
-
       if (json.code !== 200) {
         showError(json.msg || "Login failed")
         return
       }
-
       if (json.data?.profile) {
-        localStorage.setItem(
-          "customer_profile",
-          JSON.stringify(json.data.profile)
-        )
+        localStorage.setItem("customer_profile", JSON.stringify(json.data.profile))
       }
-
       showSuccess("Success")
       router.push("/platform/home")
     } catch (err) {

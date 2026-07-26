@@ -15,7 +15,7 @@ type Props = {
 
 export function BusinessMap({ center, name, locationText, height = "h-[300px]" }: Props) {
   return (
-    <div className={`${height} w-full overflow-hidden rounded-lg`}>
+    <div className={`${height} w-full overflow-hidden rounded-lg relative z-0`}>
       {typeof window !== "undefined" && (
         <MapContainer
           center={center}

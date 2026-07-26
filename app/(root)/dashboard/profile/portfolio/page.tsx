@@ -15,6 +15,7 @@ import {
   Field,
   FieldGroup,
 } from "@/components/ui/field"
+import Image from "next/image"
 import { Camera, Trash2 } from "lucide-react"
 
 export default function ProfilePortfolio() {
@@ -62,9 +63,11 @@ export default function ProfilePortfolio() {
             <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
               {images.map((url, i) => (
                 <div key={i} className="group relative overflow-hidden rounded-lg border">
-                  <img
+                  <Image
                     src={url}
                     alt={`Portfolio ${i + 1}`}
+                    width={400}
+                    height={160}
                     className="h-32 w-full object-cover sm:h-40"
                   />
                   <button
