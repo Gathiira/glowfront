@@ -24,7 +24,7 @@ import {
   fetchTopServices,
   fetchTopTeamMember,
 } from "@/lib/api/partner"
-import { formatTimeDisplay } from "@/lib/date-utils"
+import { formatTimeDisplay, formatDateShort } from "@/lib/date-utils"
 import { EmptyState } from "@/components/ui/empty-state"
 
 function formatCurrency(amount: number): string {
@@ -80,7 +80,7 @@ export default function Home() {
           icon={<Activity className="size-5" />}
         />
         <StatCard
-          title="Today&apos;s Next"
+          title="Next Appointment"
           value={
             loading
               ? "—"
@@ -88,7 +88,10 @@ export default function Home() {
                 ? `${formatTimeDisplay(summary.nextAppointment.bookingTime)} — ${summary.nextAppointment.customerName}`
                 : "No appointments"
           }
-          description={summary?.nextAppointment?.serviceName ?? ""}
+          description={
+            (summary?.nextAppointment &&
+            `${formatDateShort(summary.nextAppointment.bookingDate)}${summary.nextAppointment.serviceName ? ` · ${summary.nextAppointment.serviceName}` : ""}`) ?? undefined
+          }
           icon={<Clock className="size-5" />}
         />
       </div>

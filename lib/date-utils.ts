@@ -32,3 +32,10 @@ export function formatTimeDisplay(time: string): string {
   const h12 = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour
   return `${h12}:${m} ${ampm}`
 }
+
+export function formatDateShort(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  })
+}
