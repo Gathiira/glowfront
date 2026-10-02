@@ -54,6 +54,8 @@ const navItems: NavItem[] = [
       { label: "Daily Summary", href: "/dashboard/sales/daily" },
       { label: "Transactions", href: "/dashboard/sales/transactions" },
       { label: "Cash Movement", href: "/dashboard/sales/cash-movement" },
+      { label: "Commissions", href: "/dashboard/sales/commissions" },
+      { label: "Payouts", href: "/dashboard/sales/payouts" },
     ],
   },
   {

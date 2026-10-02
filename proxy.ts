@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
-import { ROLE_CUSTOMER, ROLE_PARTNER, ROLE_ADMIN } from "@/lib/roles"
+import { ROLE_CUSTOMER, ROLE_PARTNER, ROLE_ADMIN, ROLE_STAFF } from "@/lib/roles"
 
 const SESSION_COOKIE = process.env.SESSION_COOKIE_NAME ?? "session"
 
@@ -8,6 +8,7 @@ function normalizeRole(role: string): string {
   if (role === "partner") return ROLE_PARTNER
   if (role === "customer") return ROLE_CUSTOMER
   if (role === "admin") return ROLE_ADMIN
+  if (role === "staff") return ROLE_STAFF
   return role
 }
 
@@ -40,6 +41,20 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
+  // Staff-only sessions live under /staff; avoids bouncing between /platform and /dashboard.
+  if (
+    roles.includes(ROLE_STAFF) &&
+    !roles.includes(ROLE_PARTNER) &&
+    !roles.includes(ROLE_ADMIN) &&
+    !pathname.startsWith("/staff")
+  ) {
+    return NextResponse.redirect(new URL("/staff/commissions", request.url))
+  }
+
+  if (pathname.startsWith("/staff") && !roles.includes(ROLE_STAFF)) {
+    return NextResponse.redirect(new URL("/auth/staff", request.url))
+  }
+
   if (pathname.startsWith("/platform") && !roles.includes(ROLE_CUSTOMER) && !roles.includes(ROLE_ADMIN)) {
     return NextResponse.redirect(new URL("/dashboard/home", request.url))
   }
@@ -59,5 +74,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/platform/:path*", "/dashboard/:path*", "/admin/:path*"],
+  matcher: ["/platform/:path*", "/dashboard/:path*", "/admin/:path*", "/staff/:path*"],
 }

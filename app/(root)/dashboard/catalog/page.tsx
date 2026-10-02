@@ -22,6 +22,10 @@ import {
   fetchPartnerCategories,
 } from "@/lib/api/partner"
 import { showSuccess, showError } from "@/lib/toast"
+import type { TaskDto } from "@/lib/types"
+import { fetchTasks } from "@/lib/api/commissions"
+import { TaskManager } from "./_components/task-manager"
+import { ServiceTasksDialog } from "./_components/service-tasks-dialog"
 
 export default function Catalog() {
   const [services, setServices] = useState<ServiceDto[]>([])
@@ -29,6 +33,9 @@ export default function Catalog() {
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [showAdd, setShowAdd] = useState(false)
+  const [tasks, setTasks] = useState<TaskDto[]>([])
+  const [tasksFor, setTasksFor] = useState<ServiceDto | null>(null)
+  const loadTasks = () => fetchTasks().then(setTasks).catch(showError)
   const [newService, setNewService] = useState({
     name: "",
     description: "",
@@ -52,6 +59,7 @@ export default function Catalog() {
 
   useEffect(() => {
     loadData()
+    loadTasks()
   }, [])
 
   const grouped = categories.reduce<Record<string, ServiceDto[]>>(
@@ -105,6 +113,8 @@ export default function Catalog() {
           {showAdd ? "Cancel" : "Add Service"}
         </Button>
       </PageHeader>
+
+      <TaskManager tasks={tasks} onChange={loadTasks} />
 
       {showAdd && (
         <Card className="mb-6">
@@ -233,9 +243,14 @@ export default function Catalog() {
                           )}
                         </p>
                       </div>
-                      <span className="font-semibold">
-                        {s.currency || CURRENCY} {s.price}
-                      </span>
+                      <div className="flex items-center gap-3">
+                        <span className="font-semibold">
+                          {s.currency || CURRENCY} {s.price}
+                        </span>
+                        <Button variant="outline" size="sm" onClick={() => setTasksFor(s)}>
+                          Tasks
+                        </Button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -248,6 +263,7 @@ export default function Catalog() {
           No services yet. Add your first service to get started.
         </div>
       )}
+      <ServiceTasksDialog service={tasksFor} tasks={tasks} onClose={() => setTasksFor(null)} />
     </div>
   )
 }

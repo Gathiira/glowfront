@@ -439,3 +439,105 @@ export const COUNTRIES = [
   { code: "CZ", name: "Czech Republic" },
   { code: "GR", name: "Greece" },
 ]
+
+export const PAYMENT_METHODS = ["CASH", "MPESA", "CARD", "BANK_TRANSFER", "MOBILE_MONEY", "OTHER"] as const
+export type PaymentMethod = (typeof PAYMENT_METHODS)[number]
+
+export type TaskDto = {
+  id: number
+  name: string
+  defaultPercent: number
+  active: boolean
+}
+
+export type StaffTaskRateDto = {
+  taskId: number
+  taskName: string
+  defaultPercent: number
+  percent: number | null
+}
+
+export type CommissionLineDto = {
+  id: number | null
+  transactionId: number | null
+  transactionDate: string | null
+  serviceName: string
+  taskName: string
+  staffId: number
+  staffName: string
+  percentApplied: number
+  rateSource: "STAFF" | "DEFAULT"
+  commissionAmount: number
+  payoutId: number | null
+}
+
+export type TransactionItemDto = {
+  id: number | null
+  serviceId: number | null
+  serviceName: string
+  price: number
+  tasks: CommissionLineDto[]
+}
+
+export type SaleDto = {
+  id: number | null
+  bookingId: number | null
+  customerName: string | null
+  serviceName: string | null
+  staffName: string | null
+  totalAmount: number
+  discount: number
+  tax: number
+  grandTotal: number
+  paymentMethod: string
+  transactionDate: string
+  items: TransactionItemDto[] | null
+}
+
+export type CheckoutRequest = {
+  bookingId?: number
+  customerName?: string
+  customerPhone?: string
+  paymentMethod: PaymentMethod
+  discount: number
+  tax: number
+  items: {
+    serviceId: number
+    price: number
+    tasks: { taskId: number; staffId: number }[]
+  }[]
+}
+
+export type DailySalesDto = {
+  totalSales: number
+  transactionCount: number
+  averageTicket: number
+  transactions: SaleDto[]
+}
+
+export type CommissionSummaryDto = {
+  staffId: number
+  staffName: string
+  tasksCount: number
+  commission: number
+  paid: number
+  unpaid: number
+}
+
+export type CommissionReportDto = {
+  summary: CommissionSummaryDto
+  lines: CommissionLineDto[]
+}
+
+export type PayoutDto = {
+  id: number
+  staffId: number
+  staffName: string
+  totalAmount: number
+  paymentMethod: string
+  reference: string | null
+  notes: string | null
+  paidAt: string
+  status: "PAID" | "VOIDED"
+  lines: CommissionLineDto[] | null
+}

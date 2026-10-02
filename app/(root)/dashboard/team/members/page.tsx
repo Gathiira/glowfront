@@ -126,6 +126,12 @@ export default function TeamMembers() {
                   >
                     Configure Shifts →
                   </Link>
+                  <Link
+                    href={`/dashboard/team/rates/${m.id}`}
+                    className="block text-sm font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    Commission Rates →
+                  </Link>
                 </CardContent>
               </Card>
             ))}

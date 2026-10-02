@@ -1,42 +1,70 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { SummaryCard } from "@/components/dashboard/summary-card"
+import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
+import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
-import { CURRENCY } from "@/lib/types"
-
-const transactions = [
-  { id: "#1234", client: "Sarah Johnson", service: "Hair Coloring", amount: 120, time: "2:00 PM" },
-  { id: "#1233", client: "Mike Chen", service: "Haircut", amount: 45, time: "10:30 AM" },
-  { id: "#1232", client: "Lisa Park", service: "Manicure", amount: 55, time: "11:00 AM" },
-  { id: "#1231", client: "James Wilson", service: "Facial", amount: 85, time: "1:00 PM" },
-  { id: "#1230", client: "Anna Lee", service: "Massage", amount: 95, time: "9:00 AM" },
-]
+import { Input } from "@/components/ui/input"
+import { CURRENCY, type DailySalesDto } from "@/lib/types"
+import { fetchDailySales, money, today } from "@/lib/api/commissions"
+import { showError } from "@/lib/toast"
 
 export default function DailySales() {
-  const total = transactions.reduce((s, t) => s + t.amount, 0)
+  const [date, setDate] = useState(today())
+  const [data, setData] = useState<DailySalesDto | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [newSale, setNewSale] = useState(false)
+
+  const load = (d: string) => {
+    setLoading(true)
+    fetchDailySales(d)
+      .then(setData)
+      .catch(showError)
+      .finally(() => setLoading(false))
+  }
+
+  useEffect(() => {
+    load(date)
+  }, [date])
 
   return (
     <div>
-      <PageHeader title="Daily Sales Summary" description="Today&apos;s revenue overview" />
+      <PageHeader title="Daily Sales Summary" description="Revenue for the selected day">
+        <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} aria-label="Day" />
+        <Button onClick={() => setNewSale(true)}>New sale</Button>
+      </PageHeader>
 
       <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <SummaryCard title="Total Sales" value={`${CURRENCY} ${total}`} subtitle="Today" />
-        <SummaryCard title="Transactions" value={`${transactions.length}`} subtitle="Today" />
-        <SummaryCard title="Average Ticket" value={`${CURRENCY} ${(total / transactions.length).toFixed(0)}`} subtitle="Today" />
+        <SummaryCard title="Total Sales" value={`${CURRENCY} ${money(data?.totalSales)}`} />
+        <SummaryCard title="Transactions" value={`${data?.transactionCount ?? 0}`} />
+        <SummaryCard title="Average Ticket" value={`${CURRENCY} ${money(data?.averageTicket)}`} />
       </div>
 
       <DataTable
-        title="Today&apos;s Transactions"
-        data={transactions}
-        keyExtractor={(t) => t.id}
+        title="Transactions"
+        loading={loading}
+        data={data?.transactions ?? []}
+        emptyMessage="No sales on this day"
+        keyExtractor={(t) => t.id ?? 0}
         columns={[
-          { key: "id", label: "ID", render: (t) => <span className="font-medium">{t.id}</span> },
-          { key: "client", label: "Client", render: (t) => t.client },
-          { key: "service", label: "Service", render: (t) => t.service },
-          { key: "time", label: "Time", render: (t) => t.time },
-          { key: "amount", label: "Amount", align: "right", render: (t) => `${CURRENCY} ${t.amount}` },
+          { key: "time", label: "Time", render: (t) => t.transactionDate?.slice(11, 16) },
+          { key: "client", label: "Client", render: (t) => t.customerName ?? "Walk-in" },
+          { key: "service", label: "Service", render: (t) => t.serviceName ?? "—" },
+          { key: "staff", label: "Staff", render: (t) => t.staffName ?? "—" },
+          { key: "method", label: "Method", render: (t) => t.paymentMethod },
+          { key: "amount", label: "Amount", align: "right", render: (t) => `${CURRENCY} ${money(t.grandTotal)}` },
         ]}
+      />
+
+      <CheckoutDialog
+        open={newSale}
+        onClose={() => setNewSale(false)}
+        onDone={() => {
+          setNewSale(false)
+          load(date)
+        }}
       />
     </div>
   )
