@@ -17,15 +17,18 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import {
-  fetchPartnerServices,
+  fetchAllPartnerServices,
   createPartnerService,
+  deletePartnerService,
   fetchPartnerCategories,
 } from "@/lib/api/partner"
 import { showSuccess, showError } from "@/lib/toast"
 import type { TaskDto } from "@/lib/types"
 import { fetchTasks } from "@/lib/api/commissions"
-import { TaskManager } from "./_components/task-manager"
 import { ServiceTasksDialog } from "./_components/service-tasks-dialog"
+import { EditServiceDialog } from "./_components/edit-service-dialog"
+import { ListChecks, Pencil, Trash2 } from "lucide-react"
+import { useConfirm } from "@/components/ui/use-confirm"
 
 export default function Catalog() {
   const [services, setServices] = useState<ServiceDto[]>([])
@@ -35,6 +38,31 @@ export default function Catalog() {
   const [showAdd, setShowAdd] = useState(false)
   const [tasks, setTasks] = useState<TaskDto[]>([])
   const [tasksFor, setTasksFor] = useState<ServiceDto | null>(null)
+  const [editing, setEditing] = useState<ServiceDto | null>(null)
+  const [confirm, confirmDialog] = useConfirm()
+
+  const remove = async (s: ServiceDto) => {
+    const ok = await confirm({
+      title: `Delete ${s.name}?`,
+      description:
+        "It's taken off the menu, every team member and checkout. If it has never been booked or sold it's deleted for good; otherwise it's deactivated so past bookings, sales and commissions keep their records.",
+      confirmLabel: "Delete service",
+      destructive: true,
+    })
+    if (!ok) return
+    try {
+      const outcome = await deletePartnerService(s.id)
+      showSuccess(
+        outcome === "DELETED"
+          ? `${s.name} deleted`
+          : `${s.name} deactivated — it has past bookings or sales, so its records are kept`
+      )
+      loadData()
+      loadTasks()
+    } catch (err) {
+      showError(err)
+    }
+  }
   const loadTasks = () => fetchTasks().then(setTasks).catch(showError)
   const [newService, setNewService] = useState({
     name: "",
@@ -47,10 +75,10 @@ export default function Catalog() {
   const loadData = async () => {
     try {
       const [svc, cats] = await Promise.all([
-        fetchPartnerServices(),
+        fetchAllPartnerServices(),
         fetchPartnerCategories(),
       ])
-      setServices(svc.list)
+      setServices(svc)
       setCategories(cats)
     } finally {
       setLoading(false)
@@ -113,8 +141,6 @@ export default function Catalog() {
           {showAdd ? "Cancel" : "Add Service"}
         </Button>
       </PageHeader>
-
-      <TaskManager tasks={tasks} onChange={loadTasks} />
 
       {showAdd && (
         <Card className="mb-6">
@@ -229,30 +255,61 @@ export default function Catalog() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  {items.map((s) => (
-                    <div
-                      key={s.id}
-                      className="flex items-center justify-between rounded-lg border p-3"
-                    >
-                      <div>
-                        <p className="font-medium">{s.name}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {s.durationMinutes} min
-                          {s.description && (
-                            <span> &middot; {s.description}</span>
-                          )}
-                        </p>
+                  {items.map((s) => {
+                    const serviceTasks = tasks.filter((t) => t.serviceIds.includes(s.id))
+                    return (
+                      <div key={s.id} className="rounded-lg border p-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="font-medium">{s.name}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {s.durationMinutes} min
+                              {s.description && (
+                                <span> &middot; {s.description}</span>
+                              )}
+                            </p>
+                          </div>
+                          <span className="shrink-0 font-semibold">
+                            {s.currency || CURRENCY} {s.price}
+                          </span>
+                        </div>
+                        {serviceTasks.length > 0 ? (
+                          <ul className="mt-2 flex flex-wrap gap-1.5" aria-label={`${s.name} tasks`}>
+                            {serviceTasks.map((t) => (
+                              <li
+                                key={t.id}
+                                className={`rounded-full bg-muted px-2.5 py-0.5 text-xs ${t.active ? "" : "text-muted-foreground line-through"}`}
+                              >
+                                {t.name} · {t.defaultPercent}%
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="mt-2 text-xs text-muted-foreground">No tasks yet, so no commission is paid on it.</p>
+                        )}
+                        <div className="mt-3 flex flex-wrap gap-2 border-t pt-3">
+                          <Button variant="outline" size="sm" onClick={() => setEditing(s)} aria-label={`Edit service: ${s.name}`}>
+                            <Pencil aria-hidden />
+                            Edit service
+                          </Button>
+                          <Button variant="outline" size="sm" onClick={() => setTasksFor(s)} aria-label={`${serviceTasks.length ? "Manage tasks" : "Add tasks"}: ${s.name}`}>
+                            <ListChecks aria-hidden />
+                            {serviceTasks.length ? "Manage tasks" : "Add tasks"}
+                          </Button>
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            className="ml-auto"
+                            onClick={() => remove(s)}
+                            aria-label={`Delete: ${s.name}`}
+                          >
+                            <Trash2 aria-hidden />
+                            Delete
+                          </Button>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <span className="font-semibold">
-                          {s.currency || CURRENCY} {s.price}
-                        </span>
-                        <Button variant="outline" size="sm" onClick={() => setTasksFor(s)}>
-                          Tasks
-                        </Button>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </CardContent>
             </Card>
@@ -263,7 +320,9 @@ export default function Catalog() {
           No services yet. Add your first service to get started.
         </div>
       )}
-      <ServiceTasksDialog service={tasksFor} tasks={tasks} onClose={() => setTasksFor(null)} />
+      <ServiceTasksDialog service={tasksFor} tasks={tasks} onClose={() => setTasksFor(null)} onChange={loadTasks} />
+      <EditServiceDialog service={editing} categories={categories} onClose={() => setEditing(null)} onSaved={loadData} />
+      {confirmDialog}
     </div>
   )
 }

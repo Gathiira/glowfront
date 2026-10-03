@@ -1,46 +1,34 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Image from "next/image"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { LoadMore } from "@/components/ui/load-more"
 import { fmt } from "@/lib/utils"
 import { Star, User } from "lucide-react"
 import Link from "next/link"
 import { fetchPartnerStaff } from "@/lib/api/partner"
-import type { StaffDto, PaginatedResponse } from "@/lib/types"
+import { usePagedList } from "@/lib/use-paged-list"
 
 export default function TeamMembers() {
-  const [data, setData] = useState<PaginatedResponse<StaffDto> | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(0)
-  const pageSize = 12
-
-  useEffect(() => {
-    fetchPartnerStaff(page, pageSize)
-      .then(setData)
-      .finally(() => setLoading(false))
-  }, [page])
+  const { items, total, loading, loaded, hasMore, loadMore } = usePagedList(
+    (current) => fetchPartnerStaff(current, 12),
+    []
+  )
 
   return (
     <div>
       <PageHeader
         title="Team Members"
-        description={
-          loading
-            ? "Loading..."
-            : data
-              ? `${data.totalElements} active team members`
-              : "0 active team members"
-        }
+        description={loaded ? `${total} active team members` : "Loading..."}
       >
         <Link href="/dashboard/team/add">
           <Button>Add Member</Button>
         </Link>
       </PageHeader>
 
-      {loading ? (
+      {!loaded ? (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i}>
@@ -55,10 +43,10 @@ export default function TeamMembers() {
             </Card>
           ))}
         </div>
-      ) : data && data.list.length > 0 ? (
+      ) : items.length > 0 ? (
         <>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {data.list.map((m) => (
+            {items.map((m) => (
               <Card key={m.id}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -143,29 +131,7 @@ export default function TeamMembers() {
             ))}
           </div>
 
-          {data.totalPages > 1 && (
-            <div className="mt-6 flex items-center justify-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={page === 0}
-                onClick={() => setPage((p) => p - 1)}
-              >
-                Previous
-              </Button>
-              <span className="text-sm text-muted-foreground">
-                Page {page + 1} of {data.totalPages}
-              </span>
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={page >= data.totalPages - 1}
-                onClick={() => setPage((p) => p + 1)}
-              >
-                Next
-              </Button>
-            </div>
-          )}
+          <LoadMore hasMore={hasMore} loading={loading} onLoadMore={loadMore} summary={`Showing ${items.length} of ${total}`} />
         </>
       ) : (
         <div className="py-12 text-center text-muted-foreground">

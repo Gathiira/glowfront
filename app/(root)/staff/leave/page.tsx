@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import type { LeaveDto } from "@/lib/types"
+import { useState } from "react"
+import type { LeaveDto, LeaveStatus } from "@/lib/types"
+import { usePagedList } from "@/lib/use-paged-list"
 import { cancelLeave, fetchMyLeave, leaveWhen, requestLeave } from "@/lib/api/leave"
 import { today } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
@@ -28,6 +29,18 @@ const emptyForm = () => ({
   reason: "",
 })
 
+const FILTERS: { value: LeaveStatus | "ALL"; label: string; empty: string }[] = [
+  {
+    value: "ALL",
+    label: "All",
+    empty: "No leave yet. Requests you send appear here as slips, and get stamped when your manager decides.",
+  },
+  { value: "PENDING", label: "Waiting", empty: "Nothing waiting for your manager." },
+  { value: "APPROVED", label: "Approved", empty: "No approved leave yet." },
+  { value: "REJECTED", label: "Not approved", empty: "None of your requests have been turned down." },
+  { value: "CANCELLED", label: "Cancelled", empty: "You haven't cancelled any leave." },
+]
+
 function Stamp({ leave, fresh }: { leave: LeaveDto; fresh: boolean }) {
   const land = fresh ? " sp-stamp-land" : ""
   switch (leave.status) {
@@ -52,7 +65,10 @@ function openPicker(e: React.MouseEvent<HTMLInputElement>) {
 }
 
 export default function MyLeave() {
-  const [leave, setLeave] = useState<LeaveDto[] | null>(null)
+  const [filter, setFilter] = useState<LeaveStatus | "ALL">("ALL")
+  const pages = usePagedList((current) => fetchMyLeave(current, filter === "ALL" ? undefined : filter), [filter])
+  const leave = pages.loaded ? pages.items : null
+  const load = pages.reload
   const [form, setForm] = useState(emptyForm)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -61,18 +77,6 @@ export default function MyLeave() {
   const fresh = useFreshStamps(
     (leave ?? []).filter((l) => l.status === "APPROVED" || l.status === "REJECTED").map((l) => `leave:${l.id}:${l.status}`)
   )
-
-  const load = () =>
-    fetchMyLeave()
-      .then(setLeave)
-      .catch((e) => {
-        setLeave([])
-        showError(e)
-      })
-
-  useEffect(() => {
-    load()
-  }, [])
 
   const timesInvalid = form.partDay && form.endTime <= form.startTime
 
@@ -250,10 +254,18 @@ export default function MyLeave() {
           </button>
         </form>
 
-        <section aria-labelledby="slips-heading" className="sp-align-slip">
-          <h2 id="slips-heading" className="sp-h2">
+        <section aria-labelledby="slips-heading" className="sp-slip sp-slip-torn sp-requests">
+          <h2 id="slips-heading" className="sp-h2" style={{ margin: 0 }}>
             Your requests
           </h2>
+          <div className="sp-chips" role="group" aria-label="Show">
+            {FILTERS.map((f) => (
+              <button key={f.value} type="button" aria-pressed={filter === f.value} onClick={() => setFilter(f.value)}>
+                {f.label}
+              </button>
+            ))}
+          </div>
+          <div className="sp-scroll" tabIndex={0} aria-label="Your leave requests">
           {leave === null && (
             <ul className="sp-slips" aria-hidden>
               {[0, 1].map((i) => (
@@ -266,7 +278,7 @@ export default function MyLeave() {
           )}
           {leave?.length === 0 && (
             <p className="sp-empty sp-empty-plain">
-              No leave yet. Requests you send appear here as slips, and get stamped when your manager decides.
+              {FILTERS.find((f) => f.value === filter)?.empty}
             </p>
           )}
           {leave && leave.length > 0 && (
@@ -299,6 +311,12 @@ export default function MyLeave() {
               })}
             </ul>
           )}
+          {pages.hasMore && (
+            <button type="button" className="sp-more" onClick={pages.loadMore} disabled={pages.loading}>
+              {pages.loading ? "Loading…" : "Load older requests"}
+            </button>
+          )}
+          </div>
         </section>
       </div>
 

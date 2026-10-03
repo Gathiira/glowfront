@@ -1,27 +1,22 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { DataTable } from "@/components/ui/data-table"
 import { Input } from "@/components/ui/input"
-import { CURRENCY, type CommissionSummaryDto } from "@/lib/types"
+import { LoadMore } from "@/components/ui/load-more"
+import { CURRENCY } from "@/lib/types"
 import { fetchCommissions, money, monthStart, today } from "@/lib/api/commissions"
-import { showError } from "@/lib/toast"
+import { usePagedList } from "@/lib/use-paged-list"
 
 export default function Commissions() {
   const [startDate, setStartDate] = useState(monthStart())
   const [endDate, setEndDate] = useState(today())
-  const [rows, setRows] = useState<CommissionSummaryDto[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setLoading(true)
-    fetchCommissions({ startDate, endDate })
-      .then(setRows)
-      .catch(showError)
-      .finally(() => setLoading(false))
-  }, [startDate, endDate])
+  const { items: rows, total, loading, hasMore, loadMore } = usePagedList(
+    (current) => fetchCommissions({ startDate, endDate }, current),
+    [startDate, endDate]
+  )
 
   return (
     <div>
@@ -55,6 +50,7 @@ export default function Commissions() {
           },
         ]}
       />
+      <LoadMore hasMore={hasMore} loading={loading} onLoadMore={loadMore} summary={`Showing ${rows.length} of ${total}`} />
     </div>
   )
 }

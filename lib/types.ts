@@ -171,9 +171,10 @@ export type BusinessSearchDto = {
   sortDirection?: "asc" | "desc"
 }
 
+/** Backend paging envelope; `current` is 1-based. */
 export type PaginatedResponse<T> = {
   current: number
-  pageSize: number
+  size: number
   totalElements: number
   totalPages: number
   list: T[]
@@ -381,6 +382,9 @@ export type DashboardSummaryDto = {
   upcomingAppointments: number
   weeklyActivityCount: number
   nextAppointment: BookingDto | null
+  pendingLeaveCount: number
+  /** The soonest few pending requests. */
+  pendingLeave: LeaveDto[]
 }
 
 export type TopServiceDto = {
@@ -450,6 +454,8 @@ export type TaskDto = {
   active: boolean
   /** Staff allowed to do this task; empty = anyone. */
   staffIds: number[]
+  /** Services this task is part of; empty = unused until added to a service again. */
+  serviceIds: number[]
 }
 
 export type TaskAssignment = { staffId: number; taskId: number }
@@ -520,10 +526,11 @@ export type CheckoutRequest = {
 }
 
 export type DailySalesDto = {
+  /** Whole-day totals, whichever page of transactions is loaded. */
   totalSales: number
   transactionCount: number
   averageTicket: number
-  transactions: SaleDto[]
+  transactions: PaginatedResponse<SaleDto>
 }
 
 export type CommissionSummaryDto = {
@@ -536,8 +543,9 @@ export type CommissionSummaryDto = {
 }
 
 export type CommissionReportDto = {
+  /** Totals for the whole range, whichever page of lines is loaded. */
   summary: CommissionSummaryDto
-  lines: CommissionLineDto[]
+  lines: PaginatedResponse<CommissionLineDto>
 }
 
 export type LeaveStatus = "PENDING" | "APPROVED" | "REJECTED" | "CANCELLED"

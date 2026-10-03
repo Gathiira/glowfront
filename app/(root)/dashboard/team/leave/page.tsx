@@ -1,29 +1,27 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { LeaveCard } from "@/components/dashboard/leave-card"
+import { LoadMore } from "@/components/ui/load-more"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { LeaveDto, LeaveStatus } from "@/lib/types"
+import type { LeaveStatus } from "@/lib/types"
 import { fetchLeave } from "@/lib/api/leave"
-import { showError } from "@/lib/toast"
+import { usePagedList } from "@/lib/use-paged-list"
 
 type Filter = LeaveStatus | "ALL"
 
 export default function LeaveRequests() {
   const [filter, setFilter] = useState<Filter>("PENDING")
-  const [leave, setLeave] = useState<LeaveDto[]>([])
-  const [loading, setLoading] = useState(true)
-
-  const load = () => {
-    setLoading(true)
-    fetchLeave(filter === "ALL" ? undefined : filter)
-      .then(setLeave)
-      .catch(showError)
-      .finally(() => setLoading(false))
-  }
-
-  useEffect(load, [filter]) // eslint-disable-line react-hooks/exhaustive-deps
+  const {
+    items: leave,
+    total,
+    loading,
+    loaded,
+    hasMore,
+    loadMore,
+    reload,
+  } = usePagedList((current) => fetchLeave(filter === "ALL" ? undefined : filter, undefined, current), [filter])
 
   return (
     <div>
@@ -42,13 +40,14 @@ export default function LeaveRequests() {
         </Select>
       </PageHeader>
 
-      {loading && <p className="text-sm text-muted-foreground">Loading...</p>}
-      {!loading && leave.length === 0 && <p className="py-12 text-center text-muted-foreground">Nothing here.</p>}
+      {!loaded && <p className="text-sm text-muted-foreground">Loading...</p>}
+      {loaded && !loading && leave.length === 0 && <p className="py-12 text-center text-muted-foreground">Nothing here.</p>}
       <div className="space-y-3">
         {leave.map((l) => (
-          <LeaveCard key={l.id} leave={l} onDecided={load} />
+          <LeaveCard key={l.id} leave={l} onDecided={reload} />
         ))}
       </div>
+      <LoadMore hasMore={hasMore} loading={loading} onLoadMore={loadMore} summary={`Showing ${leave.length} of ${total}`} />
     </div>
   )
 }

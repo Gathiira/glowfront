@@ -18,7 +18,7 @@ import {
   type ServiceDto,
   type StaffDto,
 } from "@/lib/types"
-import { createPartnerService, fetchPartnerCategories, fetchPartnerServices, fetchPartnerStaff } from "@/lib/api/partner"
+import { createPartnerService, fetchAllPartnerServices, fetchAllPartnerStaff, fetchPartnerCategories } from "@/lib/api/partner"
 import { checkout, fetchServiceTasks, money, previewCheckout } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
 
@@ -93,12 +93,12 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
     setPaymentMethod("CASH")
     setCustomerName(booking?.customerName ?? "")
     setCustomerPhone(booking?.customerPhone ?? "")
-    Promise.all([fetchPartnerServices(0, 100), fetchPartnerStaff(0, 100), fetchPartnerCategories()])
+    Promise.all([fetchAllPartnerServices(), fetchAllPartnerStaff(), fetchPartnerCategories()])
       .then(([svc, team, cats]) => {
-        setServices(svc.list)
-        setStaff(team.list.filter((s) => s.active))
+        setServices(svc)
+        setStaff(team.filter((s) => s.active))
         setCategories(cats)
-        const booked = booking && svc.list.find((s) => s.id === booking.serviceId)
+        const booked = booking && svc.find((s) => s.id === booking.serviceId)
         if (booked) addLine(booked, booking.totalPrice ?? undefined, booking.staffId)
       })
       .catch(showError)

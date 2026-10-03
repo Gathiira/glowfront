@@ -54,6 +54,7 @@ export async function fetchAdminDashboard(): Promise<AdminDashboardDto> {
   }
 }
 
+// Admin list functions take the pager's 0-based page index and send the API's 1-based `current`.
 export async function fetchAdminCustomers(
   current: number = 0,
   pageSize: number = 20,
@@ -61,7 +62,7 @@ export async function fetchAdminCustomers(
   search?: string
 ): Promise<PaginatedResponse<AdminUserDto>> {
   try {
-    let url = `/admin/customers?current=${current}&pageSize=${pageSize}`
+    let url = `/admin/customers?current=${current + 1}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
     if (search) url += `&name=${encodeURIComponent(search)}`
     const res = await api
@@ -112,7 +113,7 @@ export async function fetchAdminPartners(
   search?: string
 ): Promise<PaginatedResponse<AdminPartnerDto>> {
   try {
-    let url = `/admin/partners?current=${current}&pageSize=${pageSize}`
+    let url = `/admin/partners?current=${current + 1}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
     if (search) url += `&name=${encodeURIComponent(search)}`
     const res = await api
@@ -163,7 +164,7 @@ export async function fetchAdminBusinesses(
   search?: string
 ): Promise<PaginatedResponse<BusinessDto>> {
   try {
-    let url = `/admin/businesses?current=${current}&pageSize=${pageSize}`
+    let url = `/admin/businesses?current=${current + 1}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
     if (search) url += `&name=${encodeURIComponent(search)}`
     const res = await api
@@ -268,7 +269,7 @@ export async function fetchAdminReviews(
   status?: string
 ): Promise<PaginatedResponse<ReviewDto>> {
   try {
-    let url = `/admin/reviews?current=${current}&pageSize=${pageSize}`
+    let url = `/admin/reviews?current=${current + 1}&pageSize=${pageSize}`
     if (status) url += `&status=${status}`
     const res = await api
       .get(url)

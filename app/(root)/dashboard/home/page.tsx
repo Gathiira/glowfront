@@ -12,7 +12,11 @@ import {
   Clock,
   Star,
   User,
+  CalendarOff,
 } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { leaveWhen } from "@/lib/api/leave"
 import { fmtNum } from "@/lib/utils"
 import { CURRENCY } from "@/lib/types"
 import type {
@@ -37,6 +41,8 @@ export default function Home() {
   const [topServices, setTopServices] = useState<TopServiceDto[]>([])
   const [topMember, setTopMember] = useState<TopTeamMemberDto | null>(null)
   const [loading, setLoading] = useState(true)
+  const pendingCount = summary?.pendingLeaveCount ?? 0
+  const pendingLeave = summary?.pendingLeave ?? []
 
   useEffect(() => {
     async function load() {
@@ -96,6 +102,55 @@ export default function Home() {
           icon={<Clock className="size-5" />}
         />
       </div>
+
+      <Card className="mb-4">
+        <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
+          <CardTitle className="flex items-center gap-2">
+            <CalendarOff className="size-4 text-muted-foreground" aria-hidden />
+            Pending leave requests
+            {pendingCount > 0 && (
+              <span className="rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-semibold text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                {pendingCount}
+              </span>
+            )}
+          </CardTitle>
+          {pendingCount > 0 && (
+            <Link href="/dashboard/team/leave">
+              <Button size="sm">Review</Button>
+            </Link>
+          )}
+        </CardHeader>
+        <CardContent>
+          {loading ? (
+            <Skeleton className="h-8 w-full" />
+          ) : pendingLeave.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No leave waiting for your approval.</p>
+          ) : (
+            <ul className="divide-y">
+              {pendingLeave.map((l) => (
+                <li key={l.id} className="flex items-center justify-between gap-3 py-2 text-sm">
+                  <span className="min-w-0 truncate">
+                    <span className="font-medium">{l.staffName}</span>
+                    <span className="text-muted-foreground"> · {leaveWhen(l)}</span>
+                  </span>
+                  {l.clashes && l.clashes.length > 0 && (
+                    <span className="shrink-0 text-xs font-medium text-destructive">
+                      {l.clashes.length} booking{l.clashes.length === 1 ? "" : "s"} affected
+                    </span>
+                  )}
+                </li>
+              ))}
+              {pendingCount > pendingLeave.length && (
+                <li className="pt-2 text-sm">
+                  <Link href="/dashboard/team/leave" className="font-medium text-primary underline-offset-4 hover:underline">
+                    and {pendingCount - pendingLeave.length} more →
+                  </Link>
+                </li>
+              )}
+            </ul>
+          )}
+        </CardContent>
+      </Card>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>

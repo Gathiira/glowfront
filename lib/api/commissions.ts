@@ -1,4 +1,5 @@
 import { api, extractError, type ApiResponse } from "./client"
+import { fetchAllPages, PAGE_SIZE, STAFF_PAGE_SIZE } from "./paging"
 import type {
   BookingDto,
   CheckoutRequest,
@@ -33,9 +34,15 @@ function query(params: Record<string, string | number | undefined | null>): stri
 
 export type DateRange = { startDate?: string; endDate?: string }
 
+const page = (current: number, pageSize: number = PAGE_SIZE) => ({ current, pageSize })
+
 // Tasks
-export const fetchTasks = () => call(api.get("/partner/tasks").json<ApiResponse<TaskDto[]>>())
-export const createTask = (p: { name: string; defaultPercent: number }) =>
+export const fetchTasksPage = (current: number = 1, pageSize: number = PAGE_SIZE) =>
+  call(api.get(`/partner/tasks${query(page(current, pageSize))}`).json<ApiResponse<PaginatedResponse<TaskDto>>>())
+/** Every task of the business (catalog task list, pickers). */
+export const fetchTasks = () => fetchAllPages(fetchTasksPage)
+/** Creates the task as part of `serviceId`; tasks always start under a service. */
+export const createTask = (p: { name: string; defaultPercent: number; serviceId: number }) =>
   call(api.post(p, "/partner/tasks").json<ApiResponse<TaskDto>>())
 export const updateTask = (id: number, p: { name: string; defaultPercent: number; active: boolean }) =>
   call(api.put(p, `/partner/tasks/${id}`).json<ApiResponse<TaskDto>>())
@@ -57,19 +64,40 @@ export const previewCheckout = (req: CheckoutRequest) =>
   call(api.post(req, "/partner/sales/checkout/preview").json<ApiResponse<SaleDto>>())
 export const checkout = (req: CheckoutRequest) =>
   call(api.post(req, "/partner/sales/checkout").json<ApiResponse<SaleDto>>())
-export const fetchDailySales = (date: string) =>
-  call(api.get(`/partner/sales/daily${query({ date })}`).json<ApiResponse<DailySalesDto>>())
-// ponytail: one unsorted page of 100; add server-side sort/paging when businesses have more bookings
-export const fetchBusinessBookings = () =>
-  call(api.get("/partner/bookings/business?current=0&pageSize=100").json<ApiResponse<PaginatedResponse<BookingDto>>>())
+/** Day totals plus one page of the day's transactions (newest first). */
+export const fetchDailySales = (date: string, current: number = 1) =>
+  call(api.get(`/partner/sales/daily${query({ date, ...page(current) })}`).json<ApiResponse<DailySalesDto>>())
+export const fetchBusinessBookings = (current: number = 1) =>
+  call(
+    api
+      .get(`/partner/bookings/business${query(page(current))}`)
+      .json<ApiResponse<PaginatedResponse<BookingDto>>>()
+  )
 
 // Commissions & payouts (owner)
-export const fetchCommissions = (range: DateRange) =>
-  call(api.get(`/partner/sales/commissions${query(range)}`).json<ApiResponse<CommissionSummaryDto[]>>())
-export const fetchStaffCommissions = (staffId: number, filter: DateRange & { status?: "PAID" | "UNPAID" }) =>
-  call(api.get(`/partner/sales/commissions/${staffId}${query(filter)}`).json<ApiResponse<CommissionReportDto>>())
-export const fetchPayouts = (staffId?: number) =>
-  call(api.get(`/partner/payouts${query({ staffId })}`).json<ApiResponse<PayoutDto[]>>())
+export const fetchCommissions = (range: DateRange, current: number = 1) =>
+  call(
+    api
+      .get(`/partner/sales/commissions${query({ ...range, ...page(current) })}`)
+      .json<ApiResponse<PaginatedResponse<CommissionSummaryDto>>>()
+  )
+/** Summary for the whole range plus one page of commission lines. */
+export const fetchStaffCommissions = (
+  staffId: number,
+  filter: DateRange & { status?: "PAID" | "UNPAID" },
+  current: number = 1
+) =>
+  call(
+    api
+      .get(`/partner/sales/commissions/${staffId}${query({ ...filter, ...page(current) })}`)
+      .json<ApiResponse<CommissionReportDto>>()
+  )
+export const fetchPayouts = (staffId?: number, current: number = 1) =>
+  call(
+    api
+      .get(`/partner/payouts${query({ staffId, ...page(current) })}`)
+      .json<ApiResponse<PaginatedResponse<PayoutDto>>>()
+  )
 export const fetchPayout = (id: number) => call(api.get(`/partner/payouts/${id}`).json<ApiResponse<PayoutDto>>())
 export const createPayout = (req: {
   staffId: number
@@ -81,9 +109,14 @@ export const createPayout = (req: {
 export const voidPayout = (id: number) => call(api.post({}, `/partner/payouts/${id}/void`).json<ApiResponse<PayoutDto>>())
 
 // Staff self-view
-export const fetchMyCommissions = (range: DateRange) =>
-  call(api.get(`/staff/me/commissions${query(range)}`).json<ApiResponse<CommissionReportDto>>())
-export const fetchMyPayouts = () => call(api.get("/staff/me/payouts").json<ApiResponse<PayoutDto[]>>())
+export const fetchMyCommissions = (range: DateRange, current: number = 1) =>
+  call(
+    api
+      .get(`/staff/me/commissions${query({ ...range, ...page(current, STAFF_PAGE_SIZE) })}`)
+      .json<ApiResponse<CommissionReportDto>>()
+  )
+export const fetchMyPayouts = (current: number = 1) =>
+  call(api.get(`/staff/me/payouts${query(page(current, STAFF_PAGE_SIZE))}`).json<ApiResponse<PaginatedResponse<PayoutDto>>>())
 
 /** Today in local time as YYYY-MM-DD. */
 export function today(): string {

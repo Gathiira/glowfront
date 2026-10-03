@@ -1,13 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import type { CommissionLineDto, CommissionReportDto, PayoutDto } from "@/lib/types"
+import { useState } from "react"
+import type { CommissionLineDto, CommissionReportDto } from "@/lib/types"
 import { fetchMyCommissions, fetchMyPayouts, money } from "@/lib/api/commissions"
 import { useUser } from "@/lib/use-user"
-import { showError } from "@/lib/toast"
+import { usePagedList } from "@/lib/use-paged-list"
 import { useFreshStamps } from "../_lib/fresh-stamps"
-
-const SHOWN = 6
 
 function day(iso: string | null | undefined) {
   if (!iso) return ""
@@ -24,23 +22,22 @@ function methodLabel(m: string) {
 export default function Pay() {
   const profile = useUser("customer_profile")
   const [all, setAll] = useState<CommissionReportDto | null>(null)
-  const [payouts, setPayouts] = useState<PayoutDto[] | null>(null)
-  const [showAll, setShowAll] = useState(false)
+  // Totals come from the summary (whole history); lines and payouts load a page at a time.
+  const lines = usePagedList(
+    (current) =>
+      fetchMyCommissions({}, current).then((r) => {
+        setAll(r)
+        return r.lines
+      }),
+    []
+  )
+  const payoutPages = usePagedList(fetchMyPayouts, [])
+  const payouts = payoutPages.loaded ? payoutPages.items : null
   const fresh = useFreshStamps((payouts ?? []).map((p) => `payout:${p.id}:${p.status}`))
 
-  useEffect(() => {
-    fetchMyCommissions({}).then(setAll).catch(showError)
-    fetchMyPayouts()
-      .then(setPayouts)
-      .catch((e) => {
-        setPayouts([])
-        showError(e)
-      })
-  }, [])
-
-  const unpaid: CommissionLineDto[] = (all?.lines ?? []).filter((l) => l.payoutId === null)
+  // ponytail: unpaid lines are filtered from the loaded pages, so "Since" and the count cover what's loaded; a status=UNPAID filter on /staff/me/commissions fixes that if histories get long.
+  const unpaid: CommissionLineDto[] = lines.items.filter((l) => l.payoutId === null)
   const oldest = unpaid.length ? unpaid[unpaid.length - 1].transactionDate : null
-  const visible = showAll ? unpaid : unpaid.slice(0, SHOWN)
 
   return (
     <>
@@ -100,7 +97,7 @@ export default function Pay() {
 
             {unpaid.length > 0 && (
               <ul className="sp-tally">
-                {visible.map((l) => (
+                {unpaid.map((l) => (
                   <li key={l.id}>
                     <span className="sp-tally-what">
                       {l.serviceName} · {l.taskName}
@@ -118,9 +115,9 @@ export default function Pay() {
                 ))}
               </ul>
             )}
-            {unpaid.length > SHOWN && (
-              <button type="button" className="sp-more" onClick={() => setShowAll((v) => !v)}>
-                {showAll ? "Show fewer" : `Show all ${unpaid.length}`}
+            {lines.hasMore && (
+              <button type="button" className="sp-more" onClick={lines.loadMore} disabled={lines.loading}>
+                {lines.loading ? "Loading…" : "Load older"}
               </button>
             )}
           </div>
@@ -168,6 +165,11 @@ export default function Pay() {
                 )
               })}
             </ul>
+          )}
+          {payoutPages.hasMore && (
+            <button type="button" className="sp-more" onClick={payoutPages.loadMore} disabled={payoutPages.loading}>
+              {payoutPages.loading ? "Loading…" : "Load older envelopes"}
+            </button>
           )}
         </section>
       </div>

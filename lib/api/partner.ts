@@ -1,4 +1,5 @@
 import { api, extractError, type ApiResponse } from "./client"
+import { fetchAllPages, pageQuery, PAGE_SIZE } from "./paging"
 import type {
   CustomerAccountData,
   CustomerLoginData,
@@ -78,19 +79,23 @@ export async function fetchTopTeamMember(): Promise<TopTeamMemberDto | null> {
   }
 }
 
+/** One page of the team (`current` is 1-based). */
 export async function fetchPartnerStaff(
-  current: number = 0,
-  pageSize: number = 20
+  current: number = 1,
+  pageSize: number = PAGE_SIZE
 ): Promise<PaginatedResponse<StaffDto>> {
   try {
     const res = await api
-      .get(`/partner/staff?current=${current}&pageSize=${pageSize}`)
+      .get(`/partner/staff?${pageQuery(current, pageSize)}`)
       .json<ApiResponse<PaginatedResponse<StaffDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
   }
 }
+
+/** The whole team, for pickers (e.g. "who did it?" at checkout). */
+export const fetchAllPartnerStaff = () => fetchAllPages(fetchPartnerStaff)
 
 export async function fetchPartnerStaffMember(id: number): Promise<StaffDto> {
   try {
@@ -123,19 +128,23 @@ export async function createPartnerStaff(
   }
 }
 
+/** One page of the catalog (`current` is 1-based). */
 export async function fetchPartnerServices(
-  current: number = 0,
-  pageSize: number = 50
+  current: number = 1,
+  pageSize: number = PAGE_SIZE
 ): Promise<PaginatedResponse<ServiceDto>> {
   try {
     const res = await api
-      .get(`/partner/services?current=${current}&pageSize=${pageSize}`)
+      .get(`/partner/services?${pageQuery(current, pageSize)}`)
       .json<ApiResponse<PaginatedResponse<ServiceDto>>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
   }
 }
+
+/** The whole catalog, for pickers (e.g. adding a service at checkout). */
+export const fetchAllPartnerServices = () => fetchAllPages(fetchPartnerServices)
 
 export type CreateServicePayload = {
   name: string
@@ -160,6 +169,25 @@ export async function createPartnerService(
   }
 }
 
+export async function updatePartnerService(id: number, payload: CreateServicePayload): Promise<ServiceDto> {
+  try {
+    const res = await api.put(payload, `/partner/services/${id}`).json<ApiResponse<ServiceDto>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** Deleted when nothing refers to it; deactivated when it has bookings or sales, so their records are kept. */
+export async function deletePartnerService(id: number): Promise<"DELETED" | "DEACTIVATED"> {
+  try {
+    const res = await api.delete(`/partner/services/${id}`).json<ApiResponse<"DELETED" | "DEACTIVATED">>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
 export async function fetchPartnerBusiness(): Promise<BusinessDto> {
   try {
     const res = await api
@@ -171,12 +199,15 @@ export async function fetchPartnerBusiness(): Promise<BusinessDto> {
   }
 }
 
+/** All categories (paginated endpoint; pickers need the full list). */
 export async function fetchPartnerCategories(): Promise<BusinessCategoryDto[]> {
   try {
-    const res = await api
-      .get("/partner/categories")
-      .json<ApiResponse<BusinessCategoryDto[]>>()
-    return res.data
+    return await fetchAllPages((current, pageSize) =>
+      api
+        .get(`/partner/categories?${pageQuery(current, pageSize)}`)
+        .json<ApiResponse<PaginatedResponse<BusinessCategoryDto>>>()
+        .then((res) => res.data)
+    )
   } catch (error) {
     throw await extractError(error)
   }

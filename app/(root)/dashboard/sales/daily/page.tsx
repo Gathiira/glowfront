@@ -1,33 +1,31 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { SummaryCard } from "@/components/dashboard/summary-card"
 import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Input } from "@/components/ui/input"
+import { LoadMore } from "@/components/ui/load-more"
 import { CURRENCY, type DailySalesDto } from "@/lib/types"
 import { fetchDailySales, money, today } from "@/lib/api/commissions"
-import { showError } from "@/lib/toast"
+import { usePagedList } from "@/lib/use-paged-list"
 
 export default function DailySales() {
   const [date, setDate] = useState(today())
   const [data, setData] = useState<DailySalesDto | null>(null)
-  const [loading, setLoading] = useState(true)
   const [newSale, setNewSale] = useState(false)
 
-  const load = (d: string) => {
-    setLoading(true)
-    fetchDailySales(d)
-      .then(setData)
-      .catch(showError)
-      .finally(() => setLoading(false))
-  }
-
-  useEffect(() => {
-    load(date)
-  }, [date])
+  // Day totals come with every page; transactions accumulate.
+  const { items, total, loading, hasMore, loadMore, reload } = usePagedList(
+    (current) =>
+      fetchDailySales(date, current).then((d) => {
+        setData(d)
+        return d.transactions
+      }),
+    [date]
+  )
 
   return (
     <div>
@@ -45,7 +43,7 @@ export default function DailySales() {
       <DataTable
         title="Transactions"
         loading={loading}
-        data={data?.transactions ?? []}
+        data={items}
         emptyMessage="No sales on this day"
         keyExtractor={(t) => t.id ?? 0}
         columns={[
@@ -57,13 +55,14 @@ export default function DailySales() {
           { key: "amount", label: "Amount", align: "right", render: (t) => `${CURRENCY} ${money(t.grandTotal)}` },
         ]}
       />
+      <LoadMore hasMore={hasMore} loading={loading} onLoadMore={loadMore} summary={`Showing ${items.length} of ${total}`} />
 
       <CheckoutDialog
         open={newSale}
         onClose={() => setNewSale(false)}
         onDone={() => {
           setNewSale(false)
-          load(date)
+          reload()
         }}
       />
     </div>

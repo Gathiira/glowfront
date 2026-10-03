@@ -1,22 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import type { ServiceDto } from "@/lib/types"
 import { fetchMyServices } from "@/lib/api/leave"
 import { money } from "@/lib/api/commissions"
-import { showError } from "@/lib/toast"
+import { usePagedList } from "@/lib/use-paged-list"
 
 export default function MyServices() {
-  const [services, setServices] = useState<ServiceDto[] | null>(null)
-
-  useEffect(() => {
-    fetchMyServices()
-      .then(setServices)
-      .catch((e) => {
-        setServices([])
-        showError(e)
-      })
-  }, [])
+  const pages = usePagedList(fetchMyServices, [])
+  const services = pages.loaded ? pages.items : null
 
   const groups = (services ?? []).reduce<Record<string, ServiceDto[]>>((acc, s) => {
     const key = s.categoryName ?? "Other"
@@ -65,6 +56,11 @@ export default function MyServices() {
             </ul>
           </section>
         ))}
+        {pages.hasMore && (
+          <button type="button" className="sp-more" onClick={pages.loadMore} disabled={pages.loading}>
+            {pages.loading ? "Loading…" : "Load more services"}
+          </button>
+        )}
       </div>
     </>
   )

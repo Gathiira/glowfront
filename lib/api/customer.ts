@@ -1,4 +1,5 @@
 import { api, extractError, type ApiResponse } from "./client"
+import { fetchAllPages, pageQuery } from "./paging"
 import type {
   CustomerDashboardDto,
   BusinessSearchDto,
@@ -35,10 +36,15 @@ export async function searchBusinesses(
   }
 }
 
+/** All categories (the endpoint is paginated; filters and pickers need the full list). */
 export async function fetchBusinessCategories(): Promise<BusinessCategoryDto[]> {
   try {
-    const res = await api.get("/customer/categories").json<ApiResponse<BusinessCategoryDto[]>>()
-    return res.data
+    return await fetchAllPages((current, pageSize) =>
+      api
+        .get(`/customer/categories?${pageQuery(current, pageSize)}`)
+        .json<ApiResponse<PaginatedResponse<BusinessCategoryDto>>>()
+        .then((res) => res.data)
+    )
   } catch (error) {
     throw await extractError(error)
   }

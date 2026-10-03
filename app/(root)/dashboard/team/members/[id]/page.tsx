@@ -12,7 +12,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import type { LeaveDto, StaffDto, StaffTaskRateDto } from "@/lib/types"
+import { LoadMore } from "@/components/ui/load-more"
+import type { StaffDto, StaffTaskRateDto } from "@/lib/types"
+import { usePagedList } from "@/lib/use-paged-list"
 import { fetchStaffTaskRates } from "@/lib/api/commissions"
 import { fetchPartnerStaffMember } from "@/lib/api/partner"
 import { addLeaveForStaff, fetchLeave, leaveWhen } from "@/lib/api/leave"
@@ -35,20 +37,12 @@ function openPicker(e: React.MouseEvent<HTMLInputElement>) {
 export default function MemberDetails() {
   const staffId = Number(useParams<{ id: string }>().id)
   const [member, setMember] = useState<StaffDto | null>(null)
-  const [leave, setLeave] = useState<LeaveDto[] | null>(null)
   const [tasks, setTasks] = useState<StaffTaskRateDto[] | null>(null)
   const [form, setForm] = useState(emptyForm)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [confirm, confirmDialog] = useConfirm()
-
-  const loadLeave = () =>
-    fetchLeave(undefined, staffId)
-      .then(setLeave)
-      .catch((e) => {
-        setLeave([])
-        showError(e)
-      })
+  const leave = usePagedList((current) => fetchLeave(undefined, staffId, current), [staffId])
 
   useEffect(() => {
     fetchPartnerStaffMember(staffId).then(setMember).catch(showError)
@@ -58,8 +52,6 @@ export default function MemberDetails() {
         setTasks([])
         showError(e)
       })
-    loadLeave()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [staffId])
 
   const timesInvalid = form.partDay && form.endTime <= form.startTime
@@ -95,7 +87,7 @@ export default function MemberDetails() {
       await addLeaveForStaff(staffId, body)
       showSuccess("Leave added and approved")
       setForm(emptyForm())
-      loadLeave()
+      leave.reload()
     } catch (err) {
       setError(err instanceof Error ? err.message : "Couldn't add the leave. Try again.")
     } finally {
@@ -357,15 +349,21 @@ export default function MemberDetails() {
 
           <div>
             <h2 className="mb-3 text-lg font-semibold">Leave</h2>
-            {leave === null && <p className="text-sm text-muted-foreground">Loading...</p>}
-            {leave?.length === 0 && (
+            {!leave.loaded && <p className="text-sm text-muted-foreground">Loading...</p>}
+            {leave.loaded && leave.items.length === 0 && (
               <p className="text-sm text-muted-foreground">No leave yet. Requests they send and leave you add appear here.</p>
             )}
             <div className="space-y-3">
-              {leave?.map((l) => (
-                <LeaveCard key={l.id} leave={l} onDecided={loadLeave} showStaff={false} />
+              {leave.items.map((l) => (
+                <LeaveCard key={l.id} leave={l} onDecided={leave.reload} showStaff={false} />
               ))}
             </div>
+            <LoadMore
+              hasMore={leave.hasMore}
+              loading={leave.loading}
+              onLoadMore={leave.loadMore}
+              summary={`Showing ${leave.items.length} of ${leave.total}`}
+            />
           </div>
         </div>
       </div>

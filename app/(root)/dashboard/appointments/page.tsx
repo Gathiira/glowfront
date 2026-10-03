@@ -6,32 +6,23 @@ import { StatusBadge } from "@/components/dashboard/status-badge"
 import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { LoadMore } from "@/components/ui/load-more"
 import type { BookingDto, StaffDto } from "@/lib/types"
 import { fetchBusinessBookings } from "@/lib/api/commissions"
-import { fetchPartnerStaff } from "@/lib/api/partner"
+import { fetchAllPartnerStaff } from "@/lib/api/partner"
+import { usePagedList } from "@/lib/use-paged-list"
 import { showError } from "@/lib/toast"
 
 type Status = "confirmed" | "pending" | "cancelled" | "completed"
 
 export default function Appointments() {
-  const [bookings, setBookings] = useState<BookingDto[]>([])
+  // The server returns bookings newest first.
+  const { items: bookings, total, loading, loaded, hasMore, loadMore, reload } = usePagedList(fetchBusinessBookings, [])
   const [staff, setStaff] = useState<StaffDto[]>([])
-  const [loading, setLoading] = useState(true)
   const [checkingOut, setCheckingOut] = useState<BookingDto | null>(null)
 
-  const load = () =>
-    Promise.all([fetchBusinessBookings(), fetchPartnerStaff(0, 100)])
-      .then(([b, s]) => {
-        setBookings(
-          [...b.list].sort((x, y) => `${y.bookingDate}T${y.bookingTime}`.localeCompare(`${x.bookingDate}T${x.bookingTime}`))
-        )
-        setStaff(s.list)
-      })
-      .catch(showError)
-      .finally(() => setLoading(false))
-
   useEffect(() => {
-    load()
+    fetchAllPartnerStaff().then(setStaff).catch(showError)
   }, [])
 
   const staffName = (id: number | null) => staff.find((s) => s.id === id)?.name ?? "Any staff"
@@ -45,8 +36,8 @@ export default function Appointments() {
           <CardTitle>Bookings</CardTitle>
         </CardHeader>
         <CardContent>
-          {loading && <p className="text-sm text-muted-foreground">Loading...</p>}
-          {!loading && bookings.length === 0 && <p className="text-sm text-muted-foreground">No bookings yet.</p>}
+          {!loaded && <p className="text-sm text-muted-foreground">Loading...</p>}
+          {loaded && !loading && bookings.length === 0 && <p className="text-sm text-muted-foreground">No bookings yet.</p>}
           <div className="space-y-3">
             {bookings.map((a) => (
               <div key={a.id} className="flex items-center justify-between gap-2 rounded-lg border p-3">
@@ -69,6 +60,7 @@ export default function Appointments() {
               </div>
             ))}
           </div>
+          <LoadMore hasMore={hasMore} loading={loading} onLoadMore={loadMore} summary={`Showing ${bookings.length} of ${total}`} />
         </CardContent>
       </Card>
 
@@ -78,7 +70,7 @@ export default function Appointments() {
         onClose={() => setCheckingOut(null)}
         onDone={() => {
           setCheckingOut(null)
-          load()
+          reload()
         }}
       />
     </div>

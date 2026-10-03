@@ -1,13 +1,15 @@
 import useSWR, { type SWRConfiguration } from "swr"
-import { api } from "./client"
 import type { BusinessCategoryDto } from "@/lib/types"
-import type { ApiResponse } from "./client"
+import { fetchBusinessCategories } from "./customer"
 
-const fetcher = <T>(url: string): Promise<T> => api.get(url).json()
-
+/** All categories; `data.data` keeps the shape existing callers read. */
 export function useCategories(options?: SWRConfiguration) {
-  return useSWR<ApiResponse<BusinessCategoryDto[]>>("/customer/categories", fetcher, {
-    revalidateOnFocus: false,
-    ...options,
-  })
+  return useSWR<{ data: BusinessCategoryDto[] }>(
+    "/customer/categories#all",
+    async () => ({ data: await fetchBusinessCategories() }),
+    {
+      revalidateOnFocus: false,
+      ...options,
+    }
+  )
 }

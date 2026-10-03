@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
@@ -20,22 +20,16 @@ import { AlertTriangle } from "lucide-react"
 import { CURRENCY, type PayoutDto } from "@/lib/types"
 import { fetchPayout, fetchPayouts, money, voidPayout } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
+import { LoadMore } from "@/components/ui/load-more"
+import { usePagedList } from "@/lib/use-paged-list"
 
 export default function Payouts() {
-  const [payouts, setPayouts] = useState<PayoutDto[]>([])
-  const [loading, setLoading] = useState(true)
+  const { items: payouts, total, loading, hasMore, loadMore, reload } = usePagedList(
+    (current) => fetchPayouts(undefined, current),
+    []
+  )
   const [detail, setDetail] = useState<PayoutDto | null>(null)
   const [confirmVoid, setConfirmVoid] = useState<PayoutDto | null>(null)
-
-  const load = () =>
-    fetchPayouts()
-      .then(setPayouts)
-      .catch(showError)
-      .finally(() => setLoading(false))
-
-  useEffect(() => {
-    load()
-  }, [])
 
   const open = (id: number) => fetchPayout(id).then(setDetail).catch(showError)
 
@@ -44,7 +38,7 @@ export default function Payouts() {
       await voidPayout(p.id)
       showSuccess("Payout voided")
       setDetail(null)
-      load()
+      reload()
     } catch (err) {
       showError(err)
     } finally {
@@ -83,6 +77,7 @@ export default function Payouts() {
           },
         ]}
       />
+      <LoadMore hasMore={hasMore} loading={loading} onLoadMore={loadMore} summary={`Showing ${payouts.length} of ${total}`} />
 
       <Dialog open={detail !== null} onOpenChange={(v) => !v && setDetail(null)}>
         <DialogContent className="sm:max-w-xl">

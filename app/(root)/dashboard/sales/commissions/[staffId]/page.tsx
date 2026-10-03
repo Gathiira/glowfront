@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, useState } from "react"
 import { useParams, useSearchParams } from "next/navigation"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { SummaryCard } from "@/components/dashboard/summary-card"
@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { LoadMore } from "@/components/ui/load-more"
 import { useConfirm } from "@/components/ui/use-confirm"
+import { usePagedList } from "@/lib/use-paged-list"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CURRENCY, PAYMENT_METHODS, type CommissionReportDto } from "@/lib/types"
 import { createPayout, fetchStaffCommissions, money } from "@/lib/api/commissions"
@@ -32,25 +34,29 @@ function StaffCommissionsInner() {
   const [endDate, setEndDate] = useState(search.get("endDate") ?? "")
   const [report, setReport] = useState<CommissionReportDto | null>(null)
   const [selected, setSelected] = useState<number[]>([])
-  const [loading, setLoading] = useState(true)
   const [paying, setPaying] = useState(false)
   const [payment, setPayment] = useState({ method: "MPESA", reference: "", notes: "" })
   const [confirm, confirmDialog] = useConfirm()
 
-  const load = () => {
-    setLoading(true)
-    fetchStaffCommissions(staffId, { startDate, endDate, status: status === "ALL" ? undefined : status })
-      .then((r) => {
+  // Summary covers the whole range; lines arrive a page at a time and loaded unpaid lines are preselected.
+  const {
+    items: lines,
+    total,
+    loading,
+    hasMore,
+    loadMore,
+    reload,
+  } = usePagedList(
+    (current) =>
+      fetchStaffCommissions(staffId, { startDate, endDate, status: status === "ALL" ? undefined : status }, current).then((r) => {
+        const unpaid = r.lines.list.filter((l) => l.payoutId === null).map((l) => l.id as number)
         setReport(r)
-        setSelected(r.lines.filter((l) => l.payoutId === null).map((l) => l.id as number))
-      })
-      .catch(showError)
-      .finally(() => setLoading(false))
-  }
+        setSelected((prev) => (current === 1 ? unpaid : [...prev, ...unpaid]))
+        return r.lines
+      }),
+    [staffId, status, startDate, endDate]
+  )
 
-  useEffect(load, [staffId, status, startDate, endDate]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const lines = report?.lines ?? []
   const selectedTotal = lines.filter((l) => selected.includes(l.id as number)).reduce((s, l) => s + l.commissionAmount, 0)
   const toggle = (id: number) => setSelected((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]))
 
@@ -74,7 +80,7 @@ function StaffCommissionsInner() {
       showSuccess("Payout recorded")
       setPaying(false)
       setPayment({ method: "MPESA", reference: "", notes: "" })
-      load()
+      reload()
     } catch (err) {
       showError(err)
     }
@@ -140,6 +146,12 @@ function StaffCommissionsInner() {
           { key: "status", label: "Status", render: (l) => (l.payoutId ? "Paid" : "Unpaid") },
           { key: "amount", label: "Commission", align: "right", render: (l) => money(l.commissionAmount) },
         ]}
+      />
+      <LoadMore
+        hasMore={hasMore}
+        loading={loading}
+        onLoadMore={loadMore}
+        summary={`Showing ${lines.length} of ${total} — only loaded lines can be added to a payout`}
       />
 
       <Dialog open={paying} onOpenChange={setPaying}>

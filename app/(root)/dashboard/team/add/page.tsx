@@ -17,7 +17,7 @@ import {
   Field,
   FieldGroup,
 } from "@/components/ui/field"
-import { createPartnerStaff, fetchPartnerServices } from "@/lib/api/partner"
+import { createPartnerStaff, fetchAllPartnerServices } from "@/lib/api/partner"
 import { showSuccess, showError } from "@/lib/toast"
 import type { ServiceDto } from "@/lib/types"
 
@@ -35,7 +35,7 @@ export default function AddMember() {
   })
 
   useEffect(() => {
-    fetchPartnerServices().then((res) => setServices(res.list)).catch(() => {})
+    fetchAllPartnerServices().then(setServices).catch(() => {})
   }, [])
 
   const toggleService = (id: number) => {

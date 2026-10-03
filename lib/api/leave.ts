@@ -1,5 +1,6 @@
 import { api, extractError, type ApiResponse } from "./client"
-import type { LeaveDto, LeaveRequestBody, LeaveStatus, ServiceDto } from "@/lib/types"
+import { pageQuery, STAFF_PAGE_SIZE } from "./paging"
+import type { LeaveDto, LeaveRequestBody, LeaveStatus, PaginatedResponse, ServiceDto } from "@/lib/types"
 
 async function call<T>(request: Promise<ApiResponse<T>>): Promise<T> {
   try {
@@ -10,20 +11,24 @@ async function call<T>(request: Promise<ApiResponse<T>>): Promise<T> {
 }
 
 // Staff
-export const fetchMyLeave = () => call(api.get("/staff/me/leave").json<ApiResponse<LeaveDto[]>>())
+export const fetchMyLeave = (current: number = 1, status?: LeaveStatus) => {
+  const q = new URLSearchParams(pageQuery(current, STAFF_PAGE_SIZE))
+  if (status) q.set("status", status)
+  return call(api.get(`/staff/me/leave?${q.toString()}`).json<ApiResponse<PaginatedResponse<LeaveDto>>>())
+}
 export const requestLeave = (body: LeaveRequestBody) =>
   call(api.post(body, "/staff/me/leave").json<ApiResponse<LeaveDto>>())
 export const cancelLeave = (id: number) =>
   call(api.post({}, `/staff/me/leave/${id}/cancel`).json<ApiResponse<LeaveDto>>())
-export const fetchMyServices = () => call(api.get("/staff/me/services").json<ApiResponse<ServiceDto[]>>())
+export const fetchMyServices = (current: number = 1) =>
+  call(api.get(`/staff/me/services?${pageQuery(current, STAFF_PAGE_SIZE)}`).json<ApiResponse<PaginatedResponse<ServiceDto>>>())
 
 // Owner
-export const fetchLeave = (status?: LeaveStatus, staffId?: number) => {
-  const q = new URLSearchParams()
+export const fetchLeave = (status?: LeaveStatus, staffId?: number, current: number = 1) => {
+  const q = new URLSearchParams(pageQuery(current))
   if (status) q.set("status", status)
   if (staffId) q.set("staffId", String(staffId))
-  const qs = q.toString()
-  return call(api.get(`/partner/leave${qs ? `?${qs}` : ""}`).json<ApiResponse<LeaveDto[]>>())
+  return call(api.get(`/partner/leave?${q.toString()}`).json<ApiResponse<PaginatedResponse<LeaveDto>>>())
 }
 /** Owner records leave for a team member — approved immediately, past dates allowed. */
 export const addLeaveForStaff = (staffId: number, body: LeaveRequestBody) =>

@@ -205,7 +205,8 @@ export default function BusinessDetailPage() {
   const loadReviews = useCallback(async (businessId: number, current: number) => {
     setReviewsLoading(true)
     try {
-      const data = await fetchBusinessReviews(businessId, current, REVIEW_PAGE_SIZE)
+      // `current` here is the 0-based page index used by the pager; the API is 1-based
+      const data = await fetchBusinessReviews(businessId, current + 1, REVIEW_PAGE_SIZE)
       setReviews(data)
     } catch {
       setReviews(null)

@@ -239,11 +239,8 @@ export default function BusinessDetail() {
     async (businessId: number, current: number) => {
       setReviewsLoading(true)
       try {
-        const data = await fetchBusinessReviews(
-          businessId,
-          current,
-          REVIEW_PAGE_SIZE
-        )
+        // `current` is the 0-based pager index; the API is 1-based
+        const data = await fetchBusinessReviews(businessId, current + 1, REVIEW_PAGE_SIZE)
         setReviews(data)
       } catch {
         setReviews(null)
