@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { DataTable } from "@/components/ui/data-table"
 import { Input } from "@/components/ui/input"
@@ -49,7 +50,31 @@ export default function Transactions() {
           {
             key: "method",
             label: "Payment",
-            render: (t) => PAYMENT_LABEL[t.paymentMethod as keyof typeof PAYMENT_LABEL] ?? t.paymentMethod.replace("_", " "),
+            render: (t) => (
+              <span>
+                {PAYMENT_LABEL[t.paymentMethod as keyof typeof PAYMENT_LABEL] ?? t.paymentMethod.replace("_", " ")}
+                {t.paymentReference && <span className="block text-xs text-muted-foreground">{t.paymentReference}</span>}
+              </span>
+            ),
+          },
+          {
+            key: "claim",
+            label: "Payment",
+            // Cash is in hand, so it counts as claimed; M-Pesa is claimed once a received payment is attached.
+            render: (t) =>
+              t.paymentMethod !== "MPESA" || t.paymentReference ? (
+                <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                  Claimed
+                </span>
+              ) : (
+                <Link
+                  href="/dashboard/sales/mpesa"
+                  className="rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-700 hover:underline dark:bg-yellow-900/30 dark:text-yellow-400"
+                  title="No M-Pesa payment attached yet. Attach it from M-Pesa Payments."
+                >
+                  Awaiting payment
+                </Link>
+              ),
           },
           {
             key: "status",

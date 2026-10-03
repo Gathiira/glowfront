@@ -120,7 +120,7 @@ export default function Claim() {
                     <p className="sp-slip-dates" style={{ fontSize: "1.25rem" }}>
                       {item.serviceName}
                     </p>
-                    <div className="sp-chips" style={{ marginTop: "0.4rem" }}>
+                    <div className="sp-chips sp-chips-wrap" style={{ marginTop: "0.4rem" }}>
                       {item.tasks.map((t) =>
                         t.claimedBy ? (
                           <span key={`theirs-${t.taskId}`} className="sp-claimed-by">

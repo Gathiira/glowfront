@@ -13,6 +13,7 @@ import {
   PAYMENT_METHODS,
   type BookingDto,
   type CustomerLookupDto,
+  type UnclaimedMpesaDto,
   type BusinessCategoryDto,
   type CheckoutRequest,
   type PaymentMethod,
@@ -31,6 +32,7 @@ import {
   previewMyCheckout,
   searchCustomers,
   searchMyCustomers,
+  mpesaApi,
 } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
 
@@ -152,8 +154,58 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
 
   const ready = lines.length > 0 && lines.every((l) => l.price !== "" && l.tasks.every((t) => t.staffId !== null))
 
+  // M-Pesa at a connected till: pick the customer's payment from what's come in, instead of asking for the code.
+  const [mpesa, setMpesa] = useState<UnclaimedMpesaDto | null>(null)
+  const [mpesaPaymentId, setMpesaPaymentId] = useState<number | null>(null)
+  const [mpesaSearch, setMpesaSearch] = useState("")
+  const loadMpesa = () =>
+    mpesaApi(staffMode)
+      .unclaimed()
+      .then((m) => {
+        setMpesa(m)
+        setMpesaPaymentId((id) => (id !== null && m.payments.some((p) => p.id === id) ? id : null))
+      })
+      .catch(() => setMpesa(null))
+
+  useEffect(() => {
+    if (!open || paymentMethod !== "MPESA") return
+    loadMpesa()
+    const timer = setInterval(loadMpesa, 10000) // new payments show up while the customer pays
+    return () => clearInterval(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, paymentMethod])
+
+  useEffect(() => {
+    if (!open) {
+      setMpesaPaymentId(null)
+      setMpesaSearch("")
+    }
+  }, [open])
+
+  // Optional: without a payment the sale is saved as "M-Pesa, awaiting payment" and matched later.
+  const mpesaNeeded = paymentMethod === "MPESA"
+  const mpesaPayments = mpesa?.payments ?? []
+  const canComplete = ready
+  // Searchable dropdown: name, code or account number; payments matching the total first.
+  const [mpesaOpen, setMpesaOpen] = useState(false)
+  const [mpesaActive, setMpesaActive] = useState(0)
+  const totalNow = preview != null ? Number(preview.grandTotal) : null
+  const mpesaShown = (mpesa?.payments ?? [])
+    .filter((p) => {
+      const q = mpesaSearch.trim().toLowerCase()
+      return !q || [p.payerName, p.transId, p.billRef].some((v) => v?.toLowerCase().includes(q))
+    })
+    .sort((a, b) => Number(Number(b.amount) === totalNow) - Number(Number(a.amount) === totalNow))
+  const pickedPayment = mpesa?.payments.find((p) => p.id === mpesaPaymentId) ?? null
+  const pickPayment = (id: number) => {
+    setMpesaPaymentId(id)
+    setMpesaSearch("")
+    setMpesaOpen(false)
+  }
+
   const buildRequest = (): CheckoutRequest => ({
     bookingId: booking?.id,
+    mpesaPaymentId: mpesaNeeded && mpesaPaymentId !== null ? mpesaPaymentId : undefined,
     customerName: customerName.trim() || undefined,
     customerPhone: customerPhone.trim() || undefined,
     paymentMethod,
@@ -211,11 +263,17 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
 
   const submit = async () => {
     const total = preview ? `${CURRENCY} ${money(preview.grandTotal)}` : "this sale"
+    const picked = mpesa?.payments.find((p) => p.id === mpesaPaymentId)
+    const payWith = !mpesaNeeded
+      ? PAYMENT_LABEL[paymentMethod]
+      : picked
+        ? `M-Pesa ${picked.transId} from ${picked.payerName ?? "the customer"}`
+        : "M-Pesa (awaiting payment; attach it from M-Pesa payments once it arrives)"
     const ok = await confirm({
       title: `Complete sale for ${total}?`,
       description: staffMode
-        ? `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${PAYMENT_LABEL[paymentMethod]}. Afterwards, everyone who worked on it claims their tasks in Claim.`
-        : `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${PAYMENT_LABEL[paymentMethod]}. ${
+        ? `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${payWith}. Afterwards, everyone who worked on it claims their tasks in Claim.`
+        : `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${payWith}. ${
             booking ? "The booking will be marked completed and " : ""
           }commissions will be recorded for the staff on each task.`,
       confirmLabel: "Complete sale",
@@ -467,8 +525,127 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
               ))}
             </div>
           )}
+          {mpesaNeeded && (
+            <div className="space-y-1.5">
+              <label htmlFor="mpesa-payment" className="text-sm font-medium">
+                Customer&apos;s M-Pesa payment
+              </label>
+              {pickedPayment ? (
+                // Chosen: a summary with a way to undo it.
+                <div className="flex items-center gap-2 rounded-md border border-primary bg-primary/5 px-3 py-2 text-sm">
+                  <span className="min-w-0 flex-1 truncate">
+                    <span className="font-medium">
+                      {CURRENCY} {money(pickedPayment.amount)}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {" "}
+                      · {pickedPayment.payerName ?? "Unknown"} · {pickedPayment.transId}
+                    </span>
+                  </span>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Remove this payment"
+                    onClick={() => {
+                      setMpesaPaymentId(null)
+                      setMpesaOpen(true)
+                    }}
+                  >
+                    <X className="size-4" />
+                  </Button>
+                </div>
+              ) : (
+                <div className="relative">
+                  <Input
+                    id="mpesa-payment"
+                    role="combobox"
+                    aria-expanded={mpesaOpen}
+                    aria-controls="mpesa-payment-options"
+                    aria-activedescendant={mpesaOpen && mpesaShown[mpesaActive] ? `mpesa-opt-${mpesaShown[mpesaActive].id}` : undefined}
+                    autoComplete="off"
+                    placeholder={
+                      mpesaPayments.length === 0 ? "Waiting for payments to come in…" : "Search unclaimed payments by name or code"
+                    }
+                    value={mpesaSearch}
+                    onFocus={() => setMpesaOpen(true)}
+                    onBlur={() => setTimeout(() => setMpesaOpen(false), 150)}
+                    onChange={(e) => {
+                      setMpesaSearch(e.target.value)
+                      setMpesaActive(0)
+                      setMpesaOpen(true)
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowDown") {
+                        e.preventDefault()
+                        setMpesaOpen(true)
+                        setMpesaActive((i) => Math.min(i + 1, mpesaShown.length - 1))
+                      } else if (e.key === "ArrowUp") {
+                        e.preventDefault()
+                        setMpesaActive((i) => Math.max(i - 1, 0))
+                      } else if (e.key === "Enter" && mpesaOpen && mpesaShown[mpesaActive]) {
+                        e.preventDefault()
+                        pickPayment(mpesaShown[mpesaActive].id)
+                      } else if (e.key === "Escape") {
+                        setMpesaOpen(false)
+                      }
+                    }}
+                  />
+                  {mpesaOpen && (
+                    <ul
+                      id="mpesa-payment-options"
+                      role="listbox"
+                      aria-label="Unclaimed M-Pesa payments"
+                      className="absolute inset-x-0 top-full z-10 mt-1 max-h-64 overflow-y-auto rounded-lg border bg-popover p-1 shadow-md"
+                    >
+                      {mpesaShown.length === 0 && (
+                        <li className="px-2 py-2 text-sm text-muted-foreground">
+                          {mpesaPayments.length === 0 ? "No unclaimed payments yet." : "No payment matches that search."}
+                        </li>
+                      )}
+                      {mpesaShown.map((p, i) => {
+                        const matches = preview != null && Number(p.amount) === Number(preview.grandTotal)
+                        return (
+                          <li
+                            key={p.id}
+                            id={`mpesa-opt-${p.id}`}
+                            role="option"
+                            aria-selected={i === mpesaActive}
+                            onMouseDown={(e) => e.preventDefault()} // keep focus so blur doesn't close before the click
+                            onClick={() => pickPayment(p.id)}
+                            onMouseEnter={() => setMpesaActive(i)}
+                            className={`flex cursor-pointer items-center gap-3 rounded-md px-2 py-2 text-sm ${
+                              i === mpesaActive ? "bg-muted" : ""
+                            }`}
+                          >
+                            <span className="min-w-0 flex-1">
+                              <span className="font-medium">
+                                {CURRENCY} {money(p.amount)}
+                              </span>
+                              <span className="text-muted-foreground"> · {p.payerName ?? "Unknown"} · {p.paidAt.slice(11, 16)}</span>
+                              <span className="block text-xs text-muted-foreground">
+                                {p.transId}
+                                {p.billRef ? ` · Acc ${p.billRef}` : ""}
+                              </span>
+                            </span>
+                            {matches && <span className="shrink-0 text-xs font-medium text-green-600">Matches total</span>}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
           {!ready && lines.length > 0 && (
             <p className="text-sm text-muted-foreground">Pick who did each task, or remove tasks that weren&apos;t done.</p>
+          )}
+          {ready && mpesaNeeded && mpesaPaymentId === null && (
+            <p className="text-sm text-muted-foreground">
+              Payment not in yet? Complete the sale anyway; it&apos;s kept as awaiting payment and you can attach the
+              payment later from M-Pesa payments.
+            </p>
           )}
         </div>
 
@@ -476,7 +653,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>
-          <Button onClick={submit} disabled={!ready || saving}>
+          <Button onClick={submit} disabled={!canComplete || saving}>
             {saving ? "Saving..." : "Complete sale"}
           </Button>
         </DialogFooter>

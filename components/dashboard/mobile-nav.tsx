@@ -44,6 +44,8 @@ const drawerItems = [
   { label: "Calendar", href: "/dashboard/calendar", icon: Calendar },
   { label: "Sales", href: "/dashboard/sales/daily", icon: DollarSign },
   { label: "Transactions", href: "/dashboard/sales/transactions", icon: DollarSign },
+  { label: "M-Pesa Payments", href: "/dashboard/sales/mpesa", icon: DollarSign },
+  { label: "M-Pesa Tills", href: "/dashboard/sales/tills", icon: DollarSign },
   { label: "Cash Movement", href: "/dashboard/sales/cash-movement", icon: DollarSign },
   { label: "Commissions", href: "/dashboard/sales/commissions", icon: DollarSign },
   { label: "Payouts", href: "/dashboard/sales/payouts", icon: DollarSign },

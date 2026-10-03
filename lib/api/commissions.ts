@@ -12,6 +12,11 @@ import type {
   CustomerLookupDto,
   ExpenseCategory,
   MySaleDto,
+  MpesaLookupDto,
+  MpesaPaymentDto,
+  MpesaTillDto,
+  MpesaTillRequest,
+  UnclaimedMpesaDto,
   DailySalesDto,
   PaginatedResponse,
   PayoutDto,
@@ -154,6 +159,43 @@ export const rejectLine = (lineId: number) =>
   call(api.post({}, `/partner/commission-lines/${lineId}/reject`).json<ApiResponse<null>>())
 export const reassignLine = (lineId: number, staffId: number) =>
   call(api.post({ staffId }, `/partner/commission-lines/${lineId}/reassign`).json<ApiResponse<null>>())
+
+/**
+ * M-Pesa matching, for managers (`/partner/mpesa`) or staff (`/staff/me/mpesa`): unclaimed payments (search by
+ * name, code or account number; up to 7 days back), M-Pesa sales awaiting their payment, and attaching one to the other.
+ */
+export function mpesaApi(staffMode: boolean) {
+  const base = staffMode ? "/staff/me/mpesa" : "/partner/mpesa"
+  return {
+    unclaimed: (q?: string, days: number = 1) =>
+      call(api.get(`${base}/unclaimed${query({ q, days })}`).json<ApiResponse<UnclaimedMpesaDto>>()),
+    awaiting: () => call(api.get(`${base}/awaiting`).json<ApiResponse<MySaleDto[]>>()),
+    attach: (paymentId: number, transactionId: number) =>
+      call(api.post({ paymentId, transactionId }, `${base}/attach`).json<ApiResponse<null>>()),
+    /** Ask Safaricom about a code; if it was paid to this till it shows up in `unclaimed` shortly after. */
+    lookup: (code: string) => call(api.post({ code }, `${base}/lookup`).json<ApiResponse<MpesaLookupDto>>()),
+  }
+}
+
+/** Managers: every M-Pesa payment, claimed or not, paged. */
+export const fetchMpesaPayments = (q: string, status: "ALL" | "CLAIMED" | "UNCLAIMED", current: number = 1) =>
+  call(
+    api
+      .get(`/partner/mpesa/payments${query({ q: q.trim() || undefined, status, ...page(current) })}`)
+      .json<ApiResponse<PaginatedResponse<MpesaPaymentDto>>>()
+  )
+// Managers: M-Pesa tills (each has a slug and secret in its callback URLs)
+export const fetchTills = () => call(api.get("/partner/mpesa/tills").json<ApiResponse<MpesaTillDto[]>>())
+export const addTill = (t: MpesaTillRequest) => call(api.post(t, "/partner/mpesa/tills").json<ApiResponse<MpesaTillDto>>())
+export const updateTill = (id: number, t: MpesaTillRequest) =>
+  call(api.put(t, `/partner/mpesa/tills/${id}`).json<ApiResponse<MpesaTillDto>>())
+/** Registers the till's confirmation and validation URLs with Safaricom. */
+export const registerTill = (id: number) =>
+  call(api.post({}, `/partner/mpesa/tills/${id}/register`).json<ApiResponse<MpesaTillDto>>())
+
+/** Managers: detach a payment from its sale; the sale awaits payment again. */
+export const unclaimMpesaPayment = (id: number) =>
+  call(api.post({}, `/partner/mpesa/${id}/unclaim`).json<ApiResponse<null>>())
 
 // Staff checkout: their own business, from the staff portal
 export const searchMyCustomers = (q: string) =>

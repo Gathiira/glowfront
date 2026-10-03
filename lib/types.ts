@@ -520,11 +520,15 @@ export type SaleDto = {
   transactionDate: string
   /** COMPLETED, REFUNDED, PARTIALLY_REFUNDED or VOIDED */
   status?: string
+  /** M-Pesa code of the payment claimed for this sale */
+  paymentReference?: string | null
   items: TransactionItemDto[] | null
 }
 
 export type CheckoutRequest = {
   bookingId?: number
+  /** The received M-Pesa payment this sale claims (when the till is connected). */
+  mpesaPaymentId?: number
   customerName?: string
   customerPhone?: string
   paymentMethod: PaymentMethod
@@ -563,6 +567,65 @@ export const EXPENSE_LABEL: Record<ExpenseCategory, string> = {
 }
 
 export type CashMovementSummaryDto = { totalIn: number; totalOut: number; net: number }
+
+/** An M-Pesa payment received on the till/paybill that no sale has claimed yet. */
+export type MpesaPaymentDto = {
+  id: number
+  transId: string
+  amount: number
+  /** "Jane M." */
+  payerName: string | null
+  /** The account number the customer typed (paybill), if any */
+  billRef: string | null
+  paidAt: string
+  /** Manager list only: the sale it's claimed for (null while unclaimed) and a summary of it */
+  transactionId?: number | null
+  saleSummary?: string | null
+  /** The till or paybill that received it */
+  tillName?: string | null
+}
+
+/** A business's M-Pesa till or paybill. Credentials are never sent back, only whether each is set. */
+export type MpesaTillDto = {
+  id: number
+  /** Unique across GlowBuddy, fixed once created; part of the Daraja callback URLs */
+  username: string
+  name: string
+  shortcode: string
+  type: "TILL" | "PAYBILL"
+  active: boolean
+  registeredAt: string | null
+  consumerKeySet: boolean
+  consumerSecretSet: boolean
+  initiator: string | null
+  securityCredentialSet: boolean
+  /** Null when the server has no public callback URL configured */
+  confirmationUrl: string | null
+  validationUrl: string | null
+}
+
+/** Add or edit a till; blank credentials when editing keep the stored ones. */
+export type MpesaTillRequest = {
+  username?: string
+  name?: string
+  shortcode?: string
+  type?: "TILL" | "PAYBILL"
+  active?: boolean
+  consumerKey?: string
+  consumerSecret?: string
+  initiator?: string
+  securityCredential?: string
+}
+
+export type UnclaimedMpesaDto = { payments: MpesaPaymentDto[] }
+
+/** A code looked up with Safaricom: FOUND (already received) or PENDING (it shows up in the list if paid to this till). */
+export type MpesaLookupDto = {
+  transId: string
+  status: "PENDING" | "FOUND"
+  message: string | null
+  payment: MpesaPaymentDto | null
+}
 
 /** A sale as the staff member who rang it up sees it. No commissions. */
 export type MySaleDto = {

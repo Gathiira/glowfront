@@ -207,7 +207,7 @@
   inset: auto 0 0 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: var(--sp-slip);
   border-top: 1px solid var(--sp-rule);
@@ -744,6 +744,20 @@
 
 .sp-chips::-webkit-scrollbar {
   display: none;
+}
+
+/* variant for actions (claim buttons): wrap onto new lines so nothing hides off-screen */
+.sp-chips.sp-chips-wrap {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.sp-chips.sp-chips-wrap button,
+.sp-chips.sp-chips-wrap .sp-claimed-by {
+  max-width: 100%;
+  white-space: normal;
+  text-align: left;
+  min-height: 44px;
 }
 
 .sp-chips button {

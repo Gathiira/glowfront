@@ -52,6 +52,8 @@ const navItems: NavItem[] = [
     children: [
       { label: "Daily Summary", href: "/dashboard/sales/daily" },
       { label: "Transactions", href: "/dashboard/sales/transactions" },
+      { label: "M-Pesa Payments", href: "/dashboard/sales/mpesa" },
+      { label: "M-Pesa Tills", href: "/dashboard/sales/tills" },
       { label: "Cash Movement", href: "/dashboard/sales/cash-movement" },
       { label: "Commissions", href: "/dashboard/sales/commissions" },
       { label: "Payouts", href: "/dashboard/sales/payouts" },
