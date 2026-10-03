@@ -3,7 +3,7 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { CalendarOff, LogOut, Mail, Scissors } from "lucide-react"
+import { CalendarOff, HandCoins, LogOut, Mail, Receipt, Scissors } from "lucide-react"
 import { useUser } from "@/lib/use-user"
 import {
   AlertDialog,
@@ -20,6 +20,8 @@ import { staffFonts } from "./_lib/fonts"
 import "./staff.css"
 
 const tabs = [
+  { href: "/staff/sale", label: "Sale", icon: Receipt },
+  { href: "/staff/claim", label: "Claim", icon: HandCoins },
   { href: "/staff/commissions", label: "Pay", icon: Mail },
   { href: "/staff/leave", label: "Leave", icon: CalendarOff },
   { href: "/staff/services", label: "Services", icon: Scissors },

@@ -2,9 +2,12 @@ import { api, extractError, type ApiResponse } from "./client"
 import { fetchAllPages, PAGE_SIZE, STAFF_PAGE_SIZE } from "./paging"
 import type {
   BookingDto,
+  CheckoutOptionsDto,
   CheckoutRequest,
+  ClaimSaleDto,
   CommissionReportDto,
   CommissionSummaryDto,
+  CustomerLookupDto,
   DailySalesDto,
   PaginatedResponse,
   PayoutDto,
@@ -107,6 +110,30 @@ export const createPayout = (req: {
   notes?: string
 }) => call(api.post(req, "/partner/payouts").json<ApiResponse<PayoutDto>>())
 export const voidPayout = (id: number) => call(api.post({}, `/partner/payouts/${id}/void`).json<ApiResponse<PayoutDto>>())
+
+/** Past customers (bookings and sales) whose name or phone contains `q`; needs 2+ characters. */
+export const searchCustomers = (q: string) =>
+  call(api.get(`/partner/clients/search${query({ q })}`).json<ApiResponse<CustomerLookupDto[]>>())
+
+// Staff checkout: their own business, from the staff portal
+export const searchMyCustomers = (q: string) =>
+  call(api.get(`/staff/me/checkout/customers${query({ q })}`).json<ApiResponse<CustomerLookupDto[]>>())
+export const fetchCheckoutOptions = () =>
+  call(api.get("/staff/me/checkout/options").json<ApiResponse<CheckoutOptionsDto>>())
+export const previewMyCheckout = (req: CheckoutRequest) =>
+  call(api.post(req, "/staff/me/checkout/preview").json<ApiResponse<SaleDto>>())
+export const myCheckout = (req: CheckoutRequest) => call(api.post(req, "/staff/me/checkout").json<ApiResponse<SaleDto>>())
+
+// Staff claims: the tasks they did on recent sales
+export const fetchMyClaims = (current: number = 1) =>
+  call(
+    api
+      .get(`/staff/me/claims${query(page(current, STAFF_PAGE_SIZE))}`)
+      .json<ApiResponse<PaginatedResponse<ClaimSaleDto>>>()
+  )
+export const claimTask = (itemId: number, taskId: number) =>
+  call(api.post({ itemId, taskId }, "/staff/me/claims").json<ApiResponse<null>>())
+export const unclaimTask = (lineId: number) => call(api.delete(`/staff/me/claims/${lineId}`).json<ApiResponse<null>>())
 
 // Staff self-view
 export const fetchMyCommissions = (range: DateRange, current: number = 1) =>

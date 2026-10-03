@@ -12,7 +12,7 @@ import { LoadMore } from "@/components/ui/load-more"
 import { useConfirm } from "@/components/ui/use-confirm"
 import { usePagedList } from "@/lib/use-paged-list"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { CURRENCY, PAYMENT_METHODS, type CommissionReportDto } from "@/lib/types"
+import { CURRENCY, PAYMENT_LABEL, PAYMENT_METHODS, type CommissionReportDto } from "@/lib/types"
 import { createPayout, fetchStaffCommissions, money } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
 
@@ -63,7 +63,7 @@ function StaffCommissionsInner() {
   const pay = async () => {
     const ok = await confirm({
       title: `Pay ${report?.summary.staffName ?? "this team member"} ${CURRENCY} ${money(selectedTotal)}?`,
-      description: `${selected.length} commission line${selected.length === 1 ? "" : "s"} will be marked paid by ${payment.method.replace("_", " ")}${
+      description: `${selected.length} commission line${selected.length === 1 ? "" : "s"} will be marked paid by ${PAYMENT_LABEL[payment.method as keyof typeof PAYMENT_LABEL] ?? payment.method}${
         payment.reference ? ` (ref ${payment.reference})` : ""
       }. You can void the payout later if it was a mistake.`,
       confirmLabel: "Record payout",
@@ -169,7 +169,7 @@ function StaffCommissionsInner() {
               <SelectContent>
                 {PAYMENT_METHODS.map((m) => (
                   <SelectItem key={m} value={m}>
-                    {m.replace("_", " ")}
+                    {PAYMENT_LABEL[m]}
                   </SelectItem>
                 ))}
               </SelectContent>

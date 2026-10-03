@@ -444,8 +444,13 @@ export const COUNTRIES = [
   { code: "GR", name: "Greece" },
 ]
 
-export const PAYMENT_METHODS = ["CASH", "MPESA", "CARD", "BANK_TRANSFER", "MOBILE_MONEY", "OTHER"] as const
+/** How the business takes and makes payments. Older records may still show other methods. */
+export const PAYMENT_METHODS = ["MPESA", "CASH"] as const
 export type PaymentMethod = (typeof PAYMENT_METHODS)[number]
+export const PAYMENT_LABEL: Record<PaymentMethod, string> = { MPESA: "M-Pesa", CASH: "Cash" }
+
+/** A past customer found by name or phone at checkout. */
+export type CustomerLookupDto = { name: string; phone: string | null; email: string | null; lastVisit: string | null }
 
 export type TaskDto = {
   id: number
@@ -523,6 +528,22 @@ export type CheckoutRequest = {
     serviceId: number
     price: number
     tasks: { taskId: number; staffId: number }[]
+  }[]
+}
+
+/** Staff checkout screen data: the active services only. Tasks are claimed afterwards. */
+export type CheckoutOptionsDto = { services: ServiceDto[] }
+
+/** A recent sale as one staff member sees it: tasks they can claim (lineId null) and their own claims. No amounts. */
+export type ClaimSaleDto = {
+  transactionId: number
+  transactionDate: string
+  customerName: string | null
+  items: {
+    itemId: number
+    serviceName: string
+    /** lineId: their own claim. claimedBy: someone else's claim (name only). Neither: open to claim. */
+    tasks: { taskId: number | null; taskName: string; lineId: number | null; paid: boolean; claimedBy: string | null }[]
   }[]
 }
 

@@ -9,8 +9,10 @@ import { useConfirm } from "@/components/ui/use-confirm"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
   CURRENCY,
+  PAYMENT_LABEL,
   PAYMENT_METHODS,
   type BookingDto,
+  type CustomerLookupDto,
   type BusinessCategoryDto,
   type CheckoutRequest,
   type PaymentMethod,
@@ -19,7 +21,17 @@ import {
   type StaffDto,
 } from "@/lib/types"
 import { createPartnerService, fetchAllPartnerServices, fetchAllPartnerStaff, fetchPartnerCategories } from "@/lib/api/partner"
-import { checkout, fetchServiceTasks, money, previewCheckout } from "@/lib/api/commissions"
+import {
+  checkout,
+  fetchCheckoutOptions,
+  fetchServiceTasks,
+  money,
+  myCheckout,
+  previewCheckout,
+  previewMyCheckout,
+  searchCustomers,
+  searchMyCustomers,
+} from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
 
 /** allowed: staff who may do this task; empty = anyone. */
@@ -37,18 +49,40 @@ type Props = {
   booking?: BookingDto | null
   onClose: () => void
   onDone: (sale: SaleDto) => void
+  /** Rung up by a staff member from the staff portal: staff endpoints, and no adding services to the menu. */
+  staffMode?: boolean
+  className?: string
 }
 
 let nextKey = 1
 
-export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
+export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = false, className }: Props) {
+  const sales = staffMode
+    ? { preview: previewMyCheckout, checkout: myCheckout, customers: searchMyCustomers }
+    : { preview: previewCheckout, checkout, customers: searchCustomers }
+  // What was last typed into the name or phone box; past customers matching it are suggested.
+  const [lookup, setLookup] = useState("")
+  const [matches, setMatches] = useState<CustomerLookupDto[]>([])
+
+  useEffect(() => {
+    const q = lookup.trim()
+    if (q.length < 2) {
+      setMatches([])
+      return
+    }
+    const timer = setTimeout(() => {
+      sales.customers(q).then(setMatches).catch(() => setMatches([]))
+    }, 250)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lookup])
   const [services, setServices] = useState<ServiceDto[]>([])
   const [staff, setStaff] = useState<StaffDto[]>([])
   const [categories, setCategories] = useState<BusinessCategoryDto[]>([])
   const [lines, setLines] = useState<Line[]>([])
   const [customerName, setCustomerName] = useState("")
   const [customerPhone, setCustomerPhone] = useState("")
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("CASH")
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("MPESA")
   const [discount, setDiscount] = useState("0")
   const [preview, setPreview] = useState<SaleDto | null>(null)
   const [saving, setSaving] = useState(false)
@@ -58,7 +92,8 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
 
   const addLine = async (service: ServiceDto, price?: number, staffId?: number | null) => {
     try {
-      const tasks = (await fetchServiceTasks(service.id)).filter((t) => t.active)
+      // Staff sales carry services only; each person claims their own tasks afterwards.
+      const tasks = staffMode ? [] : (await fetchServiceTasks(service.id)).filter((t) => t.active)
       setLines((ls) => [
         ...ls,
         {
@@ -93,9 +128,16 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
     setLines([])
     setPreview(null)
     setDiscount("0")
-    setPaymentMethod("CASH")
+    setPaymentMethod("MPESA")
     setCustomerName(booking?.customerName ?? "")
     setCustomerPhone(booking?.customerPhone ?? "")
+    setLookup("")
+    if (staffMode) {
+      fetchCheckoutOptions()
+        .then((o) => setServices(o.services))
+        .catch(showError)
+      return
+    }
     Promise.all([fetchAllPartnerServices(), fetchAllPartnerStaff(), fetchPartnerCategories()])
       .then(([svc, team, cats]) => {
         setServices(svc)
@@ -131,7 +173,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
       return
     }
     const timer = setTimeout(() => {
-      previewCheckout(buildRequest())
+      sales.preview(buildRequest())
         .then(setPreview)
         .catch(() => setPreview(null))
     }, 400)
@@ -171,15 +213,17 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
     const total = preview ? `${CURRENCY} ${money(preview.grandTotal)}` : "this sale"
     const ok = await confirm({
       title: `Complete sale for ${total}?`,
-      description: `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${paymentMethod.replace("_", " ")}. ${
-        booking ? "The booking will be marked completed and " : ""
-      }commissions will be recorded for the staff on each task.`,
+      description: staffMode
+        ? `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${PAYMENT_LABEL[paymentMethod]}. Afterwards, everyone who worked on it claims their tasks in Claim.`
+        : `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${PAYMENT_LABEL[paymentMethod]}. ${
+            booking ? "The booking will be marked completed and " : ""
+          }commissions will be recorded for the staff on each task.`,
       confirmLabel: "Complete sale",
     })
     if (!ok) return
     setSaving(true)
     try {
-      const sale = await checkout(buildRequest())
+      const sale = await sales.checkout(buildRequest())
       showSuccess("Sale recorded")
       onDone(sale)
     } catch (err) {
@@ -191,30 +235,74 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
+      <DialogContent className={`max-h-[90vh] overflow-y-auto sm:max-w-2xl ${className ?? ""}`}>
         <DialogHeader>
           <DialogTitle>{booking ? `Checkout · ${booking.customerName}` : "New sale"}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
-          <div className="grid gap-2 sm:grid-cols-2">
-            <Input placeholder="Customer name" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
-            <Input placeholder="Customer phone" value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} />
+          <div className="relative">
+            <div className="grid gap-2 sm:grid-cols-2">
+              <Input
+                placeholder="Customer name (type to search)"
+                aria-label="Customer name"
+                value={customerName}
+                onChange={(e) => {
+                  setCustomerName(e.target.value)
+                  setLookup(e.target.value)
+                }}
+                autoComplete="off"
+              />
+              <Input
+                placeholder="Customer phone (type to search)"
+                aria-label="Customer phone"
+                inputMode="tel"
+                value={customerPhone}
+                onChange={(e) => {
+                  setCustomerPhone(e.target.value)
+                  setLookup(e.target.value)
+                }}
+                autoComplete="off"
+              />
+            </div>
+            {matches.length > 0 && (
+              <ul
+                className="absolute inset-x-0 top-full z-10 mt-1 max-h-60 overflow-y-auto rounded-lg border bg-popover p-1 shadow-md"
+                aria-label="Past customers"
+              >
+                {matches.map((c) => (
+                  <li key={`${c.phone ?? ""}-${c.name}`}>
+                    <button
+                      type="button"
+                      className="flex w-full items-center justify-between gap-3 rounded-md px-2 py-2 text-left text-sm hover:bg-muted"
+                      onClick={() => {
+                        setCustomerName(c.name)
+                        setCustomerPhone(c.phone ?? "")
+                        setLookup("")
+                      }}
+                    >
+                      <span className="min-w-0 truncate">
+                        <span className="font-medium">{c.name}</span>
+                        {c.phone && <span className="text-muted-foreground"> · {c.phone}</span>}
+                      </span>
+                      {c.lastVisit && (
+                        <span className="shrink-0 text-xs text-muted-foreground">Last {c.lastVisit.slice(0, 10)}</span>
+                      )}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {lines.map((line, li) => (
             <div key={line.key} className="space-y-2 rounded-lg border p-3">
               <div className="flex items-center gap-2">
                 <span className="flex-1 font-medium">{line.serviceName}</span>
-                <span className="text-sm text-muted-foreground">{CURRENCY}</span>
-                <Input
-                  type="number"
-                  min={0}
-                  className="w-28"
-                  value={line.price}
-                  onChange={(e) => updateLine(line.key, (l) => ({ ...l, price: e.target.value }))}
-                  aria-label={`${line.serviceName} price`}
-                />
+                {/* Menu price (or the booking's price); set by the server, not editable here. */}
+                <span className="text-sm font-medium tabular-nums">
+                  {CURRENCY} {money(Number(line.price))}
+                </span>
                 <Button
                   variant="ghost"
                   size="icon"
@@ -224,7 +312,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
                   <X className="size-4" />
                 </Button>
               </div>
-              {line.tasks.length === 0 && (
+              {line.tasks.length === 0 && !staffMode && (
                 <p className="text-xs text-muted-foreground">No tasks set up for this service — no commission will be paid.</p>
               )}
               {line.tasks.map((task, ti) => {
@@ -297,9 +385,11 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
                 ))}
               </SelectContent>
             </Select>
-            <Button variant="outline" onClick={() => setQuickAdd({ name: "", price: "", categoryId: "" })}>
-              + New service
-            </Button>
+            {!staffMode && (
+              <Button variant="outline" onClick={() => setQuickAdd({ name: "", price: "", categoryId: "" })}>
+                + New service
+              </Button>
+            )}
           </div>
 
           {quickAdd && (
@@ -344,7 +434,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
               <SelectContent>
                 {PAYMENT_METHODS.map((m) => (
                   <SelectItem key={m} value={m}>
-                    {m.replace("_", " ")}
+                    {PAYMENT_LABEL[m]}
                   </SelectItem>
                 ))}
               </SelectContent>

@@ -207,7 +207,7 @@
   inset: auto 0 0 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: var(--sp-slip);
   border-top: 1px solid var(--sp-rule);
@@ -754,6 +754,18 @@
   background: var(--sp-ink);
   border-color: var(--sp-ink);
   color: var(--sp-slip);
+}
+
+/* someone else's claim: a quiet, non-interactive label beside the chips */
+.sp-claimed-by {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--sp-ink-soft);
+  border: 1.5px dashed var(--sp-rule);
+  border-radius: 999px;
 }
 
 .sp-field {
