@@ -489,6 +489,19 @@
   background: #b5a48f;
 }
 
+/* the whole envelope opens its detail; an invisible button laid over it */
+.sp-sealed-open {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.sp-sealed-open:hover {
+  background: rgb(23 20 15 / 0.04);
+}
+
 .sp-sealed-placeholder {
   position: relative;
   padding: 1.6rem 1rem 0.85rem;
@@ -756,6 +769,13 @@
   color: var(--sp-slip);
 }
 
+/* an open task outside this person's scope: claimable, but marked so it isn't tapped casually */
+.sp-chips button.sp-out-of-scope {
+  border-style: dashed;
+  color: var(--sp-stamp);
+  border-color: var(--sp-stamp);
+}
+
 /* someone else's claim: a quiet, non-interactive label beside the chips */
 .sp-claimed-by {
   display: inline-flex;
@@ -909,6 +929,24 @@ textarea.sp-input {
 
 .sp-tariff-sub {
   font-size: 0.875rem;
+  color: var(--sp-ink-soft);
+}
+
+/* the tasks under a service, with the rate this person earns */
+.sp-task-rates {
+  grid-column: 1 / -1;
+  list-style: none;
+  padding: 0;
+  margin-top: 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.sp-task-none {
+  font-weight: 500;
   color: var(--sp-ink-soft);
 }
 

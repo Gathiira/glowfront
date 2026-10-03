@@ -2,12 +2,16 @@ import { api, extractError, type ApiResponse } from "./client"
 import { fetchAllPages, PAGE_SIZE, STAFF_PAGE_SIZE } from "./paging"
 import type {
   BookingDto,
+  CashMovementDto,
+  CashMovementSummaryDto,
   CheckoutOptionsDto,
   CheckoutRequest,
   ClaimSaleDto,
   CommissionReportDto,
   CommissionSummaryDto,
   CustomerLookupDto,
+  ExpenseCategory,
+  MySaleDto,
   DailySalesDto,
   PaginatedResponse,
   PayoutDto,
@@ -70,6 +74,34 @@ export const checkout = (req: CheckoutRequest) =>
 /** Day totals plus one page of the day's transactions (newest first). */
 export const fetchDailySales = (date: string, current: number = 1) =>
   call(api.get(`/partner/sales/daily${query({ date, ...page(current) })}`).json<ApiResponse<DailySalesDto>>())
+/** All sales, newest first; either date may be left out. */
+export const fetchTransactions = (range: DateRange, current: number = 1) =>
+  call(
+    api
+      .get(`/partner/sales/transactions${query({ ...range, ...page(current) })}`)
+      .json<ApiResponse<PaginatedResponse<SaleDto>>>()
+  )
+/** Cash movements in a period, newest first (the server defaults to today). */
+export const fetchCashMovements = (range: DateRange, current: number = 1) =>
+  call(
+    api
+      .get(`/partner/sales/cash-movement${query({ ...range, ...page(current) })}`)
+      .json<ApiResponse<PaginatedResponse<CashMovementDto>>>()
+  )
+/** An expense: money out with a category. `movementDate` empty means now. */
+export const recordExpense = (e: {
+  amount: number
+  category: ExpenseCategory
+  paymentMethod: string
+  description?: string
+  movementDate?: string
+}) => call(api.post({ ...e, type: "OUT" }, "/partner/sales/cash-movement").json<ApiResponse<CashMovementDto>>())
+/** Only entries recorded by hand; those from sales and payouts are refused. */
+export const deleteCashMovement = (id: number) =>
+  call(api.delete(`/partner/sales/cash-movement/${id}`).json<ApiResponse<null>>())
+/** In, out and net for the whole period. */
+export const fetchCashMovementSummary = (range: DateRange) =>
+  call(api.get(`/partner/sales/cash-movement/summary${query(range)}`).json<ApiResponse<CashMovementSummaryDto>>())
 export const fetchBusinessBookings = (current: number = 1) =>
   call(
     api
@@ -115,6 +147,14 @@ export const voidPayout = (id: number) => call(api.post({}, `/partner/payouts/${
 export const searchCustomers = (q: string) =>
   call(api.get(`/partner/clients/search${query({ q })}`).json<ApiResponse<CustomerLookupDto[]>>())
 
+// Manager review of an unpaid commission line
+export const approveLine = (lineId: number) =>
+  call(api.post({}, `/partner/commission-lines/${lineId}/approve`).json<ApiResponse<null>>())
+export const rejectLine = (lineId: number) =>
+  call(api.post({}, `/partner/commission-lines/${lineId}/reject`).json<ApiResponse<null>>())
+export const reassignLine = (lineId: number, staffId: number) =>
+  call(api.post({ staffId }, `/partner/commission-lines/${lineId}/reassign`).json<ApiResponse<null>>())
+
 // Staff checkout: their own business, from the staff portal
 export const searchMyCustomers = (q: string) =>
   call(api.get(`/staff/me/checkout/customers${query({ q })}`).json<ApiResponse<CustomerLookupDto[]>>())
@@ -142,6 +182,10 @@ export const fetchMyCommissions = (range: DateRange, current: number = 1) =>
       .get(`/staff/me/commissions${query({ ...range, ...page(current, STAFF_PAGE_SIZE) })}`)
       .json<ApiResponse<CommissionReportDto>>()
   )
+/** One of my payouts with the tasks it covered. */
+export const fetchMyPayout = (id: number) => call(api.get(`/staff/me/payouts/${id}`).json<ApiResponse<PayoutDto>>())
+/** Sales I rang up today, newest first. */
+export const fetchMySalesToday = () => call(api.get("/staff/me/sales/today").json<ApiResponse<MySaleDto[]>>())
 export const fetchMyPayouts = (current: number = 1) =>
   call(api.get(`/staff/me/payouts${query(page(current, STAFF_PAGE_SIZE))}`).json<ApiResponse<PaginatedResponse<PayoutDto>>>())
 

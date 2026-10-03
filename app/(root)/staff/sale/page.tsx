@@ -1,15 +1,29 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
-import type { SaleDto } from "@/lib/types"
-import { money } from "@/lib/api/commissions"
+import type { MySaleDto, SaleDto } from "@/lib/types"
+import { fetchMySalesToday, money } from "@/lib/api/commissions"
+import { showError } from "@/lib/toast"
 import { staffFonts } from "../_lib/fonts"
 
 export default function Sale() {
   const [open, setOpen] = useState(false)
   const [last, setLast] = useState<SaleDto | null>(null)
+  const [today, setToday] = useState<MySaleDto[] | null>(null)
+
+  const loadToday = () =>
+    fetchMySalesToday()
+      .then(setToday)
+      .catch((e) => {
+        setToday([])
+        showError(e)
+      })
+
+  useEffect(() => {
+    loadToday()
+  }, [])
 
   return (
     <>
@@ -51,6 +65,43 @@ export default function Sale() {
         )}
       </div>
 
+      <section aria-labelledby="today-heading" style={{ maxWidth: 640 }}>
+        <h2 id="today-heading" className="sp-h2">
+          Your sales today{today && today.length > 0 ? ` · ${today.length}` : ""}
+        </h2>
+        <div className="sp-slip">
+          {today === null && (
+            <ul className="sp-tariff" aria-hidden>
+              {[0, 1].map((i) => (
+                <li key={i}>
+                  <span className="sp-skel" style={{ width: "55%" }} />
+                  <span className="sp-skel" style={{ width: "4rem" }} />
+                </li>
+              ))}
+            </ul>
+          )}
+          {today?.length === 0 && <p className="sp-empty sp-empty-plain">Sales you ring up today show here.</p>}
+          {today && today.length > 0 && (
+            <ul className="sp-tariff">
+              {today.map((s) => (
+                <li key={s.id}>
+                  <span className="sp-tariff-name">{s.services.join(", ")}</span>
+                  <span className="sp-tariff-price">
+                    <span className="sp-currency">KSH</span>
+                    {money(s.grandTotal)}
+                  </span>
+                  <span className="sp-tariff-sub">
+                    {new Date(s.transactionDate).toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" })} ·{" "}
+                    {s.paymentMethod === "MPESA" ? "M-Pesa" : "Cash"}
+                    {s.customerName ? ` · ${s.customerName}` : ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+
       <CheckoutDialog
         staffMode
         className={staffFonts}
@@ -59,6 +110,7 @@ export default function Sale() {
         onDone={(sale) => {
           setLast(sale)
           setOpen(false)
+          loadToday()
         }}
       />
     </>

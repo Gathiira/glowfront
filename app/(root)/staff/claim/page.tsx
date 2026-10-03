@@ -19,13 +19,30 @@ export default function Claim() {
   const [confirm, confirmDialog] = useConfirm()
   const dialog = { className: `sp-dialog ${staffFonts}`, actionClassName: "sp-dialog-neutral" }
 
-  const claim = async (sale: ClaimSaleDto, item: ClaimSaleDto["items"][number], taskId: number, taskName: string) => {
-    const ok = await confirm({
-      title: `Claim ${taskName}?`,
-      description: `${item.serviceName}${sale.customerName ? ` for ${sale.customerName}` : ""}, ${when(sale.transactionDate)}. Only claim what you did. Your commission shows on Pay.`,
-      confirmLabel: "Claim",
-      ...dialog,
-    })
+  const claim = async (
+    sale: ClaimSaleDto,
+    item: ClaimSaleDto["items"][number],
+    taskId: number,
+    taskName: string,
+    inScope: boolean
+  ) => {
+    const what = `${item.serviceName}${sale.customerName ? ` for ${sale.customerName}` : ""}, ${when(sale.transactionDate)}.`
+    const ok = await confirm(
+      inScope
+        ? {
+            title: `Claim ${taskName}?`,
+            description: `${what} Only claim what you did. Your commission shows on Pay.`,
+            confirmLabel: "Claim",
+            ...dialog,
+          }
+        : {
+            title: `${taskName} isn't in your scope`,
+            description: `${what} This task isn't set up for you, so it pays the standard rate and your manager will see it was claimed outside your scope. Claiming work you didn't do may lead to disciplinary action. Are you sure you did it?`,
+            confirmLabel: "Yes, I did it",
+            destructive: true,
+            className: dialog.className,
+          }
+    )
     if (!ok) return
     setBusy(`${item.itemId}:${taskId}`)
     try {
@@ -67,7 +84,8 @@ export default function Claim() {
       <h1 className="sp-h1">Claim</h1>
       <p className="sp-lede">
         Claim the tasks you did on sales from the last 7 days. Each task can be claimed once, so you&apos;ll also see who
-        claimed the others on your services.
+        claimed the others. Tasks marked &ldquo;not yours&rdquo; aren&apos;t set up for you: they pay the standard
+        rate and your manager is told.
       </p>
 
       <div style={{ marginTop: "1.25rem", maxWidth: 640 }}>
@@ -118,6 +136,7 @@ export default function Claim() {
                             title={t.paid ? "Paid" : "Claimed by you. Tap to undo"}
                           >
                             ✓ {t.taskName}
+                            {t.inScope ? "" : " · out of scope"}
                             {t.paid ? " · paid" : ""}
                           </button>
                         ) : (
@@ -125,10 +144,13 @@ export default function Claim() {
                             key={`open-${t.taskId}`}
                             type="button"
                             aria-pressed={false}
+                            className={t.inScope ? undefined : "sp-out-of-scope"}
                             disabled={busy !== null}
-                            onClick={() => claim(sale, item, t.taskId as number, t.taskName)}
+                            onClick={() => claim(sale, item, t.taskId as number, t.taskName, t.inScope)}
                           >
-                            {busy === `${item.itemId}:${t.taskId}` ? "Claiming…" : `Claim ${t.taskName}`}
+                            {busy === `${item.itemId}:${t.taskId}`
+                              ? "Claiming…"
+                              : `Claim ${t.taskName}${t.inScope ? "" : " (not yours)"}`}
                           </button>
                         )
                       )}

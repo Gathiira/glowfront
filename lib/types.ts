@@ -478,6 +478,8 @@ export type StaffTaskRateDto = {
   defaultPercent: number
   percent: number | null
   access: "ANYONE" | "YES" | "NO"
+  /** Services this task is part of that the staff member is on. */
+  serviceIds: number[]
 }
 
 export type CommissionLineDto = {
@@ -492,6 +494,8 @@ export type CommissionLineDto = {
   rateSource: "STAFF" | "DEFAULT"
   commissionAmount: number
   payoutId: number | null
+  /** Claimed outside the person's scope (paid at the task default); for the manager to review. */
+  outOfScope: boolean
 }
 
 export type TransactionItemDto = {
@@ -514,6 +518,8 @@ export type SaleDto = {
   grandTotal: number
   paymentMethod: string
   transactionDate: string
+  /** COMPLETED, REFUNDED, PARTIALLY_REFUNDED or VOIDED */
+  status?: string
   items: TransactionItemDto[] | null
 }
 
@@ -531,6 +537,43 @@ export type CheckoutRequest = {
   }[]
 }
 
+export type CashMovementDto = {
+  id: number
+  type: "IN" | "OUT"
+  amount: number
+  paymentMethod: string | null
+  description: string | null
+  movementDate: string
+  category: ExpenseCategory | null
+  /** Set when recorded automatically from a sale or payout; such entries can't be deleted. */
+  transactionId: number | null
+  payoutId: number | null
+}
+
+export const EXPENSE_CATEGORIES = ["RENT", "SUPPLIES", "UTILITIES", "WAGES", "TRANSPORT", "REPAIRS", "OTHER"] as const
+export type ExpenseCategory = (typeof EXPENSE_CATEGORIES)[number]
+export const EXPENSE_LABEL: Record<ExpenseCategory, string> = {
+  RENT: "Rent",
+  SUPPLIES: "Supplies",
+  UTILITIES: "Utilities",
+  WAGES: "Wages",
+  TRANSPORT: "Transport",
+  REPAIRS: "Repairs",
+  OTHER: "Other",
+}
+
+export type CashMovementSummaryDto = { totalIn: number; totalOut: number; net: number }
+
+/** A sale as the staff member who rang it up sees it. No commissions. */
+export type MySaleDto = {
+  id: number
+  transactionDate: string
+  customerName: string | null
+  services: string[]
+  paymentMethod: string
+  grandTotal: number
+}
+
 /** Staff checkout screen data: the active services only. Tasks are claimed afterwards. */
 export type CheckoutOptionsDto = { services: ServiceDto[] }
 
@@ -543,7 +586,15 @@ export type ClaimSaleDto = {
     itemId: number
     serviceName: string
     /** lineId: their own claim. claimedBy: someone else's claim (name only). Neither: open to claim. */
-    tasks: { taskId: number | null; taskName: string; lineId: number | null; paid: boolean; claimedBy: string | null }[]
+    /** inScope: set up for them (their service, not assigned only to others); out of scope pays the task default. */
+    tasks: {
+      taskId: number | null
+      taskName: string
+      lineId: number | null
+      paid: boolean
+      claimedBy: string | null
+      inScope: boolean
+    }[]
   }[]
 }
 

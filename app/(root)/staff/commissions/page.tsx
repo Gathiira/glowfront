@@ -1,11 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import type { CommissionLineDto, CommissionReportDto } from "@/lib/types"
-import { fetchMyCommissions, fetchMyPayouts, money } from "@/lib/api/commissions"
+import type { CommissionLineDto, CommissionReportDto, PayoutDto } from "@/lib/types"
+import { fetchMyCommissions, fetchMyPayout, fetchMyPayouts, money } from "@/lib/api/commissions"
 import { useUser } from "@/lib/use-user"
 import { usePagedList } from "@/lib/use-paged-list"
+import { showError } from "@/lib/toast"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useFreshStamps } from "../_lib/fresh-stamps"
+import { staffFonts } from "../_lib/fonts"
 
 function day(iso: string | null | undefined) {
   if (!iso) return ""
@@ -34,6 +37,9 @@ export default function Pay() {
   const payoutPages = usePagedList(fetchMyPayouts, [])
   const payouts = payoutPages.loaded ? payoutPages.items : null
   const fresh = useFreshStamps((payouts ?? []).map((p) => `payout:${p.id}:${p.status}`))
+  // An opened envelope: the payout with the tasks it covered.
+  const [opened, setOpened] = useState<PayoutDto | null>(null)
+  const openEnvelope = (id: number) => fetchMyPayout(id).then(setOpened).catch(showError)
 
   // ponytail: unpaid lines are filtered from the loaded pages, so "Since" and the count cover what's loaded; a status=UNPAID filter on /staff/me/commissions fixes that if histories get long.
   const unpaid: CommissionLineDto[] = lines.items.filter((l) => l.payoutId === null)
@@ -146,6 +152,12 @@ export default function Pay() {
                 const land = fresh.has(`payout:${p.id}:${p.status}`) ? " sp-stamp-land" : ""
                 return (
                   <li key={p.id} className={voided ? "sp-void" : undefined}>
+                    <button
+                      type="button"
+                      className="sp-sealed-open"
+                      onClick={() => openEnvelope(p.id)}
+                      aria-label={`Open the ${day(p.paidAt)} payout of KSH ${money(p.totalAmount)}`}
+                    />
                     <span className="sp-sealed-when">{day(p.paidAt)}</span>
                     <span className="sp-sealed-how">
                       {methodLabel(p.paymentMethod)}
@@ -173,6 +185,43 @@ export default function Pay() {
           )}
         </section>
       </div>
+
+      <Dialog open={opened !== null} onOpenChange={(v) => !v && setOpened(null)}>
+        <DialogContent className={`sp-dialog ${staffFonts}`}>
+          <DialogHeader>
+            <DialogTitle>
+              {opened
+                ? `${opened.status === "VOIDED" ? "Voided" : "Paid"} ${day(opened.paidAt)} · KSH ${money(opened.totalAmount)}`
+                : "Opening…"}
+            </DialogTitle>
+          </DialogHeader>
+          {opened && (
+            <>
+              <p className="sp-slip-sub">
+                {methodLabel(opened.paymentMethod)}
+                {opened.reference ? ` · ${opened.reference}` : ""}
+              </p>
+              {opened.status === "VOIDED" || !opened.lines?.length ? (
+                <p className="sp-empty sp-empty-plain">This payout was voided, so its tasks are waiting to be paid again.</p>
+              ) : (
+                <ul className="sp-tally" style={{ marginTop: 0 }}>
+                  {opened.lines.map((l) => (
+                    <li key={l.id}>
+                      <span className="sp-tally-what">
+                        {l.serviceName} · {l.taskName}
+                        <span className="sp-tally-sub">
+                          {day(l.transactionDate)} · {l.percentApplied}%{l.rateSource === "STAFF" ? " agreed" : ""}
+                        </span>
+                      </span>
+                      <span className="sp-tally-amount">{money(l.commissionAmount)}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

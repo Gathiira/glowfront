@@ -11,7 +11,6 @@ import {
   Calendar,
   DollarSign,
   CalendarCheck,
-  CreditCard,
   Users,
   Package,
   UsersRound,
@@ -63,7 +62,6 @@ const navItems: NavItem[] = [
     href: "/dashboard/appointments",
     icon: CalendarCheck,
   },
-  { label: "Payments", href: "/dashboard/payments", icon: CreditCard },
   {
     label: "Clients",
     icon: Users,

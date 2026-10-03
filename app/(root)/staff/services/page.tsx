@@ -1,13 +1,27 @@
 "use client"
 
-import type { ServiceDto } from "@/lib/types"
-import { fetchMyServices } from "@/lib/api/leave"
+import { useEffect, useState } from "react"
+import type { ServiceDto, StaffTaskRateDto } from "@/lib/types"
+import { fetchMyServices, fetchMyTasks } from "@/lib/api/leave"
+import { showError } from "@/lib/toast"
 import { money } from "@/lib/api/commissions"
 import { usePagedList } from "@/lib/use-paged-list"
 
 export default function MyServices() {
   const pages = usePagedList(fetchMyServices, [])
   const services = pages.loaded ? pages.items : null
+  const [tasks, setTasks] = useState<StaffTaskRateDto[] | null>(null)
+
+  useEffect(() => {
+    fetchMyTasks()
+      .then(setTasks)
+      .catch((e) => {
+        setTasks([])
+        showError(e)
+      })
+  }, [])
+
+  const tasksFor = (serviceId: number) => (tasks ?? []).filter((t) => t.serviceIds.includes(serviceId))
 
   const groups = (services ?? []).reduce<Record<string, ServiceDto[]>>((acc, s) => {
     const key = s.categoryName ?? "Other"
@@ -18,7 +32,10 @@ export default function MyServices() {
   return (
     <>
       <h1 className="sp-h1">Services</h1>
-      <p className="sp-lede">What customers can book you for. Your manager sets these and their prices.</p>
+      <p className="sp-lede">
+        What customers can book you for, and the tasks you can claim on each with the commission you earn. Your manager
+        sets these.
+      </p>
 
       <div className="sp-slip" style={{ marginTop: "1.25rem", maxWidth: 640 }}>
         {services === null && (
@@ -51,6 +68,19 @@ export default function MyServices() {
                   <span className="sp-tariff-sub">
                     {s.durationMinutes} min{s.description ? ` · ${s.description}` : ""}
                   </span>
+                  <ul className="sp-task-rates" aria-label={`Your tasks on ${s.name}`}>
+                    {tasksFor(s.id).length === 0 && tasks !== null && <li className="sp-task-none">No tasks for you on this</li>}
+                    {tasksFor(s.id).map((t) => (
+                      <li key={t.taskId}>
+                        {t.taskName} ·{" "}
+                        {t.percent != null ? (
+                          <span className="sp-agreed">{t.percent}% agreed</span>
+                        ) : (
+                          `${t.defaultPercent}%`
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

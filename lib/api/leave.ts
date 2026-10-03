@@ -1,6 +1,6 @@
 import { api, extractError, type ApiResponse } from "./client"
 import { pageQuery, STAFF_PAGE_SIZE } from "./paging"
-import type { LeaveDto, LeaveRequestBody, LeaveStatus, PaginatedResponse, ServiceDto } from "@/lib/types"
+import type { LeaveDto, LeaveRequestBody, LeaveStatus, PaginatedResponse, ServiceDto, StaffTaskRateDto } from "@/lib/types"
 
 async function call<T>(request: Promise<ApiResponse<T>>): Promise<T> {
   try {
@@ -20,6 +20,8 @@ export const requestLeave = (body: LeaveRequestBody) =>
   call(api.post(body, "/staff/me/leave").json<ApiResponse<LeaveDto>>())
 export const cancelLeave = (id: number) =>
   call(api.post({}, `/staff/me/leave/${id}/cancel`).json<ApiResponse<LeaveDto>>())
+/** Tasks I can do on my services, with the rate I earn (agreed, else the task default). */
+export const fetchMyTasks = () => call(api.get("/staff/me/tasks").json<ApiResponse<StaffTaskRateDto[]>>())
 export const fetchMyServices = (current: number = 1) =>
   call(api.get(`/staff/me/services?${pageQuery(current, STAFF_PAGE_SIZE)}`).json<ApiResponse<PaginatedResponse<ServiceDto>>>())
 
