@@ -1,0 +1,856 @@
+/* Staff portal — "The Pay Envelope". Scoped to .sp so the rest of GlowBuddy is untouched. */
+
+.sp {
+  --sp-ground: #e2e5e7;
+  --sp-ground-deep: #d3d7da;
+  --sp-ink: #17140f;
+  --sp-ink-soft: #545a60;
+  --sp-kraft: #b9844f;
+  --sp-kraft-fold: #a06f3e;
+  --sp-kraft-throat: #8f6234;
+  --sp-kraft-quiet: #d3b08a;
+  --sp-kraft-ink: #2a1c0c;
+  --sp-slip: #ffffff;
+  --sp-rule: rgb(23 20 15 / 0.28);
+  --sp-rule-strong: rgb(23 20 15 / 0.7);
+  --sp-stamp: #a8231a;
+  --sp-ballpoint: #2c4ba0;
+  --sp-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  min-height: 100dvh;
+  background: var(--sp-ground);
+  color: var(--sp-ink);
+  font-family: var(--font-barlow), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  caret-color: var(--sp-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.sp ::selection {
+  background: var(--sp-kraft);
+  color: var(--sp-ink);
+}
+
+.sp :focus-visible {
+  outline: 2px solid var(--sp-ballpoint);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.sp-condensed {
+  font-family: var(--font-barlow-condensed), var(--font-barlow), system-ui, sans-serif;
+}
+
+/* ── Shell ─────────────────────────────────────────────── */
+
+.sp-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 56px;
+  padding: 0 1rem;
+  background: var(--sp-ground);
+  border-bottom: 1px solid var(--sp-rule);
+}
+
+.sp-wordmark {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sp-wordmark span {
+  font-weight: 500;
+  color: var(--sp-ink-soft);
+}
+
+.sp-topnav {
+  display: none;
+  align-self: stretch;
+  gap: 0.25rem;
+  margin-left: 1rem;
+  margin-bottom: -1px;
+}
+
+.sp-topnav a {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  font-weight: 600;
+  color: var(--sp-ink-soft);
+  border-bottom: 3px solid transparent;
+  transition: color 160ms var(--sp-ease), border-color 160ms var(--sp-ease);
+}
+
+.sp-topnav a:hover {
+  color: var(--sp-ink);
+}
+
+.sp-topnav a[aria-current="page"] {
+  color: var(--sp-ink);
+  border-bottom-color: var(--sp-kraft);
+}
+
+.sp-who {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.sp-who-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 12rem;
+}
+
+.sp-iconbtn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  color: var(--sp-ink);
+  transition: background 160ms var(--sp-ease);
+}
+
+.sp-iconbtn:hover {
+  background: var(--sp-ground-deep);
+}
+
+.sp-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem calc(88px + env(safe-area-inset-bottom, 0px));
+}
+
+.sp-tabbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--sp-slip);
+  border-top: 1px solid var(--sp-rule);
+}
+
+.sp-tabbar a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 64px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sp-ink-soft);
+}
+
+.sp-tabbar a[aria-current="page"] {
+  color: var(--sp-ink);
+}
+
+.sp-tabbar a[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 28%;
+  right: 28%;
+  height: 3px;
+  background: var(--sp-kraft);
+}
+
+@media (min-width: 768px) {
+  .sp-topbar {
+    padding: 0 1.5rem;
+  }
+  .sp-topnav {
+    display: flex;
+  }
+  .sp-tabbar {
+    display: none;
+  }
+  .sp-main {
+    padding: 2rem 1.5rem 3rem;
+  }
+}
+
+/* ── Page heading ─────────────────────────────────────── */
+
+.sp-h1 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+.sp-h2 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin: 2rem 0 0.75rem;
+}
+
+.sp-lede {
+  margin-top: 0.35rem;
+  color: var(--sp-ink-soft);
+  max-width: 60ch;
+}
+
+/* ── The open envelope ────────────────────────────────── */
+
+.sp-pay-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .sp-pay-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 2rem;
+  }
+  .sp-pay-grid .sp-h2:first-child {
+    margin-top: 0;
+  }
+}
+
+/* Open envelope: the flap stands raised above the body, the throat (inside of the back panel) shows at the top of the face. */
+.sp-envelope {
+  position: relative;
+  color: var(--sp-ink);
+  filter: drop-shadow(0 1px 0 rgb(23 20 15 / 0.12)) drop-shadow(0 10px 14px rgb(23 20 15 / 0.22));
+}
+
+.sp-flap {
+  display: block;
+  width: 100%;
+  height: 44px;
+  margin-bottom: -1px;
+}
+
+.sp-envelope-face {
+  position: relative;
+  background: var(--sp-kraft);
+  border-radius: 0 0 4px 4px;
+  padding: 1.75rem 1.25rem 1.25rem;
+}
+
+/* the throat: a shallow V cut showing where the open flap folds back */
+.sp-envelope-face::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 18px;
+  background: var(--sp-kraft-throat);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  opacity: 0.55;
+}
+
+.sp-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  row-gap: 0.15rem;
+  font-size: 0.9375rem;
+}
+
+.sp-fields dt {
+  color: var(--sp-kraft-ink);
+  font-weight: 500;
+}
+
+.sp-fields dd {
+  font-weight: 600;
+  border-bottom: 1px solid var(--sp-rule);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sp-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 4px double var(--sp-ink);
+}
+
+.sp-total-label {
+  font-weight: 600;
+  color: var(--sp-kraft-ink);
+}
+
+.sp-amount-xl {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 13vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sp-currency {
+  font-size: 0.42em;
+  font-weight: 600;
+  margin-right: 0.2em;
+  vertical-align: 0.6em;
+}
+
+.sp-envelope-meta {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--sp-kraft-ink);
+}
+
+/* ── Tally lines ───────────────────────────────────────── */
+
+.sp-tally {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.sp-tally li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 52px;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--sp-rule);
+}
+
+.sp-tally-what {
+  font-weight: 600;
+  min-width: 0;
+}
+
+.sp-tally-sub {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--sp-kraft-ink);
+}
+
+.sp-tally-amount {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sp-agreed {
+  color: var(--sp-ink);
+  border-bottom: 1.5px solid var(--sp-ballpoint);
+}
+
+.sp-more {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+}
+
+.sp-month {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--sp-ink-soft);
+}
+
+.sp-month strong {
+  color: var(--sp-ink);
+  font-weight: 700;
+}
+
+/* ── Sealed envelopes ─────────────────────────────────── */
+
+.sp-sealed {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.sp-sealed li {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 0.15rem 0.75rem;
+  align-items: center;
+  padding: 1.6rem 1rem 0.85rem;
+  background: var(--sp-kraft-quiet);
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgb(23 20 15 / 0.1), 0 6px 14px -10px rgb(23 20 15 / 0.4);
+  overflow: hidden;
+}
+
+/* the closed flap: folded down across the top of a sealed envelope */
+.sp-sealed li::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 18px;
+  background: var(--sp-kraft);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* a voided envelope keeps its flap, in a spent, greyed kraft */
+.sp-sealed li.sp-void::before {
+  background: #b5a48f;
+}
+
+.sp-sealed-placeholder {
+  position: relative;
+  padding: 1.6rem 1rem 0.85rem;
+  border: 2px dashed var(--sp-rule-strong);
+  border-radius: 3px;
+  color: var(--sp-ink-soft);
+}
+
+.sp-sealed-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 18px;
+  border-bottom: 0;
+  background:
+    linear-gradient(to bottom right, transparent calc(50% - 1px), var(--sp-rule-strong) 50%, transparent calc(50% + 1px)) left / 50% 100% no-repeat,
+    linear-gradient(to bottom left, transparent calc(50% - 1px), var(--sp-rule-strong) 50%, transparent calc(50% + 1px)) right / 50% 100% no-repeat;
+}
+
+.sp-sealed-when {
+  font-weight: 700;
+}
+
+.sp-sealed-how {
+  font-size: 0.8125rem;
+  color: var(--sp-kraft-ink);
+  overflow-wrap: anywhere;
+}
+
+.sp-sealed-when {
+  grid-column: 1;
+}
+
+.sp-sealed-how {
+  grid-column: 1;
+}
+
+.sp-sealed-amount {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* strike only the figures and date, so the raised KSH doesn't get its own lower strike */
+.sp-void .sp-num,
+.sp-void .sp-sealed-when {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.sp-ref {
+  white-space: nowrap;
+}
+
+/* ── Stamps ────────────────────────────────────────────── */
+
+.sp-stamp {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--sp-stamp);
+  border: 3px double currentColor;
+  border-radius: 4px;
+  transform: rotate(-7deg);
+  mix-blend-mode: multiply;
+  white-space: nowrap;
+}
+
+.sp-stamp-blue {
+  color: var(--sp-ballpoint);
+}
+
+.sp-stamp-ink {
+  color: var(--sp-ink-soft);
+}
+
+.sp-stamp-land {
+  animation: sp-stamp-land 240ms var(--sp-ease) both;
+}
+
+@keyframes sp-stamp-land {
+  from {
+    transform: rotate(-14deg) scale(1.55);
+  }
+  to {
+    transform: rotate(-7deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-stamp-land {
+    animation: none;
+  }
+}
+
+.sp-sealed .sp-stamp {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  opacity: 0.88;
+}
+
+@media (max-width: 380px) {
+  .sp-sealed .sp-stamp {
+    font-size: 1rem;
+  }
+}
+
+/* ── Slips (leave, services) ──────────────────────────── */
+
+.sp-slip {
+  position: relative;
+  background: var(--sp-slip);
+  border-radius: 3px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 1px 0 rgb(23 20 15 / 0.08), 0 8px 18px -14px rgb(23 20 15 / 0.5);
+}
+
+/* perforated tear-off edge along the top */
+.sp-slip-torn {
+  padding-top: 1.4rem;
+}
+
+.sp-slip-torn::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 0;
+  border-top: 2px dotted var(--sp-rule);
+}
+
+.sp-slip-pending {
+  box-shadow: none;
+  background: transparent;
+  border: 2px dashed var(--sp-rule-strong);
+}
+
+.sp-slips {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .sp-slips {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sp-slip-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sp-slip-dates {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.sp-slip-cancelled .sp-slip-dates {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: var(--sp-ink-soft);
+}
+
+.sp-slip-sub {
+  color: var(--sp-ink-soft);
+  font-size: 0.9375rem;
+}
+
+.sp-note {
+  margin-top: 0.5rem;
+  color: var(--sp-ballpoint);
+  font-style: italic;
+}
+
+.sp-pending-mark {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sp-ink-soft);
+  border-bottom: 2px dashed var(--sp-rule-strong);
+  white-space: nowrap;
+}
+
+/* ── Form controls ─────────────────────────────────────── */
+
+.sp-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.sp-segment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--sp-ink);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sp-segment button {
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--sp-ink);
+  transition: background 160ms var(--sp-ease), color 160ms var(--sp-ease);
+}
+
+.sp-segment button[aria-pressed="true"] {
+  background: var(--sp-kraft-quiet);
+  color: var(--sp-ink);
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--sp-ink);
+}
+
+.sp-field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.sp-field label {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.sp-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.6rem 0.75rem;
+  background: var(--sp-slip);
+  color: var(--sp-ink);
+  border: 1.5px solid var(--sp-rule-strong);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 160ms var(--sp-ease);
+}
+
+.sp-input:hover {
+  border-color: var(--sp-ink);
+}
+
+.sp-input:focus-visible {
+  border-color: var(--sp-ballpoint);
+}
+
+/* date/time fields: the whole field opens the picker (see openPicker), and the icon is always visible */
+.sp-input[type="date"],
+.sp-input[type="time"] {
+  cursor: pointer;
+}
+
+.sp-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.75;
+  padding: 4px;
+}
+
+.sp-input::placeholder {
+  color: var(--sp-ink-soft);
+}
+
+textarea.sp-input {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.sp-row-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.sp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding: 0 1.25rem;
+  background: var(--sp-ink);
+  color: var(--sp-slip);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: transform 120ms var(--sp-ease), background 160ms var(--sp-ease);
+}
+
+.sp-btn:hover {
+  background: #2b261f;
+}
+
+.sp-btn:active {
+  transform: translateY(1px);
+}
+
+.sp-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sp-textbtn {
+  min-height: 44px;
+  padding: 0 0.25rem;
+  font-weight: 600;
+  color: var(--sp-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sp-textbtn:hover {
+  color: var(--sp-stamp);
+}
+
+.sp-error {
+  color: var(--sp-stamp);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+/* ── Price list (services) ───────────────────────────── */
+
+.sp-tariff {
+  list-style: none;
+  padding: 0;
+}
+
+.sp-tariff li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.15rem 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--sp-rule);
+}
+
+.sp-tariff li:last-child {
+  border-bottom: 0;
+}
+
+.sp-tariff-name {
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.sp-tariff-price {
+  grid-row: span 2;
+  align-self: center;
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sp-tariff-sub {
+  font-size: 0.875rem;
+  color: var(--sp-ink-soft);
+}
+
+.sp-tariff-group {
+  margin: 1.25rem 0 0.25rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--sp-ink-soft);
+}
+
+.sp-tariff-group:first-child {
+  margin-top: 0;
+}
+
+/* ── Loading & empty ──────────────────────────────────── */
+
+.sp-skel {
+  display: block;
+  height: 14px;
+  border-radius: 3px;
+  background: rgb(23 20 15 / 0.12);
+  animation: sp-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes sp-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-skel {
+    animation: none;
+  }
+}
+
+.sp-empty {
+  padding: 1rem 0 0.25rem;
+  color: var(--sp-kraft-ink);
+  font-weight: 500;
+  max-width: 46ch;
+}
+
+.sp-empty-plain {
+  color: var(--sp-ink-soft);
+}
+
+.sp-slip > .sp-empty {
+  padding-top: 0;
+  max-width: none;
+}
+
+/* blank ruled tally lines on an empty envelope face */
+.sp-tally-blank li {
+  min-height: 44px;
+}
+
+@media (min-width: 1024px) {
+  .sp-align-slip {
+    padding-top: 1.4rem;
+  }
+}

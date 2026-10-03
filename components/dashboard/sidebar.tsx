@@ -80,6 +80,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "Members", href: "/dashboard/team/members" },
       { label: "Add Member", href: "/dashboard/team/add" },
+      { label: "Leave Requests", href: "/dashboard/team/leave" },
     ],
   },
   {

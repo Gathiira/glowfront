@@ -529,6 +529,39 @@ export type CommissionReportDto = {
   lines: CommissionLineDto[]
 }
 
+export type LeaveStatus = "PENDING" | "APPROVED" | "REJECTED" | "CANCELLED"
+
+export type LeaveClash = {
+  bookingId: number
+  customerName: string
+  bookingDate: string
+  bookingTime: string
+  serviceName: string
+}
+
+export type LeaveDto = {
+  id: number
+  staffId: number
+  staffName: string
+  startDate: string
+  endDate: string
+  startTime: string | null
+  endTime: string | null
+  reason: string | null
+  status: LeaveStatus
+  decidedAt: string | null
+  decisionNote: string | null
+  clashes: LeaveClash[] | null
+}
+
+export type LeaveRequestBody = {
+  startDate: string
+  endDate: string
+  startTime?: string
+  endTime?: string
+  reason?: string
+}
+
 export type PayoutDto = {
   id: number
   staffId: number

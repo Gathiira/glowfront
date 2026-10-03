@@ -56,6 +56,7 @@ const drawerItems = [
   { label: "Catalog", href: "/dashboard/catalog", icon: Package },
   { label: "Team", href: "/dashboard/team/members", icon: UsersRound },
   { label: "Add Member", href: "/dashboard/team/add", icon: UsersRound },
+  { label: "Leave Requests", href: "/dashboard/team/leave", icon: UsersRound },
   { label: "Profile Details", href: "/dashboard/profile/details", icon: Settings },
   { label: "Security", href: "/dashboard/profile/security", icon: Settings },
   { label: "Portfolio", href: "/dashboard/profile/portfolio", icon: Settings },

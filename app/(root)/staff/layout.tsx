@@ -1,12 +1,30 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { UserBadge } from "@/components/ui/user-badge"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { Barlow, Barlow_Condensed } from "next/font/google"
+import { CalendarOff, LogOut, Mail, Scissors } from "lucide-react"
+import { useUser } from "@/lib/use-user"
+import "./staff.css"
+
+const barlow = Barlow({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-barlow" })
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-barlow-condensed",
+})
+
+const tabs = [
+  { href: "/staff/commissions", label: "Pay", icon: Mail },
+  { href: "/staff/leave", label: "Leave", icon: CalendarOff },
+  { href: "/staff/services", label: "Services", icon: Scissors },
+]
 
 export default function StaffLayout({ children }: { children: ReactNode }) {
   const router = useRouter()
+  const pathname = usePathname()
+  const profile = useUser("customer_profile")
 
   const logout = async () => {
     await fetch("/api/auth/logout", { method: "POST" })
@@ -16,17 +34,43 @@ export default function StaffLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="min-h-dvh">
-      <header className="sticky top-0 z-20 flex items-center justify-between border-b bg-background/80 px-4 py-3 backdrop-blur-lg md:px-6">
-        <p className="text-sm font-medium text-muted-foreground">Glow Buddy · Team</p>
-        <div className="flex items-center gap-3">
-          <UserBadge storageKeys={["customer_profile"]} />
-          <Button variant="outline" size="sm" onClick={logout}>
-            Log out
-          </Button>
+    <div className={`sp ${barlow.variable} ${barlowCondensed.variable}`}>
+      <header className="sp-topbar">
+        <Link href="/staff/commissions" className="sp-wordmark">
+          GlowBuddy <span>Team</span>
+        </Link>
+        <nav className="sp-topnav" aria-label="Staff portal">
+          {tabs.map((t) => (
+            <Link key={t.href} href={t.href} aria-current={pathname === t.href ? "page" : undefined}>
+              {t.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="sp-who">
+          {profile && (
+            <span className="sp-who-name">
+              {profile.firstName} {profile.lastName}
+            </span>
+          )}
+          <button type="button" className="sp-iconbtn" onClick={logout} aria-label="Log out">
+            <LogOut className="size-5" strokeWidth={2} aria-hidden />
+          </button>
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-4 py-6">{children}</main>
+
+      <main className="sp-main">{children}</main>
+
+      <nav className="sp-tabbar" aria-label="Staff portal">
+        {tabs.map((t) => {
+          const Icon = t.icon
+          return (
+            <Link key={t.href} href={t.href} aria-current={pathname === t.href ? "page" : undefined}>
+              <Icon className="size-6" strokeWidth={1.75} aria-hidden />
+              {t.label}
+            </Link>
+          )
+        })}
+      </nav>
     </div>
   )
 }
