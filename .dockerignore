@@ -7,3 +7,4 @@ README.md
 *.md
 .env.local
 .env*.local
+pnpm-workspace.yaml
