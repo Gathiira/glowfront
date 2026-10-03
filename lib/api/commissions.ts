@@ -9,6 +9,8 @@ import type {
   PayoutDto,
   SaleDto,
   StaffTaskRateDto,
+  TaskAssignment,
+  TaskAssignmentsDto,
   TaskDto,
 } from "@/lib/types"
 
@@ -37,6 +39,10 @@ export const createTask = (p: { name: string; defaultPercent: number }) =>
   call(api.post(p, "/partner/tasks").json<ApiResponse<TaskDto>>())
 export const updateTask = (id: number, p: { name: string; defaultPercent: number; active: boolean }) =>
   call(api.put(p, `/partner/tasks/${id}`).json<ApiResponse<TaskDto>>())
+export const fetchTaskAssignments = () =>
+  call(api.get("/partner/tasks/assignments").json<ApiResponse<TaskAssignmentsDto>>())
+export const saveTaskAssignments = (assignments: TaskAssignment[]) =>
+  call(api.put(assignments, "/partner/tasks/assignments").json<ApiResponse<TaskAssignmentsDto>>())
 export const fetchServiceTasks = (serviceId: number) =>
   call(api.get(`/partner/services/${serviceId}/tasks`).json<ApiResponse<TaskDto[]>>())
 export const saveServiceTasks = (serviceId: number, taskIds: number[]) =>

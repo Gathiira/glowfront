@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { useConfirm } from "@/components/ui/use-confirm"
 import type { StaffTaskRateDto } from "@/lib/types"
 import { fetchStaffTaskRates, saveStaffTaskRates } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
@@ -16,6 +17,7 @@ export default function StaffRates() {
   const [rates, setRates] = useState<StaffTaskRateDto[]>([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [confirm, confirmDialog] = useConfirm()
 
   useEffect(() => {
     fetchStaffTaskRates(staffId)
@@ -28,6 +30,12 @@ export default function StaffRates() {
     setRates((rs) => rs.map((r) => (r.taskId === taskId ? { ...r, percent: value === "" ? null : Number(value) } : r)))
 
   const save = async () => {
+    const ok = await confirm({
+      title: "Save commission rates?",
+      description: "New rates apply to future sales only. Commissions already earned don't change.",
+      confirmLabel: "Save rates",
+    })
+    if (!ok) return
     setSaving(true)
     try {
       setRates(await saveStaffTaskRates(staffId, rates.map((r) => ({ taskId: r.taskId, percent: r.percent }))))
@@ -44,6 +52,9 @@ export default function StaffRates() {
   return (
     <div>
       <PageHeader title="Commission rates" description="Leave a rate blank to use the task's default.">
+        <Link href="/dashboard/team/tasks">
+          <Button variant="outline">Task assignments</Button>
+        </Link>
         <Link href="/dashboard/team/members">
           <Button variant="outline">Back</Button>
         </Link>
@@ -59,7 +70,16 @@ export default function StaffRates() {
           )}
           {rates.map((r) => (
             <div key={r.taskId} className="flex items-center gap-3 rounded-lg border p-3">
-              <span className="flex-1 font-medium">{r.taskName}</span>
+              <span className="flex-1 font-medium">
+                {r.taskName}
+                <span
+                  className={`ml-2 rounded-full px-2 py-0.5 text-xs font-normal ${
+                    r.access === "NO" ? "bg-muted text-muted-foreground" : "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                  }`}
+                >
+                  {r.access === "YES" ? "can do" : r.access === "NO" ? "not assigned" : "open to anyone"}
+                </span>
+              </span>
               <span className="text-sm text-muted-foreground">default {r.defaultPercent}%</span>
               <Input
                 type="number"
@@ -82,6 +102,7 @@ export default function StaffRates() {
           )}
         </CardContent>
       </Card>
+      {confirmDialog}
     </div>
   )
 }

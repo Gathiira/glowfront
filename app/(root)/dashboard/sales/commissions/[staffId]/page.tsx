@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { useConfirm } from "@/components/ui/use-confirm"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CURRENCY, PAYMENT_METHODS, type CommissionReportDto } from "@/lib/types"
 import { createPayout, fetchStaffCommissions, money } from "@/lib/api/commissions"
@@ -34,6 +35,7 @@ function StaffCommissionsInner() {
   const [loading, setLoading] = useState(true)
   const [paying, setPaying] = useState(false)
   const [payment, setPayment] = useState({ method: "MPESA", reference: "", notes: "" })
+  const [confirm, confirmDialog] = useConfirm()
 
   const load = () => {
     setLoading(true)
@@ -53,6 +55,14 @@ function StaffCommissionsInner() {
   const toggle = (id: number) => setSelected((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]))
 
   const pay = async () => {
+    const ok = await confirm({
+      title: `Pay ${report?.summary.staffName ?? "this team member"} ${CURRENCY} ${money(selectedTotal)}?`,
+      description: `${selected.length} commission line${selected.length === 1 ? "" : "s"} will be marked paid by ${payment.method.replace("_", " ")}${
+        payment.reference ? ` (ref ${payment.reference})` : ""
+      }. You can void the payout later if it was a mistake.`,
+      confirmLabel: "Record payout",
+    })
+    if (!ok) return
     try {
       await createPayout({
         staffId,
@@ -164,6 +174,7 @@ function StaffCommissionsInner() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      {confirmDialog}
     </div>
   )
 }

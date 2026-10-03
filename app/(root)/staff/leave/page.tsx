@@ -5,7 +5,19 @@ import type { LeaveDto } from "@/lib/types"
 import { cancelLeave, fetchMyLeave, leaveWhen, requestLeave } from "@/lib/api/leave"
 import { today } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+import { useConfirm } from "@/components/ui/use-confirm"
 import { useFreshStamps } from "../_lib/fresh-stamps"
+import { staffFonts } from "../_lib/fonts"
 
 const emptyForm = () => ({
   startDate: today(),
@@ -44,6 +56,8 @@ export default function MyLeave() {
   const [form, setForm] = useState(emptyForm)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [confirming, setConfirming] = useState<LeaveDto | null>(null)
+  const [confirm, confirmDialog] = useConfirm()
   const fresh = useFreshStamps(
     (leave ?? []).filter((l) => l.status === "APPROVED" || l.status === "REJECTED").map((l) => `leave:${l.id}:${l.status}`)
   )
@@ -69,15 +83,29 @@ export default function MyLeave() {
       return
     }
     setError(null)
+    const body = {
+      startDate: form.startDate,
+      endDate: form.partDay ? form.startDate : form.endDate,
+      startTime: form.partDay ? form.startTime : undefined,
+      endTime: form.partDay ? form.endTime : undefined,
+      reason: form.reason.trim() || undefined,
+    }
+    const ok = await confirm({
+      title: "Send leave request?",
+      description: `${leaveWhen({
+        startDate: body.startDate,
+        endDate: body.endDate,
+        startTime: body.startTime ?? null,
+        endTime: body.endTime ?? null,
+      })}. Your manager will approve or reject it.`,
+      confirmLabel: "Send request",
+      className: `sp-dialog ${staffFonts}`,
+      actionClassName: "sp-dialog-neutral",
+    })
+    if (!ok) return
     setSaving(true)
     try {
-      await requestLeave({
-        startDate: form.startDate,
-        endDate: form.partDay ? form.startDate : form.endDate,
-        startTime: form.partDay ? form.startTime : undefined,
-        endTime: form.partDay ? form.endTime : undefined,
-        reason: form.reason.trim() || undefined,
-      })
+      await requestLeave(body)
       showSuccess("Sent to your manager for approval")
       setForm(emptyForm())
       load()
@@ -89,13 +117,14 @@ export default function MyLeave() {
   }
 
   const cancel = async (l: LeaveDto) => {
-    if (!window.confirm(`Cancel your leave for ${leaveWhen(l)}?`)) return
     try {
       await cancelLeave(l.id)
       showSuccess("Leave cancelled")
       load()
     } catch (err) {
       showError(err)
+    } finally {
+      setConfirming(null)
     }
   }
 
@@ -261,7 +290,7 @@ export default function MyLeave() {
                     {l.reason && <p style={{ marginTop: "0.5rem" }}>{l.reason}</p>}
                     {l.decisionNote && <p className="sp-note">“{l.decisionNote}”</p>}
                     {canCancel && (
-                      <button type="button" className="sp-textbtn" style={{ marginTop: "0.25rem" }} onClick={() => cancel(l)}>
+                      <button type="button" className="sp-textbtn" style={{ marginTop: "0.25rem" }} onClick={() => setConfirming(l)}>
                         Cancel request
                       </button>
                     )}
@@ -272,6 +301,25 @@ export default function MyLeave() {
           )}
         </section>
       </div>
+
+      <AlertDialog open={confirming !== null} onOpenChange={(open) => !open && setConfirming(null)}>
+        <AlertDialogContent className={`sp-dialog ${staffFonts}`}>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Cancel this leave?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {confirming && leaveWhen(confirming)}.{" "}
+              {confirming?.status === "APPROVED"
+                ? "Customers will be able to book you for this time again."
+                : "Your manager won't see this request any more."}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Keep it</AlertDialogCancel>
+            <AlertDialogAction onClick={() => confirming && cancel(confirming)}>Cancel leave</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      {confirmDialog}
     </>
   )
 }

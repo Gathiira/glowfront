@@ -41,6 +41,21 @@ const Auth = () => {
             </Link>
 
             <Link
+              href="/auth/staff"
+              className="group flex flex-col items-center justify-center gap-4 rounded-xl border p-12 text-center transition-all hover:border-primary hover:bg-muted/50"
+            >
+              <div className="rounded-full bg-primary/10 p-4">
+                <UsersRound className="size-8 text-primary" strokeWidth={1.5} aria-hidden />
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold">GlowBuddy for staff</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Your pay, leave and services
+                </p>
+              </div>
+            </Link>
+
+            <Link
               href="/auth/partner"
               className="group flex flex-col items-center justify-center gap-4 rounded-xl border p-12 text-center transition-all hover:border-primary hover:bg-muted/50"
             >
@@ -61,25 +76,10 @@ const Auth = () => {
               </div>
               <div>
                 <h2 className="text-xl font-semibold">
-                  GlowBuddy for professionals
+                  GlowBuddy for managers
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Manage and grow your business
-                </p>
-              </div>
-            </Link>
-
-            <Link
-              href="/auth/staff"
-              className="group flex flex-col items-center justify-center gap-4 rounded-xl border p-12 text-center transition-all hover:border-primary hover:bg-muted/50"
-            >
-              <div className="rounded-full bg-primary/10 p-4">
-                <UsersRound className="size-8 text-primary" strokeWidth={1.5} aria-hidden />
-              </div>
-              <div>
-                <h2 className="text-xl font-semibold">GlowBuddy for team members</h2>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  See your work and commissions
+                  Run your business: bookings, team, sales and payouts
                 </p>
               </div>
             </Link>

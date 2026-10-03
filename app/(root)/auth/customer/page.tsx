@@ -10,7 +10,7 @@ const CustomerSignup = () => {
     <div className="flex min-h-screen flex-col">
       <Header />
       <div className="flex flex-1 flex-col md:flex-row">
-        <div className="flex flex-1">
+        <div className="flex flex-1 flex-col">
           <CustomerFlow />
         </div>
         <div className="relative w-full flex-1 max-md:hidden">

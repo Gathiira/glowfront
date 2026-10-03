@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { useConfirm } from "@/components/ui/use-confirm"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import type { ServiceDto, TaskDto } from "@/lib/types"
 import { fetchServiceTasks, saveServiceTasks } from "@/lib/api/commissions"
@@ -12,6 +13,7 @@ type Props = { service: ServiceDto | null; tasks: TaskDto[]; onClose: () => void
 export function ServiceTasksDialog({ service, tasks, onClose }: Props) {
   const [selected, setSelected] = useState<number[]>([])
   const [saving, setSaving] = useState(false)
+  const [confirm, confirmDialog] = useConfirm()
 
   useEffect(() => {
     if (!service) return
@@ -31,6 +33,15 @@ export function ServiceTasksDialog({ service, tasks, onClose }: Props) {
 
   const save = async () => {
     if (!service) return
+    const names = tasks.filter((t) => selected.includes(t.id)).map((t) => t.name)
+    const ok = await confirm({
+      title: `Save tasks for ${service.name}?`,
+      description: names.length
+        ? `Checkout will ask who did: ${names.join(", ")} (${total}% default commission in total).`
+        : "No tasks: selling this service won't pay any commission.",
+      confirmLabel: "Save tasks",
+    })
+    if (!ok) return
     setSaving(true)
     try {
       await saveServiceTasks(service.id, selected)
@@ -73,6 +84,7 @@ export function ServiceTasksDialog({ service, tasks, onClose }: Props) {
           </Button>
         </DialogFooter>
       </DialogContent>
+      {confirmDialog}
     </Dialog>
   )
 }

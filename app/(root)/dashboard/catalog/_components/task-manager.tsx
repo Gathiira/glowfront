@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
+import { useConfirm } from "@/components/ui/use-confirm"
 import type { TaskDto } from "@/lib/types"
 import { createTask, updateTask } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
@@ -15,6 +16,7 @@ export function TaskManager({ tasks, onChange }: Props) {
   const [name, setName] = useState("")
   const [percent, setPercent] = useState("")
   const [saving, setSaving] = useState(false)
+  const [confirm, confirmDialog] = useConfirm()
 
   const add = async () => {
     if (!name.trim() || percent === "") return
@@ -33,6 +35,27 @@ export function TaskManager({ tasks, onChange }: Props) {
   }
 
   const save = async (task: TaskDto, changes: Partial<TaskDto>) => {
+    const ok = await confirm(
+      changes.active !== undefined
+        ? changes.active
+          ? {
+              title: `Turn ${task.name} back on?`,
+              description: "It can be picked at checkout again on every service that uses it.",
+              confirmLabel: "Turn on",
+            }
+          : {
+              title: `Turn off ${task.name}?`,
+              description: "It won't be offered at checkout on any service. Past commissions stay as they are.",
+              confirmLabel: "Turn off",
+              destructive: true,
+            }
+        : {
+            title: `Change ${task.name} to ${changes.defaultPercent}%?`,
+            description: `The default commission goes from ${task.defaultPercent}% to ${changes.defaultPercent}% for future sales. Agreed staff rates and past commissions don't change.`,
+            confirmLabel: "Change default",
+          }
+    )
+    if (!ok) return false
     try {
       await updateTask(task.id, { name: task.name, defaultPercent: task.defaultPercent, active: task.active, ...changes })
       onChange()
@@ -98,6 +121,7 @@ export function TaskManager({ tasks, onChange }: Props) {
           </Button>
         </div>
       </CardContent>
+      {confirmDialog}
     </Card>
   )
 }

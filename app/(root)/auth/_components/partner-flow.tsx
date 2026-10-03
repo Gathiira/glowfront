@@ -145,7 +145,7 @@ const PartnerFlow = () => {
   if (mode === "setup") {
     return (
       <div className="w-full py-4">
-        <div className="mx-auto max-w-md space-y-6 p-3 pt-10">
+        <div className="mx-auto w-full max-w-md space-y-6 p-3 pt-10">
           <div className="flex items-center justify-center gap-2">
             <div className="flex size-8 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
               2
@@ -167,13 +167,13 @@ const PartnerFlow = () => {
 
   return (
     <div className="flex w-full py-4">
-      <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
+      <div className="mx-auto w-full max-w-md space-y-6 p-3 pt-10 text-center">
         <div className="space-y-1">
           <h2 className="text-2xl font-semibold">
-            GlowBuddy for professionals
+            GlowBuddy for managers
           </h2>
           <small className="text-muted-foreground">
-            Create an account or log in to manage your business
+            Create an account or log in to run your business
           </small>
         </div>
         <form id="partner-login-form" onSubmit={form.handleSubmit(handleLogin)}>

@@ -145,7 +145,7 @@ const CustomerFlow = () => {
   if (mode === "register") {
     return (
       <div className="flex h-full w-full py-4">
-        <div className="mx-auto max-w-md space-y-6 p-3 pt-10">
+        <div className="mx-auto w-full max-w-md space-y-6 p-3 pt-10">
           <div className="space-y-2 text-center">
             <h2 className="text-2xl font-semibold">Create your account</h2>
             <p className="text-sm text-muted-foreground">
@@ -342,7 +342,7 @@ const CustomerFlow = () => {
   return (
     <>
       <div className="flex w-full py-4">
-        <div className="mx-auto max-w-md space-y-6 p-3 pt-10 text-center">
+        <div className="mx-auto w-full max-w-md space-y-6 p-3 pt-10 text-center">
           <div className="space-y-1">
             <h2 className="text-2xl font-semibold">GlowBuddy for customers</h2>
             <small className="text-muted-foreground">
@@ -415,13 +415,13 @@ const CustomerFlow = () => {
           </form>
           <div>
             <p className="text-sm text-muted-foreground">
-              Are you a professional looking to list your business?
+              Run a salon, barbershop or spa?
             </p>
             <Link
               href="/auth/partner"
               className="text-sm font-medium underline underline-offset-4 hover:text-primary"
             >
-              Go to GlowBuddy for professionals
+              Go to GlowBuddy for managers
             </Link>
           </div>
         </div>

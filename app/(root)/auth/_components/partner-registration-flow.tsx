@@ -150,7 +150,7 @@ export default function PartnerRegistrationFlow({ onSuccess, onBack }: Props) {
 
   return (
     <div className="w-full py-4">
-      <div className="mx-auto max-w-md space-y-6 p-3 pt-10">
+      <div className="mx-auto w-full max-w-md space-y-6 p-3 pt-10">
         {/* Step indicator */}
         <div className="flex items-center justify-center gap-2">
           {stepLabels.map((s, i) => (

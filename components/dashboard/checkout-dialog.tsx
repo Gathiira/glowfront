@@ -5,6 +5,7 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { useConfirm } from "@/components/ui/use-confirm"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
   CURRENCY,
@@ -21,7 +22,11 @@ import { createPartnerService, fetchPartnerCategories, fetchPartnerServices, fet
 import { checkout, fetchServiceTasks, money, previewCheckout } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
 
-type TaskRow = { taskId: number; taskName: string; staffId: number | null }
+/** allowed: staff who may do this task; empty = anyone. */
+type TaskRow = { taskId: number; taskName: string; staffId: number | null; allowed: number[] }
+
+const canDo = (task: Pick<TaskRow, "allowed">, staffId: number) =>
+  task.allowed.length === 0 || task.allowed.includes(staffId)
 type Line = { key: number; serviceId: number; serviceName: string; price: string; tasks: TaskRow[] }
 
 type Props = {
@@ -46,6 +51,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
   const [saving, setSaving] = useState(false)
   const [quickAdd, setQuickAdd] = useState<{ name: string; price: string; categoryId: string } | null>(null)
   const initialised = useRef(false)
+  const [confirm, confirmDialog] = useConfirm()
 
   const addLine = async (service: ServiceDto, price?: number, staffId?: number | null) => {
     try {
@@ -57,7 +63,15 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
           serviceId: service.id,
           serviceName: service.name,
           price: String(price ?? service.price),
-          tasks: tasks.map((t) => ({ taskId: t.id, taskName: t.name, staffId: staffId ?? null })),
+          tasks: tasks.map((t) => {
+            const allowed = t.staffIds ?? []
+            return {
+              taskId: t.id,
+              taskName: t.name,
+              allowed,
+              staffId: staffId != null && canDo({ allowed }, staffId) ? staffId : null,
+            }
+          }),
         },
       ])
     } catch (err) {
@@ -151,6 +165,15 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
   }
 
   const submit = async () => {
+    const total = preview ? `${CURRENCY} ${money(preview.grandTotal)}` : "this sale"
+    const ok = await confirm({
+      title: `Complete sale for ${total}?`,
+      description: `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${paymentMethod.replace("_", " ")}. ${
+        booking ? "The booking will be marked completed and " : ""
+      }commissions will be recorded for the staff on each task.`,
+      confirmLabel: "Complete sale",
+    })
+    if (!ok) return
     setSaving(true)
     try {
       const sale = await checkout(buildRequest())
@@ -219,11 +242,13 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
                         <SelectValue placeholder="Who did it?" />
                       </SelectTrigger>
                       <SelectContent>
-                        {staff.map((s) => (
-                          <SelectItem key={s.id} value={String(s.id)}>
-                            {s.name}
-                          </SelectItem>
-                        ))}
+                        {staff
+                          .filter((s) => canDo(task, s.id))
+                          .map((s) => (
+                            <SelectItem key={s.id} value={String(s.id)}>
+                              {s.name}
+                            </SelectItem>
+                          ))}
                       </SelectContent>
                     </Select>
                     <span className="w-32 text-right text-sm text-muted-foreground">
@@ -358,6 +383,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
           </Button>
         </DialogFooter>
       </DialogContent>
+      {confirmDialog}
     </Dialog>
   )
 }

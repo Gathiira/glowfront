@@ -92,6 +92,15 @@ export async function fetchPartnerStaff(
   }
 }
 
+export async function fetchPartnerStaffMember(id: number): Promise<StaffDto> {
+  try {
+    const res = await api.get(`/partner/staff/${id}`).json<ApiResponse<StaffDto>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
 export type CreateStaffPayload = {
   name: string
   profilePhotoUrl?: string

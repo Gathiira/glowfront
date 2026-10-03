@@ -1,6 +1,8 @@
 /* Staff portal — "The Pay Envelope". Scoped to .sp so the rest of GlowBuddy is untouched. */
 
-.sp {
+/* tokens are shared with portalled dialogs, which render outside the .sp wrapper */
+.sp,
+.sp-dialog {
   --sp-ground: #e2e5e7;
   --sp-ground-deep: #d3d7da;
   --sp-ink: #17140f;
@@ -17,14 +19,80 @@
   --sp-ballpoint: #2c4ba0;
   --sp-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-  min-height: 100dvh;
-  background: var(--sp-ground);
   color: var(--sp-ink);
   font-family: var(--font-barlow), system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.45;
   caret-color: var(--sp-ink);
   font-variant-numeric: tabular-nums;
+}
+
+.sp {
+  min-height: 100dvh;
+  background: var(--sp-ground);
+}
+
+/* Confirmation dialog: a white slip with the portal's ink, stamp red for the destructive choice */
+.sp-dialog.sp-dialog {
+  background: var(--sp-slip);
+  border-radius: 6px;
+  padding: 1.25rem;
+  gap: 0.75rem;
+}
+
+.sp-dialog [data-slot="alert-dialog-title"] {
+  font-family: var(--font-barlow-condensed), var(--font-barlow), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.sp-dialog [data-slot="alert-dialog-description"] {
+  color: var(--sp-ink-soft);
+  font-size: 1rem;
+}
+
+.sp-dialog [data-slot="alert-dialog-footer"] {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.sp-dialog [data-slot="alert-dialog-footer"] > * {
+  min-height: 48px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.sp-dialog [data-slot="alert-dialog-cancel"] {
+  background: var(--sp-slip);
+  color: var(--sp-ink);
+  border: 2px solid var(--sp-ink);
+}
+
+.sp-dialog [data-slot="alert-dialog-action"] {
+  background: var(--sp-stamp);
+  color: var(--sp-slip);
+  border: 0;
+}
+
+.sp-dialog [data-slot="alert-dialog-action"]:hover {
+  background: #8e1d16;
+}
+
+/* non-destructive confirmations (e.g. log out) use ink, not stamp red */
+.sp-dialog [data-slot="alert-dialog-action"].sp-dialog-neutral {
+  background: var(--sp-ink);
+}
+
+.sp-dialog [data-slot="alert-dialog-action"].sp-dialog-neutral:hover {
+  background: #2b261f;
 }
 
 .sp ::selection {

@@ -5,6 +5,18 @@ import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+import { AlertTriangle } from "lucide-react"
 import { CURRENCY, type PayoutDto } from "@/lib/types"
 import { fetchPayout, fetchPayouts, money, voidPayout } from "@/lib/api/commissions"
 import { showError, showSuccess } from "@/lib/toast"
@@ -13,6 +25,7 @@ export default function Payouts() {
   const [payouts, setPayouts] = useState<PayoutDto[]>([])
   const [loading, setLoading] = useState(true)
   const [detail, setDetail] = useState<PayoutDto | null>(null)
+  const [confirmVoid, setConfirmVoid] = useState<PayoutDto | null>(null)
 
   const load = () =>
     fetchPayouts()
@@ -27,7 +40,6 @@ export default function Payouts() {
   const open = (id: number) => fetchPayout(id).then(setDetail).catch(showError)
 
   const doVoid = async (p: PayoutDto) => {
-    if (!window.confirm(`Void this ${CURRENCY} ${money(p.totalAmount)} payout to ${p.staffName}? Its commissions become unpaid again.`)) return
     try {
       await voidPayout(p.id)
       showSuccess("Payout voided")
@@ -35,6 +47,8 @@ export default function Payouts() {
       load()
     } catch (err) {
       showError(err)
+    } finally {
+      setConfirmVoid(null)
     }
   }
 
@@ -91,13 +105,34 @@ export default function Payouts() {
           </div>
           {detail?.status === "PAID" && (
             <DialogFooter>
-              <Button variant="destructive" onClick={() => doVoid(detail)}>
+              <Button variant="destructive" onClick={() => setConfirmVoid(detail)}>
                 Void payout
               </Button>
             </DialogFooter>
           )}
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={confirmVoid !== null} onOpenChange={(open) => !open && setConfirmVoid(null)}>
+        <AlertDialogContent size="sm">
+          <AlertDialogHeader>
+            <AlertDialogMedia>
+              <AlertTriangle className="size-6 text-destructive" />
+            </AlertDialogMedia>
+            <AlertDialogTitle>Void this payout?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {confirmVoid && `${CURRENCY} ${money(confirmVoid.totalAmount)} to ${confirmVoid.staffName}. `}
+              Its commissions become unpaid again; the voided record is kept.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Keep it</AlertDialogCancel>
+            <AlertDialogAction variant="destructive" onClick={() => confirmVoid && doVoid(confirmVoid)}>
+              Void payout
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }

@@ -16,7 +16,7 @@ const PartnerSignup = () => {
         <div className="relative w-full flex-1 max-md:hidden">
           <Image
             src="/assets/login-image.jpg"
-            alt="GlowBuddy for professionals"
+            alt="GlowBuddy for managers"
             fill
             className="object-cover object-right"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

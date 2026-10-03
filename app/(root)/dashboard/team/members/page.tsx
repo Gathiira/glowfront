@@ -121,6 +121,12 @@ export default function TeamMembers() {
                     </div>
                   </div>
                   <Link
+                    href={`/dashboard/team/members/${m.id}`}
+                    className="mt-2 block text-sm font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    View details →
+                  </Link>
+                  <Link
                     href={`/dashboard/team/shifts/${m.id}`}
                     className="mt-2 block text-sm font-medium text-primary underline-offset-4 hover:underline"
                   >

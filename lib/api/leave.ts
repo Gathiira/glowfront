@@ -18,8 +18,16 @@ export const cancelLeave = (id: number) =>
 export const fetchMyServices = () => call(api.get("/staff/me/services").json<ApiResponse<ServiceDto[]>>())
 
 // Owner
-export const fetchLeave = (status?: LeaveStatus) =>
-  call(api.get(`/partner/leave${status ? `?status=${status}` : ""}`).json<ApiResponse<LeaveDto[]>>())
+export const fetchLeave = (status?: LeaveStatus, staffId?: number) => {
+  const q = new URLSearchParams()
+  if (status) q.set("status", status)
+  if (staffId) q.set("staffId", String(staffId))
+  const qs = q.toString()
+  return call(api.get(`/partner/leave${qs ? `?${qs}` : ""}`).json<ApiResponse<LeaveDto[]>>())
+}
+/** Owner records leave for a team member — approved immediately, past dates allowed. */
+export const addLeaveForStaff = (staffId: number, body: LeaveRequestBody) =>
+  call(api.post(body, `/partner/leave?staffId=${staffId}`).json<ApiResponse<LeaveDto>>())
 export const approveLeave = (id: number, note?: string) =>
   call(api.post({ note }, `/partner/leave/${id}/approve`).json<ApiResponse<LeaveDto>>())
 export const rejectLeave = (id: number, note?: string) =>

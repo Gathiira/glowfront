@@ -448,6 +448,16 @@ export type TaskDto = {
   name: string
   defaultPercent: number
   active: boolean
+  /** Staff allowed to do this task; empty = anyone. */
+  staffIds: number[]
+}
+
+export type TaskAssignment = { staffId: number; taskId: number }
+
+export type TaskAssignmentsDto = {
+  tasks: TaskDto[]
+  staff: { id: number; name: string }[]
+  assignments: TaskAssignment[]
 }
 
 export type StaffTaskRateDto = {
@@ -455,6 +465,7 @@ export type StaffTaskRateDto = {
   taskName: string
   defaultPercent: number
   percent: number | null
+  access: "ANYONE" | "YES" | "NO"
 }
 
 export type CommissionLineDto = {

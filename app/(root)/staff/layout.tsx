@@ -3,17 +3,21 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Barlow, Barlow_Condensed } from "next/font/google"
 import { CalendarOff, LogOut, Mail, Scissors } from "lucide-react"
 import { useUser } from "@/lib/use-user"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { staffFonts } from "./_lib/fonts"
 import "./staff.css"
-
-const barlow = Barlow({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-barlow" })
-const barlowCondensed = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-barlow-condensed",
-})
 
 const tabs = [
   { href: "/staff/commissions", label: "Pay", icon: Mail },
@@ -34,7 +38,7 @@ export default function StaffLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className={`sp ${barlow.variable} ${barlowCondensed.variable}`}>
+    <div className={`sp ${staffFonts}`}>
       <header className="sp-topbar">
         <Link href="/staff/commissions" className="sp-wordmark">
           GlowBuddy <span>Team</span>
@@ -52,9 +56,25 @@ export default function StaffLayout({ children }: { children: ReactNode }) {
               {profile.firstName} {profile.lastName}
             </span>
           )}
-          <button type="button" className="sp-iconbtn" onClick={logout} aria-label="Log out">
-            <LogOut className="size-5" strokeWidth={2} aria-hidden />
-          </button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button type="button" className="sp-iconbtn" aria-label="Log out">
+                <LogOut className="size-5" strokeWidth={2} aria-hidden />
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className={`sp-dialog ${staffFonts}`}>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Log out?</AlertDialogTitle>
+                <AlertDialogDescription>You&apos;ll need your email or phone and password to sign back in.</AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Stay</AlertDialogCancel>
+                <AlertDialogAction className="sp-dialog-neutral" onClick={logout}>
+                  Log out
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </header>
 

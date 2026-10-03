@@ -1,73 +1,31 @@
-"use client"
-
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import React from "react"
+import Image from "next/image"
 import { Header } from "@/components/landing/_components/header"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { showError } from "@/lib/toast"
+import StaffFlow from "../_components/staff-flow"
 
-export default function StaffLogin() {
-  const router = useRouter()
-  const [identifier, setIdentifier] = useState("")
-  const [password, setPassword] = useState("")
-  const [busy, setBusy] = useState(false)
+export const dynamic = "force-dynamic"
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setBusy(true)
-    try {
-      const res = await fetch("/api/auth/staff-login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier, password }),
-      })
-      const json = await res.json()
-      if (json.code !== 200) {
-        showError(json.msg || "Login failed")
-        return
-      }
-      localStorage.setItem("customer_profile", JSON.stringify(json.data.profile))
-      localStorage.setItem("staff_profile", JSON.stringify(json.data.staffProfile))
-      router.push("/staff/commissions")
-    } catch (err) {
-      showError(err)
-    } finally {
-      setBusy(false)
-    }
-  }
-
+const StaffLogin = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <form onSubmit={submit} className="mx-auto mt-16 flex w-full max-w-sm flex-col gap-4 px-4">
-        <h1 className="text-2xl font-semibold">Team member sign in</h1>
-        <div className="space-y-1.5">
-          <Label htmlFor="staff-identifier">Email or phone</Label>
-          <Input
-            id="staff-identifier"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
-            autoComplete="username"
-            required
+      <div className="flex flex-1 flex-col md:flex-row">
+        <div className="flex flex-1 flex-col">
+          <StaffFlow />
+        </div>
+        <div className="relative w-full flex-1 max-md:hidden">
+          <Image
+            src="/assets/login-image.jpg"
+            alt="A barber checking his pay on a tablet in the shop"
+            fill
+            className="object-cover object-right"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
           />
         </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="staff-password">Password</Label>
-          <Input
-            id="staff-password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-            required
-          />
-        </div>
-        <Button type="submit" disabled={busy}>
-          {busy ? "Signing in..." : "Sign in"}
-        </Button>
-      </form>
+      </div>
     </div>
   )
 }
+
+export default StaffLogin
