@@ -106,6 +106,16 @@ export async function fetchPartnerStaffMember(id: number): Promise<StaffDto> {
   }
 }
 
+/** Which services the member works on; tasks of other services they had are released. */
+export async function setPartnerStaffServices(id: number, serviceIds: number[]): Promise<StaffDto> {
+  try {
+    const res = await api.put(serviceIds, `/partner/staff/${id}/services`).json<ApiResponse<StaffDto>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
 export type CreateStaffPayload = {
   name: string
   profilePhotoUrl?: string

@@ -462,7 +462,8 @@ export type TaskAssignment = { staffId: number; taskId: number }
 
 export type TaskAssignmentsDto = {
   tasks: TaskDto[]
-  staff: { id: number; name: string }[]
+  /** serviceIds: services they're on; only tasks of those services can be given to them. */
+  staff: { id: number; name: string; serviceIds: number[] }[]
   assignments: TaskAssignment[]
 }
 

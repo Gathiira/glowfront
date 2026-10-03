@@ -1,7 +1,8 @@
 import type { PaginatedResponse } from "@/lib/types"
 
-/** Matches the backend contract: ?current= is 1-based, ?pageSize= defaults to 20 and is capped at 100. */
-export const PAGE_SIZE = 20
+/** Backend contract: ?current= is 1-based, ?pageSize= is capped at 100 (server default 20, but we always send it). */
+/** Manager dashboard lists. */
+export const PAGE_SIZE = 10
 export const MAX_PAGE_SIZE = 100
 /** Staff portal lists are read on a phone, so they load in smaller pages. */
 export const STAFF_PAGE_SIZE = 5

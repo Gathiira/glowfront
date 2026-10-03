@@ -21,6 +21,7 @@ import { addLeaveForStaff, fetchLeave, leaveWhen } from "@/lib/api/leave"
 import { useConfirm } from "@/components/ui/use-confirm"
 import { today } from "@/lib/api/commissions"
 import { fmt } from "@/lib/utils"
+import { MemberServicesDialog } from "./_components/member-services-dialog"
 import { showError, showSuccess } from "@/lib/toast"
 
 const emptyForm = () => ({ startDate: today(), endDate: today(), partDay: false, startTime: "09:00", endTime: "13:00", reason: "" })
@@ -44,14 +45,20 @@ export default function MemberDetails() {
   const [confirm, confirmDialog] = useConfirm()
   const leave = usePagedList((current) => fetchLeave(undefined, staffId, current), [staffId])
 
-  useEffect(() => {
-    fetchPartnerStaffMember(staffId).then(setMember).catch(showError)
+  const [editingServices, setEditingServices] = useState(false)
+
+  const loadTasks = () =>
     fetchStaffTaskRates(staffId)
       .then(setTasks)
       .catch((e) => {
         setTasks([])
         showError(e)
       })
+
+  useEffect(() => {
+    fetchPartnerStaffMember(staffId).then(setMember).catch(showError)
+    loadTasks()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [staffId])
 
   const timesInvalid = form.partDay && form.endTime <= form.startTime
@@ -178,6 +185,29 @@ export default function MemberDetails() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0">
+              <CardTitle>Services</CardTitle>
+              <Button variant="link" size="sm" className="h-auto p-0" onClick={() => setEditingServices(true)} disabled={!member}>
+                Change
+              </Button>
+            </CardHeader>
+            <CardContent>
+              {member && member.services.length === 0 && (
+                <p className="text-sm text-muted-foreground">
+                  Not on any service yet, so customers can&apos;t book them and they can&apos;t be given tasks.
+                </p>
+              )}
+              <div className="flex flex-wrap gap-1.5">
+                {member?.services.map((s) => (
+                  <span key={s.id} className="rounded-full bg-muted px-2.5 py-1 text-xs">
+                    {s.name}
+                  </span>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0">
               <CardTitle>Tasks</CardTitle>
               <Link href="/dashboard/team/tasks" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
                 Change
@@ -187,11 +217,9 @@ export default function MemberDetails() {
               {tasks === null && <p className="text-sm text-muted-foreground">Loading...</p>}
               {tasks?.length === 0 && (
                 <p className="text-sm text-muted-foreground">
-                  No tasks set up yet.{" "}
-                  <Link href="/dashboard/catalog" className="font-medium underline underline-offset-4">
-                    Add tasks in Catalog
-                  </Link>
-                  .
+                  {member && member.services.length === 0
+                    ? "Tasks come from their services. Add a service first."
+                    : "Their services have no tasks yet. Add tasks to a service in Catalog."}
                 </p>
               )}
               {tasks && tasks.length > 0 && assigned.length === 0 && (
@@ -208,27 +236,9 @@ export default function MemberDetails() {
               )}
               {open.length > 0 && (
                 <p className="text-sm text-muted-foreground">
-                  Also open to anyone: {open.map((t) => t.taskName).join(", ")}
+                  Also open to anyone on the service: {open.map((t) => t.taskName).join(", ")}
                 </p>
               )}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Services</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {member && member.services.length === 0 && (
-                <p className="text-sm text-muted-foreground">Not set up for any services, so customers can&apos;t book them online.</p>
-              )}
-              <div className="flex flex-wrap gap-1.5">
-                {member?.services.map((s) => (
-                  <span key={s.id} className="rounded-full bg-muted px-2.5 py-1 text-xs">
-                    {s.name}
-                  </span>
-                ))}
-              </div>
             </CardContent>
           </Card>
         </div>
@@ -367,6 +377,17 @@ export default function MemberDetails() {
           </div>
         </div>
       </div>
+      {member && (
+        <MemberServicesDialog
+          member={member}
+          open={editingServices}
+          onClose={() => setEditingServices(false)}
+          onSaved={(updated) => {
+            setMember(updated)
+            loadTasks() // tasks follow their services
+          }}
+        />
+      )}
       {confirmDialog}
     </div>
   )

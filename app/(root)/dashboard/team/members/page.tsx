@@ -13,7 +13,7 @@ import { usePagedList } from "@/lib/use-paged-list"
 
 export default function TeamMembers() {
   const { items, total, loading, loaded, hasMore, loadMore } = usePagedList(
-    (current) => fetchPartnerStaff(current, 12),
+    (current) => fetchPartnerStaff(current),
     []
   )
 

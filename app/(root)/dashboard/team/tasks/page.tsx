@@ -13,6 +13,10 @@ import { showError, showSuccess } from "@/lib/toast"
 
 const key = (staffId: number, taskId: number) => `${staffId}:${taskId}`
 
+type Grid = TaskAssignmentsDto
+/** Service first: a task can only be given to someone on one of its services. */
+const can = (s: Grid["staff"][number], t: Grid["tasks"][number]) => t.serviceIds.some((id) => s.serviceIds.includes(id))
+
 function toSet(grid: TaskAssignmentsDto) {
   return new Set(grid.assignments.map((a) => key(a.staffId, a.taskId)))
 }
@@ -50,7 +54,8 @@ export default function TaskAssignments() {
   const save = async () => {
     const ok = await confirm({
       title: "Save task assignments?",
-      description: "Checkout will only offer the ticked people for each task. Tasks with nobody ticked stay open to anyone.",
+      description:
+        "Checkout will only offer the ticked people for each task. Tasks with nobody ticked stay open to anyone on that service.",
       confirmLabel: "Save",
     })
     if (!ok) return
@@ -78,7 +83,7 @@ export default function TaskAssignments() {
     <div>
       <PageHeader
         title="Task assignments"
-        description="Tick who can do each task. At checkout, only ticked people are offered; a task with nobody ticked is open to anyone."
+        description="Tick who can do each task. People can only be given tasks of services they're on — set those on their team page first. At checkout, only ticked people are offered; a task with nobody ticked is open to anyone on that service."
       >
         <Button onClick={save} disabled={!dirty || saving || !grid}>
           {saving ? "Saving..." : dirty ? "Save changes" : "Saved"}
@@ -135,10 +140,20 @@ export default function TaskAssignments() {
                   {grid.staff.map((s) => (
                     <tr key={s.id} className="border-t">
                       <th scope="row" className="py-2 pr-4 text-left font-medium">
-                        {s.name}
+                        <Link href={`/dashboard/team/members/${s.id}`} className="hover:underline">
+                          {s.name}
+                        </Link>
                       </th>
                       {grid.tasks.map((t) => {
                         const on = ticked.has(key(s.id, t.id))
+                        if (!can(s, t)) {
+                          return (
+                            <td key={t.id} className="px-3 py-2 text-center text-muted-foreground" title={`${s.name} isn't on a service with ${t.name}`}>
+                              <span aria-hidden>—</span>
+                              <span className="sr-only">{`${s.name} isn't on a service with ${t.name}`}</span>
+                            </td>
+                          )
+                        }
                         return (
                           <td key={t.id} className="px-3 py-2 text-center">
                             <button
@@ -166,7 +181,7 @@ export default function TaskAssignments() {
                       const n = countFor(t.id)
                       return (
                         <td key={t.id} className="px-3 pt-3 text-center text-xs">
-                          {n === 0 ? <span className="text-muted-foreground">Anyone</span> : `${n} ${n === 1 ? "person" : "people"}`}
+                          {n === 0 ? <span className="text-muted-foreground">Anyone on it</span> : `${n} ${n === 1 ? "person" : "people"}`}
                         </td>
                       )
                     })}
@@ -182,8 +197,16 @@ export default function TaskAssignments() {
               <Card key={s.id}>
                 <CardContent className="pt-6">
                   <p className="mb-3 font-medium">{s.name}</p>
+                  {grid.tasks.every((t) => !can(s, t)) && (
+                    <p className="text-sm text-muted-foreground">
+                      Not on any service with tasks yet.{" "}
+                      <Link href={`/dashboard/team/members/${s.id}`} className="font-medium underline underline-offset-4">
+                        Set their services
+                      </Link>
+                    </p>
+                  )}
                   <div className="flex flex-wrap gap-2">
-                    {grid.tasks.map((t) => {
+                    {grid.tasks.filter((t) => can(s, t)).map((t) => {
                       const on = ticked.has(key(s.id, t.id))
                       return (
                         <button
@@ -205,7 +228,7 @@ export default function TaskAssignments() {
               </Card>
             ))}
             <p className="text-xs text-muted-foreground">
-              Open to anyone:{" "}
+              Open to anyone on the service:{" "}
               {grid.tasks.filter((t) => countFor(t.id) === 0).map((t) => t.name).join(", ") || "none"}
             </p>
           </div>

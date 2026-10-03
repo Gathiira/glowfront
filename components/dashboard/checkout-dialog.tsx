@@ -27,6 +27,9 @@ type TaskRow = { taskId: number; taskName: string; staffId: number | null; allow
 
 const canDo = (task: Pick<TaskRow, "allowed">, staffId: number) =>
   task.allowed.length === 0 || task.allowed.includes(staffId)
+
+/** Service first: only people on the line's service can be picked for its tasks. */
+const onService = (member: StaffDto, serviceId: number) => member.services.some((s) => s.id === serviceId)
 type Line = { key: number; serviceId: number; serviceName: string; price: string; tasks: TaskRow[] }
 
 type Props = {
@@ -243,12 +246,17 @@ export function CheckoutDialog({ open, booking, onClose, onDone }: Props) {
                       </SelectTrigger>
                       <SelectContent>
                         {staff
-                          .filter((s) => canDo(task, s.id))
+                          .filter((s) => onService(s, line.serviceId) && canDo(task, s.id))
                           .map((s) => (
                             <SelectItem key={s.id} value={String(s.id)}>
                               {s.name}
                             </SelectItem>
                           ))}
+                        {!staff.some((s) => onService(s, line.serviceId) && canDo(task, s.id)) && (
+                          <p className="px-2 py-1.5 text-sm text-muted-foreground">
+                            Nobody on {line.serviceName} can do {task.taskName}. Add the service to someone on the Team page.
+                          </p>
+                        )}
                       </SelectContent>
                     </Select>
                     <span className="w-32 text-right text-sm text-muted-foreground">
