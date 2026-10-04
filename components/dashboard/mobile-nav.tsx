@@ -5,16 +5,13 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { clearCustomerProfile } from "@/lib/customer-context"
-import { forgetMyRole, useMyRole } from "@/lib/use-my-role"
+import { forgetMyRole } from "@/lib/use-my-role"
+import { SidebarNav } from "@/components/dashboard/sidebar"
 import {
   LayoutDashboard,
   Calendar,
   DollarSign,
   CalendarCheck,
-  Users,
-  Package,
-  UsersRound,
-  Settings,
   Menu,
   X,
   LogOut,
@@ -40,37 +37,9 @@ const bottomNavItems = [
   { label: "Appointments", href: "/dashboard/appointments", icon: CalendarCheck },
 ]
 
-/** ownerOnly: hidden from managers (the server refuses them anyway). */
-const drawerItems: { label: string; href: string; icon: typeof DollarSign; ownerOnly?: boolean }[] = [
-  { label: "Home", href: "/dashboard/home", icon: LayoutDashboard },
-  { label: "Calendar", href: "/dashboard/calendar", icon: Calendar },
-  { label: "Sales", href: "/dashboard/sales/daily", icon: DollarSign },
-  { label: "Transactions", href: "/dashboard/sales/transactions", icon: DollarSign },
-  { label: "M-Pesa Payments", href: "/dashboard/sales/mpesa", icon: DollarSign },
-  { label: "M-Pesa Tills", href: "/dashboard/sales/tills", icon: DollarSign, ownerOnly: true },
-  { label: "Cash Movement", href: "/dashboard/sales/cash-movement", icon: DollarSign },
-  { label: "Commissions", href: "/dashboard/sales/commissions", icon: DollarSign },
-  { label: "Payouts", href: "/dashboard/sales/payouts", icon: DollarSign },
-  { label: "Advances", href: "/dashboard/sales/advances", icon: DollarSign },
-  { label: "Appointments", href: "/dashboard/appointments", icon: CalendarCheck },
-  { label: "Clients", href: "/dashboard/clients/analytics", icon: Users },
-  { label: "Client List", href: "/dashboard/clients/list", icon: Users },
-  { label: "Segments", href: "/dashboard/clients/segments", icon: Users },
-  { label: "Catalog", href: "/dashboard/catalog", icon: Package },
-  { label: "Team", href: "/dashboard/team/members", icon: UsersRound },
-  { label: "Add Member", href: "/dashboard/team/add", icon: UsersRound },
-  { label: "Task Assignments", href: "/dashboard/team/tasks", icon: UsersRound },
-  { label: "Leave Requests", href: "/dashboard/team/leave", icon: UsersRound },
-  { label: "Owners & Managers", href: "/dashboard/team/owners", icon: UsersRound, ownerOnly: true },
-  { label: "Profile Details", href: "/dashboard/profile/details", icon: Settings, ownerOnly: true },
-  { label: "Security", href: "/dashboard/profile/security", icon: Settings },
-  { label: "Portfolio", href: "/dashboard/profile/portfolio", icon: Settings },
-]
-
 export function DashboardMobileNav() {
   const pathname = usePathname()
   const router = useRouter()
-  const role = useMyRole()
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
@@ -139,26 +108,7 @@ export function DashboardMobileNav() {
             <X className="size-5" />
           </button>
         </div>
-        <nav className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
-          {drawerItems.filter((item) => !item.ownerOnly || role === "OWNER").map((item) => {
-            const Icon = item.icon
-            const active = isActive(item.href)
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeDrawer}
-                className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted",
-                  active && "bg-muted"
-                )}
-              >
-                <Icon className="size-4 shrink-0" />
-                {item.label}
-              </Link>
-            )
-          })}
-        </nav>
+        <SidebarNav className="px-3 py-4" onNavigate={closeDrawer} />
         <div className="shrink-0 border-t px-3 pt-2 pb-4">
           <AlertDialog>
             <AlertDialogTrigger asChild>

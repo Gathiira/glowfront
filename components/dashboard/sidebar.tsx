@@ -101,21 +101,7 @@ const navItems: NavItem[] = [
 ]
 
 export function Sidebar() {
-  const pathname = usePathname()
   const router = useRouter()
-  const role = useMyRole()
-  const [openMenus, setOpenMenus] = useState<string[]>(() => {
-    const active = navItems.find((item) =>
-      item.children?.some((c) => pathname.startsWith(c.href))
-    )
-    return active ? [active.label] : []
-  })
-
-  const toggle = (label: string) => {
-    setOpenMenus((prev) =>
-      prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label]
-    )
-  }
 
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" })
@@ -123,12 +109,6 @@ export function Sidebar() {
     forgetMyRole()
     router.push("/")
   }
-
-  const isActive = (href: string) => pathname === href
-  const isChildActive = (item: NavItem) =>
-    item.href
-      ? pathname === item.href
-      : item.children?.some((c) => pathname.startsWith(c.href))
 
   return (
     <aside className="hidden md:fixed md:top-0 md:left-0 md:z-30 md:flex md:h-screen md:w-64 md:flex-col md:overflow-y-auto md:border-r md:bg-card md:px-3 md:py-4">
@@ -140,68 +120,7 @@ export function Sidebar() {
         Glow Buddy
       </Link>
 
-      <nav className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          const active = isChildActive(item)
-          const isOpen = openMenus.includes(item.label)
-
-          if (item.children) {
-            return (
-              <div key={item.label}>
-                <button
-                  onClick={() => toggle(item.label)}
-                  className={cn(
-                    "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted",
-                    active && "bg-muted"
-                  )}
-                >
-                  <Icon className="size-4 shrink-0" />
-                  <span className="flex-1 text-left">{item.label}</span>
-                  <ChevronDown
-                    className={cn(
-                      "size-4 shrink-0 transition-transform",
-                      isOpen && "rotate-180"
-                    )}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="mt-1 ml-4 flex flex-col gap-0.5 border-l pl-3">
-                    {item.children.filter((child) => !child.ownerOnly || role === "OWNER").map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={cn(
-                          "rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-muted",
-                          isActive(child.href)
-                            ? "bg-muted font-medium text-foreground"
-                            : "text-muted-foreground"
-                        )}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )
-          }
-
-          return (
-            <Link
-              key={item.href}
-              href={item.href!}
-              className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted",
-                active && "bg-muted"
-              )}
-            >
-              <Icon className="size-4 shrink-0" />
-              {item.label}
-            </Link>
-          )
-        })}
-      </nav>
+      <SidebarNav />
       <div className="shrink-0 border-t pt-2">
         <AlertDialog>
           <AlertDialogTrigger asChild>
@@ -230,5 +149,102 @@ export function Sidebar() {
         </AlertDialog>
       </div>
     </aside>
+  )
+}
+
+/** Grouped nav list, shared by the desktop sidebar and the mobile drawer. */
+export function SidebarNav({
+  className,
+  onNavigate,
+}: {
+  className?: string
+  onNavigate?: () => void
+}) {
+  const pathname = usePathname()
+  const role = useMyRole()
+  const [openMenus, setOpenMenus] = useState<string[]>(() => {
+    const active = navItems.find((item) =>
+      item.children?.some((c) => pathname.startsWith(c.href))
+    )
+    return active ? [active.label] : []
+  })
+
+  const toggle = (label: string) => {
+    setOpenMenus((prev) =>
+      prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label]
+    )
+  }
+
+  const isActive = (href: string) => pathname === href
+  const isChildActive = (item: NavItem) =>
+    item.href
+      ? pathname === item.href
+      : item.children?.some((c) => pathname.startsWith(c.href))
+
+  return (
+    <nav className={cn("flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto", className)}>
+      {navItems.map((item) => {
+        const Icon = item.icon
+        const active = isChildActive(item)
+        const isOpen = openMenus.includes(item.label)
+
+        if (item.children) {
+          return (
+            <div key={item.label}>
+              <button
+                onClick={() => toggle(item.label)}
+                className={cn(
+                  "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted",
+                  active && "bg-muted"
+                )}
+              >
+                <Icon className="size-4 shrink-0" />
+                <span className="flex-1 text-left">{item.label}</span>
+                <ChevronDown
+                  className={cn(
+                    "size-4 shrink-0 transition-transform",
+                    isOpen && "rotate-180"
+                  )}
+                />
+              </button>
+              {isOpen && (
+                <div className="mt-1 ml-4 flex flex-col gap-0.5 border-l pl-3">
+                  {item.children.filter((child) => !child.ownerOnly || role === "OWNER").map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={onNavigate}
+                      className={cn(
+                        "rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-muted",
+                        isActive(child.href)
+                          ? "bg-muted font-medium text-foreground"
+                          : "text-muted-foreground"
+                      )}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )
+        }
+
+        return (
+          <Link
+            key={item.href}
+            href={item.href!}
+            onClick={onNavigate}
+            className={cn(
+              "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted",
+              active && "bg-muted"
+            )}
+          >
+            <Icon className="size-4 shrink-0" />
+            {item.label}
+          </Link>
+        )
+      })}
+    </nav>
   )
 }
