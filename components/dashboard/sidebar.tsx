@@ -57,6 +57,7 @@ const navItems: NavItem[] = [
       { label: "Cash Movement", href: "/dashboard/sales/cash-movement" },
       { label: "Commissions", href: "/dashboard/sales/commissions" },
       { label: "Payouts", href: "/dashboard/sales/payouts" },
+      { label: "Advances", href: "/dashboard/sales/advances" },
     ],
   },
   {

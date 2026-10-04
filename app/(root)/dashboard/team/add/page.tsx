@@ -34,7 +34,10 @@ export default function AddMember() {
     bio: "",
     jobTitle: "",
     yearsExperience: "",
+    email: "",
+    phone: "",
   })
+  const wantsLogin = form.email.trim() !== "" || form.phone.trim() !== ""
   const [pick, setPick] = useState<ServiceTaskPick>({ serviceIds: [], noBookingServiceIds: [], taskIds: [] })
 
   useEffect(() => {
@@ -62,13 +65,21 @@ export default function AddMember() {
         jobTitle: form.jobTitle || undefined,
         yearsExperience: form.yearsExperience ? Number(form.yearsExperience) : undefined,
         serviceIds: out.serviceIds.length > 0 ? out.serviceIds : undefined,
+        email: form.email.trim() || undefined,
+        phone: form.phone.trim() || undefined,
       })
       created = member.id
       if (out.serviceIds.length > 0) {
         await setPartnerStaffServices(member.id, out.serviceIds, out.noBookingServiceIds, out.taskIds)
       }
-      showSuccess("Team member added successfully")
-      router.push("/dashboard/team/members")
+      if (wantsLogin) {
+        // Their page shows the generated default password to share with them.
+        showSuccess("Team member added. Share their login details from their page.")
+        router.push(`/dashboard/team/members/${member.id}`)
+      } else {
+        showSuccess("Team member added successfully")
+        router.push("/dashboard/team/members")
+      }
     } catch (err) {
       showError(err)
       // Added, but their bookings/tasks didn't save: finish on their page instead of adding them twice.
@@ -97,6 +108,32 @@ export default function AddMember() {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
                 />
+              </Field>
+              <Field>
+                <label className="mb-1.5 block text-sm font-medium">Phone</label>
+                <Input
+                  type="tel"
+                  inputMode="tel"
+                  placeholder="e.g. 0712 345 678"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  required={wantsLogin}
+                />
+              </Field>
+              <Field>
+                <label className="mb-1.5 block text-sm font-medium">Email</label>
+                <Input
+                  type="email"
+                  placeholder="e.g. jane@example.com"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required={wantsLogin}
+                />
+                <p className="mt-1 text-xs text-muted-foreground">
+                  With a phone and email they get a staff portal login. A default password is generated and shown on
+                  their page for you to share; once they set their own, it&apos;s hidden from everyone. Leave both empty
+                  for no login.
+                </p>
               </Field>
               <Field>
                 <label className="mb-1.5 block text-sm font-medium">Profile photo URL</label>

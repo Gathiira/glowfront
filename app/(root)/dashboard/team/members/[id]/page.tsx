@@ -22,6 +22,7 @@ import { useConfirm } from "@/components/ui/use-confirm"
 import { today } from "@/lib/api/commissions"
 import { fmt } from "@/lib/utils"
 import { MemberServicesDialog } from "./_components/member-services-dialog"
+import { LoginCard } from "./_components/login-card"
 import { showError, showSuccess } from "@/lib/toast"
 
 const emptyForm = () => ({ startDate: today(), endDate: today(), partDay: false, startTime: "09:00", endTime: "13:00", reason: "" })
@@ -218,6 +219,8 @@ export default function MemberDetails() {
               })}
             </CardContent>
           </Card>
+
+          {member && <LoginCard member={member} />}
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0">

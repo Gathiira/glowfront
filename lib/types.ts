@@ -551,9 +551,38 @@ export type CashMovementDto = {
   description: string | null
   movementDate: string
   category: ExpenseCategory | null
-  /** Set when recorded automatically from a sale or payout; such entries can't be deleted. */
+  /** Set when recorded automatically from a sale, payout or advance; such entries can't be deleted. */
   transactionId: number | null
   payoutId: number | null
+  advanceId?: number | null
+}
+
+export type AdvanceStatus = "PENDING" | "APPROVED" | "REJECTED" | "CANCELLED"
+
+/** Money paid ahead of commission; approved (paid out) advances are deducted from the next payouts. */
+export type AdvanceDto = {
+  id: number
+  staffId: number
+  staffName: string
+  amount: number
+  reason: string | null
+  status: AdvanceStatus
+  recovered: number
+  /** Still to be deducted from payouts. */
+  outstanding: number
+  paymentMethod: string | null
+  reference: string | null
+  decisionNote: string | null
+  requestedAt: string
+  decidedAt: string | null
+}
+
+/** A staff member's portal login; the default password only while it's still theirs. */
+export type StaffLoginDto = {
+  hasLogin: boolean
+  email: string | null
+  phone: string | null
+  defaultPassword: string | null
 }
 
 export const EXPENSE_CATEGORIES = ["RENT", "SUPPLIES", "UTILITIES", "WAGES", "TRANSPORT", "REPAIRS", "OTHER"] as const
@@ -782,7 +811,10 @@ export type PayoutDto = {
   id: number
   staffId: number
   staffName: string
+  /** What was paid: commissionAmount less advanceDeducted. */
   totalAmount: number
+  commissionAmount: number
+  advanceDeducted: number
   paymentMethod: string
   reference: string | null
   notes: string | null

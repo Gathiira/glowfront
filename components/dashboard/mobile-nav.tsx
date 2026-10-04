@@ -49,6 +49,7 @@ const drawerItems = [
   { label: "Cash Movement", href: "/dashboard/sales/cash-movement", icon: DollarSign },
   { label: "Commissions", href: "/dashboard/sales/commissions", icon: DollarSign },
   { label: "Payouts", href: "/dashboard/sales/payouts", icon: DollarSign },
+  { label: "Advances", href: "/dashboard/sales/advances", icon: DollarSign },
   { label: "Appointments", href: "/dashboard/appointments", icon: CalendarCheck },
   { label: "Clients", href: "/dashboard/clients/analytics", icon: Users },
   { label: "Client List", href: "/dashboard/clients/list", icon: Users },

@@ -17,6 +17,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { staffFonts } from "./_lib/fonts"
+import { PasswordDialog } from "./_components/password-dialog"
 import "./staff.css"
 
 const tabs = [
@@ -59,6 +60,7 @@ export default function StaffLayout({ children }: { children: ReactNode }) {
               {profile.firstName} {profile.lastName}
             </span>
           )}
+          <PasswordDialog />
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <button type="button" className="sp-iconbtn" aria-label="Log out">

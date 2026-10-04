@@ -153,9 +153,9 @@ export default function CashMovement() {
             key: "actions",
             label: "",
             align: "right",
-            // Entries from sales and payouts follow those records; only hand-recorded ones can be removed.
+            // Entries from sales, payouts and advances follow those records; only hand-recorded ones can be removed.
             render: (m) =>
-              m.transactionId || m.payoutId ? null : (
+              m.transactionId || m.payoutId || m.advanceId ? null : (
                 <Button size="sm" variant="ghost" className="text-destructive" onClick={() => remove(m)} aria-label="Delete entry">
                   Delete
                 </Button>

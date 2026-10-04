@@ -9,6 +9,7 @@ import { showError } from "@/lib/toast"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useFreshStamps } from "../_lib/fresh-stamps"
 import { staffFonts } from "../_lib/fonts"
+import { Advances } from "./_components/advances"
 
 function day(iso: string | null | undefined) {
   if (!iso) return ""
@@ -186,6 +187,8 @@ export default function Pay() {
         </section>
       </div>
 
+      <Advances />
+
       <Dialog open={opened !== null} onOpenChange={(v) => !v && setOpened(null)}>
         <DialogContent className={`sp-dialog ${staffFonts}`}>
           <DialogHeader>
@@ -201,6 +204,12 @@ export default function Pay() {
                 {methodLabel(opened.paymentMethod)}
                 {opened.reference ? ` · ${opened.reference}` : ""}
               </p>
+              {opened.advanceDeducted > 0 && (
+                <p className="sp-slip-sub">
+                  Commission KSH {money(opened.commissionAmount)} − advance KSH {money(opened.advanceDeducted)} = paid KSH{" "}
+                  {money(opened.totalAmount)}
+                </p>
+              )}
               {opened.status === "VOIDED" || !opened.lines?.length ? (
                 <p className="sp-empty sp-empty-plain">This payout was voided, so its tasks are waiting to be paid again.</p>
               ) : (

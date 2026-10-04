@@ -23,6 +23,7 @@ import {
 import {
   approveLine,
   createPayout,
+  fetchOutstandingAdvance,
   fetchStaffCommissions,
   money,
   reassignLine,
@@ -83,6 +84,14 @@ function StaffCommissionsInner() {
       .catch(showError)
   }, [])
 
+  // Advances already paid to them come off the next payout.
+  const [advanceOwed, setAdvanceOwed] = useState(0)
+  const loadAdvance = () => fetchOutstandingAdvance(staffId).then(setAdvanceOwed).catch(showError)
+  useEffect(() => {
+    loadAdvance()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [staffId])
+
   const review = async (action: () => Promise<unknown>, done: string) => {
     try {
       await action()
@@ -128,11 +137,15 @@ function StaffCommissionsInner() {
 
   const selectedTotal = lines.filter((l) => selected.includes(l.id as number)).reduce((s, l) => s + l.commissionAmount, 0)
   const toggle = (id: number) => setSelected((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]))
+  const deduct = Math.min(advanceOwed, selectedTotal)
+  const toPay = +(selectedTotal - deduct).toFixed(2)
 
   const pay = async () => {
     const ok = await confirm({
-      title: `Pay ${report?.summary.staffName ?? "this team member"} ${CURRENCY} ${money(selectedTotal)}?`,
-      description: `${selected.length} commission line${selected.length === 1 ? "" : "s"} will be marked paid by ${PAYMENT_LABEL[payment.method as keyof typeof PAYMENT_LABEL] ?? payment.method}${
+      title: `Pay ${report?.summary.staffName ?? "this team member"} ${CURRENCY} ${money(toPay)}?`,
+      description: `${selected.length} commission line${selected.length === 1 ? "" : "s"} (${CURRENCY} ${money(selectedTotal)}) will be marked paid${
+        deduct > 0 ? `, ${CURRENCY} ${money(deduct)} of it clearing their advance,` : ""
+      } by ${PAYMENT_LABEL[payment.method as keyof typeof PAYMENT_LABEL] ?? payment.method}${
         payment.reference ? ` (ref ${payment.reference})` : ""
       }. You can void the payout later if it was a mistake.`,
       confirmLabel: "Record payout",
@@ -150,6 +163,7 @@ function StaffCommissionsInner() {
       setPaying(false)
       setPayment({ method: "MPESA", reference: "", notes: "" })
       reload()
+      loadAdvance()
     } catch (err) {
       showError(err)
     }
@@ -175,10 +189,13 @@ function StaffCommissionsInner() {
         <Input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} aria-label="To" />
       </PageHeader>
 
-      <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div className={`mb-6 grid grid-cols-1 gap-3 ${advanceOwed > 0 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"}`}>
         <SummaryCard title="Earned" value={`${CURRENCY} ${money(report?.summary.commission)}`} />
         <SummaryCard title="Paid" value={`${CURRENCY} ${money(report?.summary.paid)}`} />
         <SummaryCard title="Unpaid" value={`${CURRENCY} ${money(report?.summary.unpaid)}`} />
+        {advanceOwed > 0 && (
+          <SummaryCard title="Advance to deduct" value={`${CURRENCY} ${money(advanceOwed)}`} />
+        )}
       </div>
 
       <DataTable
@@ -190,7 +207,7 @@ function StaffCommissionsInner() {
         headerExtra={
           selected.length > 0 && (
             <Button onClick={() => setPaying(true)}>
-              Record payout ({CURRENCY} {money(selectedTotal)})
+              Record payout ({CURRENCY} {money(toPay)})
             </Button>
           )
         }
@@ -271,9 +288,26 @@ function StaffCommissionsInner() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              Pay {report?.summary.staffName} {CURRENCY} {money(selectedTotal)}
+              Pay {report?.summary.staffName} {CURRENCY} {money(toPay)}
             </DialogTitle>
           </DialogHeader>
+          {deduct > 0 && (
+            <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 rounded-lg border p-3 text-sm">
+              <dt className="text-muted-foreground">Commission</dt>
+              <dd className="text-right">{money(selectedTotal)}</dd>
+              <dt className="text-muted-foreground">Advance deducted</dt>
+              <dd className="text-right">− {money(deduct)}</dd>
+              <dt className="font-medium">To pay now</dt>
+              <dd className="text-right font-medium">
+                {CURRENCY} {money(toPay)}
+              </dd>
+              {advanceOwed > deduct && (
+                <dd className="col-span-2 text-xs text-muted-foreground">
+                  {CURRENCY} {money(advanceOwed - deduct)} of their advance is left for later payouts.
+                </dd>
+              )}
+            </dl>
+          )}
           <div className="space-y-2">
             <Select value={payment.method} onValueChange={(v) => setPayment({ ...payment, method: v })}>
               <SelectTrigger aria-label="Payment method">

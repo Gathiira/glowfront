@@ -9,6 +9,7 @@ import type {
   TopServiceDto,
   TopTeamMemberDto,
   StaffDto,
+  StaffLoginDto,
   ServiceDto,
   BusinessCategoryDto,
   BusinessDto,
@@ -138,6 +139,40 @@ export async function setPartnerStaffServices(
   }
 }
 
+// Staff portal login: generated default password, shown until they set their own
+export async function fetchStaffLogin(id: number): Promise<StaffLoginDto> {
+  try {
+    return (await api.get(`/partner/staff/${id}/login`).json<ApiResponse<StaffLoginDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function createStaffLogin(id: number, body: { email: string; phone: string }): Promise<StaffLoginDto> {
+  try {
+    return (await api.post(body, `/partner/staff/${id}/login`).json<ApiResponse<StaffLoginDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** Replaces their password with a new generated default. */
+export async function resetStaffLogin(id: number): Promise<StaffLoginDto> {
+  try {
+    return (await api.post({}, `/partner/staff/${id}/login/reset`).json<ApiResponse<StaffLoginDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function sendStaffLogin(id: number, channel: "SMS" | "EMAIL"): Promise<void> {
+  try {
+    await api.post({}, `/partner/staff/${id}/login/send?channel=${channel}`).json<ApiResponse<null>>()
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
 export type CreateStaffPayload = {
   name: string
   profilePhotoUrl?: string
@@ -145,6 +180,9 @@ export type CreateStaffPayload = {
   jobTitle?: string
   yearsExperience?: number
   serviceIds?: number[]
+  /** Both together create a staff portal login with a generated default password. */
+  email?: string
+  phone?: string
 }
 
 export async function createPartnerStaff(

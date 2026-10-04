@@ -1,6 +1,8 @@
 import { api, extractError, type ApiResponse } from "./client"
 import { fetchAllPages, PAGE_SIZE, STAFF_PAGE_SIZE } from "./paging"
 import type {
+  AdvanceDto,
+  AdvanceStatus,
   BookingDto,
   CashMovementDto,
   CashMovementSummaryDto,
@@ -249,6 +251,26 @@ export const fetchMyPayout = (id: number) => call(api.get(`/staff/me/payouts/${i
 export const fetchMySalesToday = () => call(api.get("/staff/me/sales/today").json<ApiResponse<MySaleDto[]>>())
 export const fetchMyPayouts = (current: number = 1) =>
   call(api.get(`/staff/me/payouts${query(page(current, STAFF_PAGE_SIZE))}`).json<ApiResponse<PaginatedResponse<PayoutDto>>>())
+
+// Advances: staff ask, the manager approves (pays out) or rejects; payouts deduct approved ones
+export const fetchMyAdvances = (current: number = 1) =>
+  call(api.get(`/staff/me/advances${query(page(current, STAFF_PAGE_SIZE))}`).json<ApiResponse<PaginatedResponse<AdvanceDto>>>())
+export const requestAdvance = (amount: number, reason?: string) =>
+  call(api.post({ amount, reason }, "/staff/me/advances").json<ApiResponse<AdvanceDto>>())
+export const cancelAdvance = (id: number) => call(api.post({}, `/staff/me/advances/${id}/cancel`).json<ApiResponse<AdvanceDto>>())
+export const fetchAdvances = (filter: { staffId?: number; status?: AdvanceStatus }, current: number = 1) =>
+  call(api.get(`/partner/advances${query({ ...filter, ...page(current) })}`).json<ApiResponse<PaginatedResponse<AdvanceDto>>>())
+/** Still to be deducted from this person's payouts. */
+export const fetchOutstandingAdvance = (staffId: number) =>
+  call(api.get(`/partner/advances/outstanding${query({ staffId })}`).json<ApiResponse<number>>())
+export const approveAdvance = (id: number, d: { paymentMethod: string; reference?: string; note?: string }) =>
+  call(api.post(d, `/partner/advances/${id}/approve`).json<ApiResponse<AdvanceDto>>())
+export const rejectAdvance = (id: number, note?: string) =>
+  call(api.post({ note }, `/partner/advances/${id}/reject`).json<ApiResponse<AdvanceDto>>())
+
+/** A staff member setting their own password (the manager stops seeing the default). */
+export const changeMyPassword = (currentPassword: string, newPassword: string) =>
+  call(api.put({ currentPassword, newPassword }, "/staff/me/password").json<ApiResponse<null>>())
 
 /** Today in local time as YYYY-MM-DD. */
 export function today(): string {
