@@ -16,6 +16,8 @@ import type {
   ServiceDto,
   BusinessCategoryDto,
   BusinessDto,
+  BusinessGalleryDto,
+  BusinessOpeningHoursDto,
   PaginatedResponse,
 } from "@/lib/types"
 
@@ -335,6 +337,49 @@ export async function fetchPartnerBusiness(): Promise<BusinessDto> {
     const res = await api
       .get("/partner/business")
       .json<ApiResponse<BusinessDto>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** Updates the business's name, description and website (owner only). */
+export async function updatePartnerBusinessProfile(body: {
+  name: string
+  description: string
+  website: string
+}): Promise<BusinessDto> {
+  try {
+    return (await api.put(body, "/partner/business/profile").json<ApiResponse<BusinessDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function addPartnerGalleryImage(imageUrl: string): Promise<BusinessGalleryDto> {
+  try {
+    return (await api.post({ imageUrl }, "/partner/gallery").json<ApiResponse<BusinessGalleryDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function deletePartnerGalleryImage(id: number): Promise<void> {
+  try {
+    await api.delete(`/partner/gallery/${id}`).json<ApiResponse<null>>()
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** Replaces the business's weekly opening hours (owner only). */
+export async function updatePartnerOpeningHours(
+  hours: { dayOfWeek: string; openTime: string | null; closeTime: string | null; closed: boolean }[]
+): Promise<BusinessOpeningHoursDto[]> {
+  try {
+    const res = await api
+      .put(hours, "/partner/business/opening-hours")
+      .json<ApiResponse<BusinessOpeningHoursDto[]>>()
     return res.data
   } catch (error) {
     throw await extractError(error)

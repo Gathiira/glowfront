@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { BusinessMap } from "@/components/map/business-map"
+import { OpeningHoursCard } from "./opening-hours-card"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -19,7 +20,6 @@ import {
   Phone,
   Mail,
   Star,
-  Clock,
   CheckCircle2,
   XCircle,
   ImageIcon,
@@ -70,8 +70,6 @@ export default function ProfileDetails() {
       </div>
     )
   }
-
-  const dayMap = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 
   return (
     <div>
@@ -209,28 +207,10 @@ export default function ProfileDetails() {
           </Card>
         )}
 
-        {business.openingHours.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Clock className="size-4" /> Opening Hours
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-1">
-                {dayMap.map((day) => {
-                  const h = business.openingHours.find((o) => o.dayOfWeek === day)
-                  return (
-                    <div key={day} className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">{day.charAt(0) + day.slice(1).toLowerCase()}</span>
-                      <span>{h && !h.closed ? `${h.openTime} - ${h.closeTime}` : "Closed"}</span>
-                    </div>
-                  )
-                })}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        <OpeningHoursCard
+          hours={business.openingHours}
+          onSaved={(openingHours) => setBusiness({ ...business, openingHours })}
+        />
 
         <Card>
           <CardHeader>

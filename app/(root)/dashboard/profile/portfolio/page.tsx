@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Skeleton } from "@/components/ui/skeleton"
+import { useConfirm } from "@/components/ui/use-confirm"
 import {
   Card,
   CardContent,
@@ -17,37 +19,79 @@ import {
 } from "@/components/ui/field"
 import Image from "next/image"
 import { Camera, Trash2 } from "lucide-react"
+import {
+  addPartnerGalleryImage,
+  deletePartnerGalleryImage,
+  fetchPartnerBusiness,
+  updatePartnerBusinessProfile,
+} from "@/lib/api/partner"
+import { useMyRole } from "@/lib/use-my-role"
+import { showError, showSuccess } from "@/lib/toast"
+import type { BusinessGalleryDto } from "@/lib/types"
 
 export default function ProfilePortfolio() {
-  const [images, setImages] = useState<string[]>([
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1634302086559-7cb9cf12b2a8?w=400&h=300&fit=crop",
-  ])
+  const role = useMyRole()
+  const isOwner = role === "OWNER"
+  const [confirm, confirmDialog] = useConfirm()
+  const [loading, setLoading] = useState(true)
+  const [images, setImages] = useState<BusinessGalleryDto[]>([])
+  const [business, setBusiness] = useState({ name: "", website: "", description: "" })
+  const [saving, setSaving] = useState(false)
 
-  const [business, setBusiness] = useState({
-    businessName: "John's Glow Studio",
-    website: "https://johnsglowstudio.com",
-    address: "123 Main St, New York, NY 10001",
-    description:
-      "Professional hair stylist with over 10 years of experience. Specializing in haircuts, coloring, and styling for all hair types.",
-  })
+  useEffect(() => {
+    fetchPartnerBusiness()
+      .then((b) => {
+        setImages(b.gallery)
+        setBusiness({ name: b.name, website: b.website ?? "", description: b.description ?? "" })
+      })
+      .catch(showError)
+      .finally(() => setLoading(false))
+  }, [])
 
-  const [saved, setSaved] = useState(false)
-
-  const handleImageUpload = () => {
-    const url = prompt("Enter image URL:")
-    if (url) setImages((prev) => [...prev, url])
+  const handleImageUpload = async () => {
+    const url = prompt("Enter image URL:")?.trim()
+    if (!url) return
+    try {
+      const image = await addPartnerGalleryImage(url)
+      setImages((prev) => [...prev, image])
+    } catch (error) {
+      showError(error)
+    }
   }
 
-  const removeImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index))
+  const removeImage = async (image: BusinessGalleryDto) => {
+    if (!(await confirm({ title: "Remove this image?", confirmLabel: "Remove", destructive: true }))) return
+    try {
+      await deletePartnerGalleryImage(image.id)
+      setImages((prev) => prev.filter((i) => i.id !== image.id))
+    } catch (error) {
+      showError(error)
+    }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    setSaving(true)
+    try {
+      await updatePartnerBusinessProfile(business)
+      showSuccess("Business details saved")
+    } catch (error) {
+      showError(error)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <PageHeader title="Portfolio" description="Showcase your work and update business details" />
+        <div className="mx-auto max-w-xl space-y-6">
+          <Skeleton className="h-48 w-full rounded-xl" />
+          <Skeleton className="h-64 w-full rounded-xl" />
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -61,19 +105,21 @@ export default function ProfilePortfolio() {
           </CardHeader>
           <CardContent>
             <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {images.map((url, i) => (
-                <div key={i} className="group relative overflow-hidden rounded-lg border">
+              {images.map((image, i) => (
+                <div key={image.id} className="group relative overflow-hidden rounded-lg border">
                   <Image
-                    src={url}
-                    alt={`Portfolio ${i + 1}`}
+                    src={image.imageUrl}
+                    alt={image.caption ?? `Portfolio ${i + 1}`}
                     width={400}
                     height={160}
+                    unoptimized
                     className="h-32 w-full object-cover sm:h-40"
                   />
                   <button
                     type="button"
-                    onClick={() => removeImage(i)}
-                    className="absolute right-1 top-1 flex size-7 items-center justify-center rounded-full bg-background/80 opacity-0 transition-opacity group-hover:opacity-100"
+                    onClick={() => removeImage(image)}
+                    aria-label="Remove image"
+                    className="absolute right-1 top-1 flex size-7 items-center justify-center rounded-full bg-background/80 transition-opacity sm:opacity-0 sm:group-hover:opacity-100"
                   >
                     <Trash2 className="size-3.5 text-destructive" />
                   </button>
@@ -101,8 +147,10 @@ export default function ProfilePortfolio() {
                 <Field>
                   <Input
                     placeholder="Business name"
-                    value={business.businessName}
-                    onChange={(e) => setBusiness({ ...business, businessName: e.target.value })}
+                    value={business.name}
+                    onChange={(e) => setBusiness({ ...business, name: e.target.value })}
+                    disabled={!isOwner}
+                    required
                   />
                 </Field>
                 <Field>
@@ -111,13 +159,7 @@ export default function ProfilePortfolio() {
                     type="url"
                     value={business.website}
                     onChange={(e) => setBusiness({ ...business, website: e.target.value })}
-                  />
-                </Field>
-                <Field>
-                  <Input
-                    placeholder="Address"
-                    value={business.address}
-                    onChange={(e) => setBusiness({ ...business, address: e.target.value })}
+                    disabled={!isOwner}
                   />
                 </Field>
                 <Field>
@@ -125,17 +167,23 @@ export default function ProfilePortfolio() {
                     placeholder="Business description"
                     value={business.description}
                     onChange={(e) => setBusiness({ ...business, description: e.target.value })}
+                    disabled={!isOwner}
                     rows={4}
                   />
                 </Field>
               </FieldGroup>
-              <Button type="submit" className="mt-6 w-full sm:w-auto">
-                {saved ? "Saved!" : "Save Changes"}
-              </Button>
+              {isOwner ? (
+                <Button type="submit" className="mt-6 w-full sm:w-auto" disabled={saving}>
+                  {saving ? "Saving..." : "Save Changes"}
+                </Button>
+              ) : role && (
+                <p className="mt-4 text-sm text-muted-foreground">Only an owner can edit business details.</p>
+              )}
             </form>
           </CardContent>
         </Card>
       </div>
+      {confirmDialog}
     </div>
   )
 }
