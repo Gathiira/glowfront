@@ -11,7 +11,14 @@ import { Label } from "@/components/ui/label"
 import { LoadMore } from "@/components/ui/load-more"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CURRENCY, PAYMENT_LABEL, PAYMENT_METHODS, type AdvanceDto, type AdvanceStatus } from "@/lib/types"
-import { approveAdvance, fetchAdvances, money, rejectAdvance } from "@/lib/api/commissions"
+import {
+  approveAdvance,
+  fetchAdvances,
+  fetchOutstandingAdvance,
+  fetchStaffCommissions,
+  money,
+  rejectAdvance,
+} from "@/lib/api/commissions"
 import { usePagedList } from "@/lib/use-paged-list"
 import { showError, showSuccess } from "@/lib/toast"
 
@@ -48,11 +55,22 @@ export default function Advances() {
   const [deciding, setDeciding] = useState<{ advance: AdvanceDto; approve: boolean } | null>(null)
   const [decision, setDecision] = useState({ method: "MPESA", reference: "", note: "" })
   const [saving, setSaving] = useState(false)
+  // For the advance being paid: their unpaid commission and advances already owed.
+  const [earned, setEarned] = useState<{ unpaid: number; owed: number } | null>(null)
 
   const open = (advance: AdvanceDto, approve: boolean) => {
     setDecision({ method: "MPESA", reference: "", note: "" })
     setDeciding({ advance, approve })
+    setEarned(null)
+    if (approve) {
+      Promise.all([fetchStaffCommissions(advance.staffId, { status: "UNPAID" }), fetchOutstandingAdvance(advance.staffId)])
+        .then(([report, owed]) => setEarned({ unpaid: report.summary.unpaid, owed }))
+        .catch(showError)
+    }
   }
+
+  const available = earned ? Math.max(0, +(earned.unpaid - earned.owed).toFixed(2)) : null
+  const over = deciding && available !== null ? Math.max(0, +(deciding.advance.amount - available).toFixed(2)) : 0
 
   const decide = async () => {
     if (!deciding) return
@@ -169,10 +187,36 @@ export default function Advances() {
             </DialogTitle>
           </DialogHeader>
           {deciding?.approve && (
-            <p className="text-sm text-muted-foreground">
-              It&apos;s recorded as money out in the cash book, then deducted from their next commission payouts until
-              it&apos;s cleared.
-            </p>
+            <>
+              <p className="text-sm text-muted-foreground">
+                It&apos;s recorded as money out in the cash book, then deducted from their next commission payouts until
+                it&apos;s cleared.
+              </p>
+              {earned === null ? (
+                <p className="text-sm text-muted-foreground">Checking what they&apos;ve earned...</p>
+              ) : (
+                <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 rounded-lg border p-3 text-sm">
+                  <dt className="text-muted-foreground">Unpaid commission</dt>
+                  <dd className="text-right">{money(earned.unpaid)}</dd>
+                  <dt className="text-muted-foreground">Advances still owed</dt>
+                  <dd className="text-right">− {money(earned.owed)}</dd>
+                  <dt className="font-medium">Covered by earnings</dt>
+                  <dd className="text-right font-medium">
+                    {CURRENCY} {money(available)}
+                  </dd>
+                </dl>
+              )}
+              {over > 0 && (
+                <p
+                  role="status"
+                  className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-200"
+                >
+                  This is {CURRENCY} {money(over)} more than {deciding.advance.staffName} has earned and not been paid.
+                  The business is lending the difference until they earn it. If they leave first, it isn&apos;t
+                  recovered automatically.
+                </p>
+              )}
+            </>
           )}
           <div className="space-y-3">
             {deciding?.approve && (

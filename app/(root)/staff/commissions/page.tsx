@@ -187,7 +187,7 @@ export default function Pay() {
         </section>
       </div>
 
-      <Advances />
+      <Advances unpaid={all ? all.summary.unpaid : null} />
 
       <Dialog open={opened !== null} onOpenChange={(v) => !v && setOpened(null)}>
         <DialogContent className={`sp-dialog ${staffFonts}`}>

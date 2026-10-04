@@ -25,8 +25,11 @@ function Stamp({ a }: { a: AdvanceDto }) {
   }
 }
 
-/** Ask for part of your pay early; once paid, it comes off your next payouts. */
-export function Advances() {
+/**
+ * Ask for part of your pay early; once paid, it comes off your next payouts.
+ * `unpaid`: commission earned and not paid yet (null while loading).
+ */
+export function Advances({ unpaid }: { unpaid: number | null }) {
   const pages = usePagedList(fetchMyAdvances, [])
   const advances = pages.loaded ? pages.items : null
   const [amount, setAmount] = useState("")
@@ -35,6 +38,9 @@ export function Advances() {
   const [confirm, confirmDialog] = useConfirm()
 
   const owed = (advances ?? []).reduce((sum, a) => sum + a.outstanding, 0)
+  // What you've earned and not been paid, less advances still to come off it.
+  const available = unpaid === null ? null : Math.max(0, +(unpaid - owed).toFixed(2))
+  const over = available !== null && Number(amount) > available ? +(Number(amount) - available).toFixed(2) : 0
   const dialog = { className: `sp-dialog ${staffFonts}`, actionClassName: "sp-dialog-neutral" }
 
   const submit = async (e: React.FormEvent) => {
@@ -43,7 +49,11 @@ export function Advances() {
     if (!(value >= 1)) return
     const ok = await confirm({
       title: `Ask for KSH ${money(value)}?`,
-      description: "Your manager decides. If it's paid, it comes off your next payouts until it's cleared.",
+      description: `Your manager decides. If it's paid, it comes off your next payouts until it's cleared.${
+        over > 0
+          ? ` KSH ${money(over)} of it is more than you've earned so far, so it comes off commission you haven't earned yet.`
+          : ""
+      }`,
       confirmLabel: "Send request",
       ...dialog,
     })
@@ -107,9 +117,21 @@ export function Advances() {
               step="1"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
+              aria-describedby="advance-available"
               required
             />
+            {available !== null && (
+              <p id="advance-available" className="sp-slip-sub" style={{ marginTop: "0.25rem" }}>
+                Earned and not paid yet{owed > 0 ? ", after advances still owed" : ""}: KSH {money(available)}
+              </p>
+            )}
           </div>
+          {over > 0 && (
+            <p className="sp-error" role="status">
+              That&apos;s KSH {money(over)} more than you&apos;ve earned so far. The extra comes off commission you haven&apos;t
+              earned yet, and your manager may say no or pay less.
+            </p>
+          )}
           <div className="sp-field">
             <label htmlFor="advance-reason">Reason (optional)</label>
             <textarea
