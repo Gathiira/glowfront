@@ -109,11 +109,17 @@ export async function fetchPartnerStaffMember(id: number): Promise<StaffDto> {
 /**
  * Which services the member works on; tasks of other services they had are released.
  * noBookingServiceIds: of those, the ones customers can't book them for (they only help on them).
+ * taskIds: exactly the tasks they're assigned (only this member's assignments change).
  */
-export async function setPartnerStaffServices(id: number, serviceIds: number[], noBookingServiceIds: number[]): Promise<StaffDto> {
+export async function setPartnerStaffServices(
+  id: number,
+  serviceIds: number[],
+  noBookingServiceIds: number[],
+  taskIds: number[]
+): Promise<StaffDto> {
   try {
     const res = await api
-      .put({ serviceIds, noBookingServiceIds }, `/partner/staff/${id}/services`)
+      .put({ serviceIds, noBookingServiceIds, taskIds }, `/partner/staff/${id}/services`)
       .json<ApiResponse<StaffDto>>()
     return res.data
   } catch (error) {

@@ -61,6 +61,9 @@ export const createTask = (p: { name: string; defaultPercent: number; serviceId:
   call(api.post(p, "/partner/tasks").json<ApiResponse<TaskDto>>())
 export const updateTask = (id: number, p: { name: string; defaultPercent: number; active: boolean }) =>
   call(api.put(p, `/partner/tasks/${id}`).json<ApiResponse<TaskDto>>())
+/** Deleted when no sale used it; deactivated (kept for past commissions) otherwise. */
+export const deleteTask = (id: number) =>
+  call(api.delete(`/partner/tasks/${id}`).json<ApiResponse<"DELETED" | "DEACTIVATED">>())
 export const fetchTaskAssignments = () =>
   call(api.get("/partner/tasks/assignments").json<ApiResponse<TaskAssignmentsDto>>())
 export const saveTaskAssignments = (assignments: TaskAssignment[]) =>
