@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { clearCustomerProfile } from "@/lib/customer-context"
+import { forgetMyRole, useMyRole } from "@/lib/use-my-role"
 import {
   ChevronDown,
   LayoutDashboard,
@@ -34,6 +35,8 @@ import {
 type SubMenuItem = {
   label: string
   href: string
+  /** Hidden from managers (the server refuses them anyway). */
+  ownerOnly?: boolean
 }
 
 type NavItem = {
@@ -53,7 +56,7 @@ const navItems: NavItem[] = [
       { label: "Daily Summary", href: "/dashboard/sales/daily" },
       { label: "Transactions", href: "/dashboard/sales/transactions" },
       { label: "M-Pesa Payments", href: "/dashboard/sales/mpesa" },
-      { label: "M-Pesa Tills", href: "/dashboard/sales/tills" },
+      { label: "M-Pesa Tills", href: "/dashboard/sales/tills", ownerOnly: true },
       { label: "Cash Movement", href: "/dashboard/sales/cash-movement" },
       { label: "Commissions", href: "/dashboard/sales/commissions" },
       { label: "Payouts", href: "/dashboard/sales/payouts" },
@@ -83,13 +86,14 @@ const navItems: NavItem[] = [
       { label: "Add Member", href: "/dashboard/team/add" },
       { label: "Task Assignments", href: "/dashboard/team/tasks" },
       { label: "Leave Requests", href: "/dashboard/team/leave" },
+      { label: "Owners & Managers", href: "/dashboard/team/owners", ownerOnly: true },
     ],
   },
   {
     label: "Profile",
     icon: Settings,
     children: [
-      { label: "Details", href: "/dashboard/profile/details" },
+      { label: "Details", href: "/dashboard/profile/details", ownerOnly: true },
       { label: "Security", href: "/dashboard/profile/security" },
       { label: "Portfolio", href: "/dashboard/profile/portfolio" },
     ],
@@ -99,6 +103,7 @@ const navItems: NavItem[] = [
 export function Sidebar() {
   const pathname = usePathname()
   const router = useRouter()
+  const role = useMyRole()
   const [openMenus, setOpenMenus] = useState<string[]>(() => {
     const active = navItems.find((item) =>
       item.children?.some((c) => pathname.startsWith(c.href))
@@ -115,6 +120,7 @@ export function Sidebar() {
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" })
     clearCustomerProfile()
+    forgetMyRole()
     router.push("/")
   }
 
@@ -161,7 +167,7 @@ export function Sidebar() {
                 </button>
                 {isOpen && (
                   <div className="mt-1 ml-4 flex flex-col gap-0.5 border-l pl-3">
-                    {item.children.map((child) => (
+                    {item.children.filter((child) => !child.ownerOnly || role === "OWNER").map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}

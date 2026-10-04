@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { clearCustomerProfile } from "@/lib/customer-context"
+import { forgetMyRole, useMyRole } from "@/lib/use-my-role"
 import {
   LayoutDashboard,
   Calendar,
@@ -39,13 +40,14 @@ const bottomNavItems = [
   { label: "Appointments", href: "/dashboard/appointments", icon: CalendarCheck },
 ]
 
-const drawerItems = [
+/** ownerOnly: hidden from managers (the server refuses them anyway). */
+const drawerItems: { label: string; href: string; icon: typeof DollarSign; ownerOnly?: boolean }[] = [
   { label: "Home", href: "/dashboard/home", icon: LayoutDashboard },
   { label: "Calendar", href: "/dashboard/calendar", icon: Calendar },
   { label: "Sales", href: "/dashboard/sales/daily", icon: DollarSign },
   { label: "Transactions", href: "/dashboard/sales/transactions", icon: DollarSign },
   { label: "M-Pesa Payments", href: "/dashboard/sales/mpesa", icon: DollarSign },
-  { label: "M-Pesa Tills", href: "/dashboard/sales/tills", icon: DollarSign },
+  { label: "M-Pesa Tills", href: "/dashboard/sales/tills", icon: DollarSign, ownerOnly: true },
   { label: "Cash Movement", href: "/dashboard/sales/cash-movement", icon: DollarSign },
   { label: "Commissions", href: "/dashboard/sales/commissions", icon: DollarSign },
   { label: "Payouts", href: "/dashboard/sales/payouts", icon: DollarSign },
@@ -59,7 +61,8 @@ const drawerItems = [
   { label: "Add Member", href: "/dashboard/team/add", icon: UsersRound },
   { label: "Task Assignments", href: "/dashboard/team/tasks", icon: UsersRound },
   { label: "Leave Requests", href: "/dashboard/team/leave", icon: UsersRound },
-  { label: "Profile Details", href: "/dashboard/profile/details", icon: Settings },
+  { label: "Owners & Managers", href: "/dashboard/team/owners", icon: UsersRound, ownerOnly: true },
+  { label: "Profile Details", href: "/dashboard/profile/details", icon: Settings, ownerOnly: true },
   { label: "Security", href: "/dashboard/profile/security", icon: Settings },
   { label: "Portfolio", href: "/dashboard/profile/portfolio", icon: Settings },
 ]
@@ -67,6 +70,7 @@ const drawerItems = [
 export function DashboardMobileNav() {
   const pathname = usePathname()
   const router = useRouter()
+  const role = useMyRole()
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
@@ -81,6 +85,7 @@ export function DashboardMobileNav() {
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" })
     clearCustomerProfile()
+    forgetMyRole()
     router.push("/")
   }
 
@@ -135,7 +140,7 @@ export function DashboardMobileNav() {
           </button>
         </div>
         <nav className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
-          {drawerItems.map((item) => {
+          {drawerItems.filter((item) => !item.ownerOnly || role === "OWNER").map((item) => {
             const Icon = item.icon
             const active = isActive(item.href)
             return (

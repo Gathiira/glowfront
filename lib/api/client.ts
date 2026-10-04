@@ -36,6 +36,32 @@ function isPublicPath(url: string): boolean {
   return PUBLIC_PATHS.some((p) => url.includes(p))
 }
 
+/** The server's ACCESS_REVOKED: signed in, but deactivated (staff) or suspended (manager). */
+export const ACCESS_REVOKED = 1004
+
+let signingOut = false
+
+/**
+ * Their access was taken away mid-session: sign out at once. The caller still gets the error, so its toast shows
+ * why; the page then leaves for the home page. Not on login calls, where they aren't signed in yet.
+ */
+function signOutRevoked(url: string) {
+  if (signingOut || typeof window === "undefined" || url.includes("/login")) return
+  signingOut = true
+  fetch("/api/auth/logout", { method: "POST" })
+    .catch(() => {})
+    .finally(() => {
+      for (const key of ["customer_profile", "staff_profile", "partner_profile"]) {
+        try {
+          localStorage.removeItem(key)
+        } catch {
+          // storage blocked: nothing to clear
+        }
+      }
+      setTimeout(() => window.location.replace("/"), 2500)
+    })
+}
+
 export const api = wretch(baseUrl + "/api/v1", {
   credentials: "same-origin",
 }).middlewares([
@@ -56,7 +82,9 @@ export const api = wretch(baseUrl + "/api/v1", {
       "code" in body &&
       (body as Record<string, unknown>).code !== 200
     ) {
-      throw new ApiError((body as Record<string, unknown>).code as number, body)
+      const code = (body as Record<string, unknown>).code as number
+      if (code === ACCESS_REVOKED) signOutRevoked(url)
+      throw new ApiError(code, body)
     }
     return response
   },

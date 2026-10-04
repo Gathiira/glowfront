@@ -10,6 +10,8 @@ import type {
   TopTeamMemberDto,
   StaffDto,
   StaffLoginDto,
+  BusinessMemberDto,
+  BusinessRole,
   ServiceDto,
   BusinessCategoryDto,
   BusinessDto,
@@ -134,6 +136,48 @@ export async function setPartnerStaffServices(
       .put({ serviceIds, noBookingServiceIds, taskIds }, `/partner/staff/${id}/services`)
       .json<ApiResponse<StaffDto>>()
     return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+// Owners and managers. Only owners can list or change them; everyone can read their own role.
+export async function fetchMyRole(): Promise<BusinessRole> {
+  try {
+    return (await api.get("/partner/members/me").json<ApiResponse<BusinessRole>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function fetchMembers(): Promise<BusinessMemberDto[]> {
+  try {
+    return (await api.get("/partner/members").json<ApiResponse<BusinessMemberDto[]>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** `identifier`: the email or phone of an existing GlowBuddy account. */
+export async function addMember(identifier: string, role: BusinessRole): Promise<BusinessMemberDto> {
+  try {
+    return (await api.post({ identifier, role }, "/partner/members").json<ApiResponse<BusinessMemberDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function changeMemberRole(id: number, role: BusinessRole): Promise<BusinessMemberDto> {
+  try {
+    return (await api.put({}, `/partner/members/${id}/role?role=${role}`).json<ApiResponse<BusinessMemberDto>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+export async function removeMember(id: number): Promise<void> {
+  try {
+    await api.delete(`/partner/members/${id}`).json<ApiResponse<null>>()
   } catch (error) {
     throw await extractError(error)
   }

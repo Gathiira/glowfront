@@ -577,6 +577,21 @@ export type AdvanceDto = {
   decidedAt: string | null
 }
 
+/** OWNER: everything. MANAGER: day-to-day, but not owners/managers, business details or M-Pesa tills. */
+export type BusinessRole = "OWNER" | "MANAGER"
+
+/** Someone who runs the business from the dashboard. */
+export type BusinessMemberDto = {
+  id: number
+  name: string
+  email: string
+  phone: string
+  role: BusinessRole
+  /** Their team member record, when they're also on the team. */
+  staffId: number | null
+  you: boolean
+}
+
 /** A staff member's portal login; the default password only while it's still theirs. */
 export type StaffLoginDto = {
   hasLogin: boolean
