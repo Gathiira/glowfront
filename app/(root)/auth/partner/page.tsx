@@ -15,10 +15,10 @@ const PartnerSignup = () => {
         </div>
         <div className="relative w-full flex-1 max-md:hidden">
           <Image
-            src="/assets/login-image.jpg"
+            src="/assets/glowbuddy-auth.webp"
             alt="GlowBuddy for managers"
             fill
-            className="object-cover object-right"
+            className="object-cover object-bottom-right"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
           />
