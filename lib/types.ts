@@ -392,6 +392,15 @@ export type DashboardSummaryDto = {
   pendingAdvances: AdvanceDto[]
 }
 
+/** A staff member's own appointment numbers. */
+export type StaffAppointmentsSummaryDto = {
+  /** Pending or confirmed with them today. */
+  upcomingToday: number
+  /** Completed this week (Monday to Sunday). */
+  completedThisWeek: number
+  nextAppointment: BookingDto | null
+}
+
 export type TopServiceDto = {
   serviceId: number
   serviceName: string

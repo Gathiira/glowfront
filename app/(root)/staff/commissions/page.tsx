@@ -9,7 +9,6 @@ import { showError } from "@/lib/toast"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useFreshStamps } from "../_lib/fresh-stamps"
 import { staffFonts } from "../_lib/fonts"
-import { Advances } from "./_components/advances"
 
 function day(iso: string | null | undefined) {
   if (!iso) return ""
@@ -186,8 +185,6 @@ export default function Pay() {
           )}
         </section>
       </div>
-
-      <Advances unpaid={all ? all.summary.unpaid : null} />
 
       <Dialog open={opened !== null} onOpenChange={(v) => !v && setOpened(null)}>
         <DialogContent className={`sp-dialog ${staffFonts}`}>

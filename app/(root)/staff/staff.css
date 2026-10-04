@@ -206,15 +206,18 @@
   position: fixed;
   inset: auto 0 0 0;
   z-index: 30;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  /* spread across the full width whatever the number of tabs */
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem env(safe-area-inset-bottom, 0px);
   background: var(--sp-slip);
   border-top: 1px solid var(--sp-rule);
 }
 
 .sp-tabbar a {
   position: relative;
+  min-width: 56px;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

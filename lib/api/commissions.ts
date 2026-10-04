@@ -26,6 +26,7 @@ import type {
   PaginatedResponse,
   PayoutDto,
   SaleDto,
+  StaffAppointmentsSummaryDto,
   StaffTaskRateDto,
   TaskAssignment,
   TaskAssignmentsDto,
@@ -251,6 +252,24 @@ export const fetchMyPayout = (id: number) => call(api.get(`/staff/me/payouts/${i
 export const fetchMySalesToday = () => call(api.get("/staff/me/sales/today").json<ApiResponse<MySaleDto[]>>())
 export const fetchMyPayouts = (current: number = 1) =>
   call(api.get(`/staff/me/payouts${query(page(current, STAFF_PAGE_SIZE))}`).json<ApiResponse<PaginatedResponse<PayoutDto>>>())
+
+// Staff appointments: their own bookings
+export const fetchMyAppointmentsSummary = () =>
+  call(api.get("/staff/me/appointments/summary").json<ApiResponse<StaffAppointmentsSummaryDto>>())
+/** upcoming: still to happen, soonest first; otherwise done/cancelled/past, newest first. */
+export const fetchMyAppointments = (upcoming: boolean, current: number = 1) =>
+  call(
+    api
+      .get(`/staff/me/appointments${query({ upcoming: String(upcoming), ...page(current, STAFF_PAGE_SIZE) })}`)
+      .json<ApiResponse<PaginatedResponse<BookingDto>>>()
+  )
+export const acceptMyAppointment = (id: number) =>
+  call(api.post({}, `/staff/me/appointments/${id}/accept`).json<ApiResponse<BookingDto>>())
+export const declineMyAppointment = (id: number, reason?: string) =>
+  call(api.post({ reason }, `/staff/me/appointments/${id}/decline`).json<ApiResponse<BookingDto>>())
+/** date YYYY-MM-DD, time HH:mm */
+export const rescheduleMyAppointment = (id: number, date: string, time: string) =>
+  call(api.post({ date, time }, `/staff/me/appointments/${id}/reschedule`).json<ApiResponse<BookingDto>>())
 
 // Advances: staff ask, the manager approves (pays out) or rejects; payouts deduct approved ones
 export const fetchMyAdvances = (current: number = 1) =>

@@ -3,7 +3,7 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { CalendarOff, HandCoins, LogOut, Mail, Receipt, Scissors, Smartphone } from "lucide-react"
+import { CalendarDays, HandCoins, LogOut, Mail, Receipt, Scissors } from "lucide-react"
 import { useUser } from "@/lib/use-user"
 import {
   AlertDialog,
@@ -23,9 +23,8 @@ import "./staff.css"
 const tabs = [
   { href: "/staff/sale", label: "Sale", icon: Receipt },
   { href: "/staff/claim", label: "Claim", icon: HandCoins },
-  { href: "/staff/mpesa", label: "M-Pesa", icon: Smartphone },
   { href: "/staff/commissions", label: "Pay", icon: Mail },
-  { href: "/staff/leave", label: "Leave", icon: CalendarOff },
+  { href: "/staff/appointments", label: "Bookings", icon: CalendarDays },
   { href: "/staff/services", label: "Services", icon: Scissors },
 ]
 

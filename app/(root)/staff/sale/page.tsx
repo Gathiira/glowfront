@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
+import { MpesaPaymentsPanel } from "@/components/dashboard/mpesa-payments-panel"
 import type { MySaleDto, SaleDto } from "@/lib/types"
 import { fetchMySalesToday, money } from "@/lib/api/commissions"
 import { showError } from "@/lib/toast"
@@ -33,7 +34,9 @@ export default function Sale() {
         tasks in Claim.
       </p>
 
-      <div className="sp-slip" style={{ marginTop: "1.25rem", maxWidth: 640 }}>
+      <div className="sp-pay-grid" style={{ marginTop: "1.25rem" }}>
+      <div>
+      <div className="sp-slip">
         <button type="button" className="sp-btn" style={{ width: "100%" }} onClick={() => setOpen(true)}>
           New sale
         </button>
@@ -65,7 +68,7 @@ export default function Sale() {
         )}
       </div>
 
-      <section aria-labelledby="today-heading" style={{ maxWidth: 640 }}>
+      <section aria-labelledby="today-heading">
         <h2 id="today-heading" className="sp-h2">
           Your sales today{today && today.length > 0 ? ` · ${today.length}` : ""}
         </h2>
@@ -101,6 +104,22 @@ export default function Sale() {
           )}
         </div>
       </section>
+      </div>
+
+      {/* M-Pesa payments sit beside the sale (below it on phones): attach a late payment to a sale here. */}
+      <section aria-labelledby="mpesa-heading">
+        <h2 id="mpesa-heading" className="sp-h2" style={{ marginTop: 0 }}>
+          M-Pesa payments
+        </h2>
+        <p className="sp-lede" style={{ marginTop: 0 }}>
+          Payments no sale has claimed yet. Sold as M-Pesa before the payment came in? Find it by the customer&apos;s name or
+          code and attach it.
+        </p>
+        <div className="sp-slip" style={{ marginTop: "0.75rem" }}>
+          <MpesaPaymentsPanel staffMode className={staffFonts} />
+        </div>
+      </section>
+      </div>
 
       <CheckoutDialog
         staffMode
