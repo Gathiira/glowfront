@@ -98,7 +98,7 @@ export function DashboardMobileNav() {
         )}
       >
         <div className="flex items-center justify-between border-b px-4 py-4">
-          <span className="text-lg font-bold">Navigation</span>
+          <span className="text-lg font-bold">Partner Dashboard</span>
           <button
             type="button"
             onClick={closeDrawer}
