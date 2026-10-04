@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Skeleton } from "@/components/ui/skeleton"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -15,26 +16,54 @@ import {
   FieldGroup,
 } from "@/components/ui/field"
 import { PasswordInput } from "@/components/ui/password-input"
-import { changePartnerPassword } from "@/lib/api/partner"
-import { showSuccess } from "@/lib/toast"
+import { changePartnerPassword, fetchMyAccount, updateMyAccount } from "@/lib/api/partner"
+import { showError, showSuccess } from "@/lib/toast"
 
 export default function ProfileSecurity() {
-  const [profile, setProfile] = useState({
-    firstName: "John",
-    lastName: "Doe",
-    email: "john@glowbuddy.com",
-    phone: "+1 (555) 000-0000",
-  })
+  const [profile, setProfile] = useState<{ firstName: string; lastName: string; email: string; phone: string } | null>(null)
+  const [savingProfile, setSavingProfile] = useState(false)
+  const [profileError, setProfileError] = useState<string | null>(null)
 
   const [password, setPassword] = useState({ current: "", new: "", confirm: "" })
-  const [saved, setSaved] = useState(false)
   const [changing, setChanging] = useState(false)
   const [passwordError, setPasswordError] = useState<string | null>(null)
 
-  const handleProfileSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetchMyAccount()
+      .then((a) => setProfile({ firstName: a.firstName, lastName: a.lastName, email: a.email, phone: a.phone }))
+      .catch(showError)
+  }, [])
+
+  const handleProfileSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    if (!profile) return
+    setProfileError(null)
+    setSavingProfile(true)
+    try {
+      const a = await updateMyAccount({
+        firstName: profile.firstName.trim(),
+        lastName: profile.lastName.trim(),
+        phone: profile.phone.trim(),
+      })
+      setProfile({ firstName: a.firstName, lastName: a.lastName, email: a.email, phone: a.phone })
+      // Keep the name shown in the header in step.
+      try {
+        const stored = localStorage.getItem("customer_profile")
+        if (stored) {
+          localStorage.setItem(
+            "customer_profile",
+            JSON.stringify({ ...JSON.parse(stored), firstName: a.firstName, lastName: a.lastName, phone: a.phone })
+          )
+        }
+      } catch {
+        // storage blocked or unreadable: the header catches up on next sign-in
+      }
+      showSuccess("Profile saved")
+    } catch (err) {
+      setProfileError(err instanceof Error ? err.message : "Couldn't save. Try again.")
+    } finally {
+      setSavingProfile(false)
+    }
   }
 
   const handlePasswordSubmit = async (e: React.FormEvent) => {
@@ -64,45 +93,64 @@ export default function ProfileSecurity() {
             <CardTitle>Profile Information</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleProfileSubmit}>
-              <FieldGroup>
-                <div className="flex flex-col gap-3 sm:flex-row">
+            {profile === null ? (
+              <div className="space-y-3">
+                <Skeleton className="h-9 w-full" />
+                <Skeleton className="h-9 w-full" />
+                <Skeleton className="h-9 w-full" />
+              </div>
+            ) : (
+              <form onSubmit={handleProfileSubmit}>
+                <FieldGroup>
+                  <div className="flex flex-col gap-3 sm:flex-row">
+                    <Field>
+                      <Input
+                        placeholder="First name"
+                        aria-label="First name"
+                        autoComplete="given-name"
+                        value={profile.firstName}
+                        onChange={(e) => setProfile({ ...profile, firstName: e.target.value })}
+                        required
+                      />
+                    </Field>
+                    <Field>
+                      <Input
+                        placeholder="Last name"
+                        aria-label="Last name"
+                        autoComplete="family-name"
+                        value={profile.lastName}
+                        onChange={(e) => setProfile({ ...profile, lastName: e.target.value })}
+                        required
+                      />
+                    </Field>
+                  </div>
                   <Field>
-                    <Input
-                      placeholder="First name"
-                      value={profile.firstName}
-                      onChange={(e) => setProfile({ ...profile, firstName: e.target.value })}
-                    />
+                    <Input placeholder="Email" aria-label="Email" type="email" value={profile.email} readOnly disabled />
+                    <p className="mt-1 text-xs text-muted-foreground">You sign in with this, so it can&apos;t be changed here.</p>
                   </Field>
                   <Field>
                     <Input
-                      placeholder="Last name"
-                      value={profile.lastName}
-                      onChange={(e) => setProfile({ ...profile, lastName: e.target.value })}
+                      placeholder="Phone"
+                      aria-label="Phone"
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      value={profile.phone}
+                      onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
+                      required
                     />
                   </Field>
-                </div>
-                <Field>
-                  <Input
-                    placeholder="Email"
-                    type="email"
-                    value={profile.email}
-                    onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                  />
-                </Field>
-                <Field>
-                  <Input
-                    placeholder="Phone"
-                    type="tel"
-                    value={profile.phone}
-                    onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                  />
-                </Field>
-              </FieldGroup>
-              <Button type="submit" className="mt-6 w-full sm:w-auto">
-                {saved ? "Saved!" : "Save Changes"}
-              </Button>
-            </form>
+                </FieldGroup>
+                {profileError && (
+                  <p className="mt-3 text-sm font-medium text-destructive" role="alert">
+                    {profileError}
+                  </p>
+                )}
+                <Button type="submit" className="mt-6 w-full sm:w-auto" disabled={savingProfile}>
+                  {savingProfile ? "Saving..." : "Save Changes"}
+                </Button>
+              </form>
+            )}
           </CardContent>
         </Card>
 

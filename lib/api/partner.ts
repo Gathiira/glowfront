@@ -10,6 +10,7 @@ import type {
   TopTeamMemberDto,
   StaffDto,
   StaffLoginDto,
+  CustomerProfile,
   BusinessMemberDto,
   BusinessRole,
   ServiceDto,
@@ -136,6 +137,24 @@ export async function setPartnerStaffServices(
       .put({ serviceIds, noBookingServiceIds, taskIds }, `/partner/staff/${id}/services`)
       .json<ApiResponse<StaffDto>>()
     return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** The signed-in owner or manager's own details. */
+export async function fetchMyAccount(): Promise<CustomerProfile> {
+  try {
+    return (await api.get("/partner/account").json<ApiResponse<CustomerProfile>>()).data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** Name and phone; email can't be changed here (sign-in is tied to it). */
+export async function updateMyAccount(body: { firstName: string; lastName: string; phone: string }): Promise<CustomerProfile> {
+  try {
+    return (await api.put(body, "/partner/account").json<ApiResponse<CustomerProfile>>()).data
   } catch (error) {
     throw await extractError(error)
   }

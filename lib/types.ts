@@ -387,6 +387,9 @@ export type DashboardSummaryDto = {
   pendingLeaveCount: number
   /** The soonest few pending requests. */
   pendingLeave: LeaveDto[]
+  pendingAdvanceCount: number
+  /** The newest few advance requests waiting for a decision. */
+  pendingAdvances: AdvanceDto[]
 }
 
 export type TopServiceDto = {

@@ -13,6 +13,7 @@ import {
   Star,
   User,
   CalendarOff,
+  HandCoins,
 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -43,6 +44,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const pendingCount = summary?.pendingLeaveCount ?? 0
   const pendingLeave = summary?.pendingLeave ?? []
+  const advanceCount = summary?.pendingAdvanceCount ?? 0
+  const pendingAdvances = summary?.pendingAdvances ?? []
 
   useEffect(() => {
     async function load() {
@@ -103,7 +106,8 @@ export default function Home() {
         />
       </div>
 
-      <Card className="mb-4">
+      <div className="mb-4 grid gap-4 lg:grid-cols-2">
+      <Card>
         <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
           <CardTitle className="flex items-center gap-2">
             <CalendarOff className="size-4 text-muted-foreground" aria-hidden />
@@ -151,6 +155,52 @@ export default function Home() {
           )}
         </CardContent>
       </Card>
+
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
+          <CardTitle className="flex items-center gap-2">
+            <HandCoins className="size-4 text-muted-foreground" aria-hidden />
+            Pending advance requests
+            {advanceCount > 0 && (
+              <span className="rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-semibold text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                {advanceCount}
+              </span>
+            )}
+          </CardTitle>
+          {advanceCount > 0 && (
+            <Link href="/dashboard/sales/advances">
+              <Button size="sm">Review</Button>
+            </Link>
+          )}
+        </CardHeader>
+        <CardContent>
+          {loading ? (
+            <Skeleton className="h-8 w-full" />
+          ) : pendingAdvances.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No advances waiting for your approval.</p>
+          ) : (
+            <ul className="divide-y">
+              {pendingAdvances.map((a) => (
+                <li key={a.id} className="flex items-center justify-between gap-3 py-2 text-sm">
+                  <span className="min-w-0 truncate">
+                    <span className="font-medium">{a.staffName}</span>
+                    {a.reason && <span className="text-muted-foreground"> · {a.reason}</span>}
+                  </span>
+                  <span className="shrink-0 font-medium">{formatCurrency(a.amount)}</span>
+                </li>
+              ))}
+              {advanceCount > pendingAdvances.length && (
+                <li className="pt-2 text-sm">
+                  <Link href="/dashboard/sales/advances" className="font-medium text-primary underline-offset-4 hover:underline">
+                    and {advanceCount - pendingAdvances.length} more →
+                  </Link>
+                </li>
+              )}
+            </ul>
+          )}
+        </CardContent>
+      </Card>
+      </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
