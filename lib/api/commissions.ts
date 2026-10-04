@@ -5,6 +5,7 @@ import type {
   CashMovementDto,
   CashMovementSummaryDto,
   CheckoutOptionsDto,
+  ClientAnalyticsDto,
   CheckoutRequest,
   ClaimSaleDto,
   CommissionReportDto,
@@ -147,6 +148,10 @@ export const createPayout = (req: {
   notes?: string
 }) => call(api.post(req, "/partner/payouts").json<ApiResponse<PayoutDto>>())
 export const voidPayout = (id: number) => call(api.post({}, `/partner/payouts/${id}/void`).json<ApiResponse<PayoutDto>>())
+
+/** The Client Analytics page: totals, new clients, repeat rate, top spender, online vs walk-in. */
+export const fetchClientAnalytics = () =>
+  call(api.get("/partner/clients/analytics").json<ApiResponse<ClientAnalyticsDto>>())
 
 /** Past customers (bookings and sales) whose name or phone contains `q`; needs 2+ characters. */
 export const searchCustomers = (q: string) =>

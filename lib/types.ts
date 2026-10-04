@@ -568,6 +568,20 @@ export const EXPENSE_LABEL: Record<ExpenseCategory, string> = {
 
 export type CashMovementSummaryDto = { totalIn: number; totalOut: number; net: number }
 
+/** Client overview from bookings and sales; a client is matched by phone, else email, else name. */
+export type ClientAnalyticsDto = {
+  totalClients: number
+  newThisMonth: number
+  newLastMonth: number
+  /** % of clients with a visit who came back */
+  repeatRate: number
+  topSpenderName: string | null
+  topSpenderAmount: number | null
+  online: number
+  walkIn: number
+  newClients: { name: string | null; firstSeen: string; online: boolean }[]
+}
+
 /** An M-Pesa payment received on the till/paybill that no sale has claimed yet. */
 export type MpesaPaymentDto = {
   id: number
