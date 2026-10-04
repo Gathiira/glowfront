@@ -17,13 +17,16 @@ import {
   Field,
   FieldGroup,
 } from "@/components/ui/field"
-import { createPartnerStaff, fetchAllPartnerServices } from "@/lib/api/partner"
+import { createPartnerStaff, fetchAllPartnerServices, setPartnerStaffServices } from "@/lib/api/partner"
+import { fetchTaskAssignments } from "@/lib/api/commissions"
+import { pickToSave, ServiceTaskPicker, type ServiceTaskPick } from "@/components/dashboard/service-task-picker"
 import { showSuccess, showError } from "@/lib/toast"
-import type { ServiceDto } from "@/lib/types"
+import type { ServiceDto, TaskDto } from "@/lib/types"
 
 export default function AddMember() {
   const router = useRouter()
-  const [services, setServices] = useState<ServiceDto[]>([])
+  const [services, setServices] = useState<ServiceDto[] | null>(null)
+  const [tasks, setTasks] = useState<TaskDto[]>([])
   const [submitting, setSubmitting] = useState(false)
   const [form, setForm] = useState({
     name: "",
@@ -31,38 +34,45 @@ export default function AddMember() {
     bio: "",
     jobTitle: "",
     yearsExperience: "",
-    serviceIds: [] as number[],
   })
+  const [pick, setPick] = useState<ServiceTaskPick>({ serviceIds: [], noBookingServiceIds: [], taskIds: [] })
 
   useEffect(() => {
-    fetchAllPartnerServices().then(setServices).catch(() => {})
+    Promise.all([fetchAllPartnerServices(), fetchTaskAssignments()])
+      .then(([all, grid]) => {
+        setServices(all)
+        setTasks(grid.tasks)
+      })
+      .catch((e) => {
+        setServices([])
+        showError(e)
+      })
   }, [])
-
-  const toggleService = (id: number) => {
-    setForm((prev) => ({
-      ...prev,
-      serviceIds: prev.serviceIds.includes(id)
-        ? prev.serviceIds.filter((s) => s !== id)
-        : [...prev.serviceIds, id],
-    }))
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
+    const out = pickToSave(pick, tasks)
+    let created: number | null = null
     try {
-      await createPartnerStaff({
+      const member = await createPartnerStaff({
         name: form.name,
         profilePhotoUrl: form.profilePhotoUrl || undefined,
         bio: form.bio || undefined,
         jobTitle: form.jobTitle || undefined,
         yearsExperience: form.yearsExperience ? Number(form.yearsExperience) : undefined,
-        serviceIds: form.serviceIds.length > 0 ? form.serviceIds : undefined,
+        serviceIds: out.serviceIds.length > 0 ? out.serviceIds : undefined,
       })
+      created = member.id
+      if (out.serviceIds.length > 0) {
+        await setPartnerStaffServices(member.id, out.serviceIds, out.noBookingServiceIds, out.taskIds)
+      }
       showSuccess("Team member added successfully")
       router.push("/dashboard/team/members")
     } catch (err) {
       showError(err)
+      // Added, but their bookings/tasks didn't save: finish on their page instead of adding them twice.
+      if (created !== null) router.push(`/dashboard/team/members/${created}`)
     } finally {
       setSubmitting(false)
     }
@@ -124,30 +134,23 @@ export default function AddMember() {
                 />
               </Field>
               <Field>
-                <label className="mb-1.5 block text-sm font-medium">Services</label>
-                <div className="space-y-2 rounded-lg border p-3">
-                  {services.length === 0 ? (
-                    <p className="text-sm text-muted-foreground">No services available</p>
-                  ) : (
-                    services.map((s) => (
-                      <label
-                        key={s.id}
-                        className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors hover:bg-muted"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={form.serviceIds.includes(s.id)}
-                          onChange={() => toggleService(s.id)}
-                          className="size-4 accent-primary"
-                        />
-                        <span>{s.name}</span>
-                        <span className="ml-auto text-xs text-muted-foreground">
-                          {s.durationMinutes} min &middot; {s.currency} {s.price}
-                        </span>
-                      </label>
-                    ))
-                  )}
-                </div>
+                <label className="mb-1.5 block text-sm font-medium">Services and tasks</label>
+                <p className="mb-2 text-xs text-muted-foreground">
+                  Tick the services they work on, then the tasks they do on each. Turn off &quot;Takes bookings&quot; when
+                  they only help on a service, e.g. a washer on Shave.
+                </p>
+                {services === null ? (
+                  <p className="text-sm text-muted-foreground">Loading...</p>
+                ) : (
+                  <ServiceTaskPicker
+                    memberId={null}
+                    memberName={form.name}
+                    services={services}
+                    tasks={tasks}
+                    value={pick}
+                    onChange={setPick}
+                  />
+                )}
               </Field>
             </FieldGroup>
             <Button type="submit" className="mt-6 w-full" disabled={submitting}>
