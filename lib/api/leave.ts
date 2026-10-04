@@ -22,8 +22,8 @@ export const cancelLeave = (id: number) =>
   call(api.post({}, `/staff/me/leave/${id}/cancel`).json<ApiResponse<LeaveDto>>())
 /** Tasks I can do on my services, with the rate I earn (agreed, else the task default). */
 export const fetchMyTasks = () => call(api.get("/staff/me/tasks").json<ApiResponse<StaffTaskRateDto[]>>())
-export const fetchMyServices = (current: number = 1) =>
-  call(api.get(`/staff/me/services?${pageQuery(current, STAFF_PAGE_SIZE)}`).json<ApiResponse<PaginatedResponse<ServiceDto>>>())
+export const fetchMyServices = (current: number = 1, pageSize: number = STAFF_PAGE_SIZE) =>
+  call(api.get(`/staff/me/services?${pageQuery(current, pageSize)}`).json<ApiResponse<PaginatedResponse<ServiceDto>>>())
 
 // Owner
 export const fetchLeave = (status?: LeaveStatus, staffId?: number, current: number = 1) => {

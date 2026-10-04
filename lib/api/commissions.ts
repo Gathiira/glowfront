@@ -263,6 +263,16 @@ export const fetchMyAppointments = (upcoming: boolean, current: number = 1) =>
       .get(`/staff/me/appointments${query({ upcoming: String(upcoming), ...page(current, STAFF_PAGE_SIZE) })}`)
       .json<ApiResponse<PaginatedResponse<BookingDto>>>()
   )
+/** Book a customer in with yourself; confirmed straight away. date YYYY-MM-DD, time HH:mm. */
+export const createMyAppointment = (b: {
+  serviceId: number
+  date: string
+  time: string
+  customerName: string
+  customerPhone: string
+  customerEmail?: string
+  notes?: string
+}) => call(api.post(b, "/staff/me/appointments").json<ApiResponse<BookingDto>>())
 export const acceptMyAppointment = (id: number) =>
   call(api.post({}, `/staff/me/appointments/${id}/accept`).json<ApiResponse<BookingDto>>())
 export const declineMyAppointment = (id: number, reason?: string) =>

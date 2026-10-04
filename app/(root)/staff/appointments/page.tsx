@@ -16,6 +16,7 @@ import { formatDateShort, formatTimeDisplay } from "@/lib/date-utils"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useConfirm } from "@/components/ui/use-confirm"
 import { staffFonts } from "../_lib/fonts"
+import { NewAppointmentDialog } from "./_components/new-appointment-dialog"
 
 const STATUS: Record<string, { label: string; className: string }> = {
   PENDING: { label: "New", className: "sp-pending-mark" },
@@ -46,6 +47,7 @@ export default function MyAppointments() {
   const [declining, setDeclining] = useState<BookingDto | null>(null)
   const [reason, setReason] = useState("")
   const [busy, setBusy] = useState(false)
+  const [adding, setAdding] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [confirm, confirmDialog] = useConfirm()
   const dialog = { className: `sp-dialog ${staffFonts}`, actionClassName: "sp-dialog-neutral" }
@@ -127,6 +129,9 @@ export default function MyAppointments() {
     <>
       <h1 className="sp-h1">Appointments</h1>
       <p className="sp-lede">Customers who booked you. Accept new ones, move them, or decline if you can&apos;t make it.</p>
+      <button type="button" className="sp-btn" style={{ marginTop: "1rem" }} onClick={() => setAdding(true)}>
+        New appointment
+      </button>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(11rem, 1fr))", gap: "0.75rem", marginTop: "1.25rem" }}>
         {stats.map((s) => (
@@ -303,6 +308,15 @@ export default function MyAppointments() {
           </form>
         </DialogContent>
       </Dialog>
+      <NewAppointmentDialog
+        open={adding}
+        onClose={() => setAdding(false)}
+        onDone={() => {
+          setAdding(false)
+          setUpcoming(true)
+          refresh()
+        }}
+      />
       {confirmDialog}
     </>
   )
