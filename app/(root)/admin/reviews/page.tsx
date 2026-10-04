@@ -5,8 +5,9 @@ import { PageHeader } from "@/components/dashboard/page-header"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
 import { fetchAdminReviews, approveReview, rejectReview } from "@/lib/api/admin"
-import type { ReviewDto, PaginatedResponse } from "@/lib/types"
+import type { ReviewDto, ReviewStatus, PaginatedResponse } from "@/lib/types"
 import { Pagination } from "@/components/dashboard/pagination"
+import { StatusBadge } from "@/components/dashboard/status-badge"
 import { CheckCircle, XCircle, Star } from "lucide-react"
 import { toast } from "sonner"
 import { formatDateTime } from "@/lib/date-utils"
@@ -25,6 +26,14 @@ import {
 
 const PAGE_SIZE = 15
 
+const STATUS_FILTERS: (ReviewStatus | "")[] = ["", "PENDING", "APPROVED", "REJECTED"]
+
+const STATUS_BADGE: Record<ReviewStatus, "pending" | "completed" | "cancelled"> = {
+  PENDING: "pending",
+  APPROVED: "completed",
+  REJECTED: "cancelled",
+}
+
 export default function AdminReviewsPage() {
   return (
     <Suspense fallback={<div className="flex h-40 items-center justify-center rounded-lg border text-sm text-muted-foreground">Loading...</div>}>
@@ -38,12 +47,13 @@ function AdminReviews() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [current, setCurrent] = useState(0)
+  const [statusFilter, setStatusFilter] = useState<ReviewStatus | "">("")
 
   const fetchData = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchAdminReviews(current, PAGE_SIZE)
+      const data = await fetchAdminReviews(current, PAGE_SIZE, statusFilter || undefined)
       setReviews(data)
     } catch (err) {
       console.error("Failed to load reviews:", err)
@@ -51,7 +61,12 @@ function AdminReviews() {
     } finally {
       setLoading(false)
     }
-  }, [current])
+  }, [current, statusFilter])
+
+  const handleStatusFilter = (status: ReviewStatus | "") => {
+    setStatusFilter(status)
+    setCurrent(0)
+  }
 
   useEffect(() => {
     fetchData()
@@ -106,6 +121,14 @@ function AdminReviews() {
       ),
     },
     {
+      key: "status",
+      label: "Status",
+      render: (r: ReviewDto) =>
+        r.status ? (
+          <StatusBadge status={STATUS_BADGE[r.status]} label={r.status.toLowerCase()} />
+        ) : null,
+    },
+    {
       key: "date",
       label: "Date",
       render: (r: ReviewDto) => (
@@ -118,6 +141,7 @@ function AdminReviews() {
       align: "right" as const,
       render: (r: ReviewDto) => (
         <div className="flex items-center justify-end gap-1">
+          {r.status !== "APPROVED" && (
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="outline" size="xs" className="text-green-600">
@@ -143,6 +167,8 @@ function AdminReviews() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+          )}
+          {r.status !== "REJECTED" && (
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="destructive" size="xs">
@@ -168,6 +194,7 @@ function AdminReviews() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+          )}
         </div>
       ),
     },
@@ -176,6 +203,19 @@ function AdminReviews() {
   return (
     <div>
       <PageHeader title="Reviews" description="Manage customer reviews" />
+
+      <div className="mb-4 flex flex-wrap gap-2">
+        {STATUS_FILTERS.map((s) => (
+          <Button
+            key={s}
+            variant={statusFilter === s ? "default" : "outline"}
+            size="sm"
+            onClick={() => handleStatusFilter(s)}
+          >
+            {s || "All"}
+          </Button>
+        ))}
+      </div>
 
       {error ? (
         <div className="flex h-40 items-center justify-center rounded-lg border text-sm text-destructive">

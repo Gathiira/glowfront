@@ -12,10 +12,12 @@ const variants: Record<Status, string> = {
 
 type Props = {
   status: Status
+  /** Text to show instead of the status key (e.g. "approved" in the green "completed" style). */
+  label?: string
   className?: string
 }
 
-export function StatusBadge({ status, className }: Props) {
+export function StatusBadge({ status, label, className }: Props) {
   return (
     <span
       className={cn(
@@ -24,7 +26,7 @@ export function StatusBadge({ status, className }: Props) {
         className
       )}
     >
-      {status}
+      {label ?? status}
     </span>
   )
 }
