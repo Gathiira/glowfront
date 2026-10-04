@@ -589,6 +589,8 @@ export type BusinessMemberDto = {
   role: BusinessRole
   /** Their team member record, when they're also on the team. */
   staffId: number | null
+  /** SUSPENDED: a manager deactivated as a team member; can't sign in until reactivated. */
+  status: "ACTIVE" | "SUSPENDED"
   you: boolean
 }
 

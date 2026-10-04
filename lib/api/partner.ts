@@ -141,6 +141,15 @@ export async function setPartnerStaffServices(
   }
 }
 
+/** The signed-in owner or manager's own password (also their staff portal password if they're on the team). */
+export async function changePartnerPassword(currentPassword: string, newPassword: string): Promise<void> {
+  try {
+    await api.put({ currentPassword, newPassword }, "/partner/password").json<ApiResponse<null>>()
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
 // Owners and managers. Only owners can list or change them; everyone can read their own role.
 export async function fetchMyRole(): Promise<BusinessRole> {
   try {

@@ -1,13 +1,46 @@
 "use client"
 
 import { useState } from "react"
-import { KeyRound } from "lucide-react"
+import { Eye, EyeOff, KeyRound } from "lucide-react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { changeMyPassword } from "@/lib/api/commissions"
 import { showSuccess } from "@/lib/toast"
 import { staffFonts } from "../_lib/fonts"
 
 const empty = { current: "", next: "", again: "" }
+
+/** A staff-portal password field with a show/hide eye. */
+function PasswordField(props: Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "className">) {
+  const [shown, setShown] = useState(false)
+  return (
+    <div style={{ position: "relative" }}>
+      <input {...props} className="sp-input" type={shown ? "text" : "password"} style={{ paddingRight: "2.75rem" }} />
+      <button
+        type="button"
+        onClick={() => setShown((v) => !v)}
+        aria-label={shown ? "Hide password" : "Show password"}
+        aria-pressed={shown}
+        style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          right: 0,
+          width: "2.75rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "none",
+          border: 0,
+          color: "inherit",
+          opacity: 0.7,
+          cursor: "pointer",
+        }}
+      >
+        {shown ? <EyeOff className="size-5" aria-hidden /> : <Eye className="size-5" aria-hidden />}
+      </button>
+    </div>
+  )
+}
 
 /** Set your own password (replacing the default your manager gave you). */
 export function PasswordDialog() {
@@ -60,10 +93,8 @@ export function PasswordDialog() {
           </p>
           <div className="sp-field">
             <label htmlFor="pw-current">Current password</label>
-            <input
+            <PasswordField
               id="pw-current"
-              className="sp-input"
-              type="password"
               autoComplete="current-password"
               value={form.current}
               onChange={(e) => setForm({ ...form, current: e.target.value })}
@@ -72,10 +103,8 @@ export function PasswordDialog() {
           </div>
           <div className="sp-field">
             <label htmlFor="pw-new">New password</label>
-            <input
+            <PasswordField
               id="pw-new"
-              className="sp-input"
-              type="password"
               autoComplete="new-password"
               minLength={8}
               value={form.next}
@@ -85,10 +114,8 @@ export function PasswordDialog() {
           </div>
           <div className="sp-field">
             <label htmlFor="pw-again">New password again</label>
-            <input
+            <PasswordField
               id="pw-again"
-              className="sp-input"
-              type="password"
               autoComplete="new-password"
               value={form.again}
               onChange={(e) => setForm({ ...form, again: e.target.value })}

@@ -133,6 +133,13 @@ export default function OwnersAndManagers() {
                       <p className="font-medium">
                         {m.name}
                         {m.you && <span className="ml-1 text-sm font-normal text-muted-foreground">(you)</span>}
+                        <span className="ml-2 inline-flex items-center gap-1.5 text-xs font-normal text-muted-foreground">
+                          <span
+                            className={`inline-block size-2 rounded-full ${m.status === "ACTIVE" ? "bg-green-500" : "bg-gray-300"}`}
+                            aria-hidden
+                          />
+                          {m.status === "ACTIVE" ? "Active" : "Suspended"}
+                        </span>
                         {m.staffId && (
                           <Link
                             href={`/dashboard/team/members/${m.staffId}`}
@@ -143,6 +150,17 @@ export default function OwnersAndManagers() {
                         )}
                       </p>
                       <p className="truncate text-xs text-muted-foreground">{[m.phone, m.email].filter(Boolean).join(" · ")}</p>
+                      {m.status === "SUSPENDED" && (
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          Deactivated as a team member, so they can&apos;t sign in.{" "}
+                          {m.staffId && (
+                            <Link href={`/dashboard/team/members/${m.staffId}`} className="font-medium underline underline-offset-4">
+                              Reactivate them
+                            </Link>
+                          )}{" "}
+                          to restore access, or remove them here.
+                        </p>
+                      )}
                       {lastOwner && (
                         <p className="mt-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
                           Only owner: can&apos;t be demoted or removed. Make someone else an owner first.
