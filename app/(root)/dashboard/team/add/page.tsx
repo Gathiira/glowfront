@@ -33,7 +33,7 @@ export default function AddMember() {
     profilePhotoUrl: "",
     bio: "",
     jobTitle: "",
-    yearsExperience: "",
+    careerStartYear: "",
     email: "",
     phone: "",
   })
@@ -63,7 +63,7 @@ export default function AddMember() {
         profilePhotoUrl: form.profilePhotoUrl || undefined,
         bio: form.bio || undefined,
         jobTitle: form.jobTitle || undefined,
-        yearsExperience: form.yearsExperience ? Number(form.yearsExperience) : undefined,
+        careerStartYear: form.careerStartYear ? Number(form.careerStartYear) : undefined,
         serviceIds: out.serviceIds.length > 0 ? out.serviceIds : undefined,
         email: form.email.trim() || undefined,
         phone: form.phone.trim() || undefined,
@@ -160,15 +160,18 @@ export default function AddMember() {
                 />
               </Field>
               <Field>
-                <label className="mb-1.5 block text-sm font-medium">Years of experience</label>
+                <label className="mb-1.5 block text-sm font-medium">Year started working</label>
                 <Input
-                  placeholder="Years of experience"
+                  placeholder={`e.g. ${new Date().getFullYear() - 5}`}
                   type="number"
-                  min={0}
-                  max={100}
-                  value={form.yearsExperience}
-                  onChange={(e) => setForm({ ...form, yearsExperience: e.target.value })}
+                  min={1950}
+                  max={new Date().getFullYear()}
+                  value={form.careerStartYear}
+                  onChange={(e) => setForm({ ...form, careerStartYear: e.target.value })}
                 />
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Years of experience is worked out from this, so it stays up to date.
+                </p>
               </Field>
               <Field>
                 <label className="mb-1.5 block text-sm font-medium">Services and tasks</label>

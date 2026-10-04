@@ -252,7 +252,7 @@ export type CreateStaffPayload = {
   profilePhotoUrl?: string
   bio?: string
   jobTitle?: string
-  yearsExperience?: number
+  careerStartYear?: number
   serviceIds?: number[]
   /** Both together create a staff portal login with a generated default password. */
   email?: string

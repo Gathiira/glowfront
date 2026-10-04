@@ -306,6 +306,8 @@ export type StaffDto = {
   profilePhotoUrl: string | null
   bio: string | null
   jobTitle: string | null
+  careerStartYear: number | null
+  /** Derived server-side from careerStartYear. */
   yearsExperience: number
   averageRating: number
   reviewCount: number
