@@ -13,7 +13,13 @@ const PartnerSignup = () => {
         <div className="flex flex-1 flex-col">
           <PartnerFlow />
         </div>
-        <div className="relative w-full flex-1 max-md:hidden">
+        <div
+          className="relative w-full flex-1 max-md:hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 60%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 60%)",
+          }}
+        >
           <Image
             src="/assets/glowbuddy-auth.webp"
             alt="GlowBuddy for managers"
@@ -21,8 +27,7 @@ const PartnerSignup = () => {
             className="object-cover object-bottom-right"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
-          />
-        </div>
+          />        </div>
       </div>
     </div>
   )

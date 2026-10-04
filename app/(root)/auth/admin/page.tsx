@@ -13,9 +13,15 @@ const AdminLogin = () => {
         <div className="flex flex-1">
           <AdminFlow />
         </div>
-        <div className="relative w-full flex-1 max-md:hidden">
+        <div
+          className="relative w-full flex-1 max-md:hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 60%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 60%)",
+          }}
+        >
           <Image
-            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&q=80"
+            src="/assets/glowbuddy-auth.webp"
             alt="Admin Panel"
             fill
             className="object-cover object-bottom-right"
