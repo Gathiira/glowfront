@@ -16,7 +16,7 @@ import { LoadMore } from "@/components/ui/load-more"
 import type { StaffDto, StaffTaskRateDto } from "@/lib/types"
 import { usePagedList } from "@/lib/use-paged-list"
 import { fetchStaffTaskRates } from "@/lib/api/commissions"
-import { fetchPartnerStaffMember } from "@/lib/api/partner"
+import { fetchPartnerStaffMember, setPartnerStaffActive } from "@/lib/api/partner"
 import { addLeaveForStaff, fetchLeave, leaveWhen } from "@/lib/api/leave"
 import { useConfirm } from "@/components/ui/use-confirm"
 import { today } from "@/lib/api/commissions"
@@ -46,6 +46,37 @@ export default function MemberDetails() {
   const leave = usePagedList((current) => fetchLeave(undefined, staffId, current), [staffId])
 
   const [editingServices, setEditingServices] = useState(false)
+  const [switching, setSwitching] = useState(false)
+
+  const toggleActive = async () => {
+    if (!member) return
+    const activate = !member.active
+    const ok = await confirm(
+      activate
+        ? {
+            title: `Activate ${member.name}?`,
+            description: "Customers can book them again, they can be picked at checkout and they can sign in to the staff portal. Their services, tasks and rates are as they were.",
+            confirmLabel: "Activate",
+          }
+        : {
+            title: `Deactivate ${member.name}?`,
+            description:
+              "Customers can't book them, they aren't offered at checkout or for tasks, and they can't sign in to the staff portal. Bookings they already have stay, so reassign or cancel those. Their services, tasks, rates and history are kept for when you activate them again.",
+            confirmLabel: "Deactivate",
+            destructive: true,
+          }
+    )
+    if (!ok) return
+    setSwitching(true)
+    try {
+      setMember(await setPartnerStaffActive(member.id, activate))
+      showSuccess(`${member.name} ${activate ? "activated" : "deactivated"}`)
+    } catch (err) {
+      showError(err)
+    } finally {
+      setSwitching(false)
+    }
+  }
 
   const loadTasks = () =>
     fetchStaffTaskRates(staffId)
@@ -122,6 +153,11 @@ export default function MemberDetails() {
   return (
     <div>
       <PageHeader title={member?.name ?? "Team member"} description={member?.jobTitle ?? undefined}>
+        {member && (
+          <Button variant={member.active ? "outline" : "default"} onClick={toggleActive} disabled={switching}>
+            {switching ? "Saving..." : member.active ? "Deactivate" : "Activate"}
+          </Button>
+        )}
         <Link href="/dashboard/team/members">
           <Button variant="outline">All members</Button>
         </Link>

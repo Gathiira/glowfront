@@ -79,15 +79,26 @@ export async function fetchTopTeamMember(): Promise<TopTeamMemberDto | null> {
   }
 }
 
-/** One page of the team (`current` is 1-based). */
+/** One page of the team (`current` is 1-based). Active only, unless includeInactive (team list). */
 export async function fetchPartnerStaff(
   current: number = 1,
-  pageSize: number = PAGE_SIZE
+  pageSize: number = PAGE_SIZE,
+  includeInactive: boolean = false
 ): Promise<PaginatedResponse<StaffDto>> {
   try {
     const res = await api
-      .get(`/partner/staff?${pageQuery(current, pageSize)}`)
+      .get(`/partner/staff?${pageQuery(current, pageSize)}${includeInactive ? "&includeInactive=true" : ""}`)
       .json<ApiResponse<PaginatedResponse<StaffDto>>>()
+    return res.data
+  } catch (error) {
+    throw await extractError(error)
+  }
+}
+
+/** Deactivated members can't be booked, picked or log in; their setup is kept for when they're activated again. */
+export async function setPartnerStaffActive(id: number, active: boolean): Promise<StaffDto> {
+  try {
+    const res = await api.put({}, `/partner/staff/${id}/active?active=${active}`).json<ApiResponse<StaffDto>>()
     return res.data
   } catch (error) {
     throw await extractError(error)
