@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { LoadMore } from "@/components/ui/load-more"
 import { Skeleton } from "@/components/ui/skeleton"
-import { CURRENCY } from "@/lib/types"
+import { CLIENT_SEGMENT, CURRENCY, segmentOf } from "@/lib/types"
 import { fetchClients, money } from "@/lib/api/commissions"
 import { usePagedList } from "@/lib/use-paged-list"
 
@@ -61,7 +61,13 @@ export default function ClientList() {
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-medium">
                     {c.name ?? "Unnamed"}
-                    <span className="ml-2 rounded-full bg-muted px-2 py-0.5 text-xs font-normal text-muted-foreground">
+                    <span
+                      className={`ml-2 rounded-full px-2 py-0.5 text-xs font-medium ${CLIENT_SEGMENT[segmentOf(c.totalVisits)].color}`}
+                      title={CLIENT_SEGMENT[segmentOf(c.totalVisits)].rule}
+                    >
+                      {CLIENT_SEGMENT[segmentOf(c.totalVisits)].name}
+                    </span>
+                    <span className="ml-1 rounded-full bg-muted px-2 py-0.5 text-xs font-normal text-muted-foreground">
                       {c.online ? "Online" : "Walk-in"}
                     </span>
                   </p>

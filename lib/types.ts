@@ -582,8 +582,36 @@ export type ClientDto = {
   online: boolean
 }
 
-/** NEW (0–1 visits), OCCASIONAL (2–3), REGULAR (4–9), VIP (10+). */
-export type ClientSegmentDto = { segment: "NEW" | "OCCASIONAL" | "REGULAR" | "VIP"; count: number; avgSpend: number }
+/** NEW (0–1 visits), OCCASIONAL (2–4), REGULAR (5–11), VIP (12+). */
+export type ClientSegmentDto = { segment: ClientSegment; count: number; avgSpend: number }
+export type ClientSegment = "NEW" | "OCCASIONAL" | "REGULAR" | "VIP"
+
+/** Same rule as the backend's segments query. */
+export const segmentOf = (visits: number): ClientSegment =>
+  visits >= 12 ? "VIP" : visits >= 5 ? "REGULAR" : visits >= 2 ? "OCCASIONAL" : "NEW"
+
+export const CLIENT_SEGMENT: Record<ClientSegment, { name: string; rule: string; color: string }> = {
+  VIP: {
+    name: "VIP",
+    rule: "12 or more visits",
+    color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+  },
+  REGULAR: {
+    name: "Regular",
+    rule: "5 to 11 visits",
+    color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+  },
+  OCCASIONAL: {
+    name: "Occasional",
+    rule: "2 to 4 visits",
+    color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+  },
+  NEW: {
+    name: "New",
+    rule: "1 visit, or booked but not visited yet",
+    color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  },
+}
 
 /** Client overview from bookings and sales; a client is matched by phone, else email, else name. */
 export type ClientAnalyticsDto = {

@@ -4,32 +4,9 @@ import { useEffect, useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { CURRENCY, type ClientSegmentDto } from "@/lib/types"
+import { CLIENT_SEGMENT, CURRENCY, type ClientSegmentDto } from "@/lib/types"
 import { fetchClientSegments, money } from "@/lib/api/commissions"
 import { showError } from "@/lib/toast"
-
-const SEGMENT: Record<ClientSegmentDto["segment"], { name: string; rule: string; color: string }> = {
-  VIP: {
-    name: "VIP",
-    rule: "10 or more visits",
-    color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-  },
-  REGULAR: {
-    name: "Regular",
-    rule: "4 to 9 visits",
-    color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  },
-  OCCASIONAL: {
-    name: "Occasional",
-    rule: "2 or 3 visits",
-    color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-  },
-  NEW: {
-    name: "New",
-    rule: "1 visit, or booked but not visited yet",
-    color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-  },
-}
 
 export default function ClientSegments() {
   const [segments, setSegments] = useState<ClientSegmentDto[] | null>(null)
@@ -63,7 +40,7 @@ export default function ClientSegments() {
             </Card>
           ))}
         {segments?.map((seg) => {
-          const meta = SEGMENT[seg.segment]
+          const meta = CLIENT_SEGMENT[seg.segment]
           return (
             <Card key={seg.segment}>
               <CardHeader>
