@@ -568,6 +568,23 @@ export const EXPENSE_LABEL: Record<ExpenseCategory, string> = {
 
 export type CashMovementSummaryDto = { totalIn: number; totalOut: number; net: number }
 
+/** One client from bookings and sales. */
+export type ClientDto = {
+  name: string | null
+  phone: string | null
+  email: string | null
+  totalVisits: number
+  totalSpent: number
+  /** Null when they've booked but not visited yet */
+  lastVisit: string | null
+  firstSeen: string | null
+  /** Has booked online at least once */
+  online: boolean
+}
+
+/** NEW (0–1 visits), OCCASIONAL (2–3), REGULAR (4–9), VIP (10+). */
+export type ClientSegmentDto = { segment: "NEW" | "OCCASIONAL" | "REGULAR" | "VIP"; count: number; avgSpend: number }
+
 /** Client overview from bookings and sales; a client is matched by phone, else email, else name. */
 export type ClientAnalyticsDto = {
   totalClients: number
