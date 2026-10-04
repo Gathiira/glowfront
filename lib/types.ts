@@ -392,6 +392,14 @@ export type DashboardSummaryDto = {
   pendingAdvances: AdvanceDto[]
 }
 
+export type RepeatPattern = "NONE" | "DAILY" | "WEEKLY" | "BIWEEKLY" | "MONTHLY"
+
+/** What a (possibly repeating) staff booking made: booked appointments, and dates skipped with why. */
+export type StaffBookingResult = {
+  booked: BookingDto[]
+  skipped: { date: string; reason: string }[]
+}
+
 /** A staff member's own appointment numbers. */
 export type StaffAppointmentsSummaryDto = {
   /** Pending or confirmed with them today. */

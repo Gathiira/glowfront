@@ -16,7 +16,7 @@ import { formatDateShort, formatTimeDisplay } from "@/lib/date-utils"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useConfirm } from "@/components/ui/use-confirm"
 import { staffFonts } from "../_lib/fonts"
-import { NewAppointmentDialog } from "./_components/new-appointment-dialog"
+import { NewAppointmentDialog, type AppointmentDraft } from "./_components/new-appointment-dialog"
 
 const STATUS: Record<string, { label: string; className: string }> = {
   PENDING: { label: "New", className: "sp-pending-mark" },
@@ -48,6 +48,8 @@ export default function MyAppointments() {
   const [reason, setReason] = useState("")
   const [busy, setBusy] = useState(false)
   const [adding, setAdding] = useState(false)
+  // Copy: the new-appointment form pre-filled from an existing booking.
+  const [copying, setCopying] = useState<AppointmentDraft | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [confirm, confirmDialog] = useConfirm()
   const dialog = { className: `sp-dialog ${staffFonts}`, actionClassName: "sp-dialog-neutral" }
@@ -193,8 +195,9 @@ export default function MyAppointments() {
                     )}
                   </p>
                   {b.notes && <p className="sp-note">{b.notes}</p>}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "0.75rem" }}>
                   {isOpen(b) && (
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "0.75rem" }}>
+                    <>
                       {b.status === "PENDING" && (
                         <button type="button" className="sp-btn" onClick={() => accept(b)}>
                           Accept
@@ -221,8 +224,25 @@ export default function MyAppointments() {
                       >
                         Decline
                       </button>
-                    </div>
+                    </>
                   )}
+                    <button
+                      type="button"
+                      className="sp-textbtn"
+                      onClick={() =>
+                        setCopying({
+                          serviceId: b.serviceId,
+                          time: b.bookingTime,
+                          customerName: b.customerName,
+                          customerPhone: b.customerPhone,
+                          customerEmail: b.customerEmail,
+                          notes: b.notes?.split("\n").filter((l) => !l.startsWith("Declined by")).join("\n") || null,
+                        })
+                      }
+                    >
+                      Copy
+                    </button>
+                  </div>
                 </li>
               )
             })}
@@ -309,10 +329,15 @@ export default function MyAppointments() {
         </DialogContent>
       </Dialog>
       <NewAppointmentDialog
-        open={adding}
-        onClose={() => setAdding(false)}
+        open={adding || copying !== null}
+        initial={copying}
+        onClose={() => {
+          setAdding(false)
+          setCopying(null)
+        }}
         onDone={() => {
           setAdding(false)
+          setCopying(null)
           setUpcoming(true)
           refresh()
         }}
