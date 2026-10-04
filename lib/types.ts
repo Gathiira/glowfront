@@ -311,6 +311,8 @@ export type StaffDto = {
   reviewCount: number
   active: boolean
   services: ServiceDto[]
+  /** Of their services, the ones customers can't book them for (they only help, e.g. wash on a shave). Manager only. */
+  noBookingServiceIds?: number[]
 }
 
 export type ServiceCategoryEnum =

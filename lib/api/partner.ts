@@ -106,10 +106,15 @@ export async function fetchPartnerStaffMember(id: number): Promise<StaffDto> {
   }
 }
 
-/** Which services the member works on; tasks of other services they had are released. */
-export async function setPartnerStaffServices(id: number, serviceIds: number[]): Promise<StaffDto> {
+/**
+ * Which services the member works on; tasks of other services they had are released.
+ * noBookingServiceIds: of those, the ones customers can't book them for (they only help on them).
+ */
+export async function setPartnerStaffServices(id: number, serviceIds: number[], noBookingServiceIds: number[]): Promise<StaffDto> {
   try {
-    const res = await api.put(serviceIds, `/partner/staff/${id}/services`).json<ApiResponse<StaffDto>>()
+    const res = await api
+      .put({ serviceIds, noBookingServiceIds }, `/partner/staff/${id}/services`)
+      .json<ApiResponse<StaffDto>>()
     return res.data
   } catch (error) {
     throw await extractError(error)

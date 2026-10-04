@@ -200,6 +200,7 @@ export default function MemberDetails() {
                 {member?.services.map((s) => (
                   <span key={s.id} className="rounded-full bg-muted px-2.5 py-1 text-xs">
                     {s.name}
+                    {member.noBookingServiceIds?.includes(s.id) && <span className="text-muted-foreground"> · no bookings</span>}
                   </span>
                 ))}
               </div>
