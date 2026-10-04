@@ -8,8 +8,9 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: glowfront
-  minReplicas: 2
-  maxReplicas: 10
+  # Pinned to a single replica for now; raise maxReplicas to let it scale on CPU again.
+  minReplicas: 1
+  maxReplicas: 1
   metrics:
     - type: Resource
       resource:
