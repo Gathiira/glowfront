@@ -22,7 +22,7 @@ export function ServicesList() {
       })
   }, [])
 
-  const tasksFor = (serviceId: number) => (tasks ?? []).filter((t) => t.serviceIds.includes(serviceId))
+  const tasksFor = (serviceId: number) => (tasks ?? []).filter((t) => t.access !== "NO" && t.serviceIds.includes(serviceId))
 
   const groups = (services ?? []).reduce<Record<string, ServiceDto[]>>((acc, s) => {
     const key = s.categoryName ?? "Other"
@@ -72,8 +72,13 @@ export function ServicesList() {
                     {tasksFor(s.id).length === 0 && tasks !== null && <li className="sp-task-none">No tasks for you on this</li>}
                     {tasksFor(s.id).map((t) => (
                       <li key={t.taskId}>
-                        {t.taskName} ·{" "}
-                        {t.percent != null ? <span className="sp-agreed">{t.percent}% agreed</span> : `${t.defaultPercent}%`}
+                        {t.taskName}
+                        {t.percent != null && (
+                          <>
+                            {" "}
+                            · <span className="sp-agreed">{t.percent}% agreed</span>
+                          </>
+                        )}
                       </li>
                     ))}
                   </ul>
