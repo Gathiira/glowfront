@@ -85,6 +85,8 @@ export const saveStaffTaskRates = (staffId: number, rates: { taskId: number; per
 // Sales
 export const previewCheckout = (req: CheckoutRequest) =>
   call(api.post(req, "/partner/sales/checkout/preview").json<ApiResponse<SaleDto>>())
+/** Bookings a new sale can be for: open, unbilled or no-show, last week to today. */
+export const fetchCheckoutBookings = () => call(api.get("/partner/sales/checkout/bookings").json<ApiResponse<BookingDto[]>>())
 export const checkout = (req: CheckoutRequest) =>
   call(api.post(req, "/partner/sales/checkout").json<ApiResponse<SaleDto>>())
 /** Day totals plus one page of the day's transactions (newest first). */
@@ -228,6 +230,7 @@ export const fetchCheckoutOptions = () =>
   call(api.get("/staff/me/checkout/options").json<ApiResponse<CheckoutOptionsDto>>())
 export const previewMyCheckout = (req: CheckoutRequest) =>
   call(api.post(req, "/staff/me/checkout/preview").json<ApiResponse<SaleDto>>())
+export const fetchMyCheckoutBookings = () => call(api.get("/staff/me/checkout/bookings").json<ApiResponse<BookingDto[]>>())
 export const myCheckout = (req: CheckoutRequest) => call(api.post(req, "/staff/me/checkout").json<ApiResponse<SaleDto>>())
 
 // Staff claims: the tasks they did on recent sales

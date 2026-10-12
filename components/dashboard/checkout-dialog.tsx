@@ -24,7 +24,9 @@ import {
 import { createPartnerService, fetchAllPartnerServices, fetchAllPartnerStaff, fetchPartnerCategories } from "@/lib/api/partner"
 import {
   checkout,
+  fetchCheckoutBookings,
   fetchCheckoutOptions,
+  fetchMyCheckoutBookings,
   fetchServiceTasks,
   money,
   myCheckout,
@@ -60,8 +62,12 @@ let nextKey = 1
 
 export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = false, className }: Props) {
   const sales = staffMode
-    ? { preview: previewMyCheckout, checkout: myCheckout, customers: searchMyCustomers }
-    : { preview: previewCheckout, checkout, customers: searchCustomers }
+    ? { preview: previewMyCheckout, checkout: myCheckout, customers: searchMyCustomers, bookings: fetchMyCheckoutBookings }
+    : { preview: previewCheckout, checkout, customers: searchCustomers, bookings: fetchCheckoutBookings }
+  // A new sale can be recorded against a booking, so the booking is completed instead of being left open or unbilled.
+  const [candidates, setCandidates] = useState<BookingDto[]>([])
+  const [picked, setPicked] = useState<BookingDto | null>(null)
+  const linked = booking ?? picked
   // What was last typed into the name or phone box; past customers matching it are suggested.
   const [lookup, setLookup] = useState("")
   const [matches, setMatches] = useState<CustomerLookupDto[]>([])
@@ -134,6 +140,9 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
     setCustomerName(booking?.customerName ?? "")
     setCustomerPhone(booking?.customerPhone ?? "")
     setLookup("")
+    setPicked(null)
+    setCandidates([])
+    if (!booking) sales.bookings().then(setCandidates).catch(() => setCandidates([]))
     if (staffMode) {
       fetchCheckoutOptions()
         .then((o) => setServices(o.services))
@@ -203,8 +212,19 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
     setMpesaOpen(false)
   }
 
+  const pickBooking = (id: string) => {
+    const b = candidates.find((c) => String(c.id) === id) ?? null
+    setPicked(b)
+    if (!b) return
+    setCustomerName(b.customerName)
+    setCustomerPhone(b.customerPhone ?? "")
+    setLookup("")
+    const svc = services.find((s) => s.id === b.serviceId)
+    if (svc && !lines.some((l) => l.serviceId === svc.id)) addLine(svc, b.totalPrice ?? undefined, b.staffId)
+  }
+
   const buildRequest = (): CheckoutRequest => ({
-    bookingId: booking?.id,
+    bookingId: linked?.id,
     mpesaPaymentId: mpesaNeeded && mpesaPaymentId !== null ? mpesaPaymentId : undefined,
     customerName: customerName.trim() || undefined,
     customerPhone: customerPhone.trim() || undefined,
@@ -274,7 +294,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
       description: staffMode
         ? `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${payWith}. Afterwards, everyone who worked on it claims their tasks in Claim.`
         : `${lines.length} service${lines.length === 1 ? "" : "s"}, paid by ${payWith}. ${
-            booking ? "The booking will be marked completed and " : ""
+            linked ? "The booking will be marked completed and " : ""
           }commissions will be recorded for the staff on each task.`,
       confirmLabel: "Complete sale",
     })
@@ -299,6 +319,22 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
         </DialogHeader>
 
         <div className="space-y-4">
+          {!booking && candidates.length > 0 && (
+            <Select value={picked ? String(picked.id) : "none"} onValueChange={pickBooking}>
+              <SelectTrigger aria-label="Booking" className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">Not for a booking</SelectItem>
+                {candidates.map((c) => (
+                  <SelectItem key={c.id} value={String(c.id)}>
+                    {c.customerName} · {c.serviceName} · {c.bookingDate} {c.bookingTime?.slice(0, 5)}
+                    {c.unbilled ? " · not billed" : c.status === "NO_SHOW" ? " · no-show" : ""}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
           <div className="relative">
             <div className="grid gap-2 sm:grid-cols-2">
               <Input
