@@ -19,14 +19,16 @@ const BookingDetailDialog = dynamic(
   { ssr: false }
 )
 
-type Tab = "upcoming" | "past" | "cancelled"
+type Tab = "upcoming" | "past" | "missed" | "cancelled"
 
 export default function Appointments() {
   const [upcoming, setUpcoming] = useState<BookingDto[]>([])
   const [past, setPast] = useState<BookingDto[]>([])
+  const [missed, setMissed] = useState<BookingDto[]>([])
   const [cancelled, setCancelled] = useState<BookingDto[]>([])
   const [loadingUpcoming, setLoadingUpcoming] = useState(true)
   const [loadingPast, setLoadingPast] = useState(false)
+  const [loadingMissed, setLoadingMissed] = useState(false)
   const [loadingCancelled, setLoadingCancelled] = useState(false)
   const [tab, setTab] = useState<Tab>("upcoming")
   const [reviewingId, setReviewingId] = useState<number | null>(null)
@@ -55,6 +57,12 @@ export default function Appointments() {
       fetchCustomerBookings(0, 100, undefined, today)
         .then((res) => setPast(res.list))
         .finally(() => setLoadingPast(false))
+    }
+    if (t === "missed" && missed.length === 0 && !loadingMissed) {
+      setLoadingMissed(true)
+      fetchCustomerBookings(0, 100, undefined, undefined, "NO_SHOW")
+        .then((res) => setMissed(res.list))
+        .finally(() => setLoadingMissed(false))
     }
     if (t === "cancelled" && cancelled.length === 0 && !loadingCancelled) {
       setLoadingCancelled(true)
@@ -96,6 +104,12 @@ export default function Appointments() {
     },
     { key: "past", label: "Past", count: past.length, loading: loadingPast },
     {
+      key: "missed",
+      label: "Missed",
+      count: missed.length,
+      loading: loadingMissed,
+    },
+    {
       key: "cancelled",
       label: "Cancelled",
       count: cancelled.length,
@@ -116,6 +130,11 @@ export default function Appointments() {
       bookings: past,
       loading: loadingPast,
       emptyMessage: "No past appointments",
+    },
+    missed: {
+      bookings: missed,
+      loading: loadingMissed,
+      emptyMessage: "No missed appointments",
     },
     cancelled: {
       bookings: cancelled,

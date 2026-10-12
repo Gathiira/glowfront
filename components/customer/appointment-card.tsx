@@ -33,15 +33,19 @@ export function AppointmentCard({ booking, onView, actions }: Props) {
           )}
         </div>
         <div className="flex flex-col items-end justify-between">
-          <StatusBadge
-            status={
-              booking.status.toLowerCase() as
-                | "confirmed"
-                | "pending"
-                | "cancelled"
-                | "completed"
-            }
-          />
+          {booking.status === "NO_SHOW" ? (
+            <StatusBadge status="blocked" label="missed" />
+          ) : (
+            <StatusBadge
+              status={
+                booking.status.toLowerCase() as
+                  | "confirmed"
+                  | "pending"
+                  | "cancelled"
+                  | "completed"
+              }
+            />
+          )}
           <Button variant="ghost" size="sm" onClick={() => onView(booking)} className="mt-6 gap-1">
             <Eye className="size-4" /> View
           </Button>
