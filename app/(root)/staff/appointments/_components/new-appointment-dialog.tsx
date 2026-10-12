@@ -68,6 +68,8 @@ export function NewAppointmentDialog({ open, initial, onClose, onDone }: Props) 
   const [services, setServices] = useState<ServiceDto[] | null>(null)
   const [form, setForm] = useState(() => blank(initial))
   const [matches, setMatches] = useState<CustomerLookupDto[]>([])
+  // What was last typed into the name or phone box; past customers matching it are offered.
+  const [lookup, setLookup] = useState("")
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
   // Shown when some repeats were skipped, so they can see which before closing.
@@ -78,6 +80,7 @@ export function NewAppointmentDialog({ open, initial, onClose, onDone }: Props) 
     setForm(blank(initial))
     setError(null)
     setMatches([])
+    setLookup("")
     setResult(null)
     fetchAllPages(fetchMyServices)
       .then(setServices)
@@ -89,15 +92,18 @@ export function NewAppointmentDialog({ open, initial, onClose, onDone }: Props) 
 
   // Past customers whose name or phone matches what's typed, to fill their details in.
   useEffect(() => {
-    const q = form.customerName.trim()
+    const q = lookup.trim()
     if (q.length < 2) return setMatches([])
     const timer = setTimeout(() => {
-      searchMyCustomers(q)
-        .then((found) => setMatches(found.filter((c) => c.name !== form.customerName || c.phone !== form.customerPhone)))
-        .catch(() => setMatches([]))
+      searchMyCustomers(q).then(setMatches).catch(() => setMatches([]))
     }, 250)
     return () => clearTimeout(timer)
-  }, [form.customerName, form.customerPhone])
+  }, [lookup])
+
+  const pick = (c: CustomerLookupDto) => {
+    setForm({ ...form, customerName: c.name, customerPhone: c.phone ?? form.customerPhone, customerEmail: c.email ?? form.customerEmail })
+    setLookup("")
+  }
 
   const repeating = form.repeat !== "NONE"
 
@@ -166,6 +172,65 @@ export function NewAppointmentDialog({ open, initial, onClose, onDone }: Props) 
             <p className="sp-lede" style={{ margin: 0 }}>
               Book a customer in with you. It&apos;s confirmed straight away.
             </p>
+
+            <div className="sp-field">
+              <label htmlFor="na-name">Customer name</label>
+              <input
+                id="na-name"
+                className="sp-input"
+                autoComplete="off"
+                placeholder="Type to search past customers"
+                value={form.customerName}
+                onChange={(e) => {
+                  setForm({ ...form, customerName: e.target.value })
+                  setLookup(e.target.value)
+                }}
+                required
+              />
+            </div>
+
+            <div className="sp-field">
+              <label htmlFor="na-phone">Customer phone</label>
+              <input
+                id="na-phone"
+                className="sp-input"
+                type="tel"
+                inputMode="tel"
+                autoComplete="off"
+                placeholder="Or search by phone"
+                value={form.customerPhone}
+                onChange={(e) => {
+                  setForm({ ...form, customerPhone: e.target.value })
+                  setLookup(e.target.value)
+                }}
+                required
+              />
+            </div>
+
+            {matches.length > 0 && (
+              <div className="sp-field">
+                <span className="sp-slip-sub">Past customers · tap to fill in</span>
+                <div className="sp-chips sp-chips-wrap" role="group" aria-label="Past customers">
+                  {matches.slice(0, 6).map((c, i) => (
+                    <button key={`${c.phone ?? c.name}-${i}`} type="button" onClick={() => pick(c)}>
+                      {c.name}
+                      {c.phone ? ` · ${c.phone}` : ""}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="sp-field">
+              <label htmlFor="na-email">Customer email (optional)</label>
+              <input
+                id="na-email"
+                className="sp-input"
+                type="email"
+                value={form.customerEmail}
+                onChange={(e) => setForm({ ...form, customerEmail: e.target.value })}
+              />
+            </div>
 
             <div className="sp-field">
               <label htmlFor="na-service">Service</label>
@@ -286,59 +351,6 @@ export function NewAppointmentDialog({ open, initial, onClose, onDone }: Props) 
                   </button>
                 </div>
               )}
-            </div>
-
-            <div className="sp-field">
-              <label htmlFor="na-name">Customer name</label>
-              <input
-                id="na-name"
-                className="sp-input"
-                autoComplete="off"
-                value={form.customerName}
-                onChange={(e) => setForm({ ...form, customerName: e.target.value })}
-                required
-              />
-              {matches.length > 0 && (
-                <div className="sp-chips sp-chips-wrap" role="group" aria-label="Past customers">
-                  {matches.slice(0, 4).map((c, i) => (
-                    <button
-                      key={`${c.phone ?? c.name}-${i}`}
-                      type="button"
-                      onClick={() => {
-                        setForm({ ...form, customerName: c.name, customerPhone: c.phone ?? form.customerPhone, customerEmail: c.email ?? "" })
-                        setMatches([])
-                      }}
-                    >
-                      {c.name}
-                      {c.phone ? ` · ${c.phone}` : ""}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="sp-field">
-              <label htmlFor="na-phone">Customer phone</label>
-              <input
-                id="na-phone"
-                className="sp-input"
-                type="tel"
-                inputMode="tel"
-                value={form.customerPhone}
-                onChange={(e) => setForm({ ...form, customerPhone: e.target.value })}
-                required
-              />
-            </div>
-
-            <div className="sp-field">
-              <label htmlFor="na-email">Customer email (optional)</label>
-              <input
-                id="na-email"
-                className="sp-input"
-                type="email"
-                value={form.customerEmail}
-                onChange={(e) => setForm({ ...form, customerEmail: e.target.value })}
-              />
             </div>
 
             <div className="sp-field">
