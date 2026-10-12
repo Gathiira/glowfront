@@ -14,6 +14,7 @@ import { usePagedList } from "@/lib/use-paged-list"
 import { showError, showSuccess } from "@/lib/toast"
 import { formatDateShort, formatTimeDisplay } from "@/lib/date-utils"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
 import { useConfirm } from "@/components/ui/use-confirm"
 import { staffFonts } from "../_lib/fonts"
 import { NewAppointmentDialog, type AppointmentDraft } from "./_components/new-appointment-dialog"
@@ -27,6 +28,8 @@ const STATUS: Record<string, { label: string; className: string }> = {
 }
 
 const isOpen = (b: BookingDto) => b.status === "PENDING" || b.status === "CONFIRMED"
+/** Open, unbilled or a no-show who turned up after all. */
+const canCheckout = (b: BookingDto) => isOpen(b) || b.status === "NO_SHOW"
 
 /** Open the browser's own date/time picker when the field is tapped. */
 function openPicker(e: React.MouseEvent<HTMLInputElement>) {
@@ -48,6 +51,7 @@ export default function MyAppointments() {
   const [reason, setReason] = useState("")
   const [busy, setBusy] = useState(false)
   const [adding, setAdding] = useState(false)
+  const [checkingOut, setCheckingOut] = useState<BookingDto | null>(null)
   // Copy: the new-appointment form pre-filled from an existing booking.
   const [copying, setCopying] = useState<AppointmentDraft | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -198,6 +202,15 @@ export default function MyAppointments() {
                   </p>
                   {b.notes && <p className="sp-note">{b.notes}</p>}
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "0.75rem" }}>
+                  {canCheckout(b) && (
+                    <button
+                      type="button"
+                      className={b.status === "PENDING" ? "sp-textbtn" : "sp-btn"}
+                      onClick={() => setCheckingOut(b)}
+                    >
+                      Checkout
+                    </button>
+                  )}
                   {isOpen(b) && (
                     <>
                       {b.status === "PENDING" && (
@@ -256,6 +269,19 @@ export default function MyAppointments() {
           </button>
         )}
       </div>
+
+      <CheckoutDialog
+        staffMode
+        className={staffFonts}
+        open={checkingOut !== null}
+        booking={checkingOut}
+        onClose={() => setCheckingOut(null)}
+        onDone={() => {
+          setCheckingOut(null)
+          pages.reload()
+          loadSummary()
+        }}
+      />
 
       <Dialog open={moving !== null} onOpenChange={(v) => !v && setMoving(null)}>
         <DialogContent className={`sp-dialog ${staffFonts}`}>

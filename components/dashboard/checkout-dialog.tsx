@@ -145,7 +145,11 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
     if (!booking) sales.bookings().then(setCandidates).catch(() => setCandidates([]))
     if (staffMode) {
       fetchCheckoutOptions()
-        .then((o) => setServices(o.services))
+        .then((o) => {
+          setServices(o.services)
+          const booked = booking && o.services.find((s) => s.id === booking.serviceId)
+          if (booked) addLine(booked, booking.totalPrice ?? undefined, booking.staffId)
+        })
         .catch(showError)
       return
     }
