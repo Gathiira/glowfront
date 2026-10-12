@@ -13,7 +13,13 @@ import { fetchAllPartnerStaff } from "@/lib/api/partner"
 import { usePagedList } from "@/lib/use-paged-list"
 import { showError } from "@/lib/toast"
 
-type Status = "confirmed" | "pending" | "cancelled" | "completed"
+type Status = "confirmed" | "pending" | "cancelled" | "completed" | "blocked"
+
+function badge(a: BookingDto): { status: Status; label?: string } {
+  if (a.unbilled) return { status: "pending", label: "not billed" }
+  if (a.status === "NO_SHOW") return { status: "blocked", label: "no-show" }
+  return { status: a.status.toLowerCase() as Status }
+}
 
 export default function Appointments() {
   // The server returns bookings newest first.
@@ -51,7 +57,7 @@ export default function Appointments() {
                   <p className="text-sm font-medium">{a.bookingDate}</p>
                   <p className="text-xs text-muted-foreground">{a.bookingTime?.slice(0, 5)}</p>
                 </div>
-                <StatusBadge status={a.status.toLowerCase() as Status} />
+                <StatusBadge {...badge(a)} />
                 {(a.status === "PENDING" || a.status === "CONFIRMED") && (
                   <Button size="sm" onClick={() => setCheckingOut(a)}>
                     Checkout

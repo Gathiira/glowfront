@@ -378,6 +378,8 @@ export type BookingDto = {
   notes: string | null
   confirmationCode: string | null
   source: string
+  /** Its time passed while confirmed with no sale checked out. */
+  unbilled?: boolean
   createdAt: string
 }
 

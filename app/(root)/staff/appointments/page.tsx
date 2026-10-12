@@ -170,7 +170,9 @@ export default function MyAppointments() {
         {pages.items.length > 0 && (
           <ul className="sp-slips">
             {pages.items.map((b) => {
-              const st = STATUS[b.status] ?? { label: b.status, className: "sp-slip-sub" }
+              const st = b.unbilled
+                ? { label: "Not billed", className: "sp-pending-mark" }
+                : (STATUS[b.status] ?? { label: b.status, className: "sp-slip-sub" })
               return (
                 <li key={b.id} className={`sp-slip ${b.status === "PENDING" ? "sp-slip-pending" : ""} ${b.status === "CANCELLED" ? "sp-slip-cancelled" : ""}`}>
                   <div className="sp-slip-head">
