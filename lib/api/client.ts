@@ -42,7 +42,7 @@ export const ACCESS_REVOKED = 1004
 let signingOut = false
 
 /**
- * Their access was taken away mid-session: sign out at once. The caller still gets the error, so its toast shows
+ * Their access was taken away mid-session, or the server refused the session (401/403): sign out at once. The caller still gets the error, so its toast shows
  * why; the page then leaves for the home page. Not on login calls, where they aren't signed in yet.
  */
 function signOutRevoked(url: string) {
@@ -74,6 +74,8 @@ export const api = wretch(baseUrl + "/api/v1", {
       }
     }
     const response = await next(url, { ...opts, headers })
+    // Only when they were signed in: a guest hitting a protected call shouldn't be bounced home.
+    if ((response.status === 401 || response.status === 403) && headers.has("Authorization")) signOutRevoked(url)
     const clone = response.clone()
     const body = await clone.json().catch(() => null)
     if (
