@@ -51,7 +51,7 @@ function signOutRevoked(url: string) {
   fetch("/api/auth/logout", { method: "POST" })
     .catch(() => {})
     .finally(() => {
-      for (const key of ["customer_profile", "staff_profile", "partner_profile"]) {
+      for (const key of ["customer_profile", "staff_profile", "partner_profile", "admin_profile"]) {
         try {
           localStorage.removeItem(key)
         } catch {

@@ -11,6 +11,8 @@ export async function POST() {
     path: "/",
     maxAge: 0,
   })
+  // The client reads this one for the Bearer header; left behind, the old token keeps being sent.
+  response.cookies.set("token", "", { sameSite: "lax", path: "/", maxAge: 0 })
 
   return response
 }
