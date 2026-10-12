@@ -4,8 +4,9 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { CheckoutDialog } from "@/components/dashboard/checkout-dialog"
 import { MpesaPaymentsPanel } from "@/components/dashboard/mpesa-payments-panel"
-import type { MySaleDto, SaleDto } from "@/lib/types"
-import { fetchMySalesToday, money } from "@/lib/api/commissions"
+import type { BookingDto, MySaleDto, SaleDto } from "@/lib/types"
+import { fetchMyCheckoutBookings, fetchMySalesToday, money } from "@/lib/api/commissions"
+import { formatDateShort } from "@/lib/date-utils"
 import { showError } from "@/lib/toast"
 import { staffFonts } from "../_lib/fonts"
 
@@ -13,6 +14,23 @@ export default function Sale() {
   const [open, setOpen] = useState(false)
   const [last, setLast] = useState<SaleDto | null>(null)
   const [today, setToday] = useState<MySaleDto[] | null>(null)
+  // Their bookings still waiting to be checked out (last week to today), oldest first.
+  const [waiting, setWaiting] = useState<BookingDto[] | null>(null)
+  const [search, setSearch] = useState("")
+  const [booking, setBooking] = useState<BookingDto | null>(null)
+
+  const loadWaiting = () =>
+    fetchMyCheckoutBookings()
+      .then(setWaiting)
+      .catch((e) => {
+        setWaiting([])
+        showError(e)
+      })
+
+  const q = search.trim().toLowerCase()
+  const shown = (waiting ?? []).filter(
+    (b) => !q || [b.customerName, b.customerPhone, b.serviceName].some((v) => v?.toLowerCase().includes(q))
+  )
 
   const loadToday = () =>
     fetchMySalesToday()
@@ -24,6 +42,7 @@ export default function Sale() {
 
   useEffect(() => {
     loadToday()
+    loadWaiting()
   }, [])
 
   return (
@@ -67,6 +86,45 @@ export default function Sale() {
           </div>
         )}
       </div>
+
+      <section aria-labelledby="waiting-heading">
+        <h2 id="waiting-heading" className="sp-h2">
+          Waiting for checkout{waiting && waiting.length > 0 ? ` · ${waiting.length}` : ""}
+        </h2>
+        <div className="sp-slip">
+          {waiting === null && <span className="sp-skel" style={{ width: "60%" }} aria-hidden />}
+          {waiting?.length === 0 && <p className="sp-empty sp-empty-plain">No bookings waiting to be checked out.</p>}
+          {waiting && waiting.length > 0 && (
+            <>
+              <input
+                type="search"
+                className="sp-input"
+                placeholder="Search customer, phone or service"
+                aria-label="Search bookings"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              {shown.length === 0 && <p className="sp-empty sp-empty-plain">No booking matches “{search.trim()}”.</p>}
+              <ul className="sp-tariff">
+                {shown.map((b) => (
+                  <li key={b.id}>
+                    <span className="sp-tariff-name">
+                      {b.customerName} · {b.serviceName}
+                    </span>
+                    <button type="button" className="sp-btn" onClick={() => setBooking(b)}>
+                      Checkout
+                    </button>
+                    <span className="sp-tariff-sub">
+                      {formatDateShort(b.bookingDate)} {b.bookingTime?.slice(0, 5)}
+                      {b.unbilled ? " · not billed" : b.status === "NO_SHOW" ? " · no-show" : b.status === "PENDING" ? " · not accepted" : ""}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+      </section>
 
       <section aria-labelledby="today-heading">
         <h2 id="today-heading" className="sp-h2">
@@ -124,12 +182,18 @@ export default function Sale() {
       <CheckoutDialog
         staffMode
         className={staffFonts}
-        open={open}
-        onClose={() => setOpen(false)}
+        open={open || booking !== null}
+        booking={booking}
+        onClose={() => {
+          setOpen(false)
+          setBooking(null)
+        }}
         onDone={(sale) => {
           setLast(sale)
           setOpen(false)
+          setBooking(null)
           loadToday()
+          loadWaiting()
         }}
       />
     </>
