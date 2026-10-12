@@ -125,6 +125,13 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
     }
   }
 
+  /** The booking's service as the first line, at the booked price; from the booking itself if it's not in the list. */
+  const addBooked = (list: ServiceDto[], b: BookingDto) => {
+    if (!b.serviceId) return
+    const svc = list.find((s) => s.id === b.serviceId) ?? ({ id: b.serviceId, name: b.serviceName, price: b.totalPrice ?? 0 } as ServiceDto)
+    addLine(svc, b.totalPrice ?? undefined, b.staffId)
+  }
+
   // Load pickers and prefill from the booking each time the dialog opens.
   useEffect(() => {
     if (!open) {
@@ -147,8 +154,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
       fetchCheckoutOptions()
         .then((o) => {
           setServices(o.services)
-          const booked = booking && o.services.find((s) => s.id === booking.serviceId)
-          if (booked) addLine(booked, booking.totalPrice ?? undefined, booking.staffId)
+          if (booking) addBooked(o.services, booking)
         })
         .catch(showError)
       return
@@ -158,8 +164,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
         setServices(svc)
         setStaff(team.filter((s) => s.active))
         setCategories(cats)
-        const booked = booking && svc.find((s) => s.id === booking.serviceId)
-        if (booked) addLine(booked, booking.totalPrice ?? undefined, booking.staffId)
+        if (booking) addBooked(svc, booking)
       })
       .catch(showError)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -223,8 +228,7 @@ export function CheckoutDialog({ open, booking, onClose, onDone, staffMode = fal
     setCustomerName(b.customerName)
     setCustomerPhone(b.customerPhone ?? "")
     setLookup("")
-    const svc = services.find((s) => s.id === b.serviceId)
-    if (svc && !lines.some((l) => l.serviceId === svc.id)) addLine(svc, b.totalPrice ?? undefined, b.staffId)
+    if (!lines.some((l) => l.serviceId === b.serviceId)) addBooked(services, b)
   }
 
   const buildRequest = (): CheckoutRequest => ({
